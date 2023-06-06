@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <!-- VIEWS: "Language certificate"
+
+            - Model·········: cefrl.certificate
+            - _rec_name·····: code
+            - Domain········: []
+            - Context·······: {}
+            - Parent menu ··: base.menu_custom
+            - View priority·: 16    Sequence····: 10
+            - Action help···: There are no language certificates
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+        <!-- Tree view for "cefrl.certificate" -->
+        <record id="view_cefrl_certificate_tree" model="ir.ui.view">
+            <field name="name">view.cefrl.certificate.tree</field>
+            <field name="model">cefrl.certificate</field>
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <tree string="cefrl_certificate_tree" create="1" delete="1" edit="1">
+                    <field name="display_name" class="oe_field_display_name" />
+                    <field name="language_id" class="oe_field_language_id" />
+                    <field name="level_id" class="oe_field_group_id" />
+                    <field name="group_id" class="oe_field_group_id" />
+                    <field name="code" class="oe_field_code" />
+                    <field name="name" class="oe_field_name" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for "cefrl.certificate" -->
+        <record id="view_cefrl_certificate_form" model="ir.ui.view">
+            <field name="name">view.cefrl.certificate.form</field>
+            <field name="model">cefrl.certificate</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form string="cefrl_certificate_form" create="1" delete="1" edit="1">
+                    <sheet>
+
+                        <div class="oe_title oe_read_only">
+                            <field name="id" invisible="1" />
+                            <field name="active" invisible="1" />
+
+                            <label for="display_name" class="oe_edit_only" />
+                            <h1>
+                                <field name="display_name" class="oe_field_display_name" readonly="1" />
+                            </h1>
+                        </div>
+
+                        <group col="4" class="oe_edit_only">
+                            <field name="code" class="oe_field_code" />
+                            <field name="name" class="oe_field_name" />
+                        </group>
+
+                        <group col="2">
+                            <field name="language_id" class="oe_field_language_id"
+                                options="{'no_quick_create': True, 'no_create': True, 'no_open': False}" />
+                            <field name="level_id" class="oe_field_level_id"
+                                readonly="context.get('default_level_id', 0)"
+                                options="{'no_quick_create': True, 'no_create': True, 'no_open': True}" />
+                            <field name="description" class="oe_field_description" />
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view for "cefrl.certificate" -->
+        <record id="view_cefrl_certificate_search" model="ir.ui.view">
+            <field name="name">view.cefrl.certificate.search</field>
+            <field name="model">cefrl.certificate</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <search string="cefrl_certificate_search">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="group_id" />
+                    <field name="level_id" />
+                    <field name="implied_ids" />
+
+                    <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
+
+                   <group expand="0" name="group_by" string="Group By">
+                       <filter name="group_by_language_id" string="Language" context="{'group_by': 'language_id'}"/>
+                       <filter name="group_by_group_id" string="Certificate group" context="{'group_by': 'group_id'}"/>
+                       <filter name="group_by_level_id" string="Level" context="{'group_by': 'level_id'}"/>
+                   </group>
+
+                </search>
+            </field>
+        </record>
+
+        <!-- Main window action for model.name -->
+        <record id="action_language_certificate_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Language certificate</field>
+            <field name="res_model">cefrl.certificate</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_cefrl_certificate_search" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add new language certificate
+                </p><p>
+                    There are no language certificates
+                </p>
+            </field>
+        </record>
+
+        <!-- Main menu for model.name -->
+<!--         <record id="menu_language_certificate" model="ir.ui.menu" >
+            <field name="name">Language certificate</field>
+            <field name="sequence" eval="10" />
+            <field name="action" ref="action_language_certificate_act_window" />
+            <field name="parent_id" ref="base.menu_custom" />
+        </record>
+ -->
+    </data>
+</openerp>

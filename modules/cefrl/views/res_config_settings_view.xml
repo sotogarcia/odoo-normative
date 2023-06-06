@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.cefrl</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="20" />
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="CEFRL"
+                         data-key="cefrl" groups="base.group_system" >
+
+                        <div name="academy_driving_licence_settings_attribute_values">
+                            <h2>Common European Framework of Reference for Languages</h2>
+                            <div class="row mt16 o_settings_container" name="hidden_resources">
+                                <div class="col-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">
+                                            Level groups
+                                        </span>
+                                        <div class="text-muted">
+                                            Main classification
+                                        </div>
+                                        <div class="content-group mt8">
+                                            <button
+                                                name="%(cefrl.action_cefrl_level_group_act_window)d"
+                                                string="&#160;Update level groups"
+                                                type="action"
+                                                class="oe_link"
+                                                icon="fa-arrow-right"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> <!-- col -->
+
+                                <div class="col-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">
+                                            Levels
+                                        </span>
+                                        <div class="text-muted">
+                                            Secondary classification
+                                        </div>
+                                        <div class="content-group mt8">
+                                            <button
+                                                name="%(cefrl.action_cefrl_level_act_window)d"
+                                                string="&#160;Update levels"
+                                                type="action"
+                                                class="oe_link"
+                                                icon="fa-arrow-right"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> <!-- col -->
+
+                            </div> <!-- row -->
+                        </div>
+
+                        <div name="academy_driving_licence_settings_attribute_values">
+                            <h2>Language-specific scales</h2>
+                            <div class="row mt16 o_settings_container" name="hidden_resources">
+
+                                <div class="col-12 col-md-6 o_setting_box">
+                                   <div class="o_setting_right_pane">
+                                        <span class="o_form_label">
+                                            Language certificate groups
+                                        </span>
+                                        <div class="text-muted">
+                                            Certificate groups issued by the competent organizations
+                                        </div>
+                                        <div class="content-group mt8">
+                                            <button
+                                                name="%(cefrl.action_language_certificate_group_act_window)d"
+                                                string="&#160;Update certificate groups"
+                                                type="action"
+                                                class="oe_link"
+                                                icon="fa-arrow-right"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> <!-- col -->
+
+                                <div class="col-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">
+                                            Language certificates
+                                        </span>
+                                        <div class="text-muted">
+                                            Certificates issued by the competent organizations
+                                        </div>
+                                        <div class="content-group mt8">
+                                            <button
+                                                name="%(cefrl.action_language_certificate_act_window)d"
+                                                string="&#160;Update certificates"
+                                                type="action"
+                                                class="oe_link"
+                                                icon="fa-arrow-right"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> <!-- col -->
+
+                            </div> <!-- row -->
+                        </div>
+
+                        <div name="academy_driving_licence_settings_attribute_values">
+                            <h2>Languages</h2>
+                            <div class="row mt16 o_settings_container" name="hidden_resources">
+
+                                <div class="col-12 col-md-6 o_setting_box">
+                                   <div class="o_setting_right_pane">
+                                        <span class="o_form_label">
+                                            Languages
+                                        </span>
+                                        <div class="text-muted">
+                                            Languages included in Common European Framework
+                                        </div>
+                                        <div class="content-group mt8">
+                                            <button
+                                                name="%(cefrl.action_cefrl_language_act_window)d"
+                                                string="&#160;Update languages"
+                                                type="action"
+                                                class="oe_link"
+                                                icon="fa-arrow-right"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> <!-- col -->
+
+                                <div class="col-12 col-md-6 o_setting_box">
+                                    &#160;
+                                </div> <!-- col -->
+
+                            </div> <!-- row -->
+                        </div>
+
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

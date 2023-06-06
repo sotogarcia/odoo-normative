@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <record id="access_cefrl_language_base_group_user" model="ir.model.access">
+            <field name="name">cefrl_language base_group_user</field>
+            <field name="model_id" ref="cefrl.model_cefrl_language"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="True" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_unlink" eval="False" />
+            <field name="active" eval="True" />
+        </record>
+
+        <record id="access_cefrl_language_base_group_erp_manager" model="ir.model.access">
+            <field name="name">cefrl_language base_group_erp_manager</field>
+            <field name="model_id" ref="cefrl.model_cefrl_language"/>
+            <field name="group_id" ref="base.group_erp_manager"/>
+            <field name="perm_read" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_unlink" eval="True" />
+            <field name="active" eval="True" />
+        </record>
+
+    </data>
+</openerp>

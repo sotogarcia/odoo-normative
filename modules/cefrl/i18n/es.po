@@ -1,0 +1,1005 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cefrl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-20 17:41+0000\n"
+"PO-Revision-Date: 2023-03-20 19:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+"Language: es_ES\n"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                            Language certificate groups\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                             Grupos de certificados de idioma\n"
+"                                         </span>"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                            Language certificates\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                             Certificados de idioma\n"
+"                                         </span>"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                            Languages\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                             Idiomas\n"
+"                                         </span>"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                            Level groups\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                             Grupos de niveles\n"
+"                                         </span>"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                            Levels\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                             Niveles\n"
+"                                         </span>"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_certificate_group.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_certificate_group_unique_code
+#, python-format
+msgid "A certificate group with this code already exists"
+msgstr "Ya existe un grupo de certificados con este código"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_certificate_group.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_certificate_group_unique_name
+#, python-format
+msgid "A certificate group with this name already exists"
+msgstr "Ya existe un grupo de certificados con este nombre"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_certificate.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_certificate_unique_level_id_by_group
+#, python-format
+msgid "A certificate with this level already exists in group"
+msgstr "Ya existe un certificado con este nivel en el grupo"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_language.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_language_unique_code_dialect
+#, python-format
+msgid "A language with this code or dialect already exists"
+msgstr "Ya existe un idioma con este código o dialecto"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_language.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_language_unique_name
+#, python-format
+msgid "A language with this name already exists"
+msgstr "Ya existe un idioma con este nombre"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_level_group.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_level_group_unique_code
+#, python-format
+msgid "A level group with this code already exists"
+msgstr "Ya existe un grupo de nivel con este código"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_level_group.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_level_group_unique_name
+#, python-format
+msgid "A level group with this name already exists"
+msgstr "Ya existe un grupo de nivel con este nombre"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_level.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_level_unique_code
+#, python-format
+msgid "A level with this code already exists"
+msgstr "Ya existe un nivel con este código"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_level.py:0
+#: model:ir.model.constraint,message:cefrl.constraint_cefrl_level_unique_name_by_group
+#, python-format
+msgid "A level with this name already exists"
+msgstr "Ya existe un nivel con este nombre"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__description
+msgid "About"
+msgstr "Acerca de"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__active
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__active
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__active
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__active
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: cefrl
+#: model:cefrl.level,name:cefrl.cefrl_level_C1
+msgid "Advanced"
+msgstr "Dominio operativo eficaz"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_group_search
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_search
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_group_search
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: cefrl
+#: model:cefrl.level.group,name:cefrl.cefrl_level_group_A
+msgid "Basic user"
+msgstr "Usuario básico"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_eu
+msgid "Basque"
+msgstr "Vasco"
+
+#. module: cefrl
+#: model:cefrl.language,description:cefrl.cefrl_language_eu
+msgid "Basque (Formal)"
+msgstr "Vasco (Formal)"
+
+#. module: cefrl
+#: model:cefrl.level,name:cefrl.cefrl_level_A1
+msgid "Breakthrough"
+msgstr "Acceso"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_bg
+msgid "Bulgarian"
+msgstr "Búlgaro"
+
+#. module: cefrl
+#: model:ir.actions.act_window,name:cefrl.action_cefrl_level_act_window
+#: model:ir.model,name:cefrl.model_cefrl_level
+msgid "CEFRL - Level"
+msgstr "MCER - Nivel"
+
+#. module: cefrl
+#: model:ir.actions.act_window,name:cefrl.action_cefrl_level_group_act_window
+#: model:ir.model,name:cefrl.model_cefrl_level_group
+msgid "CEFRL - Level group"
+msgstr "MCER - Grupo de niveles"
+
+#. module: cefrl
+#: model:ir.actions.act_window,name:cefrl.action_cefrl_language_act_window
+#: model:ir.model,name:cefrl.model_cefrl_language
+msgid "CEFRL - language"
+msgstr "MCER - Idioma"
+
+#. module: cefrl
+#: model:cefrl.level,description:cefrl.cefrl_level_C1
+msgid ""
+"Can understand a wide range of demanding, longer clauses and recognise implicit meaning.\n"
+"Can express ideas fluently and spontaneously without much obvious searching for expressions.\n"
+"Can use language flexibly and effectively for social, academic and professional purposes.\n"
+"Can produce clear, well-structured, detailed text on complex subjects, showing controlled use of organisational patterns, connectors and cohesive devices."
+msgstr ""
+"Puede comprender una amplia gama de cláusulas largas y exigentes y reconocer el significado implícito.\n"
+"Puede expresar ideas con fluidez y espontaneidad sin mucha búsqueda obvia de expresiones.\n"
+"Puede utilizar el lenguaje con flexibilidad y eficacia para fines sociales, académicos y profesionales.\n"
+"Puede producir textos claros, bien estructurados y detallados sobre temas complejos, mostrando un uso controlado de patrones organizacionales, conectores y dispositivos cohesivos."
+
+#. module: cefrl
+#: model:cefrl.level,description:cefrl.cefrl_level_A1
+msgid ""
+"Can understand and use familiar everyday expressions and very basic phrases aimed at the satisfaction of needs of a concrete type.\n"
+"Can introduce themselves and others and can ask and answer questions about personal details such as where they live, people they know and things they have.\n"
+"Can interact in a simple way provided the other person talks slowly and clearly and is prepared to help."
+msgstr ""
+"Puede comprender y utilizar expresiones familiares y cotidianas y frases muy básicas dirigidas a la satisfacción de necesidades de tipo concreto.\n"
+"Pueden presentarse a sí mismos y a los demás y pueden hacer y responder preguntas sobre detalles personales como dónde viven, las personas que conocen y las cosas que tienen.\n"
+"Puede interactuar de forma sencilla siempre que la otra persona hable despacio y con claridad y esté dispuesta a ayudar."
+
+#. module: cefrl
+#: model:cefrl.level,description:cefrl.cefrl_level_A2
+msgid ""
+"Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. very basic personal and family information, shopping, local geography, employment).\n"
+"Can communicate in simple and routine tasks requiring a simple and direct exchange of information on familiar and routine matters.\n"
+"Can describe in simple terms aspects of their background, immediate environment and matters in areas of immediate need."
+msgstr ""
+"Puede comprender oraciones y expresiones de uso frecuente relacionadas con áreas de relevancia más inmediata (p. ej., información personal y familiar muy básica, compras, geografía local, empleo).\n"
+"Puede comunicarse en tareas simples y rutinarias que requieren un intercambio simple y directo de información sobre asuntos familiares y rutinarios.\n"
+"Puede describir en términos simples aspectos de su entorno, entorno inmediato y asuntos en áreas de necesidad inmediata."
+
+#. module: cefrl
+#: model:cefrl.level,description:cefrl.cefrl_level_B2
+msgid ""
+"Can understand the main ideas of complex text on both concrete and abstract topics, including technical discussions in their field of specialisation.\n"
+"Can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers quite possible without strain for either party.\n"
+"Can produce clear, detailed text on a wide range of subjects and explain a viewpoint on a topical issue giving the advantages and disadvantages of various options.\n"
+msgstr ""
+"Puede comprender las ideas principales de un texto complejo sobre temas tanto concretos como abstractos, incluidas las discusiones técnicas en su campo de especialización.\n"
+"Puede interactuar con un grado de fluidez y espontaneidad que hace posible la interacción regular con hablantes nativos sin tensión para ninguna de las partes.\n"
+"Puede producir textos claros y detallados sobre una amplia gama de temas y explicar un punto de vista sobre un tema de actualidad dando las ventajas y desventajas de varias opciones.\n"
+
+#. module: cefrl
+#: model:cefrl.level,description:cefrl.cefrl_level_B1
+msgid ""
+"Can understand the main points of clear standard input on familiar matters regularly encountered in work, school, leisure, etc.\n"
+"Can deal with most situations likely to arise while travelling in an area where the language is spoken.\n"
+"Can produce simple connected text on topics that are familiar or of personal interest.\n"
+"Can describe experiences and events, dreams, hopes and ambitions and briefly give reasons and explanations for opinions and plans."
+msgstr ""
+"Puede comprender los puntos principales de una entrada estándar clara sobre asuntos familiares que se encuentran regularmente en el trabajo, la escuela, el ocio, etc.\n"
+"Puede lidiar con la mayoría de las situaciones que puedan surgir mientras viaja en un área donde se habla el idioma.\n"
+"Puede producir texto simple y conectado sobre temas que le son familiares o de interés personal.\n"
+"Puede describir experiencias y eventos, sueños, esperanzas y ambiciones y dar razones y explicaciones breves para sus opiniones y planes."
+
+#. module: cefrl
+#: model:cefrl.level,description:cefrl.cefrl_level_C2
+msgid ""
+"Can understand with ease virtually everything heard or read.\n"
+"Can summarise information from different spoken and written sources, reconstructing arguments and accounts in a coherent presentation.\n"
+"Can express themselves spontaneously, very fluently and precisely, differentiating finer shades of meaning even in the most complex situations."
+msgstr ""
+"Es capaz de comprender con facilidad prácticamente todo lo que oye o lee.\n"
+"Puede resumir información de diferentes fuentes habladas y escritas, reconstruyendo argumentos y relatos en una presentación coherente.\n"
+"Puede expresarse espontáneamente, con mucha fluidez y precisión, diferenciando matices más finos de significado incluso en las situaciones más complejas."
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_ca
+msgid "Catalan"
+msgstr "Catalán"
+
+#. module: cefrl
+#: model:cefrl.language,description:cefrl.cefrl_language_ca
+msgid "Catalan (Formal)"
+msgstr "Catalán (Formal)"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_vlca
+msgid "Catalan (Valencià)"
+msgstr "Catalán (Valencià)"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__certificate_count
+msgid "Certificate count"
+msgstr "Nº de certificados"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Certificate groups issued by the competent organizations"
+msgstr "Grupos de certificados emitidos por los organismos competentes"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__name
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__name
+msgid "Certificate name"
+msgstr "Nombre del certificado"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__sequence
+msgid "Certificate sequence"
+msgstr "Secuencia del certificado"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__certificate_ids
+msgid "Certificates"
+msgstr "Certificados"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Certificates issued by the competent organizations"
+msgstr "Certificados emitidos por los organismos competentes"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__active
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__active
+#: model:ir.model.fields,help:cefrl.field_cefrl_language__active
+#: model:ir.model.fields,help:cefrl.field_cefrl_level__active
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__active
+msgid "Check it to show this attempt or uncheck to archivate"
+msgstr "Márcar para mostrar este intento o desmarque para archivar"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_zh
+msgid "Chinese"
+msgstr "Chino"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_cefrl_level_act_window
+msgid "Click to add new Level"
+msgstr "Clic para agregar un nuevo nivel"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_cefrl_language_act_window
+msgid "Click to add new language"
+msgstr "Clic para agregar un nuevo idioma"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_language_certificate_act_window
+msgid "Click to add new language certificate"
+msgstr "Clic para agregar un nuevo certificado de idioma"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_language_certificate_group_act_window
+msgid "Click to add new language certificate group"
+msgstr "Clic para agregar un nuevo grupo de certificados de idioma"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_cefrl_level_group_act_window
+msgid "Click to add new level group"
+msgstr "Clic para agregar un nuevo grupo de nivel"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__code
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__code
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__code
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__code
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__code
+msgid "Code"
+msgstr "Código"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Common European Framework of Reference for Languages"
+msgstr "Marco Común Europeo de Referencia para las Lenguas"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__create_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__create_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__create_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__create_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__create_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__create_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__create_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__create_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_hr
+msgid "Croatian"
+msgstr "Croata"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_cs
+msgid "Czech"
+msgstr "Checo"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_da
+msgid "Danish"
+msgstr "Danés"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__description
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__description
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__description
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__description
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__description
+msgid "Description of the certificate"
+msgstr "Descripción del certificado"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__description
+msgid "Description of the group level"
+msgstr "Descripción del grupo de niveles"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level__description
+msgid "Description of the level"
+msgstr "Descripción del nivel"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__dialect
+msgid "Dialect"
+msgstr "Dialecto"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__display_name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__display_name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__display_name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__display_name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_en
+msgid "English"
+msgstr "Inglés"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_eo
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_et
+msgid "Estonian"
+msgstr "Estonio"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_fi
+msgid "Finnish"
+msgstr "Finés"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_fr
+msgid "French"
+msgstr "Francés"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_gl
+msgid "Galician"
+msgstr "Gallego"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_de
+msgid "German"
+msgstr "Alemán"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_el
+msgid "Greek"
+msgstr "Griego"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__group_id
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__group_id
+msgid "Group"
+msgstr "Grupo"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_search
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__group_id
+msgid "Group to which the certificate belongs"
+msgstr "Grupo al que pertenece el certificado"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level__group_id
+msgid "Group to which the level belongs"
+msgstr "Grupo al que pertenece el nivel"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_he
+msgid "Hebrew"
+msgstr "Hebreo"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_hu
+msgid "Hungarian"
+msgstr "Húngaro"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__id
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__id
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__id
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__id
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__id
+msgid "ID"
+msgstr ""
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_language__code
+msgid "ISO 639-1 language code"
+msgstr "Código de idioma ISO 639-1"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_language__dialect
+msgid "ISO 639-6 language code"
+msgstr "Código de idioma ISO 639-6"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_is
+msgid "Icelandic"
+msgstr "Islandés"
+
+#. module: cefrl
+#: model:cefrl.level.group,name:cefrl.cefrl_level_group_B
+msgid "Independent user"
+msgstr "Usuario independiente"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_ga
+msgid "Irish"
+msgstr "Irlandés"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_it
+msgid "Italian"
+msgstr "Italiano"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_ja
+msgid "Japanese"
+msgstr "Japonés"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_ko
+msgid "Korean"
+msgstr "Coreano"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__language_id
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__language_id
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_search
+msgid "Language"
+msgstr "Idioma"
+
+#. module: cefrl
+#: model:ir.actions.act_window,name:cefrl.action_language_certificate_act_window
+#: model:ir.model,name:cefrl.model_cefrl_certificate
+msgid "Language certificate"
+msgstr "Certificado de idioma"
+
+#. module: cefrl
+#: model:ir.actions.act_window,name:cefrl.action_language_certificate_group_act_window
+#: model:ir.model,name:cefrl.model_cefrl_certificate_group
+msgid "Language certificate group"
+msgstr "Grupo de certificados de idioma"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Language-specific scales"
+msgstr "Escalas específicas del idioma"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Languages"
+msgstr "Idiomas"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Languages included in Common European Framework"
+msgstr "Lenguas incluidas en el Marco Común Europeo"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate____last_update
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group____last_update
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language____last_update
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level____last_update
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__write_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__write_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__write_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__write_uid
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__write_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__write_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__write_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__write_date
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_lv
+msgid "Latvian"
+msgstr "Letón"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__level_id
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_search
+msgid "Level"
+msgstr "Nivel"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__code
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__code
+#: model:ir.model.fields,help:cefrl.field_cefrl_level__code
+msgid "Level code"
+msgstr "Código de nivel"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__level_count
+msgid "Level count"
+msgstr "Nº de niveles"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_search
+msgid "Certificate group"
+msgstr "Grupo de certificados"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_search
+msgid "Level group"
+msgstr "Grupo de niveles"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__code
+msgid "Level group code"
+msgstr "Código de grupo de niveles"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__name
+msgid "Level group name"
+msgstr "Nombre del grupo de niveles"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__sequence
+msgid "Level group sequence"
+msgstr "Secuencia de grupo de niveles"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level__name
+msgid "Level name"
+msgstr "Nombre del nivel"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level__sequence
+msgid "Level sequence"
+msgstr "Secuencia de nivel"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__level_ids
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_group_form
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_group_form
+msgid "Levels"
+msgstr "Niveles"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__certificate_ids
+msgid "List of certificates in this group"
+msgstr "Lista de certificados en este grupo"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__level_ids
+msgid "List of levels in this group"
+msgstr "Lista de niveles en este grupo"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_lt
+msgid "Lithuanian"
+msgstr "Lituano"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_lb
+msgid "Luxembourgish"
+msgstr "Luxemburgués"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Main classification"
+msgstr "Clasificación principal"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_mt
+msgid "Maltese"
+msgstr "Maltés"
+
+#. module: cefrl
+#: model:cefrl.level,name:cefrl.cefrl_level_C2
+msgid "Mastery"
+msgstr "Maestría"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate_group__name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__name
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_nl
+msgid "Neerlandés"
+msgstr "Neerlandés"
+
+#. module: cefrl
+#: code:addons/cefrl/models/cefrl_certificate.py:0
+#: code:addons/cefrl/models/cefrl_certificate_group.py:0
+#: code:addons/cefrl/models/cefrl_language.py:0
+#: code:addons/cefrl/models/cefrl_level.py:0
+#: code:addons/cefrl/models/cefrl_level_group.py:0
+#, python-format
+msgid "New certificate group"
+msgstr "Nuevo grupo de certificados"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_no
+msgid "Norwegian"
+msgstr "Noruego"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__certificate_count
+msgid "Number of certificates in this group"
+msgstr "Número de certificados en este grupo"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_level_group__level_count
+msgid "Number of levels in this group"
+msgstr "Número de niveles en este grupo"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_language__parent_id
+msgid "Parent"
+msgstr "Padre"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_language__parent_id
+msgid "Parent language"
+msgstr "Idioma principal"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_pl
+msgid "Polish"
+msgstr "Polaco"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_pt
+msgid "Portuguese"
+msgstr "Portugués"
+
+#. module: cefrl
+#: model:cefrl.level.group,name:cefrl.cefrl_level_group_C
+msgid "Proficient user"
+msgstr "Usuario competente"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__recognition
+msgid "Recognition"
+msgstr "Reconocimiento"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__recognition
+msgid "Recognition of certification based on other merits"
+msgstr "Reconocimiento de la certificación en base a otros méritos"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate__language_id
+#: model:ir.model.fields,help:cefrl.field_cefrl_certificate_group__language_id
+msgid "Related language"
+msgstr "Idioma relacionado"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_ro
+msgid "Romanian"
+msgstr "Rumano"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_ru
+msgid "Russian"
+msgstr "Ruso"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Secondary classification"
+msgstr "Clasificación secundaria"
+
+#. module: cefrl
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_certificate__sequence
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level__sequence
+#: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_sk
+msgid "Slovak"
+msgstr "Eslovaco"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_sl
+msgid "Slovenian"
+msgstr "Esloveno"
+
+#. module: cefrl
+#: model:ir.model.fields,help:cefrl.field_cefrl_language__description
+msgid "Something about this language"
+msgstr "Algo sobre este idioma"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_es
+msgid "Spanish"
+msgstr "Español"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_sv
+msgid "Swedish"
+msgstr "Sueco"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_cefrl_language_act_window
+msgid "There are no languages for European Common European Framework of Reference"
+msgstr "No hay lenguas para el Marco Común Europeo de Referencia"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_language_certificate_group_act_window
+msgid "There are no language certificate groups"
+msgstr "No hay grupos de certificados de idioma"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_language_certificate_act_window
+msgid "There are no language certificates"
+msgstr "No hay certificados de idioma"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_cefrl_level_group_act_window
+msgid "There are no level groups"
+msgstr "No hay grupos de niveles"
+
+#. module: cefrl
+#: model_terms:ir.actions.act_window,help:cefrl.action_cefrl_level_act_window
+msgid "There are no levels"
+msgstr "No hay niveles"
+
+#. module: cefrl
+#: model:cefrl.level,name:cefrl.cefrl_level_B1
+msgid "Threshold"
+msgstr "Umbral"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_tr
+msgid "Turkish"
+msgstr "Turco"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Update certificate groups"
+msgstr "Actualizar grupos de certificados"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Update certificates"
+msgstr "Actualizar certificados"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Update languages"
+msgstr "Actualizar idiomas"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Update level groups"
+msgstr "Actualizar grupos de niveles"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.res_config_settings_view_form
+msgid "Update levels"
+msgstr "Actualizar niveles"
+
+#. module: cefrl
+#: model:cefrl.level,name:cefrl.cefrl_level_B2
+msgid "Vantage"
+msgstr "Avanzado"
+
+#. module: cefrl
+#: model:cefrl.level,name:cefrl.cefrl_level_A2
+msgid "Waystage"
+msgstr "Plataforma"
+
+#. module: cefrl
+#: model:cefrl.language,name:cefrl.cefrl_language_cy
+msgid "Welsh"
+msgstr "Galés"
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_form
+msgid "cefrl_certificate_form"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_group_form
+msgid "cefrl_certificate_group_form"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_group_search
+msgid "cefrl_certificate_group_search"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_group_tree
+msgid "cefrl_certificate_group_tree"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_search
+msgid "cefrl_certificate_search"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_certificate_tree
+msgid "cefrl_certificate_tree"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_language_form
+msgid "cefrl_language_form"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_language_search
+msgid "cefrl_language_search"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_language_tree
+msgid "cefrl_language_tree"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_form
+msgid "cefrl_level_form"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_group_form
+msgid "cefrl_level_group_form"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_group_search
+msgid "cefrl_level_group_search"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_group_tree
+msgid "cefrl_level_group_tree"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_search
+msgid "cefrl_level_search"
+msgstr ""
+
+#. module: cefrl
+#: model_terms:ir.ui.view,arch_db:cefrl.view_cefrl_level_tree
+msgid "cefrl_level_tree"
+msgstr ""

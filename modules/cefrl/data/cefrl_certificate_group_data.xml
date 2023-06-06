@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <record id="cefrl_certificate_group_celga" model="cefrl.certificate.group">
+            <field name="code">CELGA</field>
+            <field name="name">Certificado de Estudos de Lingua Galega</field>
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Pruebas de evaluación de nivel del idioma gallego organizadas por la Secretaría General de Política Lingüística, entidad dependiente de la Junta de Galicia. ]]></field>
+            <field name="language_id" ref="cefrl.cefrl_language_gl" />
+        </record>
+
+        <record id="cefrl_certificate_group_ivap" model="cefrl.certificate.group">
+            <field name="code">IVAP</field>
+            <field name="name">Instituto Vasco de Administración Pública</field>
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Issues Basque language certificates for personnel working in a public administration (local, provincial or regional) in the Basque Country]]></field>
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+        </record>
+
+        <record id="cefrl_certificate_group_ega" model="cefrl.certificate.group">
+            <field name="code">EGA</field>
+            <field name="name">Euskararen Gaitasun Agiria</field>
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Basque Government entity dedicated to promoting the teaching of Basque. Issue titles of different levels. To be able to take the tests of this entity, it is necessary to be enrolled in a euskaltegi]]></field>
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+        </record>
+
+        <record id="cefrl_certificate_group_ertzaintza" model="cefrl.certificate.group">
+            <field name="code">Ertzaintza</field>
+            <field name="name">Autonomous police force for the Basque Country,</field>
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[They issue titles among the personnel who work in this administration]]></field>
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+        </record>
+
+        <record id="cefrl_certificate_group_osakidetza" model="cefrl.certificate.group">
+            <field name="code">Osakidetza</field>
+            <field name="name">Osakidetza-Basque Health Service</field>
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[They issue titles among the personnel who work in this administration]]></field>
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+        </record>
+
+    </data>
+</openerp>

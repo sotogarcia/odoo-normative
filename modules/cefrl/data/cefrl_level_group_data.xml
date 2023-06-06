@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <record id="cefrl_level_group_A" model="cefrl.level.group">
+            <field name="code">A</field>
+            <field name="name">Basic user</field>
+            <field name="sequence" eval="1" />
+            <field name="active" eval="True" />
+        </record>
+
+        <record id="cefrl_level_group_B" model="cefrl.level.group">
+            <field name="code">B</field>
+            <field name="name">Independent user</field>
+            <field name="sequence" eval="1" />
+            <field name="active" eval="True" />
+        </record>
+
+        <record id="cefrl_level_group_C" model="cefrl.level.group">
+            <field name="code">C</field>
+            <field name="name">Proficient user</field>
+            <field name="sequence" eval="1" />
+            <field name="active" eval="True" />
+        </record>
+
+    </data>
+</openerp>

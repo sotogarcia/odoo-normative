@@ -1,0 +1,380 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* driving_licence
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 01:29+0000\n"
+"PO-Revision-Date: 2023-03-18 02:39+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                            Driving licences\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                              Permisos de conducir\n"
+"                                         </span>"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.res_config_settings_view_form
+msgid "A driver's licence is a legal authorization."
+msgstr "Una licencia de conducir es una autorización legal."
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_a1
+msgid "A1"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_a2
+msgid "A2"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_am
+msgid "AM"
+msgstr ""
+
+#. module: driving_licence
+#: model:ir.model,name:driving_licence.model_academy_student
+msgid "Academy student"
+msgstr "Alumno"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_form
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_d
+msgid ""
+"Automobiles designed and built for the carriage of more than eight "
+"passengers other than the driver"
+msgstr ""
+"Automóviles diseñados y construidos para el transporte de más de ocho "
+"pasajeros distintos del conductor"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_d1
+msgid ""
+"Automobiles designed and built for the carriage of not more than 16 "
+"passengers"
+msgstr ""
+"Automóviles diseñados y construidos para el transporte de no más de 16 "
+"pasajeros"
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_be
+msgid "B+E"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_ce
+msgid "C+E"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_c1
+msgid "C1"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_c1e
+msgid "C1+E"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_b
+msgid "Cars whose maximum authorized mass does not exceed 3,500 kg"
+msgstr "Automóviles cuya masa máxima autorizada no supere los 3.500 kg"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__match_country
+msgid "Check if has the same country of the current company"
+msgstr "Comprobar si tiene el mismo país de la compañía actual"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__active
+msgid "Check it to show this attempt or uncheck to archivate"
+msgstr "Marcar para mostrar este intento o desmarque para archivar"
+
+#. module: driving_licence
+#: model_terms:ir.actions.act_window,help:driving_licence.action_driving_licence_act_window
+msgid "Click to add new driving licence"
+msgstr "Clic para agregar un nuevo permiso de conducir"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__country_id
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_search
+msgid "Country"
+msgstr "País"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__country_id
+msgid "Country that has granted the licence"
+msgstr "País que ha otorgado la licencia"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_search
+msgid "Current country"
+msgstr "País actual"
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_de
+msgid "D+E"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_d1
+msgid "D1"
+msgstr ""
+
+#. module: driving_licence
+#: model:driving.licence,name:driving_licence.driving_licence_d1e
+msgid "D1+E"
+msgstr ""
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__description
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__description
+msgid "Description of the driving licence"
+msgstr "Descripción del permiso de conducir"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: driving_licence
+#: model:ir.actions.act_window,name:driving_licence.action_driving_licence_act_window
+#: model:ir.model,name:driving_licence.model_driving_licence
+msgid "Driving licence"
+msgstr "Permiso de conducir"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__sequence
+msgid "Driving licence sequence"
+msgstr "Secuencia del permiso de conducir"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_academy_student__driving_licence_ids
+#: model:ir.model.fields,help:driving_licence.field_academy_student__driving_licence_ids
+#: model_terms:ir.ui.view,arch_db:driving_licence.res_config_settings_view_form
+msgid "Driving licences"
+msgstr "Permisos de conducir"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__id
+msgid "ID"
+msgstr ""
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__implied_ids
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_form
+msgid "Implied"
+msgstr "Implícitos"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__implied_count
+msgid "Implied count"
+msgstr "Nº implícitos"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.res_config_settings_view_form
+msgid "Licences"
+msgstr "Permisos"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__match_country
+msgid "Match country"
+msgstr "País actual"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_a
+msgid "Motorcycles and motor trikes"
+msgstr "Motocicletas y triciclos de motor"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_a1
+msgid ""
+"Motorcycles with a maximum displacement of 125 cm³ and a maximum power of "
+"11 kW"
+msgstr ""
+"Motocicletas con una cilindrada máxima de 125 cm³ y una potencia máxima de "
+"11 kW"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_a2
+msgid "Motorcycles with a maximum power of 35 kW"
+msgstr "Motocicletas con una potencia máxima de 35 kW"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__name
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_form
+msgid "Name"
+msgstr "Nombre"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__implied_count
+msgid "Number of implied licences"
+msgstr "Número de permisos implícitos"
+
+#. module: driving_licence
+#: model:ir.model.fields,help:driving_licence.field_driving_licence__implied_ids
+msgid "Other licenses that are implicit with this one"
+msgstr "Otros permisos que están implícitos con este"
+
+#. module: driving_licence
+#: model:ir.model.fields,field_description:driving_licence.field_driving_licence__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: driving_licence
+#: model_terms:ir.actions.act_window,help:driving_licence.action_driving_licence_act_window
+msgid "There are no driving licence"
+msgstr "No hay permisos de conducir"
+
+#. module: driving_licence
+#: code:addons/driving_licence/models/driving_licence.py:0
+#: model:ir.model.constraint,message:driving_licence.constraint_driving_licence_unique_name_by_country
+#, python-format
+msgid "There is already a licence with that name for this country"
+msgstr "Ya existe una licencia con ese nombre para este país"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_am
+msgid "Two or three wheel mopeds and light quadricycles"
+msgstr "Ciclomotores de dos o tres ruedas y cuadriciclos ligeros"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_be
+msgid ""
+"Vehicle authorized to drive by the class B permit and a trailer or semi-"
+"trailer whose maximum authorized mass does not exceed 3500 kg"
+msgstr ""
+"Vehículo autorizado a circular por el permiso de clase B y un remolque o "
+"semirremolque cuya masa máxima autorizada no supere los 3500 kg"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_ce
+msgid ""
+"Vehicle authorized to drive by the class C permit and a trailer or semi-"
+"trailer whose maximum authorized mass exceeds 750 kg"
+msgstr ""
+"Vehículo autorizado a circular por el permiso clase C y un remolque o "
+"semirremolque cuya masa máxima autorizada supere los 750 kg"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_c1e
+msgid ""
+"Vehicle authorized to drive by the class C1 permit and a trailer or semi-"
+"trailer whose maximum authorized mass exceeds 750 kg"
+msgstr ""
+"Vehículo autorizado a circular por el permiso de clase C1 y un remolque o "
+"semirremolque cuya masa máxima autorizada supere los 750 kg"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_de
+msgid ""
+"Vehicle authorized to drive by the class D permit and a trailer whose "
+"maximum authorized mass exceeds 750 kg"
+msgstr ""
+"Vehículo autorizado a circular por el permiso de clase D y un remolque cuya "
+"masa máxima autorizada supere los 750 kg"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_d1e
+msgid ""
+"Vehicle authorized to drive by the class D1 permit and a trailer whose "
+"maximum authorized mass exceeds 750 kg"
+msgstr ""
+"Vehículo autorizado a circular por el permiso de clase D1 y un remolque "
+"cuya masa máxima autorizada supere los 750 kg"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_c
+msgid "Vehicle whose maximum authorized mass exceeds 3500 kg"
+msgstr "Vehículo cuya masa máxima autorizada supere los 3500 kg"
+
+#. module: driving_licence
+#: model:driving.licence,description:driving_licence.driving_licence_c1
+msgid ""
+"Vehicles whose maximum authorized mass exceeds 3,500 kg and does not exceed "
+"7,500 kg"
+msgstr ""
+"Vehículos cuya masa máxima autorizada supere los 3.500 kg y no supere los "
+"7.500 kg"
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_form
+msgid "driving_licence_form"
+msgstr ""
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_search
+msgid "driving_licence_search"
+msgstr ""
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_driving_licence_tree
+msgid "driving_licence_tree"
+msgstr ""
+
+#. module: driving_licence
+#: model_terms:ir.ui.view,arch_db:driving_licence.view_academy_student_form
+msgid "Driving"
+msgstr "Conducción"

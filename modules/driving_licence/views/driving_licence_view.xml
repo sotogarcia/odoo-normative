@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <!-- VIEWS: "driving.licence"
+
+            - Model·········: driving.licence
+            - _rec_name·····: name
+            - Domain········: []
+            - Context·······: {}
+            - Parent menu ··: base.menu_administration
+            - View priority·: 16    Sequence····: 10
+            - Action help···: There are no driving.licence
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+        <!-- Tree view for "driving.licence" -->
+        <record id="view_driving_licence_tree" model="ir.ui.view">
+            <field name="name">view.driving.licence.tree</field>
+            <field name="model">driving.licence</field>
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <tree string="driving_licence_tree" create="1" delete="1" edit="1">
+                    <field name="sequence" class="oe_field_sequence" widget="handle" />
+                    <field name="country_id" class="oe_field_country_id" />
+                    <field name="name" />
+                    <field name="implied_count" class="oe_field_implied_count" />
+                    <field name="description" class="oe_field_description" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for "driving.licence" -->
+        <record id="view_driving_licence_form" model="ir.ui.view">
+            <field name="name">view.driving.licence.form</field>
+            <field name="model">driving.licence</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form string="driving_licence_form" create="1" delete="1" edit="1">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" />
+
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}" />
+
+                        <div class="oe_title">
+                            <field name="active" invisible="1" />
+
+                            <label for="name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" class="oe_field_name"
+                                    placeholder="Name" />
+                            </h1>
+                        </div>
+
+                        <group col="2">
+                            <field name="sequence" class="oe_field_sequence" readonly="1" />
+                            <field name="country_id" class="oe_field_country_id"
+                                options="{'no_quick_create': True, 'no_create': True, 'no_open': True}" />
+                        </group>
+
+                        <notebook>
+                            <page string="Description" class="oe_page_description" accesskey="D">
+                                <group col="2">
+                                    <field name="description" class="oe_field_description"
+                                        colspan="2" nolabel="1" />
+                                </group>
+                            </page>
+                            <page string="Implied" class="oe_page_implied" accesskey="I">
+                                <field name="implied_ids" class="oe_field_implied_ids"
+                                    colspan="2" nolabel="1" options="{'no_quick_create': True, 'no_create': True, 'no_open': True}" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view for "driving.licence" -->
+        <record id="view_driving_licence_search" model="ir.ui.view">
+            <field name="name">view.driving.licence.search</field>
+            <field name="model">driving.licence</field>
+            <field name="type">search</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <search string="driving_licence_search">
+                    <field name="name" />
+                    <field name="country_id" />
+
+                    <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
+                    <filter name="current_country" string="Current country" domain="[('match_country', '=', True)]"/>
+
+                    <group expand="0" name="group_by" string="Group By">
+                       <filter name="group_by_country_id" string="Country" context="{'group_by': 'country_id'}"/>
+                   </group>
+
+                </search>
+            </field>
+        </record>
+
+        <!-- Main window action for model.name -->
+        <record id="action_driving_licence_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Driving licence</field>
+            <field name="res_model">driving.licence</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="domain">[]</field>
+            <field name="context">{"search_default_current_country": 1}</field>
+            <field name="search_view_id" ref="view_driving_licence_search" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add new driving licence
+                </p><p>
+                    There are no driving licence
+                </p>
+            </field>
+        </record>
+
+        <!-- Main menu for model.name -->
+        <!-- <record id="menu_driving.licence" model="ir.ui.menu" >
+            <field name="name">driving.licence</field>
+            <field name="sequence" eval="10" />
+            <field name="action" ref="action_driving.licence_act_window" />
+            <field name="parent_id" ref="base.menu_administration" />
+        </record> -->
+
+    </data>
+</openerp>

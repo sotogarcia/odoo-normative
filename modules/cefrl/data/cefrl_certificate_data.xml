@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+
+        <record id="cefrl_certificate_celga_1" model="cefrl.certificate">
+            <field name="code">CELGA 1</field>
+            <field name="name">CELGA 1</field>
+            <field name="level_id" ref="cefrl.cefrl_level_A2" />
+            <field name="language_id" ref="cefrl.cefrl_language_gl" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
+<field name="recognition"><![CDATA[Enseñanzas generales cursadas en Galicia
+- Certificación oficial de haber cursado y superado la asignatura de lengua gallega en Galicia de forma oficial en todos los cursos de educación primaria o en seis cursos de la EGB
+Enseñanzas generales cursadas fuera de Galicia
+- Certificación oficial de haber cursado y superado las asignaturas de lengua gallega (optativas de 1º, 2º y 3º ESO) en el Instituto Español Vicente Cañada Blanch de Londres.
+EOI
+- Certificación oficial del nivel básico (A2) de las enseñanzas de gallego de la Escuela Oficial de Idiomas expedida conforme al Decreto 191/2007, de 20 de septiembre
+Universidades
+- Certificado del curso de nivel elemental de lengua y cultura gallegas para extranjeros impartido por las universidades de Galicia hasta el 1 de septiembre de 2007.
+- Certificado de curso de lengua gallega para no gallegohablantes impartido por universidades gallegas, hasta el 1 de septiembre de 2007.]]></field>
+        </record>
+
+        <record id="cefrl_certificate_celga_2" model="cefrl.certificate">
+            <field name="code">CELGA 2</field>
+            <field name="name">CELGA 2</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B1" />
+            <field name="language_id" ref="cefrl.cefrl_language_gl" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
+        </record>
+
+        <record id="cefrl_certificate_celga_3" model="cefrl.certificate">
+            <field name="code">CELGA 3</field>
+            <field name="name">CELGA 3</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B2" />
+            <field name="language_id" ref="cefrl.cefrl_language_gl" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
+        </record>
+
+        <record id="cefrl_certificate_celga_4" model="cefrl.certificate">
+            <field name="code">CELGA 4</field>
+            <field name="name">CELGA 4</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C1" />
+            <field name="language_id" ref="cefrl.cefrl_language_gl" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
+        </record>
+
+        <record id="cefrl_certificate_celga_1" model="cefrl.certificate">
+            <field name="code">CELGA 5</field>
+            <field name="name">CELGA 5</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C2" />
+            <field name="language_id" ref="cefrl.cefrl_language_gl" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
+        </record>
+
+        <!-- HABE: Helduen Alfabetatze eta Berreuskalduntzerako Erakundea -->
+        <!-- <record id="cefrl_certificate_habe1" model="cefrl.certificate">
+            <field name="code">HABE - Nivel 1</field>
+            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 1</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B1" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Compulsory Secondary Education or Technical Title, obtained after April 16, 2008]]></field>
+        </record>
+
+        <record id="cefrl_certificate_habe2" model="cefrl.certificate">
+            <field name="code">HABE - Nivel 2</field>
+            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 2</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B2" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+        </record>
+
+        <record id="cefrl_certificate_habe3" model="cefrl.certificate">
+            <field name="code">HABE - Nivel 3</field>
+            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 3</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C1" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+        </record>
+
+        <record id="cefrl_certificate_habe4" model="cefrl.certificate">
+            <field name="code">HABE - Nivel 4</field>
+            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 4</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C2" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Doctoral degree with thesis written and defended in Basque, or some degree titles related to Basque]]></field>
+        </record> -->
+
+        <!-- IVAP: Helduen Alfabetatze eta Berreuskalduntzerako Erakundea -->
+        <!-- <record id="cefrl_certificate_ivap1" model="cefrl.certificate">
+            <field name="code">PL1</field>
+            <field name="name">Perfil lingüístico 1</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B1" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Compulsory Secondary Education or Technical Title, obtained after April 16, 2008]]></field>
+        </record>
+
+        <record id="cefrl_certificate_ivap2" model="cefrl.certificate">
+            <field name="code">PL2</field>
+            <field name="name">Perfil lingüístico 2</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B2" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+        </record>
+
+        <record id="cefrl_certificate_ivap3" model="cefrl.certificate">
+            <field name="code">PL3</field>
+            <field name="name">Perfil lingüístico 3</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C1" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+        </record>
+
+        <record id="cefrl_certificate_ivap4" model="cefrl.certificate">
+            <field name="code">PL4</field>
+            <field name="name">Perfil lingüístico 4</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C2" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Doctoral degree with thesis written and defended in Basque, or some degree titles related to Basque]]></field>
+        </record> -->
+
+        <!-- Ertzaintza -->
+        <!-- <record id="cefrl_certificate_ertzaintza1" model="cefrl.certificate">
+            <field name="code">PL 1 Ertzaintza</field>
+            <field name="name">Perfil lingüístico 1 - Ertzaintza</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B2" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+        </record>
+
+        <record id="cefrl_certificate_ertzaintza2" model="cefrl.certificate">
+            <field name="code">PL 2 Ertzaintza</field>
+            <field name="name">Perfil lingüístico 2 - Ertzaintza</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C1" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+        </record> -->
+
+        <!-- Departamento de Educación del Gobierno Vasco -->
+        <!-- <record id="cefrl_certificate_hlea" model="cefrl.certificate">
+            <field name="code">HLEA</field>
+            <field name="name">Hezkuntzako Langileen Euskara Agiria</field>
+            <field name="level_id" ref="cefrl.cefrl_level_B2" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+        </record>
+
+        <record id="cefrl_certificate_ega" model="cefrl.certificate">
+            <field name="code">EGA</field>
+            <field name="name">Euskararen Gaitasun Agiria</field>
+            <field name="level_id" ref="cefrl.cefrl_level_C1" />
+            <field name="language_id" ref="cefrl.cefrl_language_eu" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+        </record> -->
+
+    </data>
+</openerp>

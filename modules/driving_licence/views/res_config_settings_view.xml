@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.res.partner.driving.licence</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="20" />
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Driving licence"
+                         data-key="driving_licence" groups="base.group_system" >
+
+                        <div name="driving_licence_settings_attribute_values">
+                            <h2>Driving licences</h2>
+                            <div class="row mt16 o_settings_container" name="hidden_resources">
+                                <div class="col-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">
+                                            Driving licences
+                                        </span>
+                                        <div class="text-muted">
+                                            A driver's licence is a legal authorization.
+                                        </div>
+                                        <div class="content-group mt8">
+                                            <button
+                                                name="%(driving_licence.action_driving_licence_act_window)d"
+                                                string="&#160;Licences"
+                                                type="action"
+                                                class="oe_link"
+                                                icon="fa-car"
+                                            />
+                                        </div>
+                                    </div>
+                                </div> <!-- col -->
+
+                                <div class="col-12 col-md-6 o_setting_box">
+                                    &#160;
+                                </div> <!-- col -->
+
+                            </div> <!-- row -->
+                        </div>
+
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

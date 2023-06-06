@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+
+        <record id="driving_licence_am" model="driving.licence">
+            <field name="name">AM</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="1" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Two or three wheel mopeds and light quadricycles]]></field>
+        </record>
+
+        <record id="driving_licence_a1" model="driving.licence">
+            <field name="name">A1</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="2" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Motorcycles with a maximum displacement of 125 cm³ and a maximum power of 11 kW]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_am'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_a2" model="driving.licence">
+            <field name="name">A2</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="3" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Motorcycles with a maximum power of 35 kW]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_am'), 0),
+                (4, ref('driving_licence.driving_licence_a1'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_a" model="driving.licence">
+            <field name="name">A</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="4" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Motorcycles and motor trikes]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_am'), 0),
+                (4, ref('driving_licence.driving_licence_a1'), 0),
+                (4, ref('driving_licence.driving_licence_a2'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_b1" model="driving.licence">
+            <field name="name">B1</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="5" />
+            <field name="active" eval="False" />
+            <field name="description"><![CDATA[Quadricycles as well as small vehicles with low emissions and a maximum power output of 20.4 CV or 15 kW]]></field>
+        </record>
+
+        <record id="driving_licence_b" model="driving.licence">
+            <field name="name">B</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="5" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Cars whose maximum authorized mass does not exceed 3,500 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b1'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_c1" model="driving.licence">
+            <field name="name">C1</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="6" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicles whose maximum authorized mass exceeds 3,500 kg and does not exceed 7,500 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_c" model="driving.licence">
+            <field name="name">C</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="7" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicle whose maximum authorized mass exceeds 3500 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0),
+                (4, ref('driving_licence.driving_licence_c1'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_d1" model="driving.licence">
+            <field name="name">D1</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="8" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Automobiles designed and built for the carriage of not more than 16 passengers]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_d" model="driving.licence">
+            <field name="name">D</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="9" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Automobiles designed and built for the carriage of more than eight passengers other than the driver]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0),
+                (4, ref('driving_licence.driving_licence_d1'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_be" model="driving.licence">
+            <field name="name">B+E</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="10" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicle authorized to drive by the class B permit and a trailer or semi-trailer whose maximum authorized mass does not exceed 3500 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_c1e" model="driving.licence">
+            <field name="name">C1+E</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="11" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicle authorized to drive by the class C1 permit and a trailer or semi-trailer whose maximum authorized mass exceeds 750 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0),
+                (4, ref('driving_licence.driving_licence_be'), 0),
+                (4, ref('driving_licence.driving_licence_c1'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_ce" model="driving.licence">
+            <field name="name">C+E</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="12" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicle authorized to drive by the class C permit and a trailer or semi-trailer whose maximum authorized mass exceeds 750 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0),
+                (4, ref('driving_licence.driving_licence_be'), 0),
+                (4, ref('driving_licence.driving_licence_c'), 0),
+                (4, ref('driving_licence.driving_licence_c1'), 0),
+                (4, ref('driving_licence.driving_licence_c1e'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_d1e" model="driving.licence">
+            <field name="name">D1+E</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="13" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicle authorized to drive by the class D1 permit and a trailer whose maximum authorized mass exceeds 750 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0),
+                (4, ref('driving_licence.driving_licence_be'), 0),
+                (4, ref('driving_licence.driving_licence_d1'), 0)
+            ]" />
+        </record>
+
+        <record id="driving_licence_de" model="driving.licence">
+            <field name="name">D+E</field>
+            <field name="country_id" ref="base.es" />
+            <field name="sequence" eval="14" />
+            <field name="active" eval="True" />
+            <field name="description"><![CDATA[Vehicle authorized to drive by the class D permit and a trailer whose maximum authorized mass exceeds 750 kg]]></field>
+            <field name="implied_ids" eval="[
+                (4, ref('driving_licence.driving_licence_b'), 0),
+                (4, ref('driving_licence.driving_licence_be'), 0),
+                (4, ref('driving_licence.driving_licence_d'), 0),
+                (4, ref('driving_licence.driving_licence_d1'), 0),
+                (4, ref('driving_licence.driving_licence_d1e'), 0)
+            ]" />
+        </record>
+
+    </data>
+</openerp>

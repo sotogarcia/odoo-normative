@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+
+        <template id="view_cefrl_assets" name="website assets for cefrl" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/cefrl/static/src/css/backend-styles.css"/>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
