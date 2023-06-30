@@ -117,11 +117,11 @@ class AcademyDrivingLicence(models.Model):
     )
 
     @api.depends('country_id')
-    def _compute_field(self):
-        company_id = self.env.company.id
+    def _compute_match_country(self):
+        country_id = self.env.company.country_id.id
 
         for record in self:
-            record.match_country = (record.company_id.id == company_id)
+            record.match_country = (record.country_id.id == country_id)
 
     @api.model
     def _search_match_country(self, operator, value):

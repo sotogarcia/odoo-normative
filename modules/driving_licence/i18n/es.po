@@ -51,7 +51,7 @@ msgstr ""
 #. module: driving_licence
 #: model:ir.model,name:driving_licence.model_academy_student
 msgid "Academy student"
-msgstr "Alumno"
+msgstr "Estudiante"
 
 #. module: driving_licence
 #: model:ir.model.fields,field_description:driving_licence.field_driving_licence__active
