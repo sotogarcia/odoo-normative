@@ -177,7 +177,7 @@ msgstr "Descripción del permiso de conducir"
 #. module: driving_licence
 #: model:ir.model.fields,field_description:driving_licence.field_driving_licence__display_name
 msgid "Display Name"
-msgstr "Nombre para mostrar"
+msgstr "Nombre mostrado"
 
 #. module: driving_licence
 #: model:ir.actions.act_window,name:driving_licence.action_driving_licence_act_window

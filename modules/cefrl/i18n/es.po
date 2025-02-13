@@ -443,7 +443,7 @@ msgstr "Dialecto"
 #: model:ir.model.fields,field_description:cefrl.field_cefrl_level__display_name
 #: model:ir.model.fields,field_description:cefrl.field_cefrl_level_group__display_name
 msgid "Display Name"
-msgstr "Nombre para mostrar"
+msgstr "Nombre mostrado"
 
 #. module: cefrl
 #: model:cefrl.language,name:cefrl.cefrl_language_en
