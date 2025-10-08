@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
-        <!-- VIEWS: "CEFRL - Level"
+  <!-- VIEWS: "CEFRL - Level"
 
             - Model·········: cefrl.level
             - _rec_name·····: code
@@ -14,127 +13,123 @@
             - Action help···: There are no CEFRL levels
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-        <!-- Tree view for "cefrl.level" -->
-        <record id="view_cefrl_level_tree" model="ir.ui.view">
-            <field name="name">view.cefrl.level.tree</field>
-            <field name="model">cefrl.level</field>
-            <field name="type">tree</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="16" />
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <tree string="cefrl_level_tree" create="1" delete="1" edit="1">
-                    <field name="sequence" class="oe_field_sequence" widget="handle" />
-                    <field name="code" class="oe_field_code" />
-                    <field name="name" class="oe_field_name" />
-                    <field name="group_id" class="oe_field_group_id" />
-                    <field name="description" class="oe_field_description" />
-                </tree>
-            </field>
-        </record>
+  <!-- List view for "cefrl.level" -->
+  <record id="view_cefrl_level_tree" model="ir.ui.view">
+    <field name="name">view.cefrl.level.tree</field>
+    <field name="model">cefrl.level</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <list string="cefrl_level_tree" create="1" delete="1" edit="1">
+        <field name="sequence" class="oe_field_sequence" widget="handle"/>
+        <field name="code" class="oe_field_code"/>
+        <field name="name" class="oe_field_name"/>
+        <field name="group_id" class="oe_field_group_id"/>
+        <field name="description" class="oe_field_description"/>
+      </list>
+    </field>
+  </record>
 
-        <record id="view_cefrl_level_embed_tree" model="ir.ui.view">
-            <field name="name">view.cefrl.level.embed.tree</field>
-            <field name="model">cefrl.level</field>
-            <field name="type">tree</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="24" />
-            <field name="active" eval="True" />
-            <field name="inherit_id" ref="cefrl.view_cefrl_level_tree" />
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='group_id']" position="replace" />
-            </field>
-        </record>
+  <record id="view_cefrl_level_embed_tree" model="ir.ui.view">
+    <field name="name">view.cefrl.level.embed.tree</field>
+    <field name="model">cefrl.level</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="24"/>
+    <field name="active" eval="True"/>
+    <field name="inherit_id" ref="cefrl.view_cefrl_level_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='group_id']" position="replace"/>
+    </field>
+  </record>
 
-        <!-- Form view for "cefrl.level" -->
-        <record id="view_cefrl_level_form" model="ir.ui.view">
-            <field name="name">view.cefrl.level.form</field>
-            <field name="model">cefrl.level</field>
-            <field name="type">form</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="16" />
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <form string="cefrl_level_form" create="1" delete="1" edit="1">
-                    <sheet>
+  <!-- Form view for "cefrl.level" -->
+  <record id="view_cefrl_level_form" model="ir.ui.view">
+    <field name="name">view.cefrl.level.form</field>
+    <field name="model">cefrl.level</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <form string="cefrl_level_form" create="1" delete="1" edit="1">
+        <sheet>
 
-                        <div class="oe_title oe_read_only">
-                            <field name="id" invisible="1" />
-                            <field name="active" invisible="1" />
+          <div class="oe_title oe_read_only">
+            <field name="id" invisible="1"/>
+            <field name="active" invisible="1"/>
 
-                            <label for="display_name" class="oe_edit_only" />
-                            <h1>
-                                <field name="display_name" class="oe_field_display_name" readonly="1" />
-                            </h1>
-                        </div>
+            <label for="display_name" class="oe_edit_only"/>
+            <h1>
+              <field name="display_name" class="oe_field_display_name" readonly="1"/>
+            </h1>
+          </div>
 
-                        <group col="4" class="oe_edit_only">
-                            <field name="code" class="oe_field_code" />
-                            <field name="name" class="oe_field_name" />
-                        </group>
+          <group col="4" class="oe_edit_only">
+            <field name="code" class="oe_field_code"/>
+            <field name="name" class="oe_field_name"/>
+          </group>
 
-                        <group col="2">
-                            <field name="group_id" class="oe_field_group_id"
-                                readonly="context.get('default_group_id', 0)"
-                                options="{'no_quick_create': True, 'no_create': True, 'no_open': True}" />
-                            <field name="description" class="oe_field_description" />
-                        </group>
+          <group col="2">
+            <field name="group_id" class="oe_field_group_id"
+              readonly="context.get('default_group_id', 0)"
+              options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+            <field name="description" class="oe_field_description"/>
+          </group>
 
-                    </sheet>
-                </form>
-            </field>
-        </record>
+        </sheet>
+      </form>
+    </field>
+  </record>
 
-        <!-- Search view for "cefrl.level" -->
-        <record id="view_cefrl_level_search" model="ir.ui.view">
-            <field name="name">view.cefrl.level.search</field>
-            <field name="model">cefrl.level</field>
-            <field name="type">search</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="16" />
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <search string="cefrl_level_search">
-                    <field name="code" />
-                    <field name="name" />
-                    <field name="group_id" />
+  <!-- Search view for "cefrl.level" -->
+  <record id="view_cefrl_level_search" model="ir.ui.view">
+    <field name="name">view.cefrl.level.search</field>
+    <field name="model">cefrl.level</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <search string="cefrl_level_search">
+        <field name="code"/>
+        <field name="name"/>
+        <field name="group_id"/>
 
-                    <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
+        <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
 
-                   <group expand="0" name="group_by" string="Group By">
-                       <filter name="group_by_group_id" string="Level group" context="{'group_by': 'group_id'}"/>
-                   </group>
+        <group expand="0" name="group_by" string="Group By">
+          <filter name="group_by_group_id" string="Level group" context="{'group_by': 'group_id'}"/>
+        </group>
 
-                </search>
-            </field>
-        </record>
+      </search>
+    </field>
+  </record>
 
-        <!-- Main window action for model.name -->
-        <record id="action_cefrl_level_act_window" model="ir.actions.act_window">
-            <field name="type">ir.actions.act_window</field>
-            <field name="name">CEFRL - Level</field>
-            <field name="res_model">cefrl.level</field>
-            <field name="view_mode">tree,form</field>
-            <field name="target">current</field>
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="search_view_id" ref="view_cefrl_level_search" />
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Click to add new Level
-                </p><p>
-                    There are no levels
-                </p>
-            </field>
-        </record>
+  <!-- Main window action for model.name -->
+  <record id="action_cefrl_level_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">CEFRL - Level</field>
+    <field name="res_model">cefrl.level</field>
+    <field name="view_mode">list,form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field name="search_view_id" ref="view_cefrl_level_search"/>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create"> Click to add new Level </p>
+      <p> There are no levels </p>
+    </field>
+  </record>
 
-        <!-- Main menu for model.name -->
-<!--         <record id="menu_cefrl_level" model="ir.ui.menu" >
+  <!-- Main menu for model.name -->
+  <!--         <record id="menu_cefrl_level" model="ir.ui.menu" >
             <field name="name">CEFRL - Level</field>
             <field name="sequence" eval="10" />
             <field name="action" ref="action_cefrl_level_act_window" />
             <field name="parent_id" ref="base.menu_custom" />
         </record> -->
 
-    </data>
-</openerp>
+</odoo>

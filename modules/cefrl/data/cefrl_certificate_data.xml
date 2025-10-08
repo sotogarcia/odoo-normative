@@ -1,174 +1,299 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
+  <record id="cefrl_certificate_celga_1" model="cefrl.certificate">
+    <field name="code">CELGA 1</field>
+    <field name="name">CELGA 1</field>
+    <field name="level_id" ref="cefrl.cefrl_level_A2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_gl"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_celga"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[CEFR A2. Can understand and use
+everyday expressions and basic phrases. Can communicate in simple, routine
+tasks requiring a direct exchange of information.]]></field>
+  </record>
 
-        <record id="cefrl_certificate_celga_1" model="cefrl.certificate">
-            <field name="code">CELGA 1</field>
-            <field name="name">CELGA 1</field>
-            <field name="level_id" ref="cefrl.cefrl_level_A2" />
-            <field name="language_id" ref="cefrl.cefrl_language_gl" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
-<field name="recognition"><![CDATA[Enseñanzas generales cursadas en Galicia
-- Certificación oficial de haber cursado y superado la asignatura de lengua gallega en Galicia de forma oficial en todos los cursos de educación primaria o en seis cursos de la EGB
-Enseñanzas generales cursadas fuera de Galicia
-- Certificación oficial de haber cursado y superado las asignaturas de lengua gallega (optativas de 1º, 2º y 3º ESO) en el Instituto Español Vicente Cañada Blanch de Londres.
-EOI
-- Certificación oficial del nivel básico (A2) de las enseñanzas de gallego de la Escuela Oficial de Idiomas expedida conforme al Decreto 191/2007, de 20 de septiembre
-Universidades
-- Certificado del curso de nivel elemental de lengua y cultura gallegas para extranjeros impartido por las universidades de Galicia hasta el 1 de septiembre de 2007.
-- Certificado de curso de lengua gallega para no gallegohablantes impartido por universidades gallegas, hasta el 1 de septiembre de 2007.]]></field>
-        </record>
+  <record id="cefrl_certificate_celga_2" model="cefrl.certificate">
+    <field name="code">CELGA 2</field>
+    <field name="name">CELGA 2</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_gl"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_celga"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[CEFR B1. Can deal with most situations
+likely to arise while travelling. Can produce simple connected text on
+familiar topics and describe experiences, events, and briefly give reasons
+and explanations.]]></field>
+  </record>
 
-        <record id="cefrl_certificate_celga_2" model="cefrl.certificate">
-            <field name="code">CELGA 2</field>
-            <field name="name">CELGA 2</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B1" />
-            <field name="language_id" ref="cefrl.cefrl_language_gl" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
-        </record>
+  <record id="cefrl_certificate_celga_3" model="cefrl.certificate">
+    <field name="code">CELGA 3</field>
+    <field name="name">CELGA 3</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_gl"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_celga"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[CEFR B2. Can understand the main ideas
+of complex texts on both concrete and abstract topics. Can interact with a
+degree of fluency and spontaneity and produce clear, detailed text, including
+on technical subjects.]]></field>
+  </record>
 
-        <record id="cefrl_certificate_celga_3" model="cefrl.certificate">
-            <field name="code">CELGA 3</field>
-            <field name="name">CELGA 3</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B2" />
-            <field name="language_id" ref="cefrl.cefrl_language_gl" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
-        </record>
+  <record id="cefrl_certificate_celga_4" model="cefrl.certificate">
+    <field name="code">CELGA 4</field>
+    <field name="name">CELGA 4</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_gl"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_celga"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[CEFR C1. Can understand a wide range of
+ demanding, longer texts and recognize implicit meaning. Can express ideas
+ fluently and spontaneously and use the language flexibly and effectively for
+ social, academic and professional purposes.]]></field>
+  </record>
 
-        <record id="cefrl_certificate_celga_4" model="cefrl.certificate">
-            <field name="code">CELGA 4</field>
-            <field name="name">CELGA 4</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C1" />
-            <field name="language_id" ref="cefrl.cefrl_language_gl" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
-        </record>
+  <record id="cefrl_certificate_celga_5" model="cefrl.certificate">
+    <field name="code">CELGA 5</field>
+    <field name="name">CELGA 5</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_gl"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_celga"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[CEFR C2. Can understand with ease
+virtually everything heard or read. Can summarize information from different
+sources, reconstructing arguments and accounts, and express themselves
+precisely, differentiating finer shades of meaning.]]></field>
+  </record>
 
-        <record id="cefrl_certificate_celga_1" model="cefrl.certificate">
-            <field name="code">CELGA 5</field>
-            <field name="name">CELGA 5</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C2" />
-            <field name="language_id" ref="cefrl.cefrl_language_gl" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Able to express yourself very basically]]></field>
-        </record>
+  <!-- HABE: Helduen Alfabetatze eta Berreuskalduntzerako Erakundea -->
+  <record id="cefrl_certificate_habe1" model="cefrl.certificate">
+    <field name="code">HABE - Nivel 1</field>
+    <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 1</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_habe"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Compulsory Secondary Education or Technical Title, obtained after April 16, 2008]]></field>
+  </record>
 
-        <!-- HABE: Helduen Alfabetatze eta Berreuskalduntzerako Erakundea -->
-        <!-- <record id="cefrl_certificate_habe1" model="cefrl.certificate">
-            <field name="code">HABE - Nivel 1</field>
-            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 1</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B1" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Compulsory Secondary Education or Technical Title, obtained after April 16, 2008]]></field>
-        </record>
+  <record id="cefrl_certificate_habe2" model="cefrl.certificate">
+    <field name="code">HABE - Nivel 2</field>
+    <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 2</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_habe"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+  </record>
 
-        <record id="cefrl_certificate_habe2" model="cefrl.certificate">
-            <field name="code">HABE - Nivel 2</field>
-            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 2</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B2" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
-        </record>
+  <record id="cefrl_certificate_habe3" model="cefrl.certificate">
+    <field name="code">HABE - Nivel 3</field>
+    <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 3</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_habe"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+  </record>
 
-        <record id="cefrl_certificate_habe3" model="cefrl.certificate">
-            <field name="code">HABE - Nivel 3</field>
-            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 3</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C1" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
-        </record>
+  <record id="cefrl_certificate_habe4" model="cefrl.certificate">
+    <field name="code">HABE - Nivel 4</field>
+    <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 4</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_habe"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Doctoral degree with thesis written and defended in Basque, or some degree titles related to Basque]]></field>
+  </record>
 
-        <record id="cefrl_certificate_habe4" model="cefrl.certificate">
-            <field name="code">HABE - Nivel 4</field>
-            <field name="name">Helduen Alfabetatze eta Berreuskalduntzerako Erakundea - Nivel 4</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C2" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Doctoral degree with thesis written and defended in Basque, or some degree titles related to Basque]]></field>
-        </record> -->
+  <!-- IVAP: Instituto Vasco de Administración Pública -->
+  <record id="cefrl_certificate_ivap1" model="cefrl.certificate">
+    <field name="code">IVAP - PL1</field>
+    <field name="name">Perfil lingüístico 1</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_ivap"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Compulsory Secondary Education or Technical Title, obtained after April 16, 2008]]></field>
+  </record>
 
-        <!-- IVAP: Helduen Alfabetatze eta Berreuskalduntzerako Erakundea -->
-        <!-- <record id="cefrl_certificate_ivap1" model="cefrl.certificate">
-            <field name="code">PL1</field>
-            <field name="name">Perfil lingüístico 1</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B1" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Compulsory Secondary Education or Technical Title, obtained after April 16, 2008]]></field>
-        </record>
+  <record id="cefrl_certificate_ivap2" model="cefrl.certificate">
+    <field name="code">IVAP - PL2</field>
+    <field name="name">Perfil lingüístico 2</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_ivap"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+  </record>
 
-        <record id="cefrl_certificate_ivap2" model="cefrl.certificate">
-            <field name="code">PL2</field>
-            <field name="name">Perfil lingüístico 2</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B2" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
-        </record>
+  <record id="cefrl_certificate_ivap3" model="cefrl.certificate">
+    <field name="code">IVAP - PL3</field>
+    <field name="name">Perfil lingüístico 3</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_ivap"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+  </record>
 
-        <record id="cefrl_certificate_ivap3" model="cefrl.certificate">
-            <field name="code">PL3</field>
-            <field name="name">Perfil lingüístico 3</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C1" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
-        </record>
+  <record id="cefrl_certificate_ivap4" model="cefrl.certificate">
+    <field name="code">IVAP - PL4</field>
+    <field name="name">Perfil lingüístico 4</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_ivap"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Doctoral degree with thesis written and defended in Basque, or some degree titles related to Basque]]></field>
+  </record>
 
-        <record id="cefrl_certificate_ivap4" model="cefrl.certificate">
-            <field name="code">PL4</field>
-            <field name="name">Perfil lingüístico 4</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C2" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Doctoral degree with thesis written and defended in Basque, or some degree titles related to Basque]]></field>
-        </record> -->
+  <!-- Ertzaintza -->
+  <record id="cefrl_certificate_ertzaintza1" model="cefrl.certificate">
+    <field name="code">PL 1 Ertzaintza</field>
+    <field name="name">Perfil lingüístico 1 - Ertzaintza</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_ertzaintza"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+  </record>
 
-        <!-- Ertzaintza -->
-        <!-- <record id="cefrl_certificate_ertzaintza1" model="cefrl.certificate">
-            <field name="code">PL 1 Ertzaintza</field>
-            <field name="name">Perfil lingüístico 1 - Ertzaintza</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B2" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
-        </record>
+  <record id="cefrl_certificate_ertzaintza2" model="cefrl.certificate">
+    <field name="code">PL 2 Ertzaintza</field>
+    <field name="name">Perfil lingüístico 2 - Ertzaintza</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_ertzaintza"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+  </record>
 
-        <record id="cefrl_certificate_ertzaintza2" model="cefrl.certificate">
-            <field name="code">PL 2 Ertzaintza</field>
-            <field name="name">Perfil lingüístico 2 - Ertzaintza</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C1" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
-        </record> -->
+  <!-- Departamento de Educación del Gobierno Vasco -->
+  <record id="cefrl_certificate_hlea" model="cefrl.certificate">
+    <field name="code">HLEA</field>
+    <field name="name">Hezkuntzako Langileen Euskara Agiria</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_euskara"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
+  </record>
 
-        <!-- Departamento de Educación del Gobierno Vasco -->
-        <!-- <record id="cefrl_certificate_hlea" model="cefrl.certificate">
-            <field name="code">HLEA</field>
-            <field name="name">Hezkuntzako Langileen Euskara Agiria</field>
-            <field name="level_id" ref="cefrl.cefrl_level_B2" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Bachelor's degree or Higher Technician, obtained after April 16, 2008]]></field>
-        </record>
+  <record id="cefrl_certificate_ega" model="cefrl.certificate">
+    <field name="code">EGA</field>
+    <field name="name">Euskararen Gaitasun Agiria</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_euskara"/>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
+  </record>
 
-        <record id="cefrl_certificate_ega" model="cefrl.certificate">
-            <field name="code">EGA</field>
-            <field name="name">Euskararen Gaitasun Agiria</field>
-            <field name="level_id" ref="cefrl.cefrl_level_C1" />
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[University degrees with justification of ECTS studied in Basque]]></field>
-        </record> -->
+  <!-- Catalan certificates (DGPL, Generalitat de Catalunya) -->
+  <record id="cefrl_certificate_cat_dgpl_a2" model="cefrl.certificate">
+    <field name="code">DGPL A2</field>
+    <field name="name">Certificat de nivell A2 (DGPL)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_A2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_cat_dgpl"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Catalan certificate (DGPL), CEFR A2.]]></field>
+  </record>
+  <record id="cefrl_certificate_cat_dgpl_b1" model="cefrl.certificate">
+    <field name="code">DGPL B1</field>
+    <field name="name">Certificat de nivell B1 (DGPL)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_cat_dgpl"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Catalan certificate (DGPL), CEFR B1.]]></field>
+  </record>
+  <record id="cefrl_certificate_cat_dgpl_b2" model="cefrl.certificate">
+    <field name="code">DGPL B2</field>
+    <field name="name">Certificat de nivell B2 (DGPL)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_cat_dgpl"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Catalan certificate (DGPL), CEFR B2.]]></field>
+  </record>
+  <record id="cefrl_certificate_cat_dgpl_c1" model="cefrl.certificate">
+    <field name="code">DGPL C1</field>
+    <field name="name">Certificat de nivell C1 (DGPL)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_cat_dgpl"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Catalan certificate (DGPL), CEFR C1.]]></field>
+  </record>
+  <record id="cefrl_certificate_cat_dgpl_c2" model="cefrl.certificate">
+    <field name="code">DGPL C2</field>
+    <field name="name">Certificat de nivell C2 (DGPL)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_cat_dgpl"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Catalan certificate (DGPL), CEFR C2.]]></field>
+  </record>
 
-    </data>
-</openerp>
+  <!-- Valencian certificates (JQCV, Generalitat Valenciana) -->
+  <record id="cefrl_certificate_jqcv_a2" model="cefrl.certificate">
+    <field name="code">JQCV A2</field>
+    <field name="name">Certificat A2 (JQCV)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_A2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_jqcv"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Valencian certificate (JQCV), CEFR A2.]]></field>
+  </record>
+  <record id="cefrl_certificate_jqcv_b1" model="cefrl.certificate">
+    <field name="code">JQCV B1</field>
+    <field name="name">Certificat B1 (JQCV)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_jqcv"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Valencian certificate (JQCV), CEFR B1.]]></field>
+  </record>
+  <record id="cefrl_certificate_jqcv_b2" model="cefrl.certificate">
+    <field name="code">JQCV B2</field>
+    <field name="name">Certificat B2 (JQCV)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_B2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_jqcv"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Valencian certificate (JQCV), CEFR B2.]]></field>
+  </record>
+  <record id="cefrl_certificate_jqcv_c1" model="cefrl.certificate">
+    <field name="code">JQCV C1</field>
+    <field name="name">Certificat C1 (JQCV)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C1"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_jqcv"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Valencian certificate (JQCV), CEFR C1.]]></field>
+  </record>
+  <record id="cefrl_certificate_jqcv_c2" model="cefrl.certificate">
+    <field name="code">JQCV C2</field>
+    <field name="name">Certificat C2 (JQCV)</field>
+    <field name="level_id" ref="cefrl.cefrl_level_C2"/>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="group_id" ref="cefrl.cefrl_certificate_group_jqcv"/>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Official Valencian certificate (JQCV), CEFR C2.]]></field>
+  </record>
+
+</odoo>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
-        <!-- VIEWS: "Language certificate group"
+  <!-- VIEWS: "Language certificate group"
 
             - Model·········: cefrl.certificate.group
             - _rec_name·····: name
@@ -14,117 +13,105 @@
             - Action help···: There are no language certificate groups
         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-        <!-- Tree view for "cefrl.certificate.group" -->
-        <record id="view_cefrl_certificate_group_tree" model="ir.ui.view">
-            <field name="name">view.cefrl.certificate.group.tree</field>
-            <field name="model">cefrl.certificate.group</field>
-            <field name="type">tree</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="16" />
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <tree string="cefrl_certificate_group_tree" create="1" delete="1" edit="1">
-                    <field name="code" class="oe_field_code" />
-                    <field name="name" class="oe_field_name" />
-                    <field name="language_id" class="oe_field_language_id" />
-                    <field name="certificate_count" class="oe_field_certificate_count" />
-                </tree>
-            </field>
-        </record>
+  <!-- List view for "cefrl.certificate.group" -->
+  <record id="view_cefrl_certificate_group_tree" model="ir.ui.view">
+    <field name="name">view.cefrl.certificate.group.tree</field>
+    <field name="model">cefrl.certificate.group</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <list string="cefrl_certificate_group_tree" create="1" delete="1" edit="1">
+        <field name="code" class="oe_field_code"/>
+        <field name="name" class="oe_field_name"/>
+        <field name="language_id" class="oe_field_language_id"/>
+        <field name="certificate_count" class="oe_field_certificate_count"/>
+      </list>
+    </field>
+  </record>
 
-        <!-- Form view for "cefrl.certificate.group" -->
-        <record id="view_cefrl_certificate_group_form" model="ir.ui.view">
-            <field name="name">view.cefrl.certificate.group.form</field>
-            <field name="model">cefrl.certificate.group</field>
-            <field name="type">form</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="16" />
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <form string="cefrl_certificate_group_form" create="1" delete="1" edit="1">
-                    <sheet>
+  <!-- Form view for "cefrl.certificate.group" -->
+  <record id="view_cefrl_certificate_group_form" model="ir.ui.view">
+    <field name="name">view.cefrl.certificate.group.form</field>
+    <field name="model">cefrl.certificate.group</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <form string="cefrl_certificate_group_form" create="1" delete="1" edit="1">
+        <sheet>
 
-                        <div class="oe_title oe_read_only">
-                            <field name="id" invisible="1" />
-                            <field name="active" invisible="1" />
+          <div class="oe_title oe_read_only">
+            <field name="id" invisible="1"/>
+            <field name="active" invisible="1"/>
 
-                            <label for="display_name" class="oe_edit_only" />
-                            <h1>
-                                <field name="display_name" class="oe_field_display_name" readonly="1" />
-                            </h1>
-                        </div>
+            <label for="display_name" class="oe_edit_only"/>
+            <h1>
+              <field name="display_name" class="oe_field_display_name" readonly="1"/>
+            </h1>
+          </div>
 
-                        <group col="4" class="oe_edit_only">
-                            <field name="code" class="oe_field_code" />
-                            <field name="name" class="oe_field_name" />
-                        </group>
+          <group col="4" class="oe_edit_only">
+            <field name="code" class="oe_field_code"/>
+            <field name="name" class="oe_field_name"/>
+          </group>
 
-                        <group col="2">
-                            <field name="language_id" class="oe_field_language_id"
-                                options="{'no_quick_create': True, 'no_create': True, 'no_open': False}" />
-                        </group>
+          <group col="2">
+            <field name="language_id" class="oe_field_language_id"
+              options="{'no_quick_create': True, 'no_create': True, 'no_open': False}"/>
+          </group>
 
-                        <div class="mt-3">
-                            <label for="description" class="oe_edit_only" />
-                            <field name="description" class="oe_field_description" nolabel="1" />
-                        </div>
+          <div class="mt-3">
+            <label for="description" class="oe_edit_only"/>
+            <field name="description" class="oe_field_description" nolabel="1"/>
+          </div>
 
-                        <group col="2" string="Levels">
-                            <field name="certificate_ids" class="oe_field_certificate_ids" nolabel="1" colspan="2"
-                                context="{'default_group_id': id, 'tree_view_ref': 'cefrl.view_cefrl_certificate_embed_tree'}"
-                                options="{'no_quick_create': True, 'no_create': True, 'no_open': True}" />
-                        </group>
+          <group col="2" string="Levels">
+            <field name="certificate_ids" class="oe_field_certificate_ids" nolabel="1" colspan="2"
+              context="{'default_group_id': id, 'list_view_ref': 'cefrl.view_cefrl_certificate_embed_tree'}"
+              options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"/>
+          </group>
 
-                    </sheet>
-                </form>
-            </field>
-        </record>
+        </sheet>
+      </form>
+    </field>
+  </record>
 
-        <!-- Search view for "cefrl.certificate.group" -->
-        <record id="view_cefrl_certificate_group_search" model="ir.ui.view">
-            <field name="name">view.cefrl.certificate.group.search</field>
-            <field name="model">cefrl.certificate.group</field>
-            <field name="type">search</field>
-            <field name="mode">primary</field>
-            <field name="priority" eval="16" />
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <search string="cefrl_certificate_group_search">
-                    <field name="code" />
-                    <field name="name" />
-                    <field name="certificate_ids" />
+  <!-- Search view for "cefrl.certificate.group" -->
+  <record id="view_cefrl_certificate_group_search" model="ir.ui.view">
+    <field name="name">view.cefrl.certificate.group.search</field>
+    <field name="model">cefrl.certificate.group</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <search string="cefrl_certificate_group_search">
+        <field name="code"/>
+        <field name="name"/>
+        <field name="certificate_ids"/>
 
-                    <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
-                </search>
-            </field>
-        </record>
+        <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
+      </search>
+    </field>
+  </record>
 
-        <!-- Main window action for model.name -->
-        <record id="action_language_certificate_group_act_window" model="ir.actions.act_window">
-            <field name="type">ir.actions.act_window</field>
-            <field name="name">Language certificate group</field>
-            <field name="res_model">cefrl.certificate.group</field>
-            <field name="view_mode">tree,form</field>
-            <field name="target">current</field>
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="search_view_id" ref="view_cefrl_certificate_group_search" />
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Click to add new language certificate group
-                </p><p>
-                    There are no language certificate groups
-                </p>
-            </field>
-        </record>
+  <!-- Main window action for model.name -->
+  <record id="action_language_certificate_group_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">Language certificate group</field>
+    <field name="res_model">cefrl.certificate.group</field>
+    <field name="view_mode">list,form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field name="search_view_id" ref="view_cefrl_certificate_group_search"/>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create"> Click to add new language certificate group </p>
+      <p> There are no language certificate groups </p>
+    </field>
+  </record>
 
-        <!-- Main menu for model.name -->
-<!--         <record id="menu_language_certificate_group" model="ir.ui.menu" >
-            <field name="name">Language certificate group</field>
-            <field name="sequence" eval="10" />
-            <field name="action" ref="action_language_certificate_group_act_window" />
-            <field name="parent_id" ref="base.menu_custom" />
-        </record> -->
-
-    </data>
-</openerp>
+</odoo>

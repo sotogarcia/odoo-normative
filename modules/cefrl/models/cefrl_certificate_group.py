@@ -14,110 +14,108 @@ _logger = getLogger(__name__)
 
 
 class CefrlCertificateGroup(models.Model):
-    """ Language certificate group
-    """
+    """Language certificate group"""
 
-    _name = 'cefrl.certificate.group'
-    _description = u'Language certificate group'
+    _name = "cefrl.certificate.group"
+    _description = "Language certificate group"
 
-    _rec_name = 'name'
-    _order = 'language_id ASC, code ASC'
+    _rec_name = "name"
+    _order = "language_id ASC, code ASC"
 
     code = fields.Char(
-        string='Code',
+        string="Code",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Level code',
+        help="Level code",
         size=24,
-        translate=False
+        translate=False,
     )
 
     name = fields.Char(
-        string='Name',
+        string="Name",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Certificate name',
+        help="Certificate name",
         size=255,
-        translate=True
+        translate=True,
     )
 
     active = fields.Boolean(
-        string='Active',
+        string="Active",
         required=False,
         readonly=False,
         index=True,
         default=True,
-        help='Check it to show this attempt or uncheck to archivate'
+        help="Check it to show this attempt or uncheck to archivate",
     )
 
     description = fields.Text(
-        string='Description',
+        string="Description",
         required=False,
         readonly=False,
         index=False,
         default=None,
-        help='Description of the certificate',
-        translate=True
+        help="Description of the certificate",
+        translate=True,
     )
 
     language_id = fields.Many2one(
-        string='Language',
+        string="Language",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Related language',
-        comodel_name='cefrl.language',
+        help="Related language",
+        comodel_name="cefrl.language",
         domain=[],
         context={},
-        ondelete='cascade',
-        auto_join=False
+        ondelete="cascade",
+        auto_join=False,
     )
 
     certificate_ids = fields.One2many(
-        string='Certificates',
+        string="Certificates",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='List of certificates in this group',
-        comodel_name='cefrl.certificate',
-        inverse_name='group_id',
+        help="List of certificates in this group",
+        comodel_name="cefrl.certificate",
+        inverse_name="group_id",
         domain=[],
         context={},
         auto_join=False,
-        limit=None
     )
 
     certificate_count = fields.Integer(
-        string='Certificate count',
+        string="Certificate count",
         required=False,
         readonly=True,
         index=False,
         default=0,
-        help='Number of certificates in this group',
-        compute='_compute_certificate_count'
+        help="Number of certificates in this group",
+        compute="_compute_certificate_count",
     )
 
-    @api.depends('certificate_ids')
+    @api.depends("certificate_ids")
     def _compute_certificate_count(self):
         for record in self:
             record.certificate_count = len(record.certificate_ids)
 
     _sql_constraints = [
         (
-            'unique_code',
-            'UNIQUE(code)',
-            _('A certificate group with this code already exists')
+            "unique_code",
+            "UNIQUE(code)",
+            "A certificate group with this code already exists",
         ),
         (
-            'unique_name',
-            'UNIQUE(name)',
-            _('A certificate group with this name already exists')
+            "unique_name",
+            "UNIQUE(name)",
+            "A certificate group with this name already exists",
         ),
     ]
 
@@ -126,33 +124,33 @@ class CefrlCertificateGroup(models.Model):
 
         for record in self:
             if record._origin:
-                name = '{} ({})'.format(record.code, record.name)
+                name = "{} ({})".format(record.code, record.name)
                 result.append((record.id, name))
             else:
-                result.append((record.id, _('New certificate group')))
+                result.append((record.id, _("New certificate group")))
 
         return result
 
-    @api.model
-    def _name_search(self, name, args=None, operator='ilike', limit=100,
-                     name_get_uid=None):
-        args = args or []
-        domain = []
+    def _search_display_name(self, operator, value):
+        """Custom search for display_name (Odoo 18+).
+        Matches on code, name, and language_id; honors negative operators.
+        """
+        if not value:
+            # No additional domain when there is no search value
+            return []
 
-        if name:
-            domain = [
-                '|',
-                '|',
-                ('code', operator, name),
-                ('name', operator, name),
-                ('language_id', operator, name)
-            ]
-            if operator in NEGATIVE_TERM_OPERATORS:
-                domain = ['&', '!'] + domain[1:]
-            domain = AND([domain, args])
+        # OR over the three fields
+        base = [
+            "|",
+            "|",
+            ("code", operator, value),
+            ("name", operator, value),
+            ("language_id", operator, value),
+        ]
 
-        group_ids = self._search(domain, limit=limit,
-                                 access_rights_uid=name_get_uid)
-        group_set = self.browse(group_ids).with_user(name_get_uid)
+        # For negative operators, invert the OR into a negated AND
+        if operator in NEGATIVE_TERM_OPERATORS:
+            base = ["&", "!"] + base[1:]
 
-        return models.lazy_name_get(group_set)
+        # Return the domain fragment; the caller will AND with other clauses
+        return AND([base])

@@ -1,47 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
-        <record id="cefrl_certificate_group_celga" model="cefrl.certificate.group">
-            <field name="code">CELGA</field>
-            <field name="name">Certificado de Estudos de Lingua Galega</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Pruebas de evaluación de nivel del idioma gallego organizadas por la Secretaría General de Política Lingüística, entidad dependiente de la Junta de Galicia. ]]></field>
-            <field name="language_id" ref="cefrl.cefrl_language_gl" />
-        </record>
+  <record id="cefrl_certificate_group_celga" model="cefrl.certificate.group">
+    <field name="code">CELGA</field>
+    <field name="name">Certificado de Estudos de Lingua Galega</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Pruebas de evaluación de nivel del idioma gallego organizadas por la Secretaría General de Política Lingüística, entidad dependiente de la Junta de Galicia. ]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_gl"/>
+  </record>
 
-        <record id="cefrl_certificate_group_ivap" model="cefrl.certificate.group">
-            <field name="code">IVAP</field>
-            <field name="name">Instituto Vasco de Administración Pública</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Issues Basque language certificates for personnel working in a public administration (local, provincial or regional) in the Basque Country]]></field>
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-        </record>
+  <record id="cefrl_certificate_group_ivap" model="cefrl.certificate.group">
+    <field name="code">IVAP</field>
+    <field name="name">Instituto Vasco de Administración Pública</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Issues Basque language certificates for personnel working in a public administration (local, provincial or regional) in the Basque Country]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+  </record>
 
-        <record id="cefrl_certificate_group_ega" model="cefrl.certificate.group">
-            <field name="code">EGA</field>
-            <field name="name">Euskararen Gaitasun Agiria</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Basque Government entity dedicated to promoting the teaching of Basque. Issue titles of different levels. To be able to take the tests of this entity, it is necessary to be enrolled in a euskaltegi]]></field>
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-        </record>
+  <record id="cefrl_certificate_group_ertzaintza" model="cefrl.certificate.group">
+    <field name="code">Ertzaintza</field>
+    <field name="name">Ertzaintza — Autonomous Police of the Basque Country</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Basque autonomous police. Issues Basque language profile certificates for its staff.]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+  </record>
 
-        <record id="cefrl_certificate_group_ertzaintza" model="cefrl.certificate.group">
-            <field name="code">Ertzaintza</field>
-            <field name="name">Autonomous police force for the Basque Country,</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[They issue titles among the personnel who work in this administration]]></field>
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-        </record>
+  <record id="cefrl_certificate_group_habe" model="cefrl.certificate.group">
+    <field name="code">HABE</field>
+    <field name="name">HABE — Helduen Alfabetatze eta Berreuskalduntzerako Erakundea</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Public body for adult Basque language learning (historically HABE). Provides CEFR-aligned certificates (A1–C2) through the euskaltegi network.]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+  </record>
 
-        <record id="cefrl_certificate_group_osakidetza" model="cefrl.certificate.group">
-            <field name="code">Osakidetza</field>
-            <field name="name">Osakidetza-Basque Health Service</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[They issue titles among the personnel who work in this administration]]></field>
-            <field name="language_id" ref="cefrl.cefrl_language_eu" />
-        </record>
+  <record id="cefrl_certificate_group_euskara" model="cefrl.certificate.group">
+    <field name="code">Euskara</field>
+    <field name="name">Euskara — Other Certificates</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Neutral group for Euskara certificates not issued by IVAP/HABE (e.g., EGA, HLEA).]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_eu"/>
+  </record>
 
-    </data>
-</openerp>
+  <!-- Catalan (Catalunya) -->
+  <record id="cefrl_certificate_group_cat_dgpl" model="cefrl.certificate.group">
+    <field name="code">CAT-DGPL</field>
+    <field name="name">Generalitat de Catalunya — Certificats de Català</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Official Catalan language certificates issued by the Direcció General de Política Lingüística (Catalonia). CEFR-aligned (A1–C2).]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+  </record>
+
+  <!-- Valencian (JQCV) -->
+  <record id="cefrl_certificate_group_jqcv" model="cefrl.certificate.group">
+    <field name="code">JQCV</field>
+    <field name="name">Junta Qualificadora de Coneixements de Valencià (JQCV)</field>
+    <field name="active" eval="True"/>
+    <field name="description"
+      ><![CDATA[Official Valencian (Catalan) certificates issued by the Generalitat Valenciana through the JQCV. CEFR-aligned (A1–C2).]]></field>
+    <field name="language_id" ref="cefrl.cefrl_language_ca"/>
+  </record>
+
+</odoo>

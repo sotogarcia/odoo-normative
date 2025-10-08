@@ -13,89 +13,88 @@ _logger = getLogger(__name__)
 
 
 class CefrlLevel(models.Model):
-    """ Secondary classification
-    """
+    """Secondary classification"""
 
-    _name = 'cefrl.level'
-    _description = u'CEFRL - Level'
+    _name = "cefrl.level"
+    _description = "CEFRL - Level"
 
-    _rec_name = 'code'
-    _order = 'sequence ASC, code ASC'
+    _rec_name = "code"
+    _order = "sequence ASC, code ASC"
 
     code = fields.Char(
-        string='Code',
+        string="Code",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Level code',
+        help="Level code",
         size=2,
-        translate=False
+        translate=False,
     )
 
     name = fields.Char(
-        string='Name',
+        string="Name",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Level name',
+        help="Level name",
         size=24,
-        translate=True
+        translate=True,
     )
 
     sequence = fields.Integer(
-        string='Sequence',
+        string="Sequence",
         required=True,
         readonly=False,
         index=False,
         default=1,
-        help='Level sequence'
+        help="Level sequence",
     )
 
     active = fields.Boolean(
-        string='Active',
+        string="Active",
         required=False,
         readonly=False,
         index=True,
         default=True,
-        help='Check it to show this attempt or uncheck to archivate'
+        help="Check it to show this attempt or uncheck to archivate",
     )
 
     description = fields.Text(
-        string='Description',
+        string="Description",
         required=False,
         readonly=False,
         index=False,
         default=None,
-        help='Description of the level',
-        translate=True
+        help="Description of the level",
+        translate=True,
     )
 
     group_id = fields.Many2one(
-        string='Group',
+        string="Group",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Group to which the level belongs',
-        comodel_name='cefrl.level.group',
+        help="Group to which the level belongs",
+        comodel_name="cefrl.level.group",
         domain=[],
         context={},
-        ondelete='restrict',
-        auto_join=False
+        ondelete="restrict",
+        auto_join=False,
     )
 
     _sql_constraints = [
         (
-            'unique_code',
-            'UNIQUE(code)',
-            _('A level with this code already exists')
+            "unique_code",
+            "UNIQUE(code)",
+            "A level with this code already exists",
         ),
         (
-            'unique_name_by_group',
-            'UNIQUE(name, group_id)',
-            _('A level with this name already exists')
+            "unique_name_by_group",
+            "UNIQUE(name, group_id)",
+            "A level with this name already exists",
         ),
     ]
 
@@ -104,9 +103,9 @@ class CefrlLevel(models.Model):
 
         for record in self:
             if record._origin:
-                name = '{} ({})'.format(record.code, record.name)
+                name = "{} ({})".format(record.code, record.name)
                 result.append((record.id, name))
             else:
-                result.append((record.id, _('New certificate group')))
+                result.append((record.id, _("New certificate group")))
 
         return result

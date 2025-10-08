@@ -1,293 +1,291 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
-        <!-- ISO_639-6
+  <!-- ISO_639-6
         http://www.ekopedia.fr/wiki/Projet:Babel/Codes_ISO_639-6 -->
 
-        <record id="cefrl_language_eu" model="cefrl.language">
-            <field name="code">eu</field>
-            <field name="dialect">eafl</field>
-            <field name="name">Basque</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Basque (Formal)]]></field>
-        </record>
+  <record id="cefrl_language_eu" model="cefrl.language">
+    <field name="code">eu</field>
+    <field name="dialect">eafl</field>
+    <field name="name">Basque</field>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Basque (Formal)]]></field>
+  </record>
 
-        <record id="cefrl_language_bg" model="cefrl.language">
-            <field name="code">bg</field>
-            <field name="dialect">bg</field>
-            <field name="name">Bulgarian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_bg" model="cefrl.language">
+    <field name="code">bg</field>
+    <field name="dialect">bg</field>
+    <field name="name">Bulgarian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ca" model="cefrl.language">
-            <field name="code">ca</field>
-            <field name="dialect">catf</field>
-            <field name="name">Catalan</field>
-            <field name="active" eval="True" />
-            <field name="description"><![CDATA[Catalan (Formal)]]></field>
-        </record>
+  <record id="cefrl_language_ca" model="cefrl.language">
+    <field name="code">ca</field>
+    <field name="dialect">catf</field>
+    <field name="name">Catalan</field>
+    <field name="active" eval="True"/>
+    <field name="description"><![CDATA[Catalan (Formal)]]></field>
+  </record>
 
-        <record id="cefrl_language_vlca" model="cefrl.language">
-            <field name="code">ca</field>
-            <field name="dialect">vlca</field>
-            <field name="name">Catalan (Valencià)</field>
-            <field name="parent_id" ref="cefrl.cefrl_language_ca" />
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_vlca" model="cefrl.language">
+    <field name="code">ca</field>
+    <field name="dialect">vlca</field>
+    <field name="name">Catalan (Valencià)</field>
+    <field name="parent_id" ref="cefrl.cefrl_language_ca"/>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_zh" model="cefrl.language">
-            <field name="code">zh</field>
-            <field name="dialect">zh</field>
-            <field name="name">Chinese</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_zh" model="cefrl.language">
+    <field name="code">zh</field>
+    <field name="dialect">zh</field>
+    <field name="name">Chinese</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_hr" model="cefrl.language">
-            <field name="code">hr</field>
-            <field name="dialect">hr</field>
-            <field name="name">Croatian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_hr" model="cefrl.language">
+    <field name="code">hr</field>
+    <field name="dialect">hr</field>
+    <field name="name">Croatian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_cs" model="cefrl.language">
-            <field name="code">cs</field>
-            <field name="dialect">cs</field>
-            <field name="name">Czech</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_cs" model="cefrl.language">
+    <field name="code">cs</field>
+    <field name="dialect">cs</field>
+    <field name="name">Czech</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_da" model="cefrl.language">
-            <field name="code">da</field>
-            <field name="dialect">da</field>
-            <field name="name">Danish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_da" model="cefrl.language">
+    <field name="code">da</field>
+    <field name="dialect">da</field>
+    <field name="name">Danish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_en" model="cefrl.language">
-            <field name="code">en</field>
-            <field name="dialect">en</field>
-            <field name="name">English</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_en" model="cefrl.language">
+    <field name="code">en</field>
+    <field name="dialect">en</field>
+    <field name="name">English</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_eo" model="cefrl.language">
-            <field name="code">eo</field>
-            <field name="dialect">eo</field>
-            <field name="name">Esperanto</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_eo" model="cefrl.language">
+    <field name="code">eo</field>
+    <field name="dialect">eo</field>
+    <field name="name">Esperanto</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_et" model="cefrl.language">
-            <field name="code">et</field>
-            <field name="dialect">et</field>
-            <field name="name">Estonian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_et" model="cefrl.language">
+    <field name="code">et</field>
+    <field name="dialect">et</field>
+    <field name="name">Estonian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_fi" model="cefrl.language">
-            <field name="code">fi</field>
-            <field name="dialect">fi</field>
-            <field name="name">Finnish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_fi" model="cefrl.language">
+    <field name="code">fi</field>
+    <field name="dialect">fi</field>
+    <field name="name">Finnish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_fr" model="cefrl.language">
-            <field name="code">fr</field>
-            <field name="dialect">fr</field>
-            <field name="name">French</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_fr" model="cefrl.language">
+    <field name="code">fr</field>
+    <field name="dialect">fr</field>
+    <field name="name">French</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_gl" model="cefrl.language">
-            <field name="code">gl</field>
-            <field name="dialect">gl</field>
-            <field name="name">Galician</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_gl" model="cefrl.language">
+    <field name="code">gl</field>
+    <field name="dialect">gl</field>
+    <field name="name">Galician</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_de" model="cefrl.language">
-            <field name="code">de</field>
-            <field name="dialect">de</field>
-            <field name="name">German</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_de" model="cefrl.language">
+    <field name="code">de</field>
+    <field name="dialect">de</field>
+    <field name="name">German</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_el" model="cefrl.language">
-            <field name="code">el</field>
-            <field name="dialect">el</field>
-            <field name="name">Greek</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_el" model="cefrl.language">
+    <field name="code">el</field>
+    <field name="dialect">el</field>
+    <field name="name">Greek</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_he" model="cefrl.language">
-            <field name="code">he</field>
-            <field name="dialect">he</field>
-            <field name="name">Hebrew</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_he" model="cefrl.language">
+    <field name="code">he</field>
+    <field name="dialect">he</field>
+    <field name="name">Hebrew</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_hu" model="cefrl.language">
-            <field name="code">hu</field>
-            <field name="dialect">hu</field>
-            <field name="name">Hungarian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_hu" model="cefrl.language">
+    <field name="code">hu</field>
+    <field name="dialect">hu</field>
+    <field name="name">Hungarian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_is" model="cefrl.language">
-            <field name="code">is</field>
-            <field name="dialect">is</field>
-            <field name="name">Icelandic</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_is" model="cefrl.language">
+    <field name="code">is</field>
+    <field name="dialect">is</field>
+    <field name="name">Icelandic</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ga" model="cefrl.language">
-            <field name="code">ga</field>
-            <field name="dialect">ga</field>
-            <field name="name">Irish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_ga" model="cefrl.language">
+    <field name="code">ga</field>
+    <field name="dialect">ga</field>
+    <field name="name">Irish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_it" model="cefrl.language">
-            <field name="code">it</field>
-            <field name="dialect">it</field>
-            <field name="name">Italian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_it" model="cefrl.language">
+    <field name="code">it</field>
+    <field name="dialect">it</field>
+    <field name="name">Italian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ja" model="cefrl.language">
-            <field name="code">ja</field>
-            <field name="dialect">ja</field>
-            <field name="name">Japanese</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_ja" model="cefrl.language">
+    <field name="code">ja</field>
+    <field name="dialect">ja</field>
+    <field name="name">Japanese</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ko" model="cefrl.language">
-            <field name="code">ko</field>
-            <field name="dialect">ko</field>
-            <field name="name">Korean</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_ko" model="cefrl.language">
+    <field name="code">ko</field>
+    <field name="dialect">ko</field>
+    <field name="name">Korean</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_lv" model="cefrl.language">
-            <field name="code">lv</field>
-            <field name="dialect">lv</field>
-            <field name="name">Latvian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_lv" model="cefrl.language">
+    <field name="code">lv</field>
+    <field name="dialect">lv</field>
+    <field name="name">Latvian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_lt" model="cefrl.language">
-            <field name="code">lt</field>
-            <field name="dialect">lt</field>
-            <field name="name">Lithuanian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_lt" model="cefrl.language">
+    <field name="code">lt</field>
+    <field name="dialect">lt</field>
+    <field name="name">Lithuanian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_lb" model="cefrl.language">
-            <field name="code">lb</field>
-            <field name="dialect">lb</field>
-            <field name="name">Luxembourgish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_lb" model="cefrl.language">
+    <field name="code">lb</field>
+    <field name="dialect">lb</field>
+    <field name="name">Luxembourgish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_mt" model="cefrl.language">
-            <field name="code">mt</field>
-            <field name="dialect">mt</field>
-            <field name="name">Maltese</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_mt" model="cefrl.language">
+    <field name="code">mt</field>
+    <field name="dialect">mt</field>
+    <field name="name">Maltese</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_nl" model="cefrl.language">
-            <field name="code">nl</field>
-            <field name="dialect">nl</field>
-            <field name="name">Neerlandés</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_nl" model="cefrl.language">
+    <field name="code">nl</field>
+    <field name="dialect">nl</field>
+    <field name="name">Neerlandés</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_no" model="cefrl.language">
-            <field name="code">no</field>
-            <field name="dialect">no</field>
-            <field name="name">Norwegian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_no" model="cefrl.language">
+    <field name="code">no</field>
+    <field name="dialect">no</field>
+    <field name="name">Norwegian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_pl" model="cefrl.language">
-            <field name="code">pl</field>
-            <field name="dialect">pl</field>
-            <field name="name">Polish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_pl" model="cefrl.language">
+    <field name="code">pl</field>
+    <field name="dialect">pl</field>
+    <field name="name">Polish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_pt" model="cefrl.language">
-            <field name="code">pt</field>
-            <field name="dialect">pt</field>
-            <field name="name">Portuguese</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_pt" model="cefrl.language">
+    <field name="code">pt</field>
+    <field name="dialect">pt</field>
+    <field name="name">Portuguese</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ro" model="cefrl.language">
-            <field name="code">ro</field>
-            <field name="dialect">ro</field>
-            <field name="name">Romanian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_ro" model="cefrl.language">
+    <field name="code">ro</field>
+    <field name="dialect">ro</field>
+    <field name="name">Romanian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ru" model="cefrl.language">
-            <field name="code">ru</field>
-            <field name="dialect">ru</field>
-            <field name="name">Russian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_ru" model="cefrl.language">
+    <field name="code">ru</field>
+    <field name="dialect">ru</field>
+    <field name="name">Russian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_sk" model="cefrl.language">
-            <field name="code">sk</field>
-            <field name="dialect">sk</field>
-            <field name="name">Slovak</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_sk" model="cefrl.language">
+    <field name="code">sk</field>
+    <field name="dialect">sk</field>
+    <field name="name">Slovak</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_sl" model="cefrl.language">
-            <field name="code">sl</field>
-            <field name="dialect">sl</field>
-            <field name="name">Slovenian</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_sl" model="cefrl.language">
+    <field name="code">sl</field>
+    <field name="dialect">sl</field>
+    <field name="name">Slovenian</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_es" model="cefrl.language">
-            <field name="code">es</field>
-            <field name="dialect">es</field>
-            <field name="name">Spanish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_es" model="cefrl.language">
+    <field name="code">es</field>
+    <field name="dialect">es</field>
+    <field name="name">Spanish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_sv" model="cefrl.language">
-            <field name="code">sv</field>
-            <field name="dialect">sv</field>
-            <field name="name">Swedish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_sv" model="cefrl.language">
+    <field name="code">sv</field>
+    <field name="dialect">sv</field>
+    <field name="name">Swedish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_tr" model="cefrl.language">
-            <field name="code">tr</field>
-            <field name="dialect">tr</field>
-            <field name="name">Turkish</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_tr" model="cefrl.language">
+    <field name="code">tr</field>
+    <field name="dialect">tr</field>
+    <field name="name">Turkish</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_cy" model="cefrl.language">
-            <field name="code">cy</field>
-            <field name="dialect">cy</field>
-            <field name="name">Welsh</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_cy" model="cefrl.language">
+    <field name="code">cy</field>
+    <field name="dialect">cy</field>
+    <field name="name">Welsh</field>
+    <field name="active" eval="True"/>
+  </record>
 
-        <record id="cefrl_language_ca" model="cefrl.language">
-            <field name="code">ca</field>
-            <field name="dialect">ca</field>
-            <field name="name">Catalan</field>
-            <field name="active" eval="True" />
-        </record>
+  <record id="cefrl_language_ca" model="cefrl.language">
+    <field name="code">ca</field>
+    <field name="dialect">ca</field>
+    <field name="name">Catalan</field>
+    <field name="active" eval="True"/>
+  </record>
 
-    </data>
-</openerp>
+</odoo>

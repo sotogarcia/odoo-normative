@@ -13,92 +13,91 @@ _logger = getLogger(__name__)
 
 
 class CefrlLanguage(models.Model):
-    """ Language
-    """
+    """Language"""
 
-    _name = 'cefrl.language'
-    _description = u'CEFRL - language'
+    _name = "cefrl.language"
+    _description = "CEFRL - language"
 
-    _rec_name = 'name'
-    _order = 'name ASC'
+    _rec_name = "name"
+    _order = "name ASC"
 
     name = fields.Char(
-        string='Name',
+        string="Name",
         required=True,
         readonly=False,
         index=True,
         default=None,
         help=False,
         size=255,
-        translate=True
+        translate=True,
     )
 
     code = fields.Char(
-        string='Code',
+        string="Code",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='ISO 639-1 language code',
+        help="ISO 639-1 language code",
         size=2,
-        translate=False
+        translate=False,
     )
 
     dialect = fields.Char(
-        string='Dialect',
+        string="Dialect",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='ISO 639-6 language code',
+        help="ISO 639-6 language code",
         size=4,
-        translate=False
+        translate=False,
     )
 
     parent_id = fields.Many2one(
-        string='Parent',
+        string="Parent",
         required=False,
         readonly=False,
         index=True,
         default=None,
-        help='Parent language',
-        comodel_name='cefrl.language',
+        help="Parent language",
+        comodel_name="cefrl.language",
         domain=[],
         context={},
-        ondelete='restrict',
-        auto_join=False
+        ondelete="restrict",
+        auto_join=False,
     )
 
     active = fields.Boolean(
-        string='Active',
+        string="Active",
         required=False,
         readonly=False,
         index=True,
         default=True,
-        help='Check it to show this attempt or uncheck to archivate'
+        help="Check it to show this attempt or uncheck to archivate",
     )
 
     description = fields.Text(
-        string='About',
+        string="About",
         required=False,
         readonly=False,
         index=False,
         default=None,
-        help='Something about this language',
-        translate=True
+        help="Something about this language",
+        translate=True,
     )
 
     _sql_constraints = [
         (
-            'unique_code_dialect',
-            'UNIQUE(code, dialect)',
-            _('A language with this code or dialect already exists')
+            "unique_code_dialect",
+            "UNIQUE(code, dialect)",
+            "A language with this code or dialect already exists",
         ),
         (
-            'unique_name',
-            'UNIQUE(name)',
-            _('A language with this name already exists')
-        )
+            "unique_name",
+            "UNIQUE(name)",
+            "A language with this name already exists",
+        ),
     ]
 
     def name_get(self):
@@ -107,9 +106,9 @@ class CefrlLanguage(models.Model):
         for record in self:
             if record._origin:
                 code = record.dialect if record.parent_id else record.code
-                name = '{} ({})'.format(record.name, code)
+                name = "{} ({})".format(record.name, code)
                 result.append((record.id, name))
             else:
-                result.append((record.id, _('New certificate group')))
+                result.append((record.id, _("New certificate group")))
 
         return result
