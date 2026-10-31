@@ -319,3 +319,27 @@ test("education_classification: grouping by level disables recursive controls", 
     await contains(".o_group_header:eq(0)").click();
     expect(".o_expand_button").toHaveCount(0);
 });
+
+test("education_classification: recursive styles are scoped to their renderer", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: ROOT_DOMAIN,
+    });
+
+    expect(".o_list_renderer.o_education_classification_recursive_list").toHaveCount(1);
+    expect('.o_expand_button[data-expand="1"]').toHaveCount(1);
+});
+
+test("education_classification: standard list does not receive recursive CSS scope", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: '<list><field name="name"/></list>',
+        domain: ROOT_DOMAIN,
+    });
+
+    expect(".o_list_renderer").toHaveCount(1);
+    expect(".o_list_renderer.o_education_classification_recursive_list").toHaveCount(0);
+});

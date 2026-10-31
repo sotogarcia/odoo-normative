@@ -6,15 +6,17 @@
  * Adaptation for education_classification: Jorge Soto García, 2026.
  */
 
-/* The dedicated OWL renderer uses these classes only for recursive rows. */
-.o_list_renderer .o_recursive_expand_column {
+/* Scoped to the dedicated renderer root class. Odoo's generic list views,
+ * including third-party recursive lists, must not inherit these rules.
+ */
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_expand_column {
     width: 1%;
     min-width: 30px;
     white-space: nowrap;
     vertical-align: middle;
 }
 
-.o_list_renderer button.o_expand_button {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button {
     border: 0;
     background: transparent;
     color: inherit;
@@ -23,18 +25,18 @@
     cursor: pointer;
 }
 
-.o_list_renderer button.o_expand_button:disabled {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button:disabled {
     cursor: wait;
     opacity: 0.5;
 }
 
-.o_list_renderer button.o_expand_button:focus-visible {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button:focus-visible {
     outline: 2px solid var(--o-brand-primary, #714B67);
     outline-offset: 2px;
     border-radius: 2px;
 }
 
-.o_list_renderer .o_recursive_bullet {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet {
     display: inline-block;
     width: 6px;
     height: 6px;
@@ -48,98 +50,98 @@
  * A future inline CSS custom property can remove this finite selector range.
  */
 
-.o_list_renderer button.o_expand_button[data-depth="1"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="1"] {
     margin-left: 15px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="1"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="1"] {
     margin-left: 18px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="2"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="2"] {
     margin-left: 30px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="2"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="2"] {
     margin-left: 33px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="3"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="3"] {
     margin-left: 45px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="3"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="3"] {
     margin-left: 48px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="4"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="4"] {
     margin-left: 60px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="4"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="4"] {
     margin-left: 63px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="5"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="5"] {
     margin-left: 75px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="5"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="5"] {
     margin-left: 78px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="6"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="6"] {
     margin-left: 90px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="6"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="6"] {
     margin-left: 93px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="7"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="7"] {
     margin-left: 105px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="7"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="7"] {
     margin-left: 108px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="8"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="8"] {
     margin-left: 120px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="8"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="8"] {
     margin-left: 123px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="9"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="9"] {
     margin-left: 135px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="9"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="9"] {
     margin-left: 138px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="10"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="10"] {
     margin-left: 150px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="10"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="10"] {
     margin-left: 153px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="11"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="11"] {
     margin-left: 165px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="11"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="11"] {
     margin-left: 168px;
 }
 
-.o_list_renderer button.o_expand_button[data-depth="12"] {
+.o_list_renderer.o_education_classification_recursive_list button.o_expand_button[data-depth="12"] {
     margin-left: 180px;
 }
 
-.o_list_renderer .o_recursive_bullet[data-depth="12"] {
+.o_list_renderer.o_education_classification_recursive_list .o_recursive_bullet[data-depth="12"] {
     margin-left: 183px;
 }
