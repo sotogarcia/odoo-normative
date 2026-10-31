@@ -18,6 +18,9 @@ export class EducationClassificationRecursiveListController extends ListControll
     }
 
     async onExpandCollapseParent(ev) {
+        if (!this.model.canExpandRecursively()) {
+            return;
+        }
         const parentId = ev.detail?.id ?? ev.detail;
         const record = this.model.findRecordInHierarchy(parentId);
         if (!record) {
