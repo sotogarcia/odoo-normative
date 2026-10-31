@@ -24,7 +24,7 @@ class EducationClassificationItem(models.Model):
     _description = "Education Classification Item"
 
     _rec_name = "name"
-    _order = "edition_id, sequence, code, id"
+    _order = "edition_id, sequence_path, sequence, id"
     _rec_names_search = ["name", "code"]  # noqa: RUF012
 
     _parent_name = "parent_id"
@@ -83,6 +83,36 @@ class EducationClassificationItem(models.Model):
         copy=False,
     )
 
+    sequence_path = fields.Char(
+        string="Sequence Path",
+        compute="_compute_sequence_path",
+        store=True,
+        recursive=True,
+        index=True,
+        copy=False,
+    )
+
+    @api.depends(
+        "sequence",
+        "code",
+        "parent_id",
+        "parent_id.sequence_path",
+    )
+    def _compute_sequence_path(self):
+        for record in self:
+            # Normalizar el entero para mantener el orden,
+            # incluso con secuencias negativas.
+            sequence = record.sequence + 2**31
+
+            segment = f"{sequence:010d}:{record.code or ''}/"
+
+            if record.parent_id:
+                record.sequence_path = (
+                    record.parent_id.sequence_path or ""
+                ) + segment
+            else:
+                record.sequence_path = segment
+
     edition_id = fields.Many2one(
         string="Edition",
         required=True,
@@ -94,6 +124,25 @@ class EducationClassificationItem(models.Model):
         domain=[],
         context={},
         ondelete="restrict",
+    )
+
+    scheme_id = fields.Many2one(
+        comodel_name="education.classification.scheme",
+        string="Scheme",
+        related="edition_id.scheme_id",
+        store=True,
+        readonly=True,
+        index=True,
+    )
+
+    dimension = fields.Selection(
+        string="Dimension",
+        required=True,
+        help="Educational aspect classified: programmes, attainment, or fields.",
+        related="edition_id.scheme_id.dimension",
+        store=True,
+        readonly=True,
+        index=True,
     )
 
     level = fields.Integer(
@@ -222,3 +271,24 @@ class EducationClassificationItem(models.Model):
                         "to the same classification edition."
                     )
                 )
+
+    display_name = fields.Char(
+        string="Display Name",
+        automatic=True,
+        compute="_compute_display_name",
+        search="_search_display_name",
+        recursive=True,
+    )
+
+    @api.depends("name", "parent_id", "parent_id.display_name")
+    @api.depends_context("lang")
+    def _compute_display_name(self):
+        """Display the full classification hierarchy."""
+
+        for record in self:
+            if record.parent_id:
+                record.display_name = (
+                    f"{record.parent_id.display_name} / {record.name}"
+                )
+            else:
+                record.display_name = record.name or ""

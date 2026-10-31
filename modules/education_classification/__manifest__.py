@@ -119,7 +119,7 @@ It does not depend on any specific academic management module.
     "category": "Academy",
     "maintainer": "Jorge Soto Garcia",
     "contributors": ["Jorge Soto Garcia <sotogarcia@gmail.com>"],
-    "depends": ["base"],
+    "depends": ["base", "web_hierarchy", "recursive_list_view"],
     "external_dependencies": {
         "python": [],
         "bin": [],

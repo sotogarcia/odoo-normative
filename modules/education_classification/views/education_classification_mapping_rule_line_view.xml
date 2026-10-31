@@ -23,7 +23,7 @@
     <field name="active" eval="True" />
     <field name="arch" type="xml">
       <list string="Classification Rule Lines" create="1" delete="1" edit="1">
-        <field name="sequence" class="oe_field_sequence" widget="handle" />
+        <!-- <field name="sequence" class="oe_field_sequence" widget="handle" /> -->
         <field name="rule_id" class="oe_field_rule_id" />
         <field name="side" class="oe_field_side" />
         <field name="item_id" class="oe_field_item_id" />
@@ -145,11 +145,11 @@
   </record>
 
   <!-- Main menu for education.classification.rule.line -->
-  <record id="menu_rule_line" model="ir.ui.menu">
+<!--   <record id="menu_rule_line" model="ir.ui.menu">
     <field name="name">Classification Rule Lines</field>
     <field name="sequence" eval="10" />
     <field name="action" ref="action_rule_line_act_window" />
     <field name="parent_id" ref="base.menu_custom" />
-  </record>
+  </record> -->
 
 </odoo>

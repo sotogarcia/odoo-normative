@@ -23,7 +23,7 @@
     <field name="active" eval="True" />
     <field name="arch" type="xml">
       <list string="Classification Rules" create="1" delete="1" edit="1">
-        <field name="sequence" class="oe_field_sequence" widget="handle" />
+        <!-- <field name="sequence" class="oe_field_sequence" widget="handle" /> -->
         <field name="mapping_id" class="oe_field_mapping_id" />
         <field name="rule_type" class="oe_field_rule_type" />
         <field name="relation_type" class="oe_field_relation_type" />
@@ -96,7 +96,7 @@
             <page string="Categories" name="categories">
               <field name="line_ids" class="oe_field_line_ids" nolabel="1">
                 <list string="Rule Categories" create="1" delete="1" edit="1" editable="bottom">
-                  <field name="sequence" class="oe_field_sequence" widget="handle" />
+                  <!-- <field name="sequence" class="oe_field_sequence" widget="handle" /> -->
                   <field name="side" class="oe_field_side" />
                   <field name="item_id" class="oe_field_item_id" />
                 </list>

@@ -118,7 +118,7 @@
                 nolabel="1"
               >
                 <list string="Correspondence Rules" create="1" delete="1" edit="1">
-                  <field name="sequence" class="oe_field_sequence" widget="handle" />
+                  <!-- <field name="sequence" class="oe_field_sequence" widget="handle" /> -->
                   <field name="rule_type" class="oe_field_rule_type" />
                   <field name="relation_type" class="oe_field_relation_type" />
                   <field
@@ -198,11 +198,11 @@
                             edit="1"
                             editable="bottom"
                           >
-                            <field
+                            <!-- <field
                               name="sequence"
                               class="oe_field_sequence"
                               widget="handle"
-                            />
+                            /> -->
                             <field
                               name="side"
                               class="oe_field_side"
