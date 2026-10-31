@@ -91,6 +91,7 @@ static/src/
 ├── js/
 │   ├── list_controller.js
 │   ├── list_renderer.js
+│   ├── recursive_list_view.js
 │   └── relational_model.js
 └── xml/
     └── recursive_tree_templates.xml
@@ -102,20 +103,20 @@ The XML contains primary-inheritance OWL templates scoped to the custom
 renderer, and the CSS supplies the expansion-column styling and indentation
 rules (explicitly defined for depths 1–12).
 
-**Status: not yet fully integrated or runtime-tested.** Although these files
-are declared in `web.assets_backend`, the repository does not yet
-provide the custom list-view registry entry, connect the dedicated OWL
-templates through the renderer's static properties or set a corresponding
-`js_class` on the category list view. Therefore the ordinary list view
-is still used and the desired in-place expand/collapse interaction is not
+**Status: registered, but not activated or runtime-tested.** The frontend
+assets now include a custom list-view registry entry named
+`education_classification_recursive_list`. It connects the dedicated
+controller, renderer and model, and binds both OWL renderer templates.
+The category list view does not yet specify the matching `js_class`, so
+the standard list view remains in use and in-place expand/collapse is not
 yet enabled.
 
 This is distinct from the existing `hierarchy` view, which is provided
 by `web_hierarchy` and remains a module dependency.
 
-Before considering the custom list complete, register the view, bind
-the renderer templates, select it in the list XML and verify expansion,
-grandchildren, ordering, filtering, refresh and permissions on Odoo 18.
+Before considering the custom list complete, select it in the list XML
+and verify expansion, grandchildren, ordering, filtering, refresh and
+permissions on Odoo 18.
 
 ## Origin of the adapted recursive-list code
 

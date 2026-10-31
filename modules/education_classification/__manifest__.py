@@ -114,8 +114,9 @@ management module.
 
 A recursive list implementation is being adapted from the LGPL-3.0
 recursive_list_view project by Marc Durepos / Bemade Inc.
-Its JavaScript, XML, and CSS resources are bundled locally; registration
-and activation of this custom view remain pending. See README.md for
+Its JavaScript, XML, and CSS resources are bundled locally. The custom list
+view is registered with its dedicated OWL templates; activation through
+js_class and runtime verification remain pending. See README.md for
 the original source, attribution, and integration status.
     """,
     "author": "Jorge Soto Garcia",
@@ -153,6 +154,7 @@ the original source, attribution, and integration status.
             "education_classification/static/src/js/relational_model.js",
             "education_classification/static/src/js/list_controller.js",
             "education_classification/static/src/js/list_renderer.js",
+            "education_classification/static/src/js/recursive_list_view.js",
             "education_classification/static/src/xml/recursive_tree_templates.xml",
         ],
     },

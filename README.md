@@ -66,9 +66,9 @@ Dependencies differ by module:
   `recursive_list_view` addon is **not required**.
 
 For `education_classification`, the recursive-list code is included in
-the asset bundle, but the dedicated list view is **not yet registered or
-activated**. Its presence should not be interpreted as a completed
-expandable-list feature.
+the asset bundle and registered as a dedicated list view, but it is **not yet
+activated** on the category list. Its presence should not be interpreted
+as a completed expandable-list feature.
 
 ## Third-party code and acknowledgements
 
