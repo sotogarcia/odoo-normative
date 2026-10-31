@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="0">
+
+  <!-- VIEWS: "Edition"
+
+    - Model·········: education.classification.edition
+    - _rec_name·····: name
+    - Domain········: []
+    - Context·······: {}
+    - Parent menu ··: base.menu_custom
+    - View priority·: 16    Sequence····: 10
+    - Action help···: There are no classification editions yet
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- List view for "education.classification.edition" -->
+  <record id="view_education_classification_edition_list" model="ir.ui.view">
+    <field name="name">view.education.classification.edition.list</field>
+    <field name="model">education.classification.edition</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <list string="Classification Editions" create="1" delete="1" edit="1">
+        <field name="scheme_id" class="oe_field_scheme_id" />
+        <field name="name" class="oe_field_name" />
+        <field name="version" class="oe_field_version" />
+        <field name="publication_date" class="oe_field_publication_date" optional="hide" />
+        <field name="valid_from" class="oe_field_valid_from" />
+        <field name="valid_to" class="oe_field_valid_to" />
+        <field name="previous_edition_id" class="oe_field_previous_edition_id" optional="hide" />
+        <field
+          name="state"
+          class="oe_field_state"
+          widget="badge"
+          decoration-success="state == 'published'"
+          decoration-warning="state == 'draft'"
+          decoration-muted="state == 'superseded'"
+        />
+        <field name="item_count" class="oe_field_item_count" readonly="1" />
+        <field name="active" class="oe_field_active" optional="hide" />
+      </list>
+    </field>
+  </record>
+
+  <!-- Form view for "education.classification.edition" -->
+  <record id="view_education_classification_edition_form" model="ir.ui.view">
+    <field name="name">view.education.classification.edition.form</field>
+    <field name="model">education.classification.edition</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <form string="Classification Edition" create="1" delete="1" edit="1">
+        <sheet>
+          <field name="id" class="oe_field_id" invisible="1" />
+          <field name="active" class="oe_field_active" invisible="1" />
+
+          <div class="oe_button_box" name="button_box" />
+
+          <widget
+            name="web_ribbon"
+            title="Archived"
+            bg_color="bg-danger"
+            invisible="active == True"
+          />
+
+          <div class="oe_title">
+            <label for="name" class="oe_edit_only" />
+            <h1>
+              <field name="name" class="oe_field_name" placeholder="Name" />
+            </h1>
+          </div>
+
+          <group>
+            <group string="Classification">
+              <field name="scheme_id" class="oe_field_scheme_id" />
+              <field name="version" class="oe_field_version" />
+              <field name="previous_edition_id" class="oe_field_previous_edition_id" />
+              <field
+                name="state"
+                class="oe_field_state"
+                widget="badge"
+                decoration-success="state == 'published'"
+                decoration-warning="state == 'draft'"
+                decoration-muted="state == 'superseded'"
+              />
+            </group>
+            <group string="Dates">
+              <field name="publication_date" class="oe_field_publication_date" />
+              <field name="valid_from" class="oe_field_valid_from" />
+              <field name="valid_to" class="oe_field_valid_to" />
+              <field name="item_count" class="oe_field_item_count" readonly="1" />
+            </group>
+          </group>
+
+          <notebook>
+            <page string="Items" name="items">
+              <field name="item_ids" class="oe_field_item_ids" nolabel="1">
+                <list string="Classification Items" create="1" delete="1" edit="1">
+                  <field name="sequence" class="oe_field_sequence" optional="hide" />
+                  <field name="code" class="oe_field_code" />
+                  <field name="name" class="oe_field_name" />
+                  <field name="parent_id" class="oe_field_parent_id" optional="show" />
+                  <field name="level" class="oe_field_level" readonly="1" optional="show" />
+                  <field name="external_url" class="oe_field_external_url" optional="hide" />
+                  <field name="active" class="oe_field_active" optional="hide" />
+                </list>
+                <form string="Classification Item">
+                  <sheet>
+                    <field name="id" class="oe_field_id" invisible="1" />
+                    <field name="active" class="oe_field_active" invisible="1" />
+
+                    <div class="oe_button_box" name="button_box" />
+
+                    <widget
+                      name="web_ribbon"
+                      title="Archived"
+                      bg_color="bg-danger"
+                      invisible="active == True"
+                    />
+
+                    <div class="oe_title">
+                      <label for="name" class="oe_edit_only" />
+                      <h1>
+                        <field name="name" class="oe_field_name" placeholder="Name" />
+                      </h1>
+                    </div>
+
+                    <group>
+                      <group string="Classification">
+                        <field name="edition_id" class="oe_field_edition_id" readonly="1" />
+                        <field name="code" class="oe_field_code" />
+                        <field name="parent_id" class="oe_field_parent_id" />
+                      </group>
+                      <group string="Hierarchy">
+                        <field name="level" class="oe_field_level" readonly="1" />
+                        <field name="sequence" class="oe_field_sequence" />
+                        <field name="external_url" class="oe_field_external_url" widget="url" />
+                      </group>
+                    </group>
+
+                    <notebook>
+                      <page string="Description" name="description">
+                        <field name="description" class="oe_field_description" nolabel="1" />
+                      </page>
+                      <page string="Children" name="children">
+                        <field name="child_ids" class="oe_field_child_ids" nolabel="1" readonly="1">
+                          <list string="Child Categories" create="0" delete="0" edit="0">
+                            <field name="code" class="oe_field_code" />
+                            <field name="name" class="oe_field_name" />
+                            <field name="level" class="oe_field_level" />
+                            <field name="sequence" class="oe_field_sequence" />
+                          </list>
+                        </field>
+                      </page>
+                    </notebook>
+
+                  </sheet>
+                </form>
+              </field>
+            </page>
+
+            <page string="Documentation" name="documentation">
+              <group>
+                <field name="source_url" class="oe_field_source_url" widget="url" />
+              </group>
+            </page>
+          </notebook>
+
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Search view for "education.classification.edition" -->
+  <record id="view_education_classification_edition_search" model="ir.ui.view">
+    <field name="name">view.education.classification.edition.search</field>
+    <field name="model">education.classification.edition</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <search string="Classification Editions">
+        <field name="name" class="oe_field_name" />
+        <field name="version" class="oe_field_version" />
+        <field name="scheme_id" class="oe_field_scheme_id" />
+        <field name="previous_edition_id" class="oe_field_previous_edition_id" />
+        <field name="publication_date" class="oe_field_publication_date" />
+        <field name="valid_from" class="oe_field_valid_from" />
+        <field name="valid_to" class="oe_field_valid_to" />
+
+        <separator />
+
+        <filter name="state_draft" string="Draft" domain="[('state', '=', 'draft')]" />
+        <filter name="state_published" string="Published" domain="[('state', '=', 'published')]" />
+        <filter name="state_superseded" string="Superseded" domain="[('state', '=', 'superseded')]" />
+
+        <separator />
+
+        <filter
+          name="inactive"
+          string="Archived"
+          domain="[('active', '=', False)]"
+          context="{'active_test': False}"
+        />
+
+        <group expand="1" string="Group By">
+          <filter name="group_by_scheme_id" string="Scheme" context="{'group_by': 'scheme_id'}" />
+          <filter name="group_by_state" string="State" context="{'group_by': 'state'}" />
+          <filter name="group_by_publication_date" string="Publication Year" context="{'group_by': 'publication_date:year'}" />
+          <filter name="group_by_valid_from" string="Validity Year" context="{'group_by': 'valid_from:year'}" />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!-- Main window action for education.classification.edition -->
+  <record id="action_edition_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">Classification Editions</field>
+    <field name="res_model">education.classification.edition</field>
+    <field name="view_mode">list,form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field name="search_view_id" ref="view_education_classification_edition_search" />
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Click to add a new classification edition
+      </p>
+      <p>
+        There are no classification editions yet.
+      </p>
+    </field>
+  </record>
+
+  <!-- Main menu for education.classification.edition -->
+  <record id="menu_edition" model="ir.ui.menu">
+    <field name="name">Classification Editions</field>
+    <field name="sequence" eval="10" />
+    <field name="action" ref="action_edition_act_window" />
+    <field name="parent_id" ref="base.menu_custom" />
+  </record>
+
+</odoo>

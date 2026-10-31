@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="0">
+
+  <!-- SCHEME: ISCED-P
+
+    - Classification··: International Standard Classification of Education
+    - Dimension·······: Educational Programmes
+    - Scope···········: International
+    - Authority·······: UNESCO Institute for Statistics
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <record id="scheme_isced_p" model="education.classification.scheme">
+    <field name="code">ISCED-P</field>
+    <field name="name">International Standard Classification of Education - Programmes</field>
+    <field name="description">International classification of educational programmes by level and programme characteristics.</field>
+    <field name="dimension">p</field>
+    <field name="scope">international</field>
+    <field name="authority_id" ref="partner_unesco_uis" />
+    <field name="active" eval="True" />
+  </record>
+
+  <!-- SCHEME: ISCED-A
+
+    - Classification··: International Standard Classification of Education
+    - Dimension·······: Educational Attainment
+    - Scope···········: International
+    - Authority·······: UNESCO Institute for Statistics
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <record id="scheme_isced_a" model="education.classification.scheme">
+    <field name="code">ISCED-A</field>
+    <field name="name">International Standard Classification of Education - Educational Attainment</field>
+    <field name="description">International classification of educational attainment based on completed education and recognised qualifications.</field>
+    <field name="dimension">a</field>
+    <field name="scope">international</field>
+    <field name="authority_id" ref="partner_unesco_uis" />
+    <field name="active" eval="True" />
+  </record>
+
+  <!-- SCHEME: ISCED-F
+
+    - Classification··: International Standard Classification of Education
+    - Dimension·······: Fields of Education and Training
+    - Scope···········: International
+    - Authority·······: UNESCO Institute for Statistics
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <record id="scheme_isced_f" model="education.classification.scheme">
+    <field name="code">ISCED-F</field>
+    <field name="name">International Standard Classification of Education - Fields of Education and Training</field>
+    <field name="description">International classification of fields of education and training according to their subject content.</field>
+    <field name="dimension">f</field>
+    <field name="scope">international</field>
+    <field name="authority_id" ref="partner_unesco_uis" />
+    <field name="active" eval="True" />
+  </record>
+
+</odoo>

@@ -1,0 +1,1558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+
+  <!-- ISCED-F 2013: Fields of Education and Training
+       Official source: UNESCO-UIS, Detailed field descriptions (2015),
+       Appendix I, pages 54-58.
+       Broad fields use 2 digits; narrow fields 3; detailed fields 4.
+       Parent categories precede their children.
+       Odoo calculates hierarchy levels and parent paths.
+  -->
+
+  <!-- BROAD FIELD 00: Generic programmes and qualifications -->
+
+  <record id="item_isced_f_2013_00" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">00</field>
+    <field name="name">Generic programmes and qualifications</field>
+  </record>
+
+  <record id="item_isced_f_2013_000" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">000</field>
+    <field name="name">Generic programmes and qualifications not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_00" />
+  </record>
+
+  <record id="item_isced_f_2013_0000" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0000</field>
+    <field name="name">Generic programmes and qualifications not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_000" />
+  </record>
+
+  <record id="item_isced_f_2013_001" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">001</field>
+    <field name="name">Basic programmes and qualifications</field>
+    <field name="parent_id" ref="item_isced_f_2013_00" />
+  </record>
+
+  <record id="item_isced_f_2013_0011" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0011</field>
+    <field name="name">Basic programmes and qualifications</field>
+    <field name="parent_id" ref="item_isced_f_2013_001" />
+  </record>
+
+  <record id="item_isced_f_2013_002" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">002</field>
+    <field name="name">Literacy and numeracy</field>
+    <field name="parent_id" ref="item_isced_f_2013_00" />
+  </record>
+
+  <record id="item_isced_f_2013_0021" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0021</field>
+    <field name="name">Literacy and numeracy</field>
+    <field name="parent_id" ref="item_isced_f_2013_002" />
+  </record>
+
+  <record id="item_isced_f_2013_003" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">003</field>
+    <field name="name">Personal skills and development</field>
+    <field name="parent_id" ref="item_isced_f_2013_00" />
+  </record>
+
+  <record id="item_isced_f_2013_0031" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0031</field>
+    <field name="name">Personal skills and development</field>
+    <field name="parent_id" ref="item_isced_f_2013_003" />
+  </record>
+
+  <record id="item_isced_f_2013_009" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">009</field>
+    <field name="name">Generic programmes and qualifications not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_00" />
+  </record>
+
+  <record id="item_isced_f_2013_0099" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0099</field>
+    <field name="name">Generic programmes and qualifications not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_009" />
+  </record>
+
+  <!-- BROAD FIELD 01: Education -->
+
+  <record id="item_isced_f_2013_01" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">01</field>
+    <field name="name">Education</field>
+  </record>
+
+  <record id="item_isced_f_2013_011" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">011</field>
+    <field name="name">Education</field>
+    <field name="parent_id" ref="item_isced_f_2013_01" />
+  </record>
+
+  <record id="item_isced_f_2013_0110" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0110</field>
+    <field name="name">Education not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_011" />
+  </record>
+
+  <record id="item_isced_f_2013_0111" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0111</field>
+    <field name="name">Education science</field>
+    <field name="parent_id" ref="item_isced_f_2013_011" />
+  </record>
+
+  <record id="item_isced_f_2013_0112" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0112</field>
+    <field name="name">Training for pre-school teachers</field>
+    <field name="parent_id" ref="item_isced_f_2013_011" />
+  </record>
+
+  <record id="item_isced_f_2013_0113" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0113</field>
+    <field name="name">Teacher training without subject specialisation</field>
+    <field name="parent_id" ref="item_isced_f_2013_011" />
+  </record>
+
+  <record id="item_isced_f_2013_0114" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0114</field>
+    <field name="name">Teacher training with subject specialisation</field>
+    <field name="parent_id" ref="item_isced_f_2013_011" />
+  </record>
+
+  <record id="item_isced_f_2013_0119" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0119</field>
+    <field name="name">Education not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_011" />
+  </record>
+
+  <record id="item_isced_f_2013_018" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">018</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving education</field>
+    <field name="parent_id" ref="item_isced_f_2013_01" />
+  </record>
+
+  <record id="item_isced_f_2013_0188" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0188</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving education</field>
+    <field name="parent_id" ref="item_isced_f_2013_018" />
+  </record>
+
+  <!-- BROAD FIELD 02: Arts and humanities -->
+
+  <record id="item_isced_f_2013_02" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">02</field>
+    <field name="name">Arts and humanities</field>
+  </record>
+
+  <record id="item_isced_f_2013_020" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">020</field>
+    <field name="name">Arts and humanities not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_02" />
+  </record>
+
+  <record id="item_isced_f_2013_0200" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0200</field>
+    <field name="name">Arts and humanities not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_020" />
+  </record>
+
+  <record id="item_isced_f_2013_021" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">021</field>
+    <field name="name">Arts</field>
+    <field name="parent_id" ref="item_isced_f_2013_02" />
+  </record>
+
+  <record id="item_isced_f_2013_0210" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0210</field>
+    <field name="name">Arts not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_0211" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0211</field>
+    <field name="name">Audio-visual techniques and media production</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_0212" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0212</field>
+    <field name="name">Fashion, interior and industrial design</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_0213" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0213</field>
+    <field name="name">Fine arts</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_0214" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0214</field>
+    <field name="name">Handicrafts</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_0215" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0215</field>
+    <field name="name">Music and performing arts</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_0219" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0219</field>
+    <field name="name">Arts not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_021" />
+  </record>
+
+  <record id="item_isced_f_2013_022" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">022</field>
+    <field name="name">Humanities (except languages)</field>
+    <field name="parent_id" ref="item_isced_f_2013_02" />
+  </record>
+
+  <record id="item_isced_f_2013_0220" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0220</field>
+    <field name="name">Humanities (except languages) not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_022" />
+  </record>
+
+  <record id="item_isced_f_2013_0221" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0221</field>
+    <field name="name">Religion and theology</field>
+    <field name="parent_id" ref="item_isced_f_2013_022" />
+  </record>
+
+  <record id="item_isced_f_2013_0222" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0222</field>
+    <field name="name">History and archaeology</field>
+    <field name="parent_id" ref="item_isced_f_2013_022" />
+  </record>
+
+  <record id="item_isced_f_2013_0223" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0223</field>
+    <field name="name">Philosophy and ethics</field>
+    <field name="parent_id" ref="item_isced_f_2013_022" />
+  </record>
+
+  <record id="item_isced_f_2013_0229" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0229</field>
+    <field name="name">Humanities (except languages) not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_022" />
+  </record>
+
+  <record id="item_isced_f_2013_023" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">023</field>
+    <field name="name">Languages</field>
+    <field name="parent_id" ref="item_isced_f_2013_02" />
+  </record>
+
+  <record id="item_isced_f_2013_0230" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0230</field>
+    <field name="name">Languages not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_023" />
+  </record>
+
+  <record id="item_isced_f_2013_0231" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0231</field>
+    <field name="name">Language acquisition</field>
+    <field name="parent_id" ref="item_isced_f_2013_023" />
+  </record>
+
+  <record id="item_isced_f_2013_0232" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0232</field>
+    <field name="name">Literature and linguistics</field>
+    <field name="parent_id" ref="item_isced_f_2013_023" />
+  </record>
+
+  <record id="item_isced_f_2013_0239" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0239</field>
+    <field name="name">Languages not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_023" />
+  </record>
+
+  <record id="item_isced_f_2013_028" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">028</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving arts and humanities</field>
+    <field name="parent_id" ref="item_isced_f_2013_02" />
+  </record>
+
+  <record id="item_isced_f_2013_0288" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0288</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving arts and humanities</field>
+    <field name="parent_id" ref="item_isced_f_2013_028" />
+  </record>
+
+  <record id="item_isced_f_2013_029" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">029</field>
+    <field name="name">Arts and humanities not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_02" />
+  </record>
+
+  <record id="item_isced_f_2013_0299" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0299</field>
+    <field name="name">Arts and humanities not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_029" />
+  </record>
+
+  <!-- BROAD FIELD 03: Social sciences, journalism and information -->
+
+  <record id="item_isced_f_2013_03" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">03</field>
+    <field name="name">Social sciences, journalism and information</field>
+  </record>
+
+  <record id="item_isced_f_2013_030" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">030</field>
+    <field name="name">Social sciences, journalism and information not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_03" />
+  </record>
+
+  <record id="item_isced_f_2013_0300" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0300</field>
+    <field name="name">Social sciences, journalism and information not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_030" />
+  </record>
+
+  <record id="item_isced_f_2013_031" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">031</field>
+    <field name="name">Social and behavioural sciences</field>
+    <field name="parent_id" ref="item_isced_f_2013_03" />
+  </record>
+
+  <record id="item_isced_f_2013_0310" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0310</field>
+    <field name="name">Social and behavioural sciences not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_031" />
+  </record>
+
+  <record id="item_isced_f_2013_0311" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0311</field>
+    <field name="name">Economics</field>
+    <field name="parent_id" ref="item_isced_f_2013_031" />
+  </record>
+
+  <record id="item_isced_f_2013_0312" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0312</field>
+    <field name="name">Political sciences and civics</field>
+    <field name="parent_id" ref="item_isced_f_2013_031" />
+  </record>
+
+  <record id="item_isced_f_2013_0313" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0313</field>
+    <field name="name">Psychology</field>
+    <field name="parent_id" ref="item_isced_f_2013_031" />
+  </record>
+
+  <record id="item_isced_f_2013_0314" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0314</field>
+    <field name="name">Sociology and cultural studies</field>
+    <field name="parent_id" ref="item_isced_f_2013_031" />
+  </record>
+
+  <record id="item_isced_f_2013_0319" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0319</field>
+    <field name="name">Social and behavioural sciences not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_031" />
+  </record>
+
+  <record id="item_isced_f_2013_032" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">032</field>
+    <field name="name">Journalism and information</field>
+    <field name="parent_id" ref="item_isced_f_2013_03" />
+  </record>
+
+  <record id="item_isced_f_2013_0320" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0320</field>
+    <field name="name">Journalism and information not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_032" />
+  </record>
+
+  <record id="item_isced_f_2013_0321" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0321</field>
+    <field name="name">Journalism and reporting</field>
+    <field name="parent_id" ref="item_isced_f_2013_032" />
+  </record>
+
+  <record id="item_isced_f_2013_0322" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0322</field>
+    <field name="name">Library, information and archival studies</field>
+    <field name="parent_id" ref="item_isced_f_2013_032" />
+  </record>
+
+  <record id="item_isced_f_2013_0329" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0329</field>
+    <field name="name">Journalism and information not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_032" />
+  </record>
+
+  <record id="item_isced_f_2013_038" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">038</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving social sciences, journalism and information</field>
+    <field name="parent_id" ref="item_isced_f_2013_03" />
+  </record>
+
+  <record id="item_isced_f_2013_0388" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0388</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving social sciences, journalism and information</field>
+    <field name="parent_id" ref="item_isced_f_2013_038" />
+  </record>
+
+  <record id="item_isced_f_2013_039" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">039</field>
+    <field name="name">Social sciences, journalism and information not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_03" />
+  </record>
+
+  <record id="item_isced_f_2013_0399" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0399</field>
+    <field name="name">Social sciences, journalism and information not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_039" />
+  </record>
+
+  <!-- BROAD FIELD 04: Business, administration and law -->
+
+  <record id="item_isced_f_2013_04" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">04</field>
+    <field name="name">Business, administration and law</field>
+  </record>
+
+  <record id="item_isced_f_2013_040" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">040</field>
+    <field name="name">Business, administration and law not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_04" />
+  </record>
+
+  <record id="item_isced_f_2013_0400" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0400</field>
+    <field name="name">Business, administration and law not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_040" />
+  </record>
+
+  <record id="item_isced_f_2013_041" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">041</field>
+    <field name="name">Business and administration</field>
+    <field name="parent_id" ref="item_isced_f_2013_04" />
+  </record>
+
+  <record id="item_isced_f_2013_0410" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0410</field>
+    <field name="name">Business and administration not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0411" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0411</field>
+    <field name="name">Accounting and taxation</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0412" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0412</field>
+    <field name="name">Finance, banking and insurance</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0413" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0413</field>
+    <field name="name">Management and administration</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0414" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0414</field>
+    <field name="name">Marketing and advertising</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0415" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0415</field>
+    <field name="name">Secretarial and office work</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0416" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0416</field>
+    <field name="name">Wholesale and retail sales</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0417" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0417</field>
+    <field name="name">Work skills</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_0419" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0419</field>
+    <field name="name">Business and administration not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_041" />
+  </record>
+
+  <record id="item_isced_f_2013_042" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">042</field>
+    <field name="name">Law</field>
+    <field name="parent_id" ref="item_isced_f_2013_04" />
+  </record>
+
+  <record id="item_isced_f_2013_0421" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0421</field>
+    <field name="name">Law</field>
+    <field name="parent_id" ref="item_isced_f_2013_042" />
+  </record>
+
+  <record id="item_isced_f_2013_048" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">048</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving business, administration and law</field>
+    <field name="parent_id" ref="item_isced_f_2013_04" />
+  </record>
+
+  <record id="item_isced_f_2013_0488" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0488</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving business, administration and law</field>
+    <field name="parent_id" ref="item_isced_f_2013_048" />
+  </record>
+
+  <record id="item_isced_f_2013_049" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">049</field>
+    <field name="name">Business, administration and law not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_04" />
+  </record>
+
+  <record id="item_isced_f_2013_0499" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0499</field>
+    <field name="name">Business, administration and law not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_049" />
+  </record>
+
+  <!-- BROAD FIELD 05: Natural sciences, mathematics and statistics -->
+
+  <record id="item_isced_f_2013_05" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">05</field>
+    <field name="name">Natural sciences, mathematics and statistics</field>
+  </record>
+
+  <record id="item_isced_f_2013_050" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">050</field>
+    <field name="name">Natural sciences, mathematics and statistics not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0500" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0500</field>
+    <field name="name">Natural sciences, mathematics and statistics not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_050" />
+  </record>
+
+  <record id="item_isced_f_2013_051" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">051</field>
+    <field name="name">Biological and related sciences</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0510" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0510</field>
+    <field name="name">Biological and related sciences not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_051" />
+  </record>
+
+  <record id="item_isced_f_2013_0511" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0511</field>
+    <field name="name">Biology</field>
+    <field name="parent_id" ref="item_isced_f_2013_051" />
+  </record>
+
+  <record id="item_isced_f_2013_0512" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0512</field>
+    <field name="name">Biochemistry</field>
+    <field name="parent_id" ref="item_isced_f_2013_051" />
+  </record>
+
+  <record id="item_isced_f_2013_0519" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0519</field>
+    <field name="name">Biological and related sciences not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_051" />
+  </record>
+
+  <record id="item_isced_f_2013_052" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">052</field>
+    <field name="name">Environment</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0520" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0520</field>
+    <field name="name">Environment not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_052" />
+  </record>
+
+  <record id="item_isced_f_2013_0521" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0521</field>
+    <field name="name">Environmental sciences</field>
+    <field name="parent_id" ref="item_isced_f_2013_052" />
+  </record>
+
+  <record id="item_isced_f_2013_0522" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0522</field>
+    <field name="name">Natural environments and wildlife</field>
+    <field name="parent_id" ref="item_isced_f_2013_052" />
+  </record>
+
+  <record id="item_isced_f_2013_0529" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0529</field>
+    <field name="name">Environment not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_052" />
+  </record>
+
+  <record id="item_isced_f_2013_053" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">053</field>
+    <field name="name">Physical sciences</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0530" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0530</field>
+    <field name="name">Physical sciences not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_053" />
+  </record>
+
+  <record id="item_isced_f_2013_0531" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0531</field>
+    <field name="name">Chemistry</field>
+    <field name="parent_id" ref="item_isced_f_2013_053" />
+  </record>
+
+  <record id="item_isced_f_2013_0532" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0532</field>
+    <field name="name">Earth sciences</field>
+    <field name="parent_id" ref="item_isced_f_2013_053" />
+  </record>
+
+  <record id="item_isced_f_2013_0533" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0533</field>
+    <field name="name">Physics</field>
+    <field name="parent_id" ref="item_isced_f_2013_053" />
+  </record>
+
+  <record id="item_isced_f_2013_0539" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0539</field>
+    <field name="name">Physical sciences not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_053" />
+  </record>
+
+  <record id="item_isced_f_2013_054" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">054</field>
+    <field name="name">Mathematics and statistics</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0540" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0540</field>
+    <field name="name">Mathematics and statistics not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_054" />
+  </record>
+
+  <record id="item_isced_f_2013_0541" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0541</field>
+    <field name="name">Mathematics</field>
+    <field name="parent_id" ref="item_isced_f_2013_054" />
+  </record>
+
+  <record id="item_isced_f_2013_0542" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0542</field>
+    <field name="name">Statistics</field>
+    <field name="parent_id" ref="item_isced_f_2013_054" />
+  </record>
+
+  <record id="item_isced_f_2013_058" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">058</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving natural sciences, mathematics and statistics</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0588" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0588</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving natural sciences, mathematics and statistics</field>
+    <field name="parent_id" ref="item_isced_f_2013_058" />
+  </record>
+
+  <record id="item_isced_f_2013_059" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">059</field>
+    <field name="name">Natural sciences, mathematics and statistics not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_05" />
+  </record>
+
+  <record id="item_isced_f_2013_0599" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0599</field>
+    <field name="name">Natural sciences, mathematics and statistics not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_059" />
+  </record>
+
+  <!-- BROAD FIELD 06: Information and Communication Technologies (ICTs) -->
+
+  <record id="item_isced_f_2013_06" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">06</field>
+    <field name="name">Information and Communication Technologies (ICTs)</field>
+  </record>
+
+  <record id="item_isced_f_2013_061" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">061</field>
+    <field name="name">Information and Communication Technologies (ICTs)</field>
+    <field name="parent_id" ref="item_isced_f_2013_06" />
+  </record>
+
+  <record id="item_isced_f_2013_0610" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0610</field>
+    <field name="name">Information and Communication Technologies (ICTs) not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_061" />
+  </record>
+
+  <record id="item_isced_f_2013_0611" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0611</field>
+    <field name="name">Computer use</field>
+    <field name="parent_id" ref="item_isced_f_2013_061" />
+  </record>
+
+  <record id="item_isced_f_2013_0612" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0612</field>
+    <field name="name">Database and network design and administration</field>
+    <field name="parent_id" ref="item_isced_f_2013_061" />
+  </record>
+
+  <record id="item_isced_f_2013_0613" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0613</field>
+    <field name="name">Software and applications development and analysis</field>
+    <field name="parent_id" ref="item_isced_f_2013_061" />
+  </record>
+
+  <record id="item_isced_f_2013_0619" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0619</field>
+    <field name="name">Information and Communication Technologies (ICTs) not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_061" />
+  </record>
+
+  <record id="item_isced_f_2013_068" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">068</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving Information and Communication Technologies (ICTs)</field>
+    <field name="parent_id" ref="item_isced_f_2013_06" />
+  </record>
+
+  <record id="item_isced_f_2013_0688" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0688</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving Information and Communication Technologies (ICTs)</field>
+    <field name="parent_id" ref="item_isced_f_2013_068" />
+  </record>
+
+  <!-- BROAD FIELD 07: Engineering, manufacturing and construction -->
+
+  <record id="item_isced_f_2013_07" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">07</field>
+    <field name="name">Engineering, manufacturing and construction</field>
+  </record>
+
+  <record id="item_isced_f_2013_070" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">070</field>
+    <field name="name">Engineering, manufacturing and construction not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_07" />
+  </record>
+
+  <record id="item_isced_f_2013_0700" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0700</field>
+    <field name="name">Engineering, manufacturing and construction not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_070" />
+  </record>
+
+  <record id="item_isced_f_2013_071" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">071</field>
+    <field name="name">Engineering and engineering trades</field>
+    <field name="parent_id" ref="item_isced_f_2013_07" />
+  </record>
+
+  <record id="item_isced_f_2013_0710" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0710</field>
+    <field name="name">Engineering and engineering trades not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0711" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0711</field>
+    <field name="name">Chemical engineering and processes</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0712" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0712</field>
+    <field name="name">Environmental protection technology</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0713" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0713</field>
+    <field name="name">Electricity and energy</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0714" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0714</field>
+    <field name="name">Electronics and automation</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0715" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0715</field>
+    <field name="name">Mechanics and metal trades</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0716" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0716</field>
+    <field name="name">Motor vehicles, ships and aircraft</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_0719" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0719</field>
+    <field name="name">Engineering and engineering trades not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_071" />
+  </record>
+
+  <record id="item_isced_f_2013_072" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">072</field>
+    <field name="name">Manufacturing and processing</field>
+    <field name="parent_id" ref="item_isced_f_2013_07" />
+  </record>
+
+  <record id="item_isced_f_2013_0720" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0720</field>
+    <field name="name">Manufacturing and processing not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_072" />
+  </record>
+
+  <record id="item_isced_f_2013_0721" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0721</field>
+    <field name="name">Food processing</field>
+    <field name="parent_id" ref="item_isced_f_2013_072" />
+  </record>
+
+  <record id="item_isced_f_2013_0722" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0722</field>
+    <field name="name">Materials (glass, paper, plastic and wood)</field>
+    <field name="parent_id" ref="item_isced_f_2013_072" />
+  </record>
+
+  <record id="item_isced_f_2013_0723" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0723</field>
+    <field name="name">Textiles (clothes, footwear and leather)</field>
+    <field name="parent_id" ref="item_isced_f_2013_072" />
+  </record>
+
+  <record id="item_isced_f_2013_0724" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0724</field>
+    <field name="name">Mining and extraction</field>
+    <field name="parent_id" ref="item_isced_f_2013_072" />
+  </record>
+
+  <record id="item_isced_f_2013_0729" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0729</field>
+    <field name="name">Manufacturing and processing not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_072" />
+  </record>
+
+  <record id="item_isced_f_2013_073" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">073</field>
+    <field name="name">Architecture and construction</field>
+    <field name="parent_id" ref="item_isced_f_2013_07" />
+  </record>
+
+  <record id="item_isced_f_2013_0730" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0730</field>
+    <field name="name">Architecture and construction not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_073" />
+  </record>
+
+  <record id="item_isced_f_2013_0731" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0731</field>
+    <field name="name">Architecture and town planning</field>
+    <field name="parent_id" ref="item_isced_f_2013_073" />
+  </record>
+
+  <record id="item_isced_f_2013_0732" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0732</field>
+    <field name="name">Building and civil engineering</field>
+    <field name="parent_id" ref="item_isced_f_2013_073" />
+  </record>
+
+  <record id="item_isced_f_2013_078" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">078</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving engineering, manufacturing and construction</field>
+    <field name="parent_id" ref="item_isced_f_2013_07" />
+  </record>
+
+  <record id="item_isced_f_2013_0788" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0788</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving engineering, manufacturing and construction</field>
+    <field name="parent_id" ref="item_isced_f_2013_078" />
+  </record>
+
+  <record id="item_isced_f_2013_079" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">079</field>
+    <field name="name">Engineering, manufacturing and construction not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_07" />
+  </record>
+
+  <record id="item_isced_f_2013_0799" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0799</field>
+    <field name="name">Engineering, manufacturing and construction not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_079" />
+  </record>
+
+  <!-- BROAD FIELD 08: Agriculture, forestry, fisheries and veterinary -->
+
+  <record id="item_isced_f_2013_08" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">08</field>
+    <field name="name">Agriculture, forestry, fisheries and veterinary</field>
+  </record>
+
+  <record id="item_isced_f_2013_080" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">080</field>
+    <field name="name">Agriculture, forestry, fisheries and veterinary not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0800" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0800</field>
+    <field name="name">Agriculture, forestry, fisheries and veterinary not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_080" />
+  </record>
+
+  <record id="item_isced_f_2013_081" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">081</field>
+    <field name="name">Agriculture</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0810" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0810</field>
+    <field name="name">Agriculture not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_081" />
+  </record>
+
+  <record id="item_isced_f_2013_0811" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0811</field>
+    <field name="name">Crop and livestock production</field>
+    <field name="parent_id" ref="item_isced_f_2013_081" />
+  </record>
+
+  <record id="item_isced_f_2013_0812" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0812</field>
+    <field name="name">Horticulture</field>
+    <field name="parent_id" ref="item_isced_f_2013_081" />
+  </record>
+
+  <record id="item_isced_f_2013_0819" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0819</field>
+    <field name="name">Agriculture not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_081" />
+  </record>
+
+  <record id="item_isced_f_2013_082" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">082</field>
+    <field name="name">Forestry</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0821" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0821</field>
+    <field name="name">Forestry</field>
+    <field name="parent_id" ref="item_isced_f_2013_082" />
+  </record>
+
+  <record id="item_isced_f_2013_083" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">083</field>
+    <field name="name">Fisheries</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0831" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0831</field>
+    <field name="name">Fisheries</field>
+    <field name="parent_id" ref="item_isced_f_2013_083" />
+  </record>
+
+  <record id="item_isced_f_2013_084" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">084</field>
+    <field name="name">Veterinary</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0841" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0841</field>
+    <field name="name">Veterinary</field>
+    <field name="parent_id" ref="item_isced_f_2013_084" />
+  </record>
+
+  <record id="item_isced_f_2013_088" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">088</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving agriculture, forestry, fisheries and veterinary</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0888" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0888</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving agriculture, forestry, fisheries and veterinary</field>
+    <field name="parent_id" ref="item_isced_f_2013_088" />
+  </record>
+
+  <record id="item_isced_f_2013_089" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">089</field>
+    <field name="name">Agriculture, forestry, fisheries and veterinary not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_08" />
+  </record>
+
+  <record id="item_isced_f_2013_0899" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0899</field>
+    <field name="name">Agriculture, forestry, fisheries and veterinary not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_089" />
+  </record>
+
+  <!-- BROAD FIELD 09: Health and welfare -->
+
+  <record id="item_isced_f_2013_09" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">09</field>
+    <field name="name">Health and welfare</field>
+  </record>
+
+  <record id="item_isced_f_2013_090" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">090</field>
+    <field name="name">Health and welfare not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_09" />
+  </record>
+
+  <record id="item_isced_f_2013_0900" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0900</field>
+    <field name="name">Health and welfare not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_090" />
+  </record>
+
+  <record id="item_isced_f_2013_091" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">091</field>
+    <field name="name">Health</field>
+    <field name="parent_id" ref="item_isced_f_2013_09" />
+  </record>
+
+  <record id="item_isced_f_2013_0910" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0910</field>
+    <field name="name">Health not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0911" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0911</field>
+    <field name="name">Dental studies</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0912" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0912</field>
+    <field name="name">Medicine</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0913" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0913</field>
+    <field name="name">Nursing and midwifery</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0914" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0914</field>
+    <field name="name">Medical diagnostic and treatment technology</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0915" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0915</field>
+    <field name="name">Therapy and rehabilitation</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0916" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0916</field>
+    <field name="name">Pharmacy</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0917" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0917</field>
+    <field name="name">Traditional and complementary medicine and therapy</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_0919" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0919</field>
+    <field name="name">Health not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_091" />
+  </record>
+
+  <record id="item_isced_f_2013_092" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">092</field>
+    <field name="name">Welfare</field>
+    <field name="parent_id" ref="item_isced_f_2013_09" />
+  </record>
+
+  <record id="item_isced_f_2013_0920" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0920</field>
+    <field name="name">Welfare not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_092" />
+  </record>
+
+  <record id="item_isced_f_2013_0921" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0921</field>
+    <field name="name">Care of the elderly and of disabled adults</field>
+    <field name="parent_id" ref="item_isced_f_2013_092" />
+  </record>
+
+  <record id="item_isced_f_2013_0922" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0922</field>
+    <field name="name">Child care and youth services</field>
+    <field name="parent_id" ref="item_isced_f_2013_092" />
+  </record>
+
+  <record id="item_isced_f_2013_0923" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0923</field>
+    <field name="name">Social work and counselling</field>
+    <field name="parent_id" ref="item_isced_f_2013_092" />
+  </record>
+
+  <record id="item_isced_f_2013_0929" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0929</field>
+    <field name="name">Welfare not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_092" />
+  </record>
+
+  <record id="item_isced_f_2013_098" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">098</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving health and welfare</field>
+    <field name="parent_id" ref="item_isced_f_2013_09" />
+  </record>
+
+  <record id="item_isced_f_2013_0988" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0988</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving health and welfare</field>
+    <field name="parent_id" ref="item_isced_f_2013_098" />
+  </record>
+
+  <record id="item_isced_f_2013_099" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">099</field>
+    <field name="name">Health and welfare not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_09" />
+  </record>
+
+  <record id="item_isced_f_2013_0999" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">0999</field>
+    <field name="name">Health and welfare not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_099" />
+  </record>
+
+  <!-- BROAD FIELD 10: Services -->
+
+  <record id="item_isced_f_2013_10" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">10</field>
+    <field name="name">Services</field>
+  </record>
+
+  <record id="item_isced_f_2013_100" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">100</field>
+    <field name="name">Services not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1000" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1000</field>
+    <field name="name">Services not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_100" />
+  </record>
+
+  <record id="item_isced_f_2013_101" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">101</field>
+    <field name="name">Personal services</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1010" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1010</field>
+    <field name="name">Personal services not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_1011" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1011</field>
+    <field name="name">Domestic services</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_1012" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1012</field>
+    <field name="name">Hair and beauty services</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_1013" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1013</field>
+    <field name="name">Hotel, restaurants and catering</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_1014" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1014</field>
+    <field name="name">Sports</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_1015" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1015</field>
+    <field name="name">Travel, tourism and leisure</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_1019" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1019</field>
+    <field name="name">Personal services not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_101" />
+  </record>
+
+  <record id="item_isced_f_2013_102" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">102</field>
+    <field name="name">Hygiene and occupational health services</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1020" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1020</field>
+    <field name="name">Hygiene and occupational health services not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_102" />
+  </record>
+
+  <record id="item_isced_f_2013_1021" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1021</field>
+    <field name="name">Community sanitation</field>
+    <field name="parent_id" ref="item_isced_f_2013_102" />
+  </record>
+
+  <record id="item_isced_f_2013_1022" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1022</field>
+    <field name="name">Occupational health and safety</field>
+    <field name="parent_id" ref="item_isced_f_2013_102" />
+  </record>
+
+  <record id="item_isced_f_2013_1029" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1029</field>
+    <field name="name">Hygiene and occupational health services not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_102" />
+  </record>
+
+  <record id="item_isced_f_2013_103" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">103</field>
+    <field name="name">Security services</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1030" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1030</field>
+    <field name="name">Security services not further defined</field>
+    <field name="parent_id" ref="item_isced_f_2013_103" />
+  </record>
+
+  <record id="item_isced_f_2013_1031" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1031</field>
+    <field name="name">Military and defence</field>
+    <field name="parent_id" ref="item_isced_f_2013_103" />
+  </record>
+
+  <record id="item_isced_f_2013_1032" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1032</field>
+    <field name="name">Protection of persons and property</field>
+    <field name="parent_id" ref="item_isced_f_2013_103" />
+  </record>
+
+  <record id="item_isced_f_2013_1039" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1039</field>
+    <field name="name">Security services not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_103" />
+  </record>
+
+  <record id="item_isced_f_2013_104" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">104</field>
+    <field name="name">Transport services</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1041" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1041</field>
+    <field name="name">Transport services</field>
+    <field name="parent_id" ref="item_isced_f_2013_104" />
+  </record>
+
+  <record id="item_isced_f_2013_108" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">108</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving services</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1088" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1088</field>
+    <field name="name">Inter-disciplinary programmes and qualifications involving services</field>
+    <field name="parent_id" ref="item_isced_f_2013_108" />
+  </record>
+
+  <record id="item_isced_f_2013_109" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">109</field>
+    <field name="name">Services not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_10" />
+  </record>
+
+  <record id="item_isced_f_2013_1099" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">1099</field>
+    <field name="name">Services not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_f_2013_109" />
+  </record>
+
+  <!-- BROAD FIELD 99: Field unknown -->
+
+  <record id="item_isced_f_2013_99" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">99</field>
+    <field name="name">Field unknown</field>
+  </record>
+
+  <record id="item_isced_f_2013_999" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">999</field>
+    <field name="name">Field unknown</field>
+    <field name="parent_id" ref="item_isced_f_2013_99" />
+  </record>
+
+  <record id="item_isced_f_2013_9999" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_f_2013" />
+    <field name="code">9999</field>
+    <field name="name">Field unknown</field>
+    <field name="parent_id" ref="item_isced_f_2013_999" />
+  </record>
+
+</odoo>

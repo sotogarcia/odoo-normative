@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+
+  <!-- AUTHORITY: UNESCO Institute for Statistics -->
+
+  <record id="partner_unesco_uis" model="res.partner">
+    <field name="name">UNESCO Institute for Statistics</field>
+    <field name="is_company" eval="True" />
+    <field name="website">https://www.uis.unesco.org</field>
+  </record>
+
+</odoo>
+
+

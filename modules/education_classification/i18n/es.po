@@ -1,0 +1,2911 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* education_classification
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-31 02:35+0000\n"
+"PO-Revision-Date: 2026-10-31 02:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_scheme.py:0
+msgid "A country must be specified for national classification schemes."
+msgstr "Debe especificarse un país para los esquemas de clasificación nacionales."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_scheme.py:0
+msgid ""
+"A geographical area must be specified for other classification schemes."
+msgstr ""
+"Debe especificarse un área geográfica para los demás esquemas de "
+"clasificación."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid ""
+"A semantic relationship is required for validated correspondence rules."
+msgstr "Las reglas de correspondencia validadas deben tener una relación semántica."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_64
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_74
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_84
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_64
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_74
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_84
+msgid "Academic"
+msgstr "Académica"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0411
+msgid "Accounting and taxation"
+msgstr "Contabilidad y fiscalidad"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__active
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__active
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__notes
+msgid "Additional explanations or observations about the rule."
+msgstr "Explicaciones u observaciones adicionales sobre la regla."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Additional observations about this rule..."
+msgstr "Observaciones adicionales sobre esta regla..."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_081
+msgid "Agriculture"
+msgstr "Agricultura"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0819
+msgid "Agriculture not elsewhere classified"
+msgstr "Agricultura no clasificada en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0810
+msgid "Agriculture not further defined"
+msgstr "Agricultura sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_08
+msgid "Agriculture, forestry, fisheries and veterinary"
+msgstr "Agricultura, silvicultura, pesca y veterinaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_089
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0899
+msgid ""
+"Agriculture, forestry, fisheries and veterinary not elsewhere classified"
+msgstr "Agricultura, silvicultura, pesca y veterinaria no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_080
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0800
+msgid "Agriculture, forestry, fisheries and veterinary not further defined"
+msgstr "Agricultura, silvicultura, pesca y veterinaria sin especificar"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_item.py:0
+msgid "All child categories must belong to the same classification edition."
+msgstr ""
+"Todas las categorías hijas deben pertenecer a la misma edición de la "
+"clasificación."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_073
+msgid "Architecture and construction"
+msgstr "Arquitectura y construcción"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0730
+msgid "Architecture and construction not further defined"
+msgstr "Arquitectura y construcción sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0731
+msgid "Architecture and town planning"
+msgstr "Arquitectura y urbanismo"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_021
+msgid "Arts"
+msgstr "Artes"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_02
+msgid "Arts and humanities"
+msgstr "Artes y humanidades"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_029
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0299
+msgid "Arts and humanities not elsewhere classified"
+msgstr "Artes y humanidades no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_020
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0200
+msgid "Arts and humanities not further defined"
+msgstr "Artes y humanidades sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0219
+msgid "Arts not elsewhere classified"
+msgstr "Artes no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0210
+msgid "Arts not further defined"
+msgstr "Artes sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__attachment_id
+msgid "Attachment"
+msgstr "Archivo adjunto"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Attainment"
+msgstr "Nivel de formación alcanzado"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0211
+msgid "Audio-visual techniques and media production"
+msgstr "Técnicas audiovisuales y producción multimedia"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__authority_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Authority"
+msgstr "Organismo responsable"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_6
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_6
+msgid "Bachelor’s or equivalent level"
+msgstr "Grado o equivalente"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_001
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0011
+msgid "Basic programmes and qualifications"
+msgstr "Programas y cualificaciones básicos"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0512
+msgid "Biochemistry"
+msgstr "Bioquímica"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_051
+msgid "Biological and related sciences"
+msgstr "Biología y ciencias afines"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0519
+msgid "Biological and related sciences not elsewhere classified"
+msgstr "Biología y ciencias afines no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0510
+msgid "Biological and related sciences not further defined"
+msgstr "Biología y ciencias afines sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0511
+msgid "Biology"
+msgstr "Biología"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__relation_type__broader
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Broader Match"
+msgstr "Correspondencia más amplia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0732
+msgid "Building and civil engineering"
+msgstr "Construcción e ingeniería civil"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_041
+msgid "Business and administration"
+msgstr "Administración y gestión de empresas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0419
+msgid "Business and administration not elsewhere classified"
+msgstr "Administración y gestión de empresas no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0410
+msgid "Business and administration not further defined"
+msgstr "Administración y gestión de empresas sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_04
+msgid "Business, administration and law"
+msgstr "Administración de empresas y derecho"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_049
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0499
+msgid "Business, administration and law not elsewhere classified"
+msgstr "Administración de empresas y derecho no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_040
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0400
+msgid "Business, administration and law not further defined"
+msgstr "Administración de empresas y derecho sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0921
+msgid "Care of the elderly and of disabled adults"
+msgstr "Atención a personas mayores y adultos con discapacidad"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Categories"
+msgstr "Categorías"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__child_ids
+msgid "Categories directly subordinate to this category."
+msgstr "Categorías subordinadas directamente a esta categoría."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Category"
+msgstr "Categoría"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__source_checksum
+msgid "Checksum of the imported source document."
+msgstr "Suma de comprobación del documento de origen importado."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0711
+msgid "Chemical engineering and processes"
+msgstr "Ingeniería química y procesos químicos"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0531
+msgid "Chemistry"
+msgstr "Química"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Child Categories"
+msgstr "Categorías hijas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0922
+msgid "Child care and youth services"
+msgstr "Atención a la infancia y servicios para jóvenes"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__child_count
+msgid "Child count"
+msgstr "Número de categorías hijas"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__child_ids
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Children"
+msgstr "Hijas"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_item.py:0
+msgid "Circular category relationships are not allowed."
+msgstr "No se permiten relaciones circulares entre categorías."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_edition.py:0
+msgid "Circular references between classification editions are not allowed."
+msgstr "No se permiten referencias circulares entre ediciones de una clasificación."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping.py:0
+msgid "Circular references between correspondence mappings are not allowed."
+msgstr "No se permiten referencias circulares entre correspondencias."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Classification"
+msgstr "Clasificación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Classification Catalogues"
+msgstr "Catálogos de clasificaciones"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Classification Categories"
+msgstr "Categorías de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Classification Edition"
+msgstr "Edición de clasificación"
+
+#. module: education_classification
+#: model:ir.actions.act_window,name:education_classification.action_edition_act_window
+#: model:ir.ui.menu,name:education_classification.menu_edition
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_list
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Classification Editions"
+msgstr "Ediciones de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Classification Item"
+msgstr "Categoría de clasificación"
+
+#. module: education_classification
+#: model:ir.actions.act_window,name:education_classification.action_item_act_window
+#: model:ir.ui.menu,name:education_classification.menu_item
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_list
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Classification Items"
+msgstr "Categorías de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Classification Mapping"
+msgstr "Correspondencia entre clasificaciones"
+
+#. module: education_classification
+#: model:ir.actions.act_window,name:education_classification.action_mapping_act_window
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_list
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+msgid "Classification Mappings"
+msgstr "Correspondencias entre clasificaciones"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Classification Rule"
+msgstr "Regla de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_form
+msgid "Classification Rule Line"
+msgstr "Línea de regla de clasificación"
+
+#. module: education_classification
+#: model:ir.actions.act_window,name:education_classification.action_rule_line_act_window
+#: model:ir.ui.menu,name:education_classification.menu_rule_line
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_list
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+msgid "Classification Rule Lines"
+msgstr "Líneas de reglas de clasificación"
+
+#. module: education_classification
+#: model:ir.actions.act_window,name:education_classification.action_rule_act_window
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_list
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Classification Rules"
+msgstr "Reglas de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Classification Scheme"
+msgstr "Esquema de clasificación"
+
+#. module: education_classification
+#: model:ir.actions.act_window,name:education_classification.action_scheme_act_window
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_list
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Classification Schemes"
+msgstr "Esquemas de clasificación"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__item_ids
+msgid "Classification categories belonging to this edition."
+msgstr "Categorías de clasificación pertenecientes a esta edición."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule_line__item_id
+msgid "Classification category participating in the rule."
+msgstr "Categoría de clasificación que participa en la regla."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__source_edition_id
+msgid "Classification edition from which categories are mapped."
+msgstr "Edición de clasificación de la que proceden las categorías de origen."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__target_edition_id
+msgid "Classification edition to which categories are mapped."
+msgstr "Edición de clasificación a la que corresponden las categorías de destino."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__edition_id
+msgid "Classification edition to which this category belongs."
+msgstr "Edición de clasificación a la que pertenece esta categoría."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__scheme_id
+msgid "Classification scheme to which this edition belongs."
+msgstr "Esquema de clasificación al que pertenece esta edición."
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_edition_act_window
+msgid "Click to add a new classification edition"
+msgstr "Haga clic para añadir una nueva edición de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_item_act_window
+msgid "Click to add a new classification item"
+msgstr "Haga clic para añadir una nueva categoría de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_mapping_act_window
+msgid "Click to add a new classification mapping"
+msgstr "Haga clic para añadir una nueva correspondencia entre clasificaciones"
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_rule_act_window
+msgid "Click to add a new classification rule"
+msgstr "Haga clic para añadir una nueva regla de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_rule_line_act_window
+msgid "Click to add a new classification rule line"
+msgstr "Haga clic para añadir una nueva línea de regla de clasificación"
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_scheme_act_window
+msgid "Click to add a new classification scheme"
+msgstr "Haga clic para añadir un nuevo esquema de clasificación"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__relation_type__close
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Close Match"
+msgstr "Correspondencia aproximada"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__code
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__code
+msgid "Code"
+msgstr "Código"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1021
+msgid "Community sanitation"
+msgstr "Saneamiento comunitario"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__rule_type__composite
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Composite"
+msgstr "Compuesta"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid ""
+"Composite correspondence rules require multiple source or target categories."
+msgstr ""
+"Las reglas de correspondencia compuestas requieren varias categorías de "
+"origen o de destino."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0611
+msgid "Computer use"
+msgstr "Uso de ordenadores"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__condition_description
+msgid "Condition Description"
+msgstr "Descripción de las condiciones"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__rule_type__conditional
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Conditional"
+msgstr "Condicional"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid "Conditional rules must describe their applicability conditions."
+msgstr "Las reglas condicionales deben describir sus condiciones de aplicación."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Conditions"
+msgstr "Condiciones"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__condition_description
+msgid "Conditions governing the applicability of this rule."
+msgstr "Condiciones que determinan la aplicación de esta regla."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_form
+msgid "Correspondence"
+msgstr "Correspondencia"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Correspondence Mappings"
+msgstr "Mapas de correspondencias"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Correspondence Rule"
+msgstr "Regla de correspondencia"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Correspondence Rules"
+msgstr "Reglas de correspondencia"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__mapping_id
+msgid "Correspondence mapping to which this rule belongs."
+msgstr "Correspondencia a la que pertenece esta regla."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule_line__rule_id
+msgid "Correspondence rule to which this line belongs."
+msgstr "Regla de correspondencia a la que pertenece esta línea."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__country_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Country"
+msgstr "País"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__country_id
+msgid "Country associated with the scheme, when applicable."
+msgstr "País asociado al esquema, cuando corresponda."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__create_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__create_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__create_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__create_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__create_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__create_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__create_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__create_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__create_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__create_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__create_date
+msgid "Created on"
+msgstr "Fecha de creación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0811
+msgid "Crop and livestock production"
+msgstr "Producción agrícola y ganadera"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0612
+msgid "Database and network design and administration"
+msgstr "Diseño y administración de bases de datos y redes"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__valid_from
+msgid "Date from which the edition became applicable."
+msgstr "Fecha desde la que empezó a aplicarse la edición."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__publication_date
+msgid "Date on which the edition was officially published."
+msgstr "Fecha de publicación oficial de la edición."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Dates"
+msgstr "Fechas"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__description
+msgid "Definition and explanatory notes for this category."
+msgstr "Definición y notas explicativas de esta categoría."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+msgid "Definition and explanatory notes..."
+msgstr "Definición y notas explicativas..."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0911
+msgid "Dental studies"
+msgstr "Estudios de odontología"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__level
+msgid "Depth in the classification hierarchy, starting at zero."
+msgstr "Profundidad en la jerarquía de clasificación, comenzando en cero."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Describe the conditions for applying this rule..."
+msgstr "Describa las condiciones de aplicación de esta regla..."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__description
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__description
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__description
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Description of the classification scheme..."
+msgstr "Descripción del esquema de clasificación..."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Description of the correspondence mapping..."
+msgstr "Descripción de la correspondencia..."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__name
+msgid "Descriptive name of the classification edition."
+msgstr "Nombre descriptivo de la edición de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__name
+msgid "Descriptive name of the correspondence mapping."
+msgstr "Nombre descriptivo de la correspondencia."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__dimension
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Dimension"
+msgstr "Dimensión"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__display_name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__display_name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__display_name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__display_name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__display_name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__sequence
+msgid "Display order of categories within the classification."
+msgstr "Orden de presentación de las categorías dentro de la clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__sequence
+msgid "Display order of rules within the mapping."
+msgstr "Orden de presentación de las reglas dentro de la correspondencia."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule_line__sequence
+msgid "Display order within the rule."
+msgstr "Orden de presentación dentro de la regla."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_8
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_8
+msgid "Doctoral or equivalent level"
+msgstr "Doctorado o equivalente"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__attachment_id
+msgid "Document containing the original correspondence data."
+msgstr "Documento que contiene los datos originales de la correspondencia."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Documentation"
+msgstr "Documentación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1011
+msgid "Domestic services"
+msgstr "Servicios domésticos"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_edition__state__draft
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_mapping__state__draft
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__state__draft
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_0
+msgid "Early childhood education"
+msgstr "Educación de la primera infancia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_01
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_010
+msgid "Early childhood educational development"
+msgstr "Desarrollo educativo de la primera infancia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0532
+msgid "Earth sciences"
+msgstr "Ciencias de la Tierra"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0311
+msgid "Economics"
+msgstr "Economía"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__edition_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+msgid "Edition"
+msgstr "Edición"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__edition_count
+msgid "Edition count"
+msgstr "Número de ediciones"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__edition_ids
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Editions"
+msgstr "Ediciones"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__edition_ids
+msgid "Editions belonging to this classification scheme."
+msgstr "Ediciones pertenecientes a este esquema de clasificación."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_01
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_011
+msgid "Education"
+msgstr "Educación"
+
+#. module: education_classification
+#: model:ir.model,name:education_classification.model_education_classification_edition
+msgid "Education Classification Edition"
+msgstr "Edición de clasificación educativa"
+
+#. module: education_classification
+#: model:ir.model,name:education_classification.model_education_classification_item
+msgid "Education Classification Item"
+msgstr "Categoría de clasificación educativa"
+
+#. module: education_classification
+#: model:res.groups,name:education_classification.group_education_classification_manager
+msgid "Education Classification Manager"
+msgstr "Responsable de clasificaciones educativas"
+
+#. module: education_classification
+#: model:ir.model,name:education_classification.model_education_classification_mapping
+msgid "Education Classification Mapping"
+msgstr "Correspondencia entre clasificaciones educativas"
+
+#. module: education_classification
+#: model:ir.model,name:education_classification.model_education_classification_rule
+msgid "Education Classification Mapping Rule"
+msgstr "Regla de correspondencia entre clasificaciones educativas"
+
+#. module: education_classification
+#: model:ir.model,name:education_classification.model_education_classification_rule_line
+msgid "Education Classification Rule Line"
+msgstr "Línea de regla de clasificación educativa"
+
+#. module: education_classification
+#: model:ir.model,name:education_classification.model_education_classification_scheme
+msgid "Education Classification Scheme"
+msgstr "Esquema de clasificación educativa"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0119
+msgid "Education not elsewhere classified"
+msgstr "Educación no clasificada en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0110
+msgid "Education not further defined"
+msgstr "Educación sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0111
+msgid "Education science"
+msgstr "Ciencias de la educación"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_scheme__dimension__a
+msgid "Educational Attainment"
+msgstr "Nivel de formación alcanzado"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_scheme__dimension__p
+msgid "Educational Programmes"
+msgstr "Programas educativos"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__dimension
+msgid "Educational aspect classified: programmes, attainment, or fields."
+msgstr "Aspecto educativo clasificado: programas, nivel alcanzado o campos."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0713
+msgid "Electricity and energy"
+msgstr "Electricidad y energía"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0714
+msgid "Electronics and automation"
+msgstr "Electrónica y automatización"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_071
+msgid "Engineering and engineering trades"
+msgstr "Ingeniería y profesiones afines"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0719
+msgid "Engineering and engineering trades not elsewhere classified"
+msgstr "Ingeniería y profesiones afines no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0710
+msgid "Engineering and engineering trades not further defined"
+msgstr "Ingeniería y profesiones afines sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_07
+msgid "Engineering, manufacturing and construction"
+msgstr "Ingeniería, industria y construcción"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_079
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0799
+msgid "Engineering, manufacturing and construction not elsewhere classified"
+msgstr "Ingeniería, industria y construcción no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_070
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0700
+msgid "Engineering, manufacturing and construction not further defined"
+msgstr "Ingeniería, industria y construcción sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_052
+msgid "Environment"
+msgstr "Medio ambiente"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0529
+msgid "Environment not elsewhere classified"
+msgstr "Medio ambiente no clasificado en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0520
+msgid "Environment not further defined"
+msgstr "Medio ambiente sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0712
+msgid "Environmental protection technology"
+msgstr "Tecnología de protección medioambiental"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0521
+msgid "Environmental sciences"
+msgstr "Ciencias ambientales"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__relation_type__exact
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Exact Match"
+msgstr "Correspondencia exacta"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__external_url
+msgid "External URL"
+msgstr "URL externa"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0212
+msgid "Fashion, interior and industrial design"
+msgstr "Diseño de moda, interiores e industrial"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_99
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_999
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_9999
+msgid "Field unknown"
+msgstr "Campo desconocido"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Fields"
+msgstr "Campos"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_scheme__dimension__f
+msgid "Fields of Education and Training"
+msgstr "Campos de educación y formación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0412
+msgid "Finance, banking and insurance"
+msgstr "Finanzas, banca y seguros"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0213
+msgid "Fine arts"
+msgstr "Bellas artes"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_645
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_655
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_665
+msgid "First degree (3-4 years)"
+msgstr "Primer título (3-4 años)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_083
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0831
+msgid "Fisheries"
+msgstr "Pesca"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0721
+msgid "Food processing"
+msgstr "Elaboración de alimentos"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_082
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0821
+msgid "Forestry"
+msgstr "Silvicultura"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_24
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_34
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_44
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_54
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_24
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_34
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_44
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_54
+msgid "General"
+msgstr "General"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_00
+msgid "Generic programmes and qualifications"
+msgstr "Programas y cualificaciones genéricos"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_009
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0099
+msgid "Generic programmes and qualifications not elsewhere classified"
+msgstr "Programas y cualificaciones genéricos no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_000
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0000
+msgid "Generic programmes and qualifications not further defined"
+msgstr "Programas y cualificaciones genéricos sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__geographical_area
+msgid "Geographical Area"
+msgstr "Área geográfica"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__geographical_area
+msgid "Geographical area covered by the classification scheme."
+msgstr "Área geográfica cubierta por el esquema de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__scope
+msgid "Geographical scope of the classification scheme."
+msgstr "Ámbito geográfico del esquema de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1012
+msgid "Hair and beauty services"
+msgstr "Servicios de peluquería y estética"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0214
+msgid "Handicrafts"
+msgstr "Artesanía"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_091
+msgid "Health"
+msgstr "Salud"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_09
+msgid "Health and welfare"
+msgstr "Salud y bienestar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_099
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0999
+msgid "Health and welfare not elsewhere classified"
+msgstr "Salud y bienestar no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_090
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0900
+msgid "Health and welfare not further defined"
+msgstr "Salud y bienestar sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0919
+msgid "Health not elsewhere classified"
+msgstr "Salud no clasificada en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0910
+msgid "Health not further defined"
+msgstr "Salud sin especificar"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Hierarchy"
+msgstr "Jerarquía"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__level
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+msgid "Hierarchy Level"
+msgstr "Nivel jerárquico"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0222
+msgid "History and archaeology"
+msgstr "Historia y arqueología"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0812
+msgid "Horticulture"
+msgstr "Horticultura"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1013
+msgid "Hotel, restaurants and catering"
+msgstr "Hostelería, restauración y servicios de comidas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_022
+msgid "Humanities (except languages)"
+msgstr "Humanidades (excepto idiomas)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0229
+msgid "Humanities (except languages) not elsewhere classified"
+msgstr "Humanidades (excepto idiomas) no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0220
+msgid "Humanities (except languages) not further defined"
+msgstr "Humanidades (excepto idiomas) sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_102
+msgid "Hygiene and occupational health services"
+msgstr "Servicios de higiene y salud laboral"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1029
+msgid "Hygiene and occupational health services not elsewhere classified"
+msgstr "Servicios de higiene y salud laboral no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1020
+msgid "Hygiene and occupational health services not further defined"
+msgstr "Servicios de higiene y salud laboral sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__id
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__id
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__id
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__id
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__id
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__id
+msgid "ID"
+msgstr "ID"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "ISCED"
+msgstr "CINE"
+
+#. module: education_classification
+#: model:education.classification.edition,name:education_classification.edition_isced_a_2011
+msgid "ISCED-A 2011"
+msgstr "ISCED-A 2011"
+
+#. module: education_classification
+#: model:education.classification.edition,name:education_classification.edition_isced_f_2013
+msgid "ISCED-F 2013"
+msgstr "ISCED-F 2013"
+
+#. module: education_classification
+#: model:education.classification.edition,name:education_classification.edition_isced_p_2011
+msgid "ISCED-P 2011"
+msgstr "ISCED-P 2011"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Identification"
+msgstr "Identificación"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__active
+msgid "Inactive categories are hidden but retained for historical use."
+msgstr "Las categorías inactivas se ocultan, pero se conservan para su uso histórico."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__active
+msgid "Inactive editions are hidden but remain available for historical use."
+msgstr ""
+"Las ediciones inactivas se ocultan, pero siguen disponibles para su uso "
+"histórico."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__active
+msgid "Inactive schemes are hidden but retained for historical use."
+msgstr "Los esquemas inactivos se ocultan, pero se conservan para su uso histórico."
+
+#. module: education_classification
+#: model:education.classification.item,description:education_classification.item_isced_a_2011_100
+msgid ""
+"Including recognised successful completion of a lower secondary programme "
+"insufficient for level completion or partial level completion."
+msgstr ""
+"Incluye la superación reconocida de un programa de educación secundaria "
+"inferior insuficiente para completar el nivel o para completarlo "
+"parcialmente."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule_line__side
+msgid "Indicates whether the category is a source or target."
+msgstr "Indica si la categoría corresponde al origen o al destino."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_06
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_061
+msgid "Information and Communication Technologies (ICTs)"
+msgstr "Tecnologías de la Información y la Comunicación (TIC)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0619
+msgid ""
+"Information and Communication Technologies (ICTs) not elsewhere classified"
+msgstr ""
+"Tecnologías de la Información y la Comunicación (TIC) no clasificadas en "
+"otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0610
+msgid "Information and Communication Technologies (ICTs) not further defined"
+msgstr "Tecnologías de la Información y la Comunicación (TIC) sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_541
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_551
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_641
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_651
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_661
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_741
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_751
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_761
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_841
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_851
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_861
+msgid "Insufficient for level completion"
+msgstr "Insuficiente para completar el nivel"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_341
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_351
+msgid ""
+"Insufficient for level completion or partial level completion, without "
+"direct access to tertiary education"
+msgstr ""
+"Insuficiente para completar o completar parcialmente el nivel, sin acceso "
+"directo a la educación terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_241
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_251
+msgid ""
+"Insufficient for level completion or partial level completion, without "
+"direct access to upper secondary education"
+msgstr ""
+"Insuficiente para completar o completar parcialmente el nivel, sin acceso "
+"directo a la educación secundaria superior"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_441
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_451
+msgid ""
+"Insufficient for level completion, without direct access to tertiary "
+"education"
+msgstr ""
+"Insuficiente para completar el nivel, sin acceso directo a la educación "
+"terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_068
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0688
+msgid ""
+"Inter-disciplinary programmes and qualifications involving Information and "
+"Communication Technologies (ICTs)"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen Tecnologías de "
+"la Información y la Comunicación (TIC)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_088
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0888
+msgid ""
+"Inter-disciplinary programmes and qualifications involving agriculture, "
+"forestry, fisheries and veterinary"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen agricultura, "
+"silvicultura, pesca y veterinaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_028
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0288
+msgid ""
+"Inter-disciplinary programmes and qualifications involving arts and "
+"humanities"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen artes y "
+"humanidades"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_048
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0488
+msgid ""
+"Inter-disciplinary programmes and qualifications involving business, "
+"administration and law"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen administración "
+"de empresas y derecho"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_018
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0188
+msgid "Inter-disciplinary programmes and qualifications involving education"
+msgstr "Programas y cualificaciones interdisciplinarios que incluyen educación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_078
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0788
+msgid ""
+"Inter-disciplinary programmes and qualifications involving engineering, "
+"manufacturing and construction"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen ingeniería, "
+"industria y construcción"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_098
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0988
+msgid ""
+"Inter-disciplinary programmes and qualifications involving health and "
+"welfare"
+msgstr "Programas y cualificaciones interdisciplinarios que incluyen salud y bienestar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_058
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0588
+msgid ""
+"Inter-disciplinary programmes and qualifications involving natural sciences,"
+" mathematics and statistics"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen ciencias "
+"naturales, matemáticas y estadística"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_108
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1088
+msgid "Inter-disciplinary programmes and qualifications involving services"
+msgstr "Programas y cualificaciones interdisciplinarios que incluyen servicios"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_038
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0388
+msgid ""
+"Inter-disciplinary programmes and qualifications involving social sciences, "
+"journalism and information"
+msgstr ""
+"Programas y cualificaciones interdisciplinarios que incluyen ciencias "
+"sociales, periodismo e información"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_scheme__scope__international
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "International"
+msgstr "Internacional"
+
+#. module: education_classification
+#: model:education.classification.scheme,name:education_classification.scheme_isced_a
+msgid ""
+"International Standard Classification of Education - Educational Attainment"
+msgstr ""
+"Clasificación Internacional Normalizada de la Educación - Nivel de formación "
+"alcanzado"
+
+#. module: education_classification
+#: model:education.classification.scheme,name:education_classification.scheme_isced_f
+msgid ""
+"International Standard Classification of Education - Fields of Education and"
+" Training"
+msgstr ""
+"Clasificación Internacional Normalizada de la Educación - Campos de "
+"educación y formación"
+
+#. module: education_classification
+#: model:education.classification.scheme,name:education_classification.scheme_isced_p
+msgid "International Standard Classification of Education - Programmes"
+msgstr "Clasificación Internacional Normalizada de la Educación - Programas educativos"
+
+#. module: education_classification
+#: model:education.classification.scheme,description:education_classification.scheme_isced_a
+msgid ""
+"International classification of educational attainment based on completed "
+"education and recognised qualifications."
+msgstr ""
+"Clasificación internacional del nivel de formación alcanzado, basada en los "
+"estudios finalizados y las cualificaciones reconocidas."
+
+#. module: education_classification
+#: model:education.classification.scheme,description:education_classification.scheme_isced_p
+msgid ""
+"International classification of educational programmes by level and "
+"programme characteristics."
+msgstr ""
+"Clasificación internacional de los programas educativos según el nivel y las "
+"características del programa."
+
+#. module: education_classification
+#: model:education.classification.scheme,description:education_classification.scheme_isced_f
+msgid ""
+"International classification of fields of education and training according "
+"to their subject content."
+msgstr ""
+"Clasificación internacional de los campos de educación y formación según su "
+"contenido temático."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_scheme.py:0
+msgid ""
+"International classification schemes cannot have a specific geographical "
+"assignment."
+msgstr ""
+"Los esquemas de clasificación internacionales no pueden tener una asignación "
+"geográfica específica."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__item_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+msgid "Item"
+msgstr "Categoría"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__item_count
+msgid "Item count"
+msgstr "Número de categorías"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__item_ids
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+msgid "Items"
+msgstr "Categorías"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_032
+msgid "Journalism and information"
+msgstr "Periodismo e información"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0329
+msgid "Journalism and information not elsewhere classified"
+msgstr "Periodismo e información no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0320
+msgid "Journalism and information not further defined"
+msgstr "Periodismo e información sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0321
+msgid "Journalism and reporting"
+msgstr "Periodismo y reporterismo"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0231
+msgid "Language acquisition"
+msgstr "Aprendizaje de idiomas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_023
+msgid "Languages"
+msgstr "Idiomas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0239
+msgid "Languages not elsewhere classified"
+msgstr "Idiomas no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0230
+msgid "Languages not further defined"
+msgstr "Idiomas sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__write_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__write_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__write_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__write_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__write_uid
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__write_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__write_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__write_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__write_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__write_date
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__write_date
+msgid "Last Updated on"
+msgstr "Fecha de la última actualización"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__valid_to
+msgid "Last date of applicability, if known."
+msgstr "Última fecha de aplicación, si se conoce."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_042
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0421
+msgid "Law"
+msgstr "Derecho"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+msgid "Leaf Categories"
+msgstr "Categorías hoja"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_0
+msgid "Less than primary education"
+msgstr "Nivel inferior a la educación primaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_344
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_354
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_444
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_454
+msgid "Level completion, with direct access to tertiary education"
+msgstr "Finalización del nivel, con acceso directo a la educación terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_244
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_254
+msgid "Level completion, with direct access to upper secondary education"
+msgstr "Finalización del nivel, con acceso directo a la educación secundaria superior"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_343
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_353
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_443
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_453
+msgid "Level completion, without direct access to tertiary education"
+msgstr "Finalización del nivel, sin acceso directo a la educación terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_243
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_253
+msgid "Level completion, without direct access to upper secondary education"
+msgstr "Finalización del nivel, sin acceso directo a la educación secundaria superior"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0322
+msgid "Library, information and archival studies"
+msgstr "Biblioteconomía, documentación y archivística"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__line_ids
+msgid "Lines"
+msgstr "Líneas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_002
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0021
+msgid "Literacy and numeracy"
+msgstr "Alfabetización y aritmética básica"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0232
+msgid "Literature and linguistics"
+msgstr "Literatura y lingüística"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_746
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_756
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_766
+msgid "Long first degree (at least 5 years)"
+msgstr "Primer título de larga duración (al menos 5 años)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_646
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_656
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_666
+msgid "Long first degree (more than 4 years)"
+msgstr "Primer título de larga duración (más de 4 años)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_2
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_2
+msgid "Lower secondary education"
+msgstr "Educación secundaria inferior"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage categories"
+msgstr "Gestionar categorías"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage correspondences between classification editions."
+msgstr "Gestionar correspondencias entre ediciones de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage editions"
+msgstr "Gestionar ediciones"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage editions, versions, and their validity periods."
+msgstr "Gestionar ediciones, versiones y sus períodos de validez."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage educational classification schemes and their authorities."
+msgstr "Gestionar esquemas de clasificación educativa y sus organismos responsables."
+
+#. module: education_classification
+#: model:res.groups,comment:education_classification.group_education_classification_manager
+msgid ""
+"Manage educational classifications, editions, categories, and mappings."
+msgstr ""
+"Gestionar clasificaciones educativas, ediciones, categorías y "
+"correspondencias."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage hierarchical categories within classification editions."
+msgstr "Gestionar categorías jerárquicas dentro de las ediciones de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage mappings"
+msgstr "Gestionar correspondencias"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage rule lines"
+msgstr "Gestionar líneas de reglas"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage rules"
+msgstr "Gestionar reglas"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage schemes"
+msgstr "Gestionar esquemas"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage simple, composite, conditional, and unmatched rules."
+msgstr "Gestionar reglas simples, compuestas, condicionales y sin correspondencia."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Manage the source and target categories of mapping rules."
+msgstr "Gestionar las categorías de origen y destino de las reglas de correspondencia."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0413
+msgid "Management and administration"
+msgstr "Dirección y administración"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_072
+msgid "Manufacturing and processing"
+msgstr "Industria y transformación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0729
+msgid "Manufacturing and processing not elsewhere classified"
+msgstr "Industria y transformación no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0720
+msgid "Manufacturing and processing not further defined"
+msgstr "Industria y transformación sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__mapping_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Mapping"
+msgstr "Correspondencia"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Mapping Rule Lines"
+msgstr "Líneas de reglas de correspondencia"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.res_config_settings_view_form
+msgid "Mapping Rules"
+msgstr "Reglas de correspondencia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0414
+msgid "Marketing and advertising"
+msgstr "Mercadotecnia y publicidad"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_7
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_7
+msgid "Master’s or equivalent level"
+msgstr "Máster o equivalente"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0722
+msgid "Materials (glass, paper, plastic and wood)"
+msgstr "Materiales (vidrio, papel, plástico y madera)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0541
+msgid "Mathematics"
+msgstr "Matemáticas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_054
+msgid "Mathematics and statistics"
+msgstr "Matemáticas y estadística"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0540
+msgid "Mathematics and statistics not further defined"
+msgstr "Matemáticas y estadística sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0715
+msgid "Mechanics and metal trades"
+msgstr "Mecánica y metalurgia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0914
+msgid "Medical diagnostic and treatment technology"
+msgstr "Tecnología de diagnóstico y tratamiento médico"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0912
+msgid "Medicine"
+msgstr "Medicina"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1031
+msgid "Military and defence"
+msgstr "Formación militar y defensa"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0724
+msgid "Mining and extraction"
+msgstr "Minería y extracción"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0716
+msgid "Motor vehicles, ships and aircraft"
+msgstr "Vehículos de motor, barcos y aeronaves"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0215
+msgid "Music and performing arts"
+msgstr "Música y artes escénicas"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__name
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__name
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_form
+msgid "Name"
+msgstr "Nombre"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__relation_type__narrower
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Narrower Match"
+msgstr "Correspondencia más específica"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_scheme__scope__national
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "National"
+msgstr "Nacional"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0522
+msgid "Natural environments and wildlife"
+msgstr "Entornos naturales y fauna silvestre"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_05
+msgid "Natural sciences, mathematics and statistics"
+msgstr "Ciencias naturales, matemáticas y estadística"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_059
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0599
+msgid "Natural sciences, mathematics and statistics not elsewhere classified"
+msgstr "Ciencias naturales, matemáticas y estadística no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_050
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0500
+msgid "Natural sciences, mathematics and statistics not further defined"
+msgstr "Ciencias naturales, matemáticas y estadística sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_01
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_010
+msgid "Never attended an education programme"
+msgstr "Nunca ha cursado un programa educativo"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid "New mapping rule"
+msgstr "Nueva regla de correspondencia"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule_line.py:0
+msgid "New rule line"
+msgstr "Nueva línea de regla"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__rule_type__no_match
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "No Match"
+msgstr "Sin correspondencia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_9
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_99
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_999
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_9
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_99
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_999
+msgid "Not elsewhere classified"
+msgstr "No clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_540
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_550
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_560
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_640
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_650
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_660
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_740
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_750
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_760
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_840
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_850
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_860
+msgid "Not further defined"
+msgstr "Sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__notes
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0913
+msgid "Nursing and midwifery"
+msgstr "Enfermería y obstetricia"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_mapping__state__obsolete
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__state__obsolete
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Obsolete"
+msgstr "Obsoleto"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1022
+msgid "Occupational health and safety"
+msgstr "Salud y seguridad laboral"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__source_url
+msgid "Official URL of the correspondence documentation."
+msgstr "URL oficial de la documentación de la correspondencia."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__code
+msgid "Official category code within the classification edition."
+msgstr "Código oficial de la categoría dentro de la edición de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__source_url
+msgid "Official documentation URL for this edition."
+msgstr "URL de la documentación oficial de esta edición."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__version
+msgid "Official edition identifier (e.g., 2011, 2013, or 2014)."
+msgstr "Identificador oficial de la edición (p. ej., 2011, 2013 o 2014)."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__name
+msgid "Official name of the classification category."
+msgstr "Nombre oficial de la categoría de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__name
+msgid "Official name of the classification scheme."
+msgstr "Nombre oficial del esquema de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__external_url
+msgid "Official reference URL for this category."
+msgstr "URL oficial de referencia de esta categoría."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__website
+msgid "Official website of the responsible organisation."
+msgstr "Sitio web oficial del organismo responsable."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_form
+msgid "Ordering"
+msgstr "Ordenación"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__publisher_id
+msgid "Organisation responsible for publishing the correspondence."
+msgstr "Organismo responsable de publicar la correspondencia."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__authority_id
+msgid "Organisation responsible for the classification scheme."
+msgstr "Organismo responsable del esquema de clasificación."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_56
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_66
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_76
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_86
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_66
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_76
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_86
+msgid "Orientation unspecified"
+msgstr "Orientación sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_scheme__scope__other
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Other"
+msgstr "Otro"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__parent_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+msgid "Parent"
+msgstr "Categoría padre"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__parent_path
+msgid "Parent Path"
+msgstr "Ruta jerárquica"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_item.py:0
+msgid ""
+"Parent and child categories must belong to the same classification edition."
+msgstr ""
+"Las categorías padre e hija deben pertenecer a la misma edición de "
+"clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__parent_id
+msgid "Parent category within the same classification edition."
+msgstr "Categoría padre dentro de la misma edición de clasificación."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_342
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_352
+msgid "Partial level completion, without direct access to tertiary education"
+msgstr "Finalización parcial del nivel, sin acceso directo a la educación terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_242
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_252
+msgid ""
+"Partial level completion, without direct access to upper secondary education"
+msgstr ""
+"Finalización parcial del nivel, sin acceso directo a la educación secundaria "
+"superior"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_101
+msgid "Personal services"
+msgstr "Servicios personales"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1019
+msgid "Personal services not elsewhere classified"
+msgstr "Servicios personales no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1010
+msgid "Personal services not further defined"
+msgstr "Servicios personales sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_003
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0031
+msgid "Personal skills and development"
+msgstr "Competencias y desarrollo personal"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0916
+msgid "Pharmacy"
+msgstr "Farmacia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0223
+msgid "Philosophy and ethics"
+msgstr "Filosofía y ética"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_053
+msgid "Physical sciences"
+msgstr "Ciencias físicas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0539
+msgid "Physical sciences not elsewhere classified"
+msgstr "Ciencias físicas no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0530
+msgid "Physical sciences not further defined"
+msgstr "Ciencias físicas sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0533
+msgid "Physics"
+msgstr "Física"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0312
+msgid "Political sciences and civics"
+msgstr "Ciencias políticas y educación cívica"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_4
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_4
+msgid "Post-secondary non-tertiary education"
+msgstr "Educación postsecundaria no terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_02
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_020
+msgid "Pre-primary education"
+msgstr "Educación preprimaria"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__previous_edition_id
+msgid "Previous Edition"
+msgstr "Edición anterior"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__supersedes_id
+msgid "Previous correspondence mapping replaced by this version."
+msgstr "Correspondencia anterior sustituida por esta versión."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__previous_edition_id
+msgid "Previous edition of the same classification scheme."
+msgstr "Edición anterior del mismo esquema de clasificación."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_10
+msgid "Primary"
+msgstr "Primaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_1
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_100
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_1
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_10
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_100
+msgid "Primary education"
+msgstr "Educación primaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_65
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_75
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_85
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_65
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_75
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_85
+msgid "Professional"
+msgstr "Profesional"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Programmes"
+msgstr "Programas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1032
+msgid "Protection of persons and property"
+msgstr "Protección de personas y bienes"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0313
+msgid "Psychology"
+msgstr "Psicología"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Publication"
+msgstr "Publicación"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__publication_date
+msgid "Publication Date"
+msgstr "Fecha de publicación"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+msgid "Publication Year"
+msgstr "Año de publicación"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__state
+msgid "Publication status of the classification edition."
+msgstr "Estado de publicación de la edición de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_edition__state__published
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+msgid "Published"
+msgstr "Publicado"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__publisher_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+msgid "Publisher"
+msgstr "Organismo editor"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__description
+msgid "Purpose and scope of the classification scheme."
+msgstr "Finalidad y alcance del esquema de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__description
+msgid "Purpose and scope of the correspondence mapping."
+msgstr "Finalidad y alcance de la correspondencia."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+msgid "References"
+msgstr "Referencias"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__relation_type__related
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Related Match"
+msgstr "Correspondencia relacionada"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__relation_type
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Relation Type"
+msgstr "Tipo de relación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0221
+msgid "Religion and theology"
+msgstr "Religión y teología"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+msgid "Root Categories"
+msgstr "Categorías raíz"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__rule_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+msgid "Rule"
+msgstr "Regla"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Rule Categories"
+msgstr "Categorías de la regla"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Rule Category"
+msgstr "Categoría de la regla"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__rule_type
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Rule Type"
+msgstr "Tipo de regla"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule_line.py:0
+msgid "Rule line"
+msgstr "Línea de regla"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__rule_ids
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+msgid "Rules"
+msgstr "Reglas"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__rule_ids
+msgid "Rules defining correspondences between classification categories."
+msgstr "Reglas que definen las correspondencias entre categorías de clasificación."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid "Rules without a match cannot contain target categories."
+msgstr "Las reglas sin correspondencia no pueden contener categorías de destino."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid "Rules without a match cannot define a semantic relationship."
+msgstr "Las reglas sin correspondencia no pueden definir una relación semántica."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__scheme_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+msgid "Scheme"
+msgstr "Esquema"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__scope
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_scheme_search
+msgid "Scope"
+msgstr "Ámbito"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_647
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_657
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_667
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_747
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_757
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_767
+msgid ""
+"Second or further degree (following a Bachelor’s or equivalent programme)"
+msgstr "Segundo título o posterior (después de un programa de grado o equivalente)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_748
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_758
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_768
+msgid ""
+"Second or further degree (following a Master’s or equivalent programme)"
+msgstr "Segundo título o posterior (después de un programa de máster o equivalente)"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0415
+msgid "Secretarial and office work"
+msgstr "Secretariado y trabajo administrativo"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_103
+msgid "Security services"
+msgstr "Servicios de seguridad"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1039
+msgid "Security services not elsewhere classified"
+msgstr "Servicios de seguridad no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1030
+msgid "Security services not further defined"
+msgstr "Servicios de seguridad sin especificar"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__relation_type
+msgid "Semantic relationship between source and target categories."
+msgstr "Relación semántica entre las categorías de origen y destino."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_item__sequence
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__sequence
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_10
+msgid "Services"
+msgstr "Servicios"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_109
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1099
+msgid "Services not elsewhere classified"
+msgstr "Servicios no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_100
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1000
+msgid "Services not further defined"
+msgstr "Servicios sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_5
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_5
+msgid "Short-cycle tertiary education"
+msgstr "Educación terciaria de ciclo corto"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule_line__side
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+msgid "Side"
+msgstr "Lado"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__rule_type__simple
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Simple"
+msgstr "Simple"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid ""
+"Simple correspondence rules require exactly one source and one target "
+"category."
+msgstr ""
+"Las reglas de correspondencia simples requieren exactamente una categoría de "
+"origen y una de destino."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_031
+msgid "Social and behavioural sciences"
+msgstr "Ciencias sociales y del comportamiento"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0319
+msgid "Social and behavioural sciences not elsewhere classified"
+msgstr "Ciencias sociales y del comportamiento no clasificadas en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0310
+msgid "Social and behavioural sciences not further defined"
+msgstr "Ciencias sociales y del comportamiento sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_03
+msgid "Social sciences, journalism and information"
+msgstr "Ciencias sociales, periodismo e información"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_039
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0399
+msgid "Social sciences, journalism and information not elsewhere classified"
+msgstr "Ciencias sociales, periodismo e información no clasificados en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_030
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0300
+msgid "Social sciences, journalism and information not further defined"
+msgstr "Ciencias sociales, periodismo e información sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0923
+msgid "Social work and counselling"
+msgstr "Trabajo social y orientación"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0314
+msgid "Sociology and cultural studies"
+msgstr "Sociología y estudios culturales"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0613
+msgid "Software and applications development and analysis"
+msgstr "Desarrollo y análisis de software y aplicaciones"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_02
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_020
+msgid "Some early childhood education"
+msgstr "Educación de la primera infancia incompleta"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_03
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_030
+msgid "Some primary education (without level completion)"
+msgstr "Educación primaria incompleta (sin finalizar el nivel)"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule_line__side__source
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+msgid "Source"
+msgstr "Origen"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__source_checksum
+msgid "Source Checksum"
+msgstr "Suma de comprobación del origen"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__source_edition_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+msgid "Source Edition"
+msgstr "Edición de origen"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__source_url
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__source_url
+msgid "Source URL"
+msgstr "URL de origen"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__source_version
+msgid "Source Version"
+msgstr "Versión de origen"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__line_ids
+msgid "Source and target categories involved in this rule."
+msgstr "Categorías de origen y destino incluidas en esta regla."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping.py:0
+msgid "Source and target classification editions must be different."
+msgstr "Las ediciones de clasificación de origen y destino deben ser distintas."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule_line.py:0
+msgid "Source categories must belong to the mapping's source edition."
+msgstr ""
+"Las categorías de origen deben pertenecer a la edición de origen de la "
+"correspondencia."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1014
+msgid "Sports"
+msgstr "Deportes"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__state
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__state
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_rule__state
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "State"
+msgstr "Estado"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0542
+msgid "Statistics"
+msgstr "Estadística"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__rule_type
+msgid "Structure of the correspondence between categories."
+msgstr "Estructura de la correspondencia entre categorías."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping.py:0
+msgid "Successor mappings must reference the same source and target editions."
+msgstr ""
+"Las correspondencias sucesoras deben referirse a las mismas ediciones de "
+"origen y destino."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_844
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_854
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_864
+msgid "Sufficient for completion of level"
+msgstr "Suficiente para completar el nivel"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_544
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_554
+msgid "Sufficient for level completion"
+msgstr "Suficiente para completar el nivel"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_344
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_354
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_444
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_454
+msgid ""
+"Sufficient for level completion, with direct access to tertiary education"
+msgstr ""
+"Suficiente para completar el nivel, con acceso directo a la educación "
+"terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_244
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_254
+msgid ""
+"Sufficient for level completion, with direct access to upper secondary "
+"education"
+msgstr ""
+"Suficiente para completar el nivel, con acceso directo a la educación "
+"secundaria superior"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_343
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_353
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_443
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_453
+msgid ""
+"Sufficient for level completion, without direct access to tertiary education"
+msgstr ""
+"Suficiente para completar el nivel, sin acceso directo a la educación "
+"terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_243
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_253
+msgid ""
+"Sufficient for level completion, without direct access to upper secondary "
+"education"
+msgstr ""
+"Suficiente para completar el nivel, sin acceso directo a la educación "
+"secundaria superior"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_342
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_352
+msgid ""
+"Sufficient for partial level completion, without direct access to tertiary "
+"education"
+msgstr ""
+"Suficiente para completar parcialmente el nivel, sin acceso directo a la "
+"educación terciaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_242
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_252
+msgid ""
+"Sufficient for partial level completion, without direct access to upper "
+"secondary education"
+msgstr ""
+"Suficiente para completar parcialmente el nivel, sin acceso directo a la "
+"educación secundaria superior"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_edition__state__superseded
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+msgid "Superseded"
+msgstr "Sustituido"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping.py:0
+msgid ""
+"Superseded mappings must reference the same source and target editions."
+msgstr ""
+"Las correspondencias sustituidas deben referirse a las mismas ediciones de "
+"origen y destino."
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__supersedes_id
+msgid "Supersedes"
+msgstr "Sustituye a"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule_line__side__target
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_line_search
+msgid "Target"
+msgstr "Destino"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_mapping__target_edition_id
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+msgid "Target Edition"
+msgstr "Edición de destino"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule_line.py:0
+msgid "Target categories must belong to the mapping's target edition."
+msgstr ""
+"Las categorías de destino deben pertenecer a la edición de destino de la "
+"correspondencia."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0114
+msgid "Teacher training with subject specialisation"
+msgstr "Formación de docentes con especialización por materias"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0113
+msgid "Teacher training without subject specialisation"
+msgstr "Formación de docentes sin especialización por materias"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_form
+msgid "Technical"
+msgstr "Técnica"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__parent_path
+msgid "Technical path used for hierarchical searches."
+msgstr "Ruta técnica utilizada para búsquedas jerárquicas."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0723
+msgid "Textiles (clothes, footwear and leather)"
+msgstr "Textiles (ropa, calzado y cuero)"
+
+#. module: education_classification
+#: model:ir.model.constraint,message:education_classification.constraint_education_classification_rule_line_rule_side_item_unique
+msgid "The category cannot be repeated on the same side of a rule."
+msgstr "No se puede repetir una categoría en el mismo lado de una regla."
+
+#. module: education_classification
+#: model:ir.model.constraint,message:education_classification.constraint_education_classification_item_edition_code_unique
+msgid "The category code must be unique within its edition."
+msgstr "El código de categoría debe ser único dentro de su edición."
+
+#. module: education_classification
+#: model:ir.model.constraint,message:education_classification.constraint_education_classification_scheme_code_unique
+msgid "The classification scheme code must be unique."
+msgstr "El código del esquema de clasificación debe ser único."
+
+#. module: education_classification
+#: model:ir.model.constraint,message:education_classification.constraint_education_classification_edition_scheme_version_unique
+msgid "The edition version must be unique within its scheme."
+msgstr "La versión de la edición debe ser única dentro de su esquema."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_edition.py:0
+msgid "The previous edition must belong to the same classification scheme."
+msgstr "La edición anterior debe pertenecer al mismo esquema de clasificación."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_edition.py:0
+msgid "The validity end date cannot be earlier than the start date."
+msgstr "La fecha de fin de validez no puede ser anterior a la fecha de inicio."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0915
+msgid "Therapy and rehabilitation"
+msgstr "Terapia y rehabilitación"
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_edition_act_window
+msgid "There are no classification editions yet."
+msgstr "Todavía no hay ediciones de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_item_act_window
+msgid "There are no classification items yet."
+msgstr "Todavía no hay categorías de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_mapping_act_window
+msgid "There are no classification mappings yet."
+msgstr "Todavía no hay correspondencias entre clasificaciones."
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_rule_line_act_window
+msgid "There are no classification rule lines yet."
+msgstr "Todavía no hay líneas de reglas de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_rule_act_window
+msgid "There are no classification rules yet."
+msgstr "Todavía no hay reglas de clasificación."
+
+#. module: education_classification
+#: model_terms:ir.actions.act_window,help:education_classification.action_scheme_act_window
+msgid "There are no classification schemes yet."
+msgstr "Todavía no hay esquemas de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_item__child_count
+msgid "Total number of child items related to this item."
+msgstr "Número total de categorías hijas de esta categoría."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_edition__item_count
+msgid "Total number of classification editions items to the edition."
+msgstr "Número total de categorías pertenecientes a la edición de clasificación."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__edition_count
+msgid "Total number of classification editions related to the schema."
+msgstr "Número total de ediciones relacionadas con el esquema de clasificación."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0917
+msgid "Traditional and complementary medicine and therapy"
+msgstr "Medicina y terapias tradicionales y complementarias"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0112
+msgid "Training for pre-school teachers"
+msgstr "Formación de docentes de educación infantil"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_104
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1041
+msgid "Transport services"
+msgstr "Servicios de transporte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_1015
+msgid "Travel, tourism and leisure"
+msgstr "Viajes, turismo y ocio"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_mapping__state__review
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__state__review
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Under Review"
+msgstr "En revisión"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_scheme__code
+msgid "Unique scheme identifier (e.g., ISCED-P or CNED-A)."
+msgstr "Identificador único del esquema (p. ej., ISCED-P o CNED-A)."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_3
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_3
+msgid "Upper secondary education"
+msgstr "Educación secundaria superior"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__valid_from
+msgid "Valid From"
+msgstr "Válido desde"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__valid_to
+msgid "Valid To"
+msgstr "Válido hasta"
+
+#. module: education_classification
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_mapping__state__validated
+#: model:ir.model.fields.selection,name:education_classification.selection__education_classification_rule__state__validated
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_search
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_search
+msgid "Validated"
+msgstr "Validado"
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid "Validated correspondence rules require at least one source category."
+msgstr ""
+"Las reglas de correspondencia validadas requieren al menos una categoría de "
+"origen."
+
+#. module: education_classification
+#. odoo-python
+#: code:addons/education_classification/models/education_classification_mapping_rule.py:0
+msgid "Validated correspondence rules require at least one target category."
+msgstr ""
+"Las reglas de correspondencia validadas requieren al menos una categoría de "
+"destino."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_mapping_form
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_rule_form
+msgid "Validation"
+msgstr "Validación"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__state
+msgid "Validation status of the correspondence mapping."
+msgstr "Estado de validación de la correspondencia."
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_rule__state
+msgid "Validation status of the correspondence rule."
+msgstr "Estado de validación de la regla de correspondencia."
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_education_classification_edition_search
+msgid "Validity Year"
+msgstr "Año de validez"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_edition__version
+msgid "Version"
+msgstr "Versión"
+
+#. module: education_classification
+#: model:ir.model.fields,help:education_classification.field_education_classification_mapping__source_version
+msgid "Version or revision of the source document."
+msgstr "Versión o revisión del documento de origen."
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_084
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0841
+msgid "Veterinary"
+msgstr "Veterinaria"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_25
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_35
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_45
+#: model:education.classification.item,name:education_classification.item_isced_a_2011_55
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_25
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_35
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_45
+#: model:education.classification.item,name:education_classification.item_isced_p_2011_55
+msgid "Vocational"
+msgstr "Profesional"
+
+#. module: education_classification
+#: model:ir.model.fields,field_description:education_classification.field_education_classification_scheme__website
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_092
+msgid "Welfare"
+msgstr "Bienestar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0929
+msgid "Welfare not elsewhere classified"
+msgstr "Bienestar no clasificado en otra parte"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0920
+msgid "Welfare not further defined"
+msgstr "Bienestar sin especificar"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0416
+msgid "Wholesale and retail sales"
+msgstr "Comercio mayorista y minorista"
+
+#. module: education_classification
+#: model_terms:ir.ui.view,arch_db:education_classification.view_edication_classification_item_search
+msgid "With Children"
+msgstr "Con categorías hijas"
+
+#. module: education_classification
+#: model:education.classification.item,name:education_classification.item_isced_f_2013_0417
+msgid "Work skills"
+msgstr "Competencias laborales"

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="0">
+
+  <!-- VIEWS: "Scheme"
+
+    - Model·········: education.classification.scheme
+    - _rec_name·····: name
+    - Domain········: []
+    - Context·······: {}
+    - Parent menu ··: base.menu_custom
+    - View priority·: 16    Sequence····: 10
+    - Action help···: There are no classification schemes yet
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- List view for "education.classification.scheme" -->
+  <record id="view_education_classification_scheme_list" model="ir.ui.view">
+    <field name="name">view.education.classification.scheme.list</field>
+    <field name="model">education.classification.scheme</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <list string="Classification Schemes" create="1" delete="1" edit="1">
+        <field name="code" class="oe_field_code" />
+        <field name="name" class="oe_field_name" />
+        <field name="dimension" class="oe_field_dimension" />
+        <field name="scope" class="oe_field_scope" />
+        <field name="country_id" class="oe_field_country_id" optional="show" />
+        <field name="geographical_area" class="oe_field_geographical_area" optional="hide" />
+        <field name="authority_id" class="oe_field_authority_id" optional="hide" />
+        <field name="edition_count" class="oe_field_edition_count" readonly="1" />
+      </list>
+    </field>
+  </record>
+
+  <!-- Form view for "education.classification.scheme" -->
+  <record id="view_education_classification_scheme_form" model="ir.ui.view">
+    <field name="name">view.education.classification.scheme.form</field>
+    <field name="model">education.classification.scheme</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <form string="Classification Scheme" create="1" delete="1" edit="1">
+        <sheet>
+          <field name="id" invisible="1" />
+          <field name="active" class="oe_field_active" invisible="1" />
+
+          <div class="oe_button_box" name="button_box" />
+
+          <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True" />
+
+          <div class="oe_title">
+            <label for="name" class="oe_edit_only" />
+            <h1>
+              <field name="name" class="oe_field_name" placeholder="Name" />
+            </h1>
+          </div>
+
+          <group>
+            <group string="Classification">
+              <field name="code" class="oe_field_code" />
+              <field name="dimension" class="oe_field_dimension" />
+              <field name="scope" class="oe_field_scope" />
+              <field
+                name="country_id"
+                class="oe_field_country_id"
+                required="scope == 'national'"
+                invisible="scope == 'international' and not country_id"
+              />
+              <field
+                name="geographical_area"
+                class="oe_field_geographical_area"
+                required="scope == 'other'"
+                invisible="scope == 'international' and not geographical_area"
+              />
+            </group>
+
+            <group string="Authority">
+              <field name="authority_id" class="oe_field_authority_id" />
+              <field name="website" class="oe_field_website" widget="url" readonly="1" />
+              <field name="edition_count" class="oe_field_edition_count" readonly="1" />
+            </group>
+          </group>
+
+          <notebook>
+            <page string="Description" name="description">
+              <field
+                name="description"
+                class="oe_field_description"
+                nolabel="1"
+                placeholder="Description of the classification scheme..."
+              />
+            </page>
+
+            <page string="Editions" name="editions">
+              <field name="edition_ids" class="oe_field_edition_ids" nolabel="1">
+                <list string="Classification Editions">
+                  <field name="name" class="oe_field_name" />
+                  <field name="version" class="oe_field_version" />
+                  <field name="publication_date" class="oe_field_publication_date" optional="hide" />
+                  <field name="valid_from" class="oe_field_valid_from" optional="show" />
+                  <field name="valid_to" class="oe_field_valid_to" optional="hide" />
+                  <field
+                    name="state"
+                    class="oe_field_state"
+                    widget="badge"
+                    decoration-success="state == 'published'"
+                    decoration-warning="state == 'draft'"
+                    decoration-muted="state == 'superseded'"
+                  />
+                  <field name="active" class="oe_field_active" optional="hide" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Search view for "education.classification.scheme" -->
+  <record id="view_education_classification_scheme_search" model="ir.ui.view">
+    <field name="name">view.education.classification.scheme.search</field>
+    <field name="model">education.classification.scheme</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <search string="Classification Schemes">
+        <field name="code" />
+        <field name="name" />
+        <field name="dimension" />
+        <field name="scope" />
+        <field name="country_id" />
+        <field name="geographical_area" />
+        <field name="authority_id" />
+
+        <separator />
+
+        <filter name="scope_international" string="International" domain="[('scope', '=', 'international')]" />
+        <filter name="scope_national" string="National" domain="[('scope', '=', 'national')]" />
+        <filter name="scope_other" string="Other" domain="[('scope', '=', 'other')]" />
+
+        <separator />
+
+        <filter name="dimension_p" string="Programmes" domain="[('dimension', '=', 'p')]" />
+        <filter name="dimension_a" string="Attainment" domain="[('dimension', '=', 'a')]" />
+        <filter name="dimension_f" string="Fields" domain="[('dimension', '=', 'f')]" />
+
+        <separator />
+
+        <filter
+          name="inactive"
+          string="Archived"
+          domain="[('active', '=', False)]"
+          context="{'active_test': False}"
+        />
+
+        <group expand="1" string="Group By">
+          <filter name="group_by_scope" string="Scope" context="{'group_by': 'scope'}" />
+          <filter name="group_by_dimension" string="Dimension" context="{'group_by': 'dimension'}" />
+          <filter name="group_by_country_id" string="Country" context="{'group_by': 'country_id'}" />
+          <filter name="group_by_authority_id" string="Authority" context="{'group_by': 'authority_id'}" />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!-- Main window action for education.classification.scheme -->
+  <record id="action_scheme_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">Classification Schemes</field>
+    <field name="res_model">education.classification.scheme</field>
+    <field name="view_mode">list,form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field name="search_view_id" ref="view_education_classification_scheme_search" />
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Click to add a new classification scheme
+      </p>
+      <p>
+        There are no classification schemes yet.
+      </p>
+    </field>
+  </record>
+
+  <!-- Main menu for education.classification.scheme -->
+  <!--
+  <record id="menu_scheme" model="ir.ui.menu">
+    <field name="name">Classification Schemes</field>
+    <field name="sequence" eval="10" />
+    <field name="action" ref="action_scheme_act_window" />
+    <field name="parent_id" ref="base.menu_custom" />
+  </record>
+  -->
+
+</odoo>

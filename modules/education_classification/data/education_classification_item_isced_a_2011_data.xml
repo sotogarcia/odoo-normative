@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+
+  <!-- ISCED-A 2011: Educational Attainment
+       Official source: UNESCO ISCED 2011, Annex III, pages 71-72.
+       Each code is assigned to its official parent category.
+       Hierarchical levels and paths are calculated by Odoo.
+  -->
+
+  <!-- LEVEL 0: Less than primary education -->
+
+  <record id="item_isced_a_2011_0" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">0</field>
+    <field name="name">Less than primary education</field>
+  </record>
+
+  <record id="item_isced_a_2011_01" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">01</field>
+    <field name="name">Never attended an education programme</field>
+    <field name="parent_id" ref="item_isced_a_2011_0" />
+  </record>
+
+  <record id="item_isced_a_2011_010" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">010</field>
+    <field name="name">Never attended an education programme</field>
+    <field name="parent_id" ref="item_isced_a_2011_01" />
+  </record>
+
+  <record id="item_isced_a_2011_02" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">02</field>
+    <field name="name">Some early childhood education</field>
+    <field name="parent_id" ref="item_isced_a_2011_0" />
+  </record>
+
+  <record id="item_isced_a_2011_020" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">020</field>
+    <field name="name">Some early childhood education</field>
+    <field name="parent_id" ref="item_isced_a_2011_02" />
+  </record>
+
+  <record id="item_isced_a_2011_03" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">03</field>
+    <field name="name">Some primary education (without level completion)</field>
+    <field name="parent_id" ref="item_isced_a_2011_0" />
+  </record>
+
+  <record id="item_isced_a_2011_030" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">030</field>
+    <field name="name">Some primary education (without level completion)</field>
+    <field name="parent_id" ref="item_isced_a_2011_03" />
+  </record>
+
+  <!-- LEVEL 1: Primary education -->
+
+  <record id="item_isced_a_2011_1" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">1</field>
+    <field name="name">Primary education</field>
+  </record>
+
+  <record id="item_isced_a_2011_10" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">10</field>
+    <field name="name">Primary</field>
+    <field name="parent_id" ref="item_isced_a_2011_1" />
+  </record>
+
+  <record id="item_isced_a_2011_100" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">100</field>
+    <field name="name">Primary education</field>
+    <field name="description">Including recognised successful completion of a lower secondary programme insufficient for level completion or partial level completion.</field>
+    <field name="parent_id" ref="item_isced_a_2011_10" />
+  </record>
+
+  <!-- LEVEL 2: Lower secondary education -->
+
+  <record id="item_isced_a_2011_2" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">2</field>
+    <field name="name">Lower secondary education</field>
+  </record>
+
+  <record id="item_isced_a_2011_24" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">24</field>
+    <field name="name">General</field>
+    <field name="parent_id" ref="item_isced_a_2011_2" />
+  </record>
+
+  <record id="item_isced_a_2011_242" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">242</field>
+    <field name="name">Partial level completion, without direct access to upper secondary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_24" />
+  </record>
+
+  <record id="item_isced_a_2011_243" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">243</field>
+    <field name="name">Level completion, without direct access to upper secondary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_24" />
+  </record>
+
+  <record id="item_isced_a_2011_244" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">244</field>
+    <field name="name">Level completion, with direct access to upper secondary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_24" />
+  </record>
+
+  <record id="item_isced_a_2011_25" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">25</field>
+    <field name="name">Vocational</field>
+    <field name="parent_id" ref="item_isced_a_2011_2" />
+  </record>
+
+  <record id="item_isced_a_2011_252" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">252</field>
+    <field name="name">Partial level completion, without direct access to upper secondary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_25" />
+  </record>
+
+  <record id="item_isced_a_2011_253" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">253</field>
+    <field name="name">Level completion, without direct access to upper secondary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_25" />
+  </record>
+
+  <record id="item_isced_a_2011_254" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">254</field>
+    <field name="name">Level completion, with direct access to upper secondary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_25" />
+  </record>
+
+  <!-- LEVEL 3: Upper secondary education -->
+
+  <record id="item_isced_a_2011_3" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">3</field>
+    <field name="name">Upper secondary education</field>
+  </record>
+
+  <record id="item_isced_a_2011_34" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">34</field>
+    <field name="name">General</field>
+    <field name="parent_id" ref="item_isced_a_2011_3" />
+  </record>
+
+  <record id="item_isced_a_2011_342" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">342</field>
+    <field name="name">Partial level completion, without direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_34" />
+  </record>
+
+  <record id="item_isced_a_2011_343" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">343</field>
+    <field name="name">Level completion, without direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_34" />
+  </record>
+
+  <record id="item_isced_a_2011_344" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">344</field>
+    <field name="name">Level completion, with direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_34" />
+  </record>
+
+  <record id="item_isced_a_2011_35" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">35</field>
+    <field name="name">Vocational</field>
+    <field name="parent_id" ref="item_isced_a_2011_3" />
+  </record>
+
+  <record id="item_isced_a_2011_352" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">352</field>
+    <field name="name">Partial level completion, without direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_35" />
+  </record>
+
+  <record id="item_isced_a_2011_353" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">353</field>
+    <field name="name">Level completion, without direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_35" />
+  </record>
+
+  <record id="item_isced_a_2011_354" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">354</field>
+    <field name="name">Level completion, with direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_35" />
+  </record>
+
+  <!-- LEVEL 4: Post-secondary non-tertiary education -->
+
+  <record id="item_isced_a_2011_4" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">4</field>
+    <field name="name">Post-secondary non-tertiary education</field>
+  </record>
+
+  <record id="item_isced_a_2011_44" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">44</field>
+    <field name="name">General</field>
+    <field name="parent_id" ref="item_isced_a_2011_4" />
+  </record>
+
+  <record id="item_isced_a_2011_443" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">443</field>
+    <field name="name">Level completion, without direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_44" />
+  </record>
+
+  <record id="item_isced_a_2011_444" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">444</field>
+    <field name="name">Level completion, with direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_44" />
+  </record>
+
+  <record id="item_isced_a_2011_45" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">45</field>
+    <field name="name">Vocational</field>
+    <field name="parent_id" ref="item_isced_a_2011_4" />
+  </record>
+
+  <record id="item_isced_a_2011_453" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">453</field>
+    <field name="name">Level completion, without direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_45" />
+  </record>
+
+  <record id="item_isced_a_2011_454" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">454</field>
+    <field name="name">Level completion, with direct access to tertiary education</field>
+    <field name="parent_id" ref="item_isced_a_2011_45" />
+  </record>
+
+  <!-- LEVEL 5: Short-cycle tertiary education -->
+
+  <record id="item_isced_a_2011_5" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">5</field>
+    <field name="name">Short-cycle tertiary education</field>
+  </record>
+
+  <record id="item_isced_a_2011_54" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">54</field>
+    <field name="name">General</field>
+    <field name="parent_id" ref="item_isced_a_2011_5" />
+  </record>
+
+  <record id="item_isced_a_2011_540" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">540</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_54" />
+  </record>
+
+  <record id="item_isced_a_2011_55" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">55</field>
+    <field name="name">Vocational</field>
+    <field name="parent_id" ref="item_isced_a_2011_5" />
+  </record>
+
+  <record id="item_isced_a_2011_550" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">550</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_55" />
+  </record>
+
+  <record id="item_isced_a_2011_56" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">56</field>
+    <field name="name">Orientation unspecified</field>
+    <field name="parent_id" ref="item_isced_a_2011_5" />
+  </record>
+
+  <record id="item_isced_a_2011_560" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">560</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_56" />
+  </record>
+
+  <!-- LEVEL 6: Bachelor’s or equivalent level -->
+
+  <record id="item_isced_a_2011_6" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">6</field>
+    <field name="name">Bachelor’s or equivalent level</field>
+  </record>
+
+  <record id="item_isced_a_2011_64" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">64</field>
+    <field name="name">Academic</field>
+    <field name="parent_id" ref="item_isced_a_2011_6" />
+  </record>
+
+  <record id="item_isced_a_2011_640" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">640</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_64" />
+  </record>
+
+  <record id="item_isced_a_2011_65" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">65</field>
+    <field name="name">Professional</field>
+    <field name="parent_id" ref="item_isced_a_2011_6" />
+  </record>
+
+  <record id="item_isced_a_2011_650" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">650</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_65" />
+  </record>
+
+  <record id="item_isced_a_2011_66" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">66</field>
+    <field name="name">Orientation unspecified</field>
+    <field name="parent_id" ref="item_isced_a_2011_6" />
+  </record>
+
+  <record id="item_isced_a_2011_660" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">660</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_66" />
+  </record>
+
+  <!-- LEVEL 7: Master’s or equivalent level -->
+
+  <record id="item_isced_a_2011_7" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">7</field>
+    <field name="name">Master’s or equivalent level</field>
+  </record>
+
+  <record id="item_isced_a_2011_74" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">74</field>
+    <field name="name">Academic</field>
+    <field name="parent_id" ref="item_isced_a_2011_7" />
+  </record>
+
+  <record id="item_isced_a_2011_740" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">740</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_74" />
+  </record>
+
+  <record id="item_isced_a_2011_75" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">75</field>
+    <field name="name">Professional</field>
+    <field name="parent_id" ref="item_isced_a_2011_7" />
+  </record>
+
+  <record id="item_isced_a_2011_750" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">750</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_75" />
+  </record>
+
+  <record id="item_isced_a_2011_76" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">76</field>
+    <field name="name">Orientation unspecified</field>
+    <field name="parent_id" ref="item_isced_a_2011_7" />
+  </record>
+
+  <record id="item_isced_a_2011_760" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">760</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_76" />
+  </record>
+
+  <!-- LEVEL 8: Doctoral or equivalent level -->
+
+  <record id="item_isced_a_2011_8" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">8</field>
+    <field name="name">Doctoral or equivalent level</field>
+  </record>
+
+  <record id="item_isced_a_2011_84" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">84</field>
+    <field name="name">Academic</field>
+    <field name="parent_id" ref="item_isced_a_2011_8" />
+  </record>
+
+  <record id="item_isced_a_2011_840" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">840</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_84" />
+  </record>
+
+  <record id="item_isced_a_2011_85" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">85</field>
+    <field name="name">Professional</field>
+    <field name="parent_id" ref="item_isced_a_2011_8" />
+  </record>
+
+  <record id="item_isced_a_2011_850" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">850</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_85" />
+  </record>
+
+  <record id="item_isced_a_2011_86" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">86</field>
+    <field name="name">Orientation unspecified</field>
+    <field name="parent_id" ref="item_isced_a_2011_8" />
+  </record>
+
+  <record id="item_isced_a_2011_860" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">860</field>
+    <field name="name">Not further defined</field>
+    <field name="parent_id" ref="item_isced_a_2011_86" />
+  </record>
+
+  <!-- LEVEL 9: Not elsewhere classified -->
+
+  <record id="item_isced_a_2011_9" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">9</field>
+    <field name="name">Not elsewhere classified</field>
+  </record>
+
+  <record id="item_isced_a_2011_99" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">99</field>
+    <field name="name">Not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_a_2011_9" />
+  </record>
+
+  <record id="item_isced_a_2011_999" model="education.classification.item">
+    <field name="edition_id" ref="edition_isced_a_2011" />
+    <field name="code">999</field>
+    <field name="name">Not elsewhere classified</field>
+    <field name="parent_id" ref="item_isced_a_2011_99" />
+  </record>
+
+</odoo>

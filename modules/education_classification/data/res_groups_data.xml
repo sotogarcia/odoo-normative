@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="0">
+
+  <!-- Education Classification Manager -->
+  <record id="group_education_classification_manager" model="res.groups">
+    <field name="name">Education Classification Manager</field>
+    <field name="comment">Manage educational classifications, editions, categories, and mappings.</field>
+    <field name="category_id" eval="False" />
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+  </record>
+
+</odoo>

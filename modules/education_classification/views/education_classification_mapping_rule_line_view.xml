@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="0">
+
+  <!-- VIEWS: "Rule Line"
+
+    - Model·········: education.classification.rule.line
+    - _rec_name·····: item_id (computed display_name)
+    - Domain········: []
+    - Context·······: {}
+    - Parent menu ··: base.menu_custom
+    - View priority·: 16    Sequence····: 10
+    - Action help···: There are no classification rule lines yet
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- List view for "education.classification.rule.line" -->
+  <record id="view_education_classification_rule_line_list" model="ir.ui.view">
+    <field name="name">view.education.classification.rule.line.list</field>
+    <field name="model">education.classification.rule.line</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <list string="Classification Rule Lines" create="1" delete="1" edit="1">
+        <field name="sequence" class="oe_field_sequence" widget="handle" />
+        <field name="rule_id" class="oe_field_rule_id" />
+        <field name="side" class="oe_field_side" />
+        <field name="item_id" class="oe_field_item_id" />
+      </list>
+    </field>
+  </record>
+
+  <!-- Form view for "education.classification.rule.line" -->
+  <record id="view_education_classification_rule_line_form" model="ir.ui.view">
+    <field name="name">view.education.classification.rule.line.form</field>
+    <field name="model">education.classification.rule.line</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <form string="Classification Rule Line" create="1" delete="1" edit="1">
+        <sheet>
+          <field name="id" class="oe_field_id" invisible="1" />
+
+          <div class="oe_button_box" name="button_box" />
+
+          <div class="oe_title">
+            <h1>
+              <field
+                name="display_name"
+                class="oe_field_display_name"
+                readonly="1"
+              />
+            </h1>
+          </div>
+
+          <group>
+            <group string="Correspondence">
+              <field name="rule_id" class="oe_field_rule_id" />
+              <field name="side" class="oe_field_side" />
+              <field name="item_id" class="oe_field_item_id" />
+            </group>
+
+            <group string="Ordering">
+              <field name="sequence" class="oe_field_sequence" />
+            </group>
+          </group>
+
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Search view for "education.classification.rule.line" -->
+  <record id="view_education_classification_rule_line_search" model="ir.ui.view">
+    <field name="name">view.education.classification.rule.line.search</field>
+    <field name="model">education.classification.rule.line</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <search string="Classification Rule Lines">
+        <field name="rule_id" class="oe_field_rule_id" />
+        <field name="item_id" class="oe_field_item_id" />
+        <field name="side" class="oe_field_side" />
+
+        <separator />
+
+        <filter
+          name="side_source"
+          string="Source"
+          domain="[('side', '=', 'source')]"
+        />
+        <filter
+          name="side_target"
+          string="Target"
+          domain="[('side', '=', 'target')]"
+        />
+
+        <group expand="1" string="Group By">
+          <filter
+            name="group_by_rule_id"
+            string="Rule"
+            context="{'group_by': 'rule_id'}"
+          />
+          <filter
+            name="group_by_side"
+            string="Side"
+            context="{'group_by': 'side'}"
+          />
+          <filter
+            name="group_by_item_id"
+            string="Item"
+            context="{'group_by': 'item_id'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!-- Main window action for education.classification.rule.line -->
+  <record id="action_rule_line_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">Classification Rule Lines</field>
+    <field name="res_model">education.classification.rule.line</field>
+    <field name="view_mode">list,form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field
+      name="search_view_id"
+      ref="view_education_classification_rule_line_search"
+    />
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Click to add a new classification rule line
+      </p>
+      <p>
+        There are no classification rule lines yet.
+      </p>
+    </field>
+  </record>
+
+  <!-- Main menu for education.classification.rule.line -->
+  <record id="menu_rule_line" model="ir.ui.menu">
+    <field name="name">Classification Rule Lines</field>
+    <field name="sequence" eval="10" />
+    <field name="action" ref="action_rule_line_act_window" />
+    <field name="parent_id" ref="base.menu_custom" />
+  </record>
+
+</odoo>

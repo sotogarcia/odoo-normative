@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="0">
+
+  <!-- VIEWS: "Mapping"
+
+    - Model·········: education.classification.mapping
+    - _rec_name·····: name
+    - Domain········: []
+    - Context·······: {}
+    - Parent menu ··: base.menu_custom
+    - View priority·: 16    Sequence····: 10
+    - Action help···: There are no classification mappings yet
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- List view for "education.classification.mapping" -->
+  <record id="view_education_classification_mapping_list" model="ir.ui.view">
+    <field name="name">view.education.classification.mapping.list</field>
+    <field name="model">education.classification.mapping</field>
+    <field name="type">list</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <list string="Classification Mappings" create="1" delete="1" edit="1">
+        <field name="name" class="oe_field_name" />
+        <field name="source_edition_id" class="oe_field_source_edition_id" />
+        <field name="target_edition_id" class="oe_field_target_edition_id" />
+        <field name="publisher_id" class="oe_field_publisher_id" optional="show" />
+        <field name="source_version" class="oe_field_source_version" optional="show" />
+        <field
+          name="state"
+          class="oe_field_state"
+          widget="badge"
+          decoration-warning="state == 'draft'"
+          decoration-info="state == 'review'"
+          decoration-success="state == 'validated'"
+          decoration-danger="state == 'obsolete'"
+        />
+        <field name="supersedes_id" class="oe_field_supersedes_id" optional="hide" />
+        <field name="source_url" class="oe_field_source_url" optional="hide" />
+        <field name="source_checksum" class="oe_field_source_checksum" optional="hide" />
+      </list>
+    </field>
+  </record>
+
+  <!-- Form view for "education.classification.mapping" -->
+  <record id="view_education_classification_mapping_form" model="ir.ui.view">
+    <field name="name">view.education.classification.mapping.form</field>
+    <field name="model">education.classification.mapping</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <form string="Classification Mapping" create="1" delete="1" edit="1">
+        <sheet>
+          <field name="id" class="oe_field_id" invisible="1" />
+
+          <div class="oe_button_box" name="button_box" />
+
+          <widget
+            name="web_ribbon"
+            title="Obsolete"
+            bg_color="bg-danger"
+            invisible="state != 'obsolete'"
+          />
+
+          <div class="oe_title">
+            <label for="name" class="oe_edit_only" />
+            <h1>
+              <field
+                name="name"
+                class="oe_field_name"
+                placeholder="Name"
+              />
+            </h1>
+          </div>
+
+          <group>
+            <group string="Correspondence">
+              <field
+                name="source_edition_id"
+                class="oe_field_source_edition_id"
+              />
+              <field
+                name="target_edition_id"
+                class="oe_field_target_edition_id"
+              />
+              <field
+                name="supersedes_id"
+                class="oe_field_supersedes_id"
+              />
+            </group>
+
+            <group string="Publication">
+              <field
+                name="publisher_id"
+                class="oe_field_publisher_id"
+              />
+              <field
+                name="source_version"
+                class="oe_field_source_version"
+              />
+              <field
+                name="state"
+                class="oe_field_state"
+              />
+            </group>
+          </group>
+
+          <notebook>
+
+            <page string="Rules" name="rules">
+              <field
+                name="rule_ids"
+                class="oe_field_rule_ids"
+                nolabel="1"
+              >
+                <list string="Correspondence Rules" create="1" delete="1" edit="1">
+                  <field name="sequence" class="oe_field_sequence" widget="handle" />
+                  <field name="rule_type" class="oe_field_rule_type" />
+                  <field name="relation_type" class="oe_field_relation_type" />
+                  <field
+                    name="state"
+                    class="oe_field_state"
+                    widget="badge"
+                    decoration-warning="state == 'draft'"
+                    decoration-info="state == 'review'"
+                    decoration-success="state == 'validated'"
+                    decoration-danger="state == 'obsolete'"
+                  />
+                  <field
+                    name="condition_description"
+                    class="oe_field_condition_description"
+                    optional="hide"
+                  />
+                </list>
+
+                <form string="Correspondence Rule" create="1" delete="1" edit="1">
+                  <sheet>
+                    <field name="id" class="oe_field_id" invisible="1" />
+
+                    <div class="oe_button_box" name="button_box" />
+
+                    <div class="oe_title">
+                      <h1>
+                        <field
+                          name="display_name"
+                          class="oe_field_display_name"
+                          readonly="1"
+                        />
+                      </h1>
+                    </div>
+
+                    <group>
+                      <group string="Rule">
+                        <field
+                          name="mapping_id"
+                          class="oe_field_mapping_id"
+                          readonly="1"
+                        />
+                        <field
+                          name="sequence"
+                          class="oe_field_sequence"
+                        />
+                        <field
+                          name="rule_type"
+                          class="oe_field_rule_type"
+                        />
+                        <field
+                          name="relation_type"
+                          class="oe_field_relation_type"
+                          invisible="rule_type == 'no_match'"
+                        />
+                      </group>
+
+                      <group string="Validation">
+                        <field
+                          name="state"
+                          class="oe_field_state"
+                        />
+                      </group>
+                    </group>
+
+                    <notebook>
+
+                      <page string="Categories" name="categories">
+                        <field
+                          name="line_ids"
+                          class="oe_field_line_ids"
+                          nolabel="1"
+                        >
+                          <list
+                            string="Rule Categories"
+                            create="1"
+                            delete="1"
+                            edit="1"
+                            editable="bottom"
+                          >
+                            <field
+                              name="sequence"
+                              class="oe_field_sequence"
+                              widget="handle"
+                            />
+                            <field
+                              name="side"
+                              class="oe_field_side"
+                            />
+                            <field
+                              name="item_id"
+                              class="oe_field_item_id"
+                            />
+                          </list>
+                        </field>
+                      </page>
+
+                      <page
+                        string="Conditions"
+                        name="conditions"
+                        invisible="rule_type != 'conditional'"
+                      >
+                        <field
+                          name="condition_description"
+                          class="oe_field_condition_description"
+                          nolabel="1"
+                          placeholder="Describe the conditions for applying this rule..."
+                        />
+                      </page>
+
+                      <page string="Notes" name="notes">
+                        <field
+                          name="notes"
+                          class="oe_field_notes"
+                          nolabel="1"
+                        />
+                      </page>
+
+                    </notebook>
+                  </sheet>
+                </form>
+              </field>
+            </page>
+
+            <page string="Description" name="description">
+              <field
+                name="description"
+                class="oe_field_description"
+                nolabel="1"
+                placeholder="Description of the correspondence mapping..."
+              />
+            </page>
+
+            <page string="Documentation" name="documentation">
+              <group>
+                <group string="Source">
+                  <field
+                    name="source_url"
+                    class="oe_field_source_url"
+                    widget="url"
+                  />
+                  <field
+                    name="attachment_id"
+                    class="oe_field_attachment_id"
+                  />
+                </group>
+
+                <group string="Identification">
+                  <field
+                    name="source_version"
+                    class="oe_field_source_version"
+                  />
+                  <field
+                    name="source_checksum"
+                    class="oe_field_source_checksum"
+                    readonly="1"
+                  />
+                </group>
+              </group>
+            </page>
+
+          </notebook>
+
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Search view for "education.classification.mapping" -->
+  <record id="view_education_classification_mapping_search" model="ir.ui.view">
+    <field name="name">view.education.classification.mapping.search</field>
+    <field name="model">education.classification.mapping</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+      <search string="Classification Mappings">
+        <field name="name" class="oe_field_name" />
+        <field name="source_edition_id" class="oe_field_source_edition_id" />
+        <field name="target_edition_id" class="oe_field_target_edition_id" />
+        <field name="publisher_id" class="oe_field_publisher_id" />
+        <field name="source_version" class="oe_field_source_version" />
+        <field name="supersedes_id" class="oe_field_supersedes_id" />
+        <field name="source_url" class="oe_field_source_url" />
+
+        <separator />
+
+        <filter
+          name="state_draft"
+          string="Draft"
+          domain="[('state', '=', 'draft')]"
+        />
+        <filter
+          name="state_review"
+          string="Under Review"
+          domain="[('state', '=', 'review')]"
+        />
+        <filter
+          name="state_validated"
+          string="Validated"
+          domain="[('state', '=', 'validated')]"
+        />
+        <filter
+          name="state_obsolete"
+          string="Obsolete"
+          domain="[('state', '=', 'obsolete')]"
+        />
+
+        <group expand="1" string="Group By">
+          <filter
+            name="group_by_source_edition_id"
+            string="Source Edition"
+            context="{'group_by': 'source_edition_id'}"
+          />
+          <filter
+            name="group_by_target_edition_id"
+            string="Target Edition"
+            context="{'group_by': 'target_edition_id'}"
+          />
+          <filter
+            name="group_by_publisher_id"
+            string="Publisher"
+            context="{'group_by': 'publisher_id'}"
+          />
+          <filter
+            name="group_by_state"
+            string="State"
+            context="{'group_by': 'state'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!-- Main window action for education.classification.mapping -->
+  <record id="action_mapping_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">Classification Mappings</field>
+    <field name="res_model">education.classification.mapping</field>
+    <field name="view_mode">list,form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+    <field
+      name="search_view_id"
+      ref="view_education_classification_mapping_search"
+    />
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Click to add a new classification mapping
+      </p>
+      <p>
+        There are no classification mappings yet.
+      </p>
+    </field>
+  </record>
+
+  <!-- Main menu for education.classification.mapping -->
+<!--   <record id="menu_mapping" model="ir.ui.menu">
+    <field name="name">Classification Mappings</field>
+    <field name="sequence" eval="10" />
+    <field name="action" ref="action_mapping_act_window" />
+    <field name="parent_id" ref="base.menu_custom" />
+  </record> -->
+
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+
+  <!-- EDITION: ISCED-P 2011
+
+    - Scheme··········: ISCED-P
+    - Version·········: 2011
+    - Adopted·········: 2011
+    - Published·······: 2012
+    - State···········: Published
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <record id="edition_isced_p_2011" model="education.classification.edition">
+    <field name="scheme_id" ref="scheme_isced_p" />
+    <field name="name">ISCED-P 2011</field>
+    <field name="version">2011</field>
+    <field name="source_url">https://uis.unesco.org/sites/default/files/documents/international-standard-classification-of-education-isced-2011-en.pdf</field>
+    <field name="state">published</field>
+    <field name="active" eval="True" />
+  </record>
+
+  <!-- EDITION: ISCED-A 2011
+
+    - Scheme··········: ISCED-A
+    - Version·········: 2011
+    - Adopted·········: 2011
+    - Published·······: 2012
+    - State···········: Published
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <record id="edition_isced_a_2011" model="education.classification.edition">
+    <field name="scheme_id" ref="scheme_isced_a" />
+    <field name="name">ISCED-A 2011</field>
+    <field name="version">2011</field>
+    <field name="source_url">https://uis.unesco.org/sites/default/files/documents/international-standard-classification-of-education-isced-2011-en.pdf</field>
+    <field name="state">published</field>
+    <field name="active" eval="True" />
+  </record>
+
+  <!-- EDITION: ISCED-F 2013
+
+    - Scheme··········: ISCED-F
+    - Version·········: 2013
+    - Adopted·········: 2013
+    - Published·······: 2014
+    - State···········: Published
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <record id="edition_isced_f_2013" model="education.classification.edition">
+    <field name="scheme_id" ref="scheme_isced_f" />
+    <field name="name">ISCED-F 2013</field>
+    <field name="version">2013</field>
+    <field name="source_url">https://uis.unesco.org/sites/default/files/documents/isced-fields-of-education-and-training-2013-en.pdf</field>
+    <field name="state">published</field>
+    <field name="active" eval="True" />
+  </record>
+
+</odoo>
