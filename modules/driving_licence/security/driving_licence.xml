@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
         <record id="access_driving_licence_driving_licence_base_group_user" model="ir.model.access">
             <field name="name">driving_licence_driving_licence_base_group_user</field>
@@ -15,7 +14,7 @@
         </record>
 
         <record id="access_driving_licence_driving_licence_base_group_partner_manager" model="ir.model.access">
-            <field name="name">driving_licence_driving_licence_base_group_user</field>
+            <field name="name">driving_licence_driving_licence_base_group_partner_manager</field>
             <field name="model_id" ref="driving_licence.model_driving_licence"/>
             <field name="group_id" ref="base.group_partner_manager"/>
             <field name="perm_read" eval="True" />
@@ -25,5 +24,4 @@
             <field name="active" eval="True" />
         </record>
 
-    </data>
-</openerp>
+    </odoo>

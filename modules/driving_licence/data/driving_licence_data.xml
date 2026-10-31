@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<openerp>
-    <data noupdate="0">
+<odoo noupdate="0">
 
 
         <record id="driving_licence_am" model="driving.licence">
@@ -180,5 +179,4 @@
             ]" />
         </record>
 
-    </data>
-</openerp>
+    </odoo>
