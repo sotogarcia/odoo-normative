@@ -54,18 +54,9 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
             config.activeFields[PARENT_FIELD] ??= makeActiveField({ invisible: true });
             config.activeFields[CHILD_COUNT_FIELD] ??= makeActiveField({ readonly: true });
 
-            // Display root categories first; descendants are fetched on demand.
-            // Build a fresh domain so subsequent searches do not append duplicates.
-            const domain = config.domain || [];
-            const hasRootClause = domain.some(
-                (item) => Array.isArray(item) &&
-                    item[0] === PARENT_FIELD &&
-                    item[1] === "=" &&
-                    item[2] === false
-            );
-            if (!hasRootClause) {
-                config.domain = [...domain, [PARENT_FIELD, "=", false]];
-            }
+            // Respect Odoo's search domain: the action's Root Categories
+            // default filter already restricts the initial list to roots.
+            // Removing that filter must allow searches to include descendants.
         }
         return super._loadData(config);
     }
