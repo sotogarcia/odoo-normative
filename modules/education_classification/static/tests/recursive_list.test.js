@@ -20,6 +20,7 @@ import {
     removeFacet,
     toggleMenuItem,
     toggleSearchBarMenu,
+    webModels,
 } from "@web/../tests/web_test_helpers";
 
 class ClassificationEdition extends models.Model {
@@ -48,7 +49,17 @@ class ClassificationItem extends models.Model {
     _records = [];
 }
 
-defineModels([ClassificationEdition, ClassificationItem]);
+// ListController needs the standard user, partner and company mock models.
+// Odoo 18's own list-view tests register these alongside their test models.
+const { ResCompany, ResPartner, ResUsers } = webModels;
+
+defineModels([
+    ClassificationEdition,
+    ClassificationItem,
+    ResCompany,
+    ResPartner,
+    ResUsers,
+]);
 
 const ROOT_A = {
     id: 1,
