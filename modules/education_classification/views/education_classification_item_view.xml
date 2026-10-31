@@ -24,9 +24,9 @@
     <field name="arch" type="xml">
       <list string="Classification Items" create="1" delete="1" edit="1" default_order="edition_id,sequence_path,sequence,id" js_class="education_classification_recursive_list">
         <field name="code" class="oe_field_code" />
-        <field name="display_name" class="oe_field_display_name" />
+        <field name="name" class="oe_field_name" />
         <field name="level" class="oe_field_level" readonly="1" optional="hide" />
-        <field name="edition_id" class="oe_field_edition_id" optional="hide" />
+        <field name="edition_id" class="oe_field_edition_id" />
         <field name="parent_id" class="oe_field_parent_id" optional="hide" />
         <field name="child_count" class="oe_field_child_count" readonly="1"  optional="show" />
         <field name="external_url" class="oe_field_external_url" optional="hide" />
@@ -250,7 +250,7 @@
     <field name="view_mode">list,form,hierarchy</field>
     <field name="target">current</field>
     <field name="domain">[]</field>
-    <field name="context">{'search_default_root_items': 1}</field>
+    <field name="context">{}</field>
     <field
       name="search_view_id"
       ref="view_edication_classification_item_search"
