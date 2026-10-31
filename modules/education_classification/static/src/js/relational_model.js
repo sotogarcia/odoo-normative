@@ -1,145 +1,176 @@
 /** @odoo-module **/
 
-import {RelationalModel} from '@web/model/relational_model/relational_model';
-import {patch} from '@web/core/utils/patch';
-import {getFieldsSpec, getBasicEvalContext, makeActiveField} from "@web/model/relational_model/utils";
+/*
+ * Adapted from recursive_list_view for Odoo 18.
+ * Copyright (C) 2023 Bemade Inc. — Marc Durepos.
+ * Source: https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view
+ * Original license: LGPL-3.0.
+ * Adaptation for education_classification: Jorge Soto García, 2026.
+ */
 
-patch(RelationalModel.prototype, {
-    // TODO: Modify the domain to include only records with parentField = False in the root search
+import { RelationalModel } from "@web/model/relational_model/relational_model";
+import {
+    getBasicEvalContext,
+    getFieldsSpec,
+    makeActiveField,
+} from "@web/model/relational_model/utils";
 
+const PARENT_FIELD = "parent_id";
+const CHILD_COUNT_FIELD = "child_count";
+const CHILD_PAGE_SIZE = 200;
+const CHILD_ORDER = "sequence asc, code asc, id asc";
+
+export class EducationClassificationRecursiveListModel extends RelationalModel {
     setup(params, services) {
-        super.setup(...arguments);
-        this.hooks.onRootLoaded = () => {
-            const root = this.root;
-            const config = this.root.config;
-            if (config.recursive && root.records) {
-                this._loadChildren(root.records, config).then(() => {
-                    return root;
-                });
+        super.setup(params, services);
+
+        // The standard model replaces its root records on a search or reload.
+        // Initialise each new root record without preloading descendants.
+        const onRootLoaded = this.hooks.onRootLoaded;
+        this.hooks.onRootLoaded = async (...args) => {
+            await onRootLoaded(...args);
+            if (!this.config.recursive || !this.root?.records) {
+                return;
             }
-        }
-    },
+            for (const record of this.root.records) {
+                record.depth = 0;
+                record.expanded = false;
+                record.childrenFetched = false;
+                record.children = record.data?.child_count > 0 ? [] : undefined;
+            }
+        };
+    }
+
     async _loadData(config) {
-        if (config.recursive) {
-            const parentField = await this._get_parent_field(config.resModel);
-            const domain = [parentField, '=', false];
-            if (!(domain in config.domain)) {
-                config.domain = config.domain.concat([domain]);
+        if (config.recursive && config.isRoot && !config.isMonoRecord && !config.resIds) {
+            if (!config.fields[PARENT_FIELD] || !config.fields[CHILD_COUNT_FIELD]) {
+                throw new Error(
+                    "The recursive classification list requires parent_id and child_count."
+                );
             }
-            if (!(parentField in config.activeFields) || !config.activeFields[parentField]) {
-                config.activeFields[parentField] = makeActiveField()
+
+            // The renderer needs child_count even when a column is hidden.
+            // The parent relation is also required when instantiating children.
+            config.activeFields[PARENT_FIELD] ??= makeActiveField({ invisible: true });
+            config.activeFields[CHILD_COUNT_FIELD] ??= makeActiveField({ readonly: true });
+
+            // Display root categories first; descendants are fetched on demand.
+            // Build a fresh domain so subsequent searches do not append duplicates.
+            const domain = config.domain || [];
+            const hasRootClause = domain.some(
+                (item) => Array.isArray(item) &&
+                    item[0] === PARENT_FIELD &&
+                    item[1] === "=" &&
+                    item[2] === false
+            );
+            if (!hasRootClause) {
+                config.domain = [...domain, [PARENT_FIELD, "=", false]];
             }
         }
         return super._loadData(config);
-    },
-    async _loadChildren(records, config = undefined) {
-        if (!records) {
-            return [];
-        }
-        if (!config) {
-            config = this.config;
-        }
-        if (!Array.isArray(records)) {
-            records = [records];
-        }
-        const {resModel, activeFields, fields, context} = config;
-        if (!resModel) {
-            return [];
-        }
-        const parentField = await this._get_parent_field(resModel);
-        if (!parentField) {
-            return [];
-        }
-        const evalContext = getBasicEvalContext(config);
-        const fieldSpec = getFieldsSpec(activeFields, fields, evalContext);
-        // Fetch records with the additional field
-        const parentIds = records.map(record => record.resId);
+    }
 
-        const children = await this.orm.webSearchRead(
-            resModel, [[parentField, "in", parentIds]], {
-                context: {...context},
-                specification: fieldSpec,
-            });
-
-        if (children && children.length) {
-            // Track children by grouping child records under each parent
-            const childrenByParent = {};
-            for (const child of children.records) {
-                const parentId = child[parentField].id;
-                if (parentId) {
-                    if (!childrenByParent[parentId]) {
-                        childrenByParent[parentId] = [];
-                    }
-                    childrenByParent[parentId].push(child);
-                }
-            }
-
-            for (const parent of records) {
-                if (parent.depth == undefined) {
-                    parent.depth = 0;
-                }
-                if (parent.expanded == undefined) {
-                    parent.expanded = false;
-                }
-                if (!parent.childrenFetched) {
-                    if (childrenByParent[parent.resId]) {
-                        const childRecords = childrenByParent[parent.resId];
-                        parent.children = []
-                        for (const child of childRecords) {
-                            const childRecord = new this.constructor.Record(
-                                this,
-                                {
-                                    context: context,
-                                    activeFields: activeFields,
-                                    resModel: resModel,
-                                    fields: fields,
-                                    resId: child.id,
-                                    resIds: [child.id],
-                                    isMonoRecord: true,
-                                    currentCompanyId: parent.currentCompanyId,
-                                    mode: parent.mode,
-                                },
-                                child,
-                                {manuallyAdded: false},
-                            );
-                            parent.children.push(childRecord);
-                            childRecord.parent = parent;
-                            childRecord.depth = parent.depth + 1;
-                            childRecord.expanded = false;
-                            childRecord.childrenFetched = false;
-                        }
-                    }
-                    parent.childrenFetched = true;
-                }
-            }
-        }
-    },
-    async _get_parent_field(model) {
-        return await this.orm.call(
-            'parent.field.service',
-            'get_parent_field',
-            [model],
+    async _loadChildren(records, config = this.config) {
+        const parents = (Array.isArray(records) ? records : [records]).filter(
+            (record) => record?.resId && !record.childrenFetched
         );
-    },
+        if (!parents.length) {
+            return;
+        }
+
+        const { resModel, activeFields, fields, context } = config;
+        if (!resModel) {
+            return;
+        }
+
+        const specification = getFieldsSpec(
+            activeFields,
+            fields,
+            getBasicEvalContext(config)
+        );
+        const parentIds = parents.map((record) => record.resId);
+        const childrenByParent = new Map(parentIds.map((id) => [id, []]));
+
+        // web_search_read returns { records, length }, not a bare array.
+        // Fetch all immediate children; its default limit would truncate
+        // large groups of siblings.
+        let offset = 0;
+        while (true) {
+            const result = await this.orm.webSearchRead(
+                resModel,
+                [[PARENT_FIELD, "in", parentIds]],
+                {
+                    context: { ...context },
+                    specification,
+                    offset,
+                    limit: CHILD_PAGE_SIZE,
+                    order: CHILD_ORDER,
+                }
+            );
+            const children = result.records || [];
+            for (const child of children) {
+                // Odoo's web_read may return an ID or an {id, ...} object
+                // for a many2one, depending on the field specification.
+                const value = child[PARENT_FIELD];
+                const parentId = typeof value === "object" ? value?.id : value;
+                if (childrenByParent.has(parentId)) {
+                    childrenByParent.get(parentId).push(child);
+                }
+            }
+            offset += children.length;
+            if (!children.length || offset >= result.length || children.length < CHILD_PAGE_SIZE) {
+                break;
+            }
+        }
+
+        for (const parent of parents) {
+            const childData = childrenByParent.get(parent.resId) || [];
+            const depth = parent.depth ?? 0;
+            parent.children = childData.map((data) => {
+                const record = new this.constructor.Record(
+                    this,
+                    {
+                        context,
+                        activeFields,
+                        resModel,
+                        fields,
+                        resId: data.id,
+                        resIds: [data.id],
+                        isMonoRecord: true,
+                        currentCompanyId: parent.currentCompanyId,
+                        mode: parent.mode,
+                    },
+                    data,
+                    { manuallyAdded: false }
+                );
+                record.depth = depth + 1;
+                record.expanded = false;
+                record.childrenFetched = false;
+                record.children = record.data?.child_count > 0 ? [] : undefined;
+                return record;
+            });
+            parent.childrenFetched = true;
+        }
+    }
 
     findRecordInHierarchy(resId) {
-        const records = this.root.records;
         const target = String(resId);
 
-        function findRecord(list) {
-            for (let record of list) {
+        const findRecord = (records) => {
+            for (const record of records) {
                 if (String(record.resId) === target) {
                     return record;
                 }
-                if (record.children && record.children.length > 0) {
+                if (record.children?.length) {
                     const found = findRecord(record.children);
                     if (found) {
                         return found;
                     }
                 }
             }
-        }
+            return null;
+        };
 
-        return findRecord(records) || null;
+        return findRecord(this.root?.records || []);
     }
-});
+}
