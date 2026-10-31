@@ -23,9 +23,21 @@ export class EducationClassificationRecursiveListRenderer extends ListRenderer {
         useState(this.props.list.records);
     }
 
+    // Odoo's standard column count does not include the custom tree
+    // expander column. Account for it in group headers and pagers too.
+    get nbCols() {
+        return super.nbCols + 1;
+    }
+
+    getGroupNameCellColSpan(group) {
+        return super.getGroupNameCellColSpan(group) + 1;
+    }
+
     hasChildren(record) {
-        return (record.children?.length ?? 0) > 0 ||
-            (record.data?.child_count ?? 0) > 0;
+        return this.env.model.canExpandRecursively() && (
+            (record.children?.length ?? 0) > 0 ||
+            (record.data?.child_count ?? 0) > 0
+        );
     }
 
     _onExpandClick(ev) {

@@ -61,6 +61,32 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
         return super._loadData(config);
     }
 
+    /**
+     * The native grouped list puts rows inside group.list, possibly through
+     * several nested group levels. Expand only when every grouping dimension
+     * is invariant for a category and its descendants (edition_id).
+     * Grouping by parent_id or level must remain a flat Odoo grouped list:
+     * showing children under a different group's header would be misleading.
+     */
+    canExpandRecursively() {
+        const groupBy = this.config.groupBy || [];
+        return groupBy.every((field) => field.split(":")[0] === "edition_id");
+    }
+
+    /**
+     * Groups opened after the root load create records that have not passed
+     * through onRootLoaded. Initialise them when they are first expanded.
+     * Do not reset an already expanded child encountered in a later search.
+     */
+    _ensureHierarchyRecordState(record) {
+        if (record.depth === undefined) {
+            record.depth = 0;
+            record.expanded = false;
+            record.childrenFetched = false;
+            record.children = record.data?.child_count > 0 ? [] : undefined;
+        }
+    }
+
     async _loadChildren(records, config = this.config) {
         const parents = (Array.isArray(records) ? records : [records]).filter(
             (record) => record?.resId && !record.childrenFetched
@@ -147,13 +173,14 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
     findRecordInHierarchy(resId) {
         const target = String(resId);
 
-        const findRecord = (records) => {
+        const findRecords = (records) => {
             for (const record of records) {
                 if (String(record.resId) === target) {
+                    this._ensureHierarchyRecordState(record);
                     return record;
                 }
                 if (record.children?.length) {
-                    const found = findRecord(record.children);
+                    const found = findRecords(record.children);
                     if (found) {
                         return found;
                     }
@@ -162,6 +189,27 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
             return null;
         };
 
-        return findRecord(this.root?.records || []);
+        // In Odoo 18 a grouped list stores records in Group.list, not in
+        // the group headers. Only traverse opened groups with loaded rows;
+        // never load a folded group merely to locate an expansion target.
+        const findInList = (list) => {
+            if (!list) {
+                return null;
+            }
+            if (list.isGrouped) {
+                for (const group of list.groups || []) {
+                    if (!group.isFolded) {
+                        const found = findInList(group.list);
+                        if (found) {
+                            return found;
+                        }
+                    }
+                }
+                return null;
+            }
+            return findRecords(list.records || []);
+        };
+
+        return findInList(this.root);
     }
 }
