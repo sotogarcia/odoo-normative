@@ -3,7 +3,7 @@
 Reusable Odoo modules for managing reference data associated with public standards,
 qualifications and regulatory catalogues.
 
-This repository contains **three Odoo 18.0 modules** under [\`modules/\`](modules/).
+This repository contains **three Odoo 18.0 modules** under [`modules/`](modules/).
 They are independently installable and are intended to supply reusable reference
 models rather than a complete business application.
 
@@ -11,9 +11,9 @@ models rather than a complete business application.
 
 | Module | Purpose | Included content |
 | --- | --- | --- |
-| [\`cefrl\`](modules/cefrl/) | Common European Framework of Reference for Languages (CEFR). | Language records, level groups (A/B/C), levels (A1–C2), certificate groups, certificates and implied-certificate relationships. |
-| [\`driving_licence\`](modules/driving_licence/) | Country-specific driving-licence categories and implied permissions. | A Spanish driving-licence catalogue, reference views and a Settings shortcut. |
-| [\`education_classification\`](modules/education_classification/) | Educational classification schemes, editions, categories and correspondence mappings. | ISCED-P 2011, ISCED-A 2011 and ISCED-F 2013, hierarchical items, mapping rules, a hierarchy view and work-in-progress recursive-list components. |
+| [`cefrl`](modules/cefrl/) | Common European Framework of Reference for Languages (CEFR). | Language records, level groups (A/B/C), levels (A1–C2), certificate groups, certificates and implied-certificate relationships. |
+| [`driving_licence`](modules/driving_licence/) | Country-specific driving-licence categories and implied permissions. | A Spanish driving-licence catalogue, reference views and a Settings shortcut. |
+| [`education_classification`](modules/education_classification/) | Educational classification schemes, editions, categories and correspondence mappings. | ISCED-P 2011, ISCED-A 2011 and ISCED-F 2013, hierarchical items, mapping rules, a hierarchy view and work-in-progress recursive-list components. |
 
 For details of the educational classification models, seed data, access
 permissions, source attributions and current frontend status, see the
@@ -23,7 +23,7 @@ The driving-licence module has its own
 
 ## Repository layout
 
-\`\`\`text
+```text
 odoo-normative/
 ├── README.md
 ├── assets/                  Shared non-code resources
@@ -41,31 +41,31 @@ odoo-normative/
 │       │   └── xml/         OWL list templates
 │       └── views/           Catalogue, mapping and settings views
 └── project/                 Project notes and supporting material
-\`\`\`
+```
 
 ## Installation
 
-Use **Odoo 18.0** and add this repository's \`modules\` directory to your
-Odoo \`addons_path\`, alongside the official Odoo addons. For example:
+Use **Odoo 18.0** and add this repository's `modules` directory to your
+Odoo `addons_path`, alongside the official Odoo addons. For example:
 
-\`\`\`bash
+```bash
 git clone https://github.com/sotogarcia/odoo-normative.git
 # Add /path/to/odoo-normative/modules to addons_path in your Odoo configuration.
-\`\`\`
+```
 
 Restart Odoo, update the Apps list (remove the default *Apps* filter if
 needed), and install the desired module by its technical name.
 
 Dependencies differ by module:
 
-- \`cefrl\`: \`base\`, \`base_setup\`, \`base_field_m2m_view\` (the last
+- `cefrl`: `base`, `base_setup`, `base_field_m2m_view` (the last
   dependency must be available in your addons path).
-- \`driving_licence\`: \`base\`, \`base_setup\`.
-- \`education_classification\`: \`base\`, \`web\`, \`web_hierarchy\`.
+- `driving_licence`: `base`, `base_setup`.
+- `education_classification`: `base`, `web`, `web_hierarchy`.
   The hierarchy component is part of Odoo 18. The separate Bemade
-  \`recursive_list_view\` addon is **not required**.
+  `recursive_list_view` addon is **not required**.
 
-For \`education_classification\`, the recursive-list code is included in
+For `education_classification`, the recursive-list code is included in
 the asset bundle, but the dedicated list view is **not yet registered or
 activated**. Its presence should not be interpreted as a completed
 expandable-list feature.
@@ -73,7 +73,7 @@ expandable-list feature.
 ## Third-party code and acknowledgements
 
 The educational-classification recursive-list frontend incorporates
-adapted components from **\`recursive_list_view\` for Odoo 18**, created
+adapted components from **`recursive_list_view` for Odoo 18**, created
 by **Marc Durepos / Bemade Inc.**:
 
 - Upstream: https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view
@@ -86,7 +86,7 @@ detailed file-by-file provenance and adaptation status are documented in
 [the module README](modules/education_classification/README.md).
 
 **Bemade is the upstream author of those components, not the author of
-the entire \`education_classification\` module.** This work is not
+the entire `education_classification` module.** This work is not
 represented as a Bemade or Odoo-endorsed integration.
 
 ## Licences
