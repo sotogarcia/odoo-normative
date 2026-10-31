@@ -1,160 +1,159 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
-#    Licence, author and contributors information in:                         #
-#    __openerp__.py file at the root folder of this module.                   #
+#
+#    Odoo, Open Source Management Solution
+#
+#    Copyright (c) All rights reserved:
+#        (c) 2015  Jorge Soto Garcia
+#
+#    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+#
 ###############################################################################
 
-from odoo import models, fields, api
-from odoo.tools.translate import _
-from odoo.osv.expression import FALSE_DOMAIN
-from logging import getLogger
+from odoo import api, fields, models, _
 
 
-_logger = getLogger(__name__)
+class DrivingLicence(models.Model):
+    """Country-specific driving licence categories."""
 
-
-class AcademyDrivingLicence(models.Model):
-
-    _name = 'driving.licence'
-    _description = u'Driving licence'
-
-    _rec_name = 'name'
-    _order = 'country_id ASC, sequence ASC, name ASC'
+    _name = "driving.licence"
+    _description = "Driving licence"
+    _rec_name = "name"
+    _order = "country_id ASC, sequence ASC, name ASC"
 
     name = fields.Char(
-        string='Name',
+        string="Name",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help=False,
+        help="Official category of the driving licence.",
         size=50,
-        translate=True
+        translate=True,
     )
 
     country_id = fields.Many2one(
-        string='Country',
+        string="Country",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Country that has granted the licence',
-        comodel_name='res.country',
+        help="Country that has granted the licence.",
+        comodel_name="res.country",
         domain=[],
         context={},
-        ondelete='cascade',
-        auto_join=False
+        ondelete="cascade",
+        auto_join=False,
     )
 
     sequence = fields.Integer(
-        string='Sequence',
+        string="Sequence",
         required=False,
         readonly=False,
         index=False,
         default=0,
-        help='Driving licence sequence'
+        help="Driving licence sequence.",
     )
 
     active = fields.Boolean(
-        string='Active',
+        string="Active",
         required=False,
         readonly=False,
         index=True,
         default=True,
-        help='Check it to show this attempt or uncheck to archivate'
+        help="Uncheck to archive the driving licence.",
     )
 
     description = fields.Text(
-        string='Description',
+        string="Description",
         required=False,
         readonly=False,
         index=False,
         default=None,
-        help='Description of the driving licence',
-        translate=True
+        help="Description of the driving licence.",
+        translate=True,
     )
 
     implied_ids = fields.Many2many(
-        string='Implied',
+        string="Implied",
         required=False,
         readonly=False,
         index=True,
         default=None,
-        help='Other licenses that are implicit with this one',
-        comodel_name='driving.licence',
-        relation='driving_licence_implied_rel',
-        column1='licence_id',
-        column2='implied_id',
+        help="Other licences that are implied by this licence.",
+        comodel_name="driving.licence",
+        relation="driving_licence_implied_rel",
+        column1="licence_id",
+        column2="implied_id",
         domain="[('id', '!=', id)]",
         context={},
-        limit=None
     )
 
     implied_count = fields.Integer(
-        string='Implied count',
+        string="Implied count",
         required=False,
         readonly=True,
         index=False,
-        default=0,
-        help='Number of implied licences',
-        compute='_compute_implied_count'
+        help="Number of implied licences.",
+        compute="_compute_implied_count",
     )
 
-    @api.depends('implied_ids')
+    match_country = fields.Boolean(
+        string="Match country",
+        required=False,
+        readonly=True,
+        index=False,
+        help="Whether the licence belongs to the current company's country.",
+        compute="_compute_match_country",
+        search="_search_match_country",
+    )
+
+    _sql_constraints = [
+        (
+            "unique_name_by_country",
+            "UNIQUE(country_id, name)",
+            "There is already a licence with that name for this country.",
+        ),
+    ]
+
+    @api.depends("name", "country_id.name")
+    def _compute_display_name(self):
+        for record in self:
+            if record.country_id:
+                record.display_name = (
+                    f"{record.country_id.name} - {record.name or ''}"
+                )
+            else:
+                record.display_name = record.name or ""
+
+    @api.depends("implied_ids")
     def _compute_implied_count(self):
         for record in self:
             record.implied_count = len(record.implied_ids)
 
-    match_country = fields.Boolean(
-        string='Match country',
-        required=False,
-        readonly=True,
-        index=False,
-        default=False,
-        help='Check if has the same country of the current company',
-        compute='_compute_match_country',
-        search='_search_match_country'
-    )
-
-    @api.depends('country_id')
+    @api.depends("country_id")
+    @api.depends_context("company")
     def _compute_match_country(self):
-        country_id = self.env.company.country_id.id
-
+        country = self.env.company.country_id
         for record in self:
-            record.match_country = (record.country_id.id == country_id)
+            record.match_country = bool(
+                country and record.country_id == country
+            )
 
     @api.model
     def _search_match_country(self, operator, value):
-        domain = FALSE_DOMAIN
+        if operator not in ("=", "!="):
+            raise NotImplementedError(
+                _("Unsupported match country search operator: %s") % operator
+            )
 
-        if self.env.company and self.env.company.country_id:
-            country_id = self.env.company.country_id.id
+        country = self.env.company.country_id
+        if not country:
+            return [("id", "=", 0)]
 
-            if operator == '=' and value or operator == '!=' and not value:
-                domain = [('country_id', '=', country_id)]
-            else:
-                domain = [('country_id', '!=', country_id)]
+        matches = bool(value)
+        if operator == "!=":
+            matches = not matches
 
-        return domain
-
-    _sql_constraints = [
-        (
-            'unique_name_by_country',
-            'UNIQUE(country_id, name)',
-            _('There is already a licence with that name for this country')
-        )
-    ]
-
-    def name_get(self):
-        result = []
-
-        for record in self:
-            if record.country_id:
-                country = record.country_id
-                name = '{} - {}'.format(country.name, record.name)
-            else:
-                name = record.name
-
-            result.append((record.id, name))
-
-        return result
+        return [
+            ("country_id", "=" if matches else "!=", country.id)
+        ]
