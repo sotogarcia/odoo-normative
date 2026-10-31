@@ -151,7 +151,7 @@
             string="Classification Hierarchy"
             parent_field="parent_id"
             child_field="child_ids"
-            default_order="sequence, code, id"
+            default_order="edition_id,sequence_path,sequence,id"
             draggable="0"
         >
             <templates>
