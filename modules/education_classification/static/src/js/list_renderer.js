@@ -1,19 +1,36 @@
 /** @odoo-module **/
 
-import { ListRenderer } from '@web/views/list/list_renderer';
-import { patch } from '@web/core/utils/patch';
-import { useState } from '@odoo/owl';
+/*
+ * Adapted from recursive_list_view for Odoo 18.
+ * Copyright (C) 2023 Bemade Inc. — Marc Durepos.
+ * Source: https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view
+ * Original license: LGPL-3.0.
+ * Adaptation for education_classification: Jorge Soto García, 2026.
+ */
 
-patch(ListRenderer.prototype, {
+import { ListRenderer } from "@web/views/list/list_renderer";
+import { useState } from "@odoo/owl";
+
+export class EducationClassificationRecursiveListRenderer extends ListRenderer {
     setup() {
         super.setup();
-        this.recursive = this.props.archInfo.recursive;
+        this.recursive = true;
         useState(this.props.list.records);
-    },
+    }
 
-    async _onExpandClick(ev) {
-        const raw = ev.currentTarget.dataset.expand;
-        const parent = isNaN(raw) ? raw : Number(raw);
-        this.env.bus.trigger("expand-collapse-parent", parent);
-    },
-});
+    hasChildren(record) {
+        return (record.children?.length ?? 0) > 0 ||
+            (record.data?.child_count ?? 0) > 0;
+    }
+
+    _onExpandClick(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        const parentId = Number(ev.currentTarget.dataset.expand);
+        if (!Number.isInteger(parentId) || parentId <= 0) {
+            return;
+        }
+        this.env.model.bus.trigger("expand-collapse-parent", { id: parentId });
+    }
+}
