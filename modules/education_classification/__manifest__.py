@@ -107,19 +107,24 @@ modify, or delete classification records.
 Integration
 -----------
 
-The module depends only on Odoo Base and can be reused by educational,
-training, statistical, and other applications requiring structured
-educational classifications.
+The module depends on Odoo Base, Web, and Web Hierarchy. It can be reused
+by educational, training, statistical, and other applications requiring
+structured educational classifications, without any specific academic
+management module.
 
-It does not depend on any specific academic management module.
+A recursive list implementation is being adapted from the LGPL-3.0
+recursive_list_view project by Marc Durepos / Bemade Inc.
+Its JavaScript, XML, and CSS resources are bundled locally; registration
+and activation of this custom view remain pending. See README.md for
+the original source, attribution, and integration status.
     """,
     "author": "Jorge Soto Garcia",
-    "website": "https://github.com/sotogarcia/odoo-academy",
+    "website": "https://github.com/sotogarcia/odoo-normative",
     "license": "AGPL-3",
     "category": "Academy",
     "maintainer": "Jorge Soto Garcia",
     "contributors": ["Jorge Soto Garcia <sotogarcia@gmail.com>"],
-    "depends": ["base", "web_hierarchy", "recursive_list_view"],
+    "depends": ["base", "web", "web_hierarchy"],
     "external_dependencies": {
         "python": [],
         "bin": [],
@@ -143,22 +148,13 @@ It does not depend on any specific academic management module.
     ],
     "demo": [],
     "assets": {
-        # Common assets (shared by backend, website, PoS...)
-        "web.assets_common": [],
-        # Backend (web client) assets
-        "web.assets_backend": [],
-        # Public website / portal assets
-        "web.assets_frontend": [],
-        # Common report assets (shared by HTML/PDF reports)
-        "web.report_assets_common": [],
-        # PDF-specific report assets (applied only to PDF rendering)
-        "web.report_assets_pdf": [],
-        # QWeb report templates (XML templates for reports)
-        "web.report_assets_xml": [],
-        # JS test bundles (QUnit)
-        "web.qunit_suite_tests": [],
-        # Mobile-specific QUnit test assets (testing mobile UI components)
-        "web.qunit_mobile_suite_tests": [],
+        "web.assets_backend": [
+            "education_classification/static/src/css/tree_recursive_styles.css",
+            "education_classification/static/src/js/relational_model.js",
+            "education_classification/static/src/js/list_controller.js",
+            "education_classification/static/src/js/list_renderer.js",
+            "education_classification/static/src/xml/recursive_tree_templates.xml",
+        ],
     },
     "application": False,  # True only for top-level apps
     "installable": True,  # visible in Apps

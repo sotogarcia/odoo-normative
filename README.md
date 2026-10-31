@@ -1,56 +1,112 @@
-## Synopsis
+# Odoo Normative
 
-Modules used to manage servaral data related to public standards
+Reusable Odoo modules for managing reference data associated with public standards,
+qualifications and regulatory catalogues.
 
-
-## Motivation
-
-I needed to group different modules with information related to public
-regulations.
-
-## Installation
-
-Project can be cloned on your server using git command line, following line is
-an example:
-
-```
-git clone https://github.com/sotogarcia/odoo-normative.git
-```
-
-Once you have downloaded the project, you will can find the modules inside
-project folder, to install them in Odoo you must copy folders into the addons
-directory, alongside the official modules.
-
-Once done, you need to update the module list before these new modules are
-available to install.
-
-For this you need the Technical menu enabled, since the Update Modules List
-menu option is provided by it. It can be found in the Modules section of the
-Settings menu.
-
-After running the modules list update you can confirm the new modules are
-available to install. In the Local Modules list, remove the Apps filter and
-search for department. You should see the new modules available.
-
+This repository contains **three Odoo 18.0 modules** under [\`modules/\`](modules/).
+They are independently installable and are intended to supply reusable reference
+models rather than a complete business application.
 
 ## Modules
 
-```
-└──odoo-normative
-    ├───assets      : non-software development resources
-    ├───modules     : business logic to enhance the Odoo existing functionality
-    └───project     : UML schemas and project notes
-```
+| Module | Purpose | Included content |
+| --- | --- | --- |
+| [\`cefrl\`](modules/cefrl/) | Common European Framework of Reference for Languages (CEFR). | Language records, level groups (A/B/C), levels (A1–C2), certificate groups, certificates and implied-certificate relationships. |
+| [\`driving_licence\`](modules/driving_licence/) | Country-specific driving-licence categories and implied permissions. | A Spanish driving-licence catalogue, reference views and a Settings shortcut. |
+| [\`education_classification\`](modules/education_classification/) | Educational classification schemes, editions, categories and correspondence mappings. | ISCED-P 2011, ISCED-A 2011 and ISCED-F 2013, hierarchical items, mapping rules, a hierarchy view and work-in-progress recursive-list components. |
+
+For details of the educational classification models, seed data, access
+permissions, source attributions and current frontend status, see the
+[Education Classification README](modules/education_classification/README.md).
+The driving-licence module has its own
+[README](modules/driving_licence/README.md).
+
+## Repository layout
+
+\`\`\`text
+odoo-normative/
+├── README.md
+├── assets/                  Shared non-code resources
+├── modules/
+│   ├── cefrl/               CEFR catalogue and certificate relations
+│   ├── driving_licence/     Driving-licence categories and implications
+│   └── education_classification/
+│       ├── data/            UNESCO/ISCED scheme, edition and category records
+│       ├── i18n/            Translation catalogue
+│       ├── models/          Classification and correspondence models
+│       ├── security/        Access control
+│       ├── static/src/
+│       │   ├── css/         Recursive-list styles
+│       │   ├── js/          Recursive-list controller, renderer and model
+│       │   └── xml/         OWL list templates
+│       └── views/           Catalogue, mapping and settings views
+└── project/                 Project notes and supporting material
+\`\`\`
+
+## Installation
+
+Use **Odoo 18.0** and add this repository's \`modules\` directory to your
+Odoo \`addons_path\`, alongside the official Odoo addons. For example:
+
+\`\`\`bash
+git clone https://github.com/sotogarcia/odoo-normative.git
+# Add /path/to/odoo-normative/modules to addons_path in your Odoo configuration.
+\`\`\`
+
+Restart Odoo, update the Apps list (remove the default *Apps* filter if
+needed), and install the desired module by its technical name.
+
+Dependencies differ by module:
+
+- \`cefrl\`: \`base\`, \`base_setup\`, \`base_field_m2m_view\` (the last
+  dependency must be available in your addons path).
+- \`driving_licence\`: \`base\`, \`base_setup\`.
+- \`education_classification\`: \`base\`, \`web\`, \`web_hierarchy\`.
+  The hierarchy component is part of Odoo 18. The separate Bemade
+  \`recursive_list_view\` addon is **not required**.
+
+For \`education_classification\`, the recursive-list code is included in
+the asset bundle, but the dedicated list view is **not yet registered or
+activated**. Its presence should not be interpreted as a completed
+expandable-list feature.
+
+## Third-party code and acknowledgements
+
+The educational-classification recursive-list frontend incorporates
+adapted components from **\`recursive_list_view\` for Odoo 18**, created
+by **Marc Durepos / Bemade Inc.**:
+
+- Upstream: https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view
+- Original copyright: © 2023 Bemade Inc.
+- Original source licence: **GNU LGPL v3.0**.
+
+The integration adapts the list controller, list renderer, relational model,
+OWL templates and styles, preserving their original attribution. The
+detailed file-by-file provenance and adaptation status are documented in
+[the module README](modules/education_classification/README.md).
+
+**Bemade is the upstream author of those components, not the author of
+the entire \`education_classification\` module.** This work is not
+represented as a Bemade or Odoo-endorsed integration.
 
 ## Licences
 
-* Code is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE (V 3).
-To view a copy of this license, visit [http://www.gnu.org/licenses/agpl-3.0.html](http://www.gnu.org/licenses/agpl-3.0.html).
+The three module manifests declare **GNU AGPL v3** for their respective
+modules. The adapted Bemade components retain the original **GNU LGPL v3**
+copyright and licence notices; the module-level AGPL declaration does not
+erase third-party authorship or licence obligations.
 
-* [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-nc/4.0/)
-All the documentation is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+- AGPL v3: https://www.gnu.org/licenses/agpl-3.0.html
+- LGPL v3: https://www.gnu.org/licenses/lgpl-3.0.html
 
+As declared by the repository's earlier README, its own documentation is
+made available under [Creative Commons Attribution-NonCommercial-ShareAlike
+4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Third-party materials retain their own applicable rights and notices.
 
-## Feedback
+## Issues and contributions
 
-The best way to send feedback is to file an issue at [https://github.com/sotogarcia/odoo-normative/issues](https://github.com/sotogarcia/ /issues) or to reach out to us via [twitter](https://twitter.com/jorgedenarahio) or [email](sotogarcia@gmail.com).
+Report issues and propose improvements through
+[GitHub Issues](https://github.com/sotogarcia/odoo-normative/issues).
+When changing incorporated third-party code, retain the upstream source,
+copyright and licence notices.
