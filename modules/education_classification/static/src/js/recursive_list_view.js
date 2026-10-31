@@ -15,13 +15,6 @@ import { EducationClassificationRecursiveListController } from "./list_controlle
 import { EducationClassificationRecursiveListRenderer } from "./list_renderer";
 import { EducationClassificationRecursiveListModel } from "./relational_model";
 
-// Use the module-specific primary-inheritance OWL templates.
-// The standard Odoo list renderer is not patched.
-EducationClassificationRecursiveListRenderer.template =
-    "education_classification.RecursiveListRenderer";
-EducationClassificationRecursiveListRenderer.recordRowTemplate =
-    "education_classification.RecursiveListRenderer.RecordRow";
-
 export const educationClassificationRecursiveListView = {
     ...listView,
     Controller: EducationClassificationRecursiveListController,

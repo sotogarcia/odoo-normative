@@ -12,6 +12,11 @@ import { ListRenderer } from "@web/views/list/list_renderer";
 import { useState } from "@odoo/owl";
 
 export class EducationClassificationRecursiveListRenderer extends ListRenderer {
+    // Dedicated OWL templates; do not modify Odoo's global ListRenderer.
+    static template = "education_classification.RecursiveListRenderer";
+    static recordRowTemplate =
+        "education_classification.RecursiveListRenderer.RecordRow";
+
     setup() {
         super.setup();
         this.recursive = true;
