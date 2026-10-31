@@ -157,6 +157,9 @@ the original source, attribution, and integration status.
             "education_classification/static/src/js/recursive_list_view.js",
             "education_classification/static/src/xml/recursive_tree_templates.xml",
         ],
+        "web.assets_unit_tests": [
+            "education_classification/static/tests/recursive_list.test.js",
+        ],
     },
     "application": False,  # True only for top-level apps
     "installable": True,  # visible in Apps
