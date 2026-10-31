@@ -43,6 +43,9 @@ class ClassificationItem extends models.Model {
     sequence_path = fields.Char();
     parent_id = fields.Many2one({ relation: "education.classification.item" });
     edition_id = fields.Many2one({ relation: "education.classification.edition" });
+    // Numeric test-only sorting proxy: Odoo 18's MockServer cannot
+    // reliably sort integer-valued Many2one fixtures by their relation.
+    edition_sort = fields.Integer();
     child_count = fields.Integer();
     level = fields.Integer();
 
@@ -118,8 +121,12 @@ const GRANDCHILD = {
 };
 
 const ROOT_DOMAIN = [["parent_id", "=", false]];
+// The production view orders by edition_id,sequence_path,sequence,id.
+// HOOT's mock sorter expects a relational [id, name] while validated
+// Many2one fixtures store an integer ID. edition_sort mirrors edition_id
+// solely for mock ordering; grouping still uses edition_id.
 const LIST_ARCH = '<list js_class="education_classification_recursive_list" ' +
-    'default_order="edition_id,sequence_path,sequence,id" limit="80">' +
+    'default_order="edition_sort,sequence_path,sequence,id" limit="80">' +
     '<field name="code"/>' +
     '<field name="name"/>' +
     '<field name="edition_id" optional="hide"/>' +
@@ -127,14 +134,21 @@ const LIST_ARCH = '<list js_class="education_classification_recursive_list" ' +
     '<field name="child_count" readonly="1"/>' +
     '</list>';
 
+function setClassificationRecords(records) {
+    ClassificationItem._records = records.map((record) => ({
+        ...record,
+        edition_sort: record.edition_id,
+    }));
+}
+
 beforeEach(() => {
-    ClassificationItem._records = [
+    setClassificationRecords([
         { ...ROOT_A },
         { ...CHILD_A1 },
         { ...CHILD_A2 },
         { ...ROOT_B },
         { ...GRANDCHILD },
-    ];
+    ]);
 });
 
 function rowNames() {
@@ -235,10 +249,10 @@ test("education_classification: lazy children are fetched in multiple pages", as
         child_count: 0,
         level: 1,
     }));
-    ClassificationItem._records = [
+    setClassificationRecords([
         { ...ROOT_A, child_count: 205 },
         ...siblings,
-    ];
+    ]);
 
     const pages = [];
     onRpc("web_search_read", ({ kwargs }) => {
