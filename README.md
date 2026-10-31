@@ -6,21 +6,21 @@ other applications can reuse them without duplicating the underlying records.
 
 ## Modules
 
-The repository currently contains three addons in [\`modules/\`](modules/).
+The repository currently contains three addons in [`modules/`](modules/).
 Each addon has its own models, initial data, views and access controls, and
 can be installed independently when its dependencies are available.
 
 | Addon | Purpose | Dependencies declared in its manifest |
 | --- | --- | --- |
-| [\`cefrl\`](modules/cefrl/) | Common European Framework of Reference for Languages (CEFR): level groups, levels, languages, certificate groups, certificates and implied-certificate relationships. | \`base\`, \`base_setup\`, \`base_field_m2m_view\` |
-| [\`driving_licence\`](modules/driving_licence/) | Country-specific driving licence categories and implied licences; includes the Spanish catalogue. | \`base\`, \`base_setup\` |
-| [\`education_classification\`](modules/education_classification/) | Educational classification schemes, editions, hierarchical categories, and rules mapping categories between editions. | \`base\`, \`web_hierarchy\` |
+| [`cefrl`](modules/cefrl/) | Common European Framework of Reference for Languages (CEFR): level groups, levels, languages, certificate groups, certificates and implied-certificate relationships. | `base`, `base_setup`, `base_field_m2m_view` |
+| [`driving_licence`](modules/driving_licence/) | Country-specific driving licence categories and implied licences; includes the Spanish catalogue. | `base`, `base_setup` |
+| [`education_classification`](modules/education_classification/) | Educational classification schemes, editions, hierarchical categories, and rules mapping categories between editions. | `base`, `web_hierarchy` |
 
-All three manifests declare version \`18.0.1.0.0\` and license \`AGPL-3\`.
-The \`base_field_m2m_view\` dependency of \`cefrl\` is **not included** in
+All three manifests declare version `18.0.1.0.0` and license `AGPL-3`.
+The `base_field_m2m_view` dependency of `cefrl` is **not included** in
 this repository and must be supplied separately.
 
-### CEFR for Languages (\`cefrl\`)
+### CEFR for Languages (`cefrl`)
 
 This addon holds reusable CEFR language and qualification reference data.
 It includes the A/B/C level groups, A1–C2 levels, languages, certificate groups,
@@ -31,9 +31,9 @@ views, a Settings integration, and
 [migration notes](modules/cefrl/migration.md). Its records are reference data:
 installing it does not independently implement an HR or education workflow.
 
-### Driving Licence (\`driving_licence\`)
+### Driving Licence (`driving_licence`)
 
-This addon defines the \`driving.licence\` model, country-related licence
+This addon defines the `driving.licence` model, country-related licence
 categories, and many-to-many relationships between licences implied by a
 category. Its initial data include 15 Spanish licence categories.
 
@@ -44,7 +44,7 @@ migration notes, preserved identifiers and testing instructions.
 The catalogue records are not a substitute for verifying current national
 driving-licence regulations.
 
-### Education Classification (\`education_classification\`)
+### Education Classification (`education_classification`)
 
 This addon provides a generic model for educational classification schemes,
 including international and national classifications, successive editions,
@@ -53,12 +53,12 @@ in the repository are:
 
 | Model | Role |
 | --- | --- |
-| \`education.classification.scheme\` | Classification identity, educational dimension, geographical scope and publishing authority |
-| \`education.classification.edition\` | Version, publication/validity dates and predecessor edition |
-| \`education.classification.item\` | Edition-specific category with \`parent_id\`, \`child_ids\`, \`parent_path\`, \`sequence_path\`, hierarchy level and child count |
-| \`education.classification.mapping\` | Correspondence between a source and target edition, provenance, attachments, state and supersession |
-| \`education.classification.rule\` | Mapping rule, including rule type, semantic relationship, conditions and validation |
-| \`education.classification.rule.line\` | Source/target category assignments within a mapping rule |
+| `education.classification.scheme` | Classification identity, educational dimension, geographical scope and publishing authority |
+| `education.classification.edition` | Version, publication/validity dates and predecessor edition |
+| `education.classification.item` | Edition-specific category with `parent_id`, `child_ids`, `parent_path`, `sequence_path`, hierarchy level and child count |
+| `education.classification.mapping` | Correspondence between a source and target edition, provenance, attachments, state and supersession |
+| `education.classification.rule` | Mapping rule, including rule type, semantic relationship, conditions and validation |
+| `education.classification.rule.line` | Source/target category assignments within a mapping rule |
 
 The bundled UNESCO/UIS reference catalogues are:
 
@@ -70,7 +70,7 @@ The source URLs for the international catalogues are recorded in the edition
 data. The model also accommodates national schemes such as Spain's CNED,
 but **this repository does not currently ship CNED category data**.
 
-The addon has an \`Education Classification Manager\` security group.
+The addon has an `Education Classification Manager` security group.
 The access-control file grants read-only access to internal, portal and public
 groups, and create/write/delete permissions to classification managers.
 The Settings integration provides shortcuts to schemes, editions, categories,
@@ -79,12 +79,12 @@ mappings, rules and rule lines for system administrators.
 #### Hierarchical views and implementation status
 
 Category management currently defines a standard Odoo list and form view and
-an Odoo 18 \`hierarchy\` view, supplied by the standard \`web_hierarchy\` addon.
+an Odoo 18 `hierarchy` view, supplied by the standard `web_hierarchy` addon.
 
 In addition, the following **adapted recursive-list resources** are included
-under \`modules/education_classification/static/src/\`:
+under `modules/education_classification/static/src/`:
 
-\`\`\`text
+```text
 css/
     tree_recursive_styles.css
 js/
@@ -93,7 +93,7 @@ js/
     relational_model.js
 xml/
     recursive_tree_templates.xml
-\`\`\`
+```
 
 These are registered as backend assets by the module manifest. They provide
 custom controller, renderer and model classes; deferred descendant retrieval;
@@ -102,7 +102,7 @@ and dedicated OWL templates and styles for expanding multiple hierarchy levels.
 **The recursive list is not yet enabled in the application's category list.**
 Its implementation still requires registering a custom view in the Odoo view
 registry, binding the dedicated OWL templates to its renderer, and specifying
-that view's \`js_class\` in the relevant list architecture. The resources have
+that view's `js_class` in the relevant list architecture. The resources have
 not been verified by a complete Odoo 18 browser/integration test; simply
 installing the addon must not be taken as evidence that recursive expansion
 already works.
@@ -110,36 +110,36 @@ already works.
 #### Attribution: recursive_list_view by Bemade
 
 The adapted recursive-list resources are based on
-[\`recursive_list_view\` for Odoo 18](https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view),
+[`recursive_list_view` for Odoo 18](https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view),
 originally developed by **Marc Durepos, Bemade Inc.**
 
 - **Original copyright:** Copyright (C) 2023-June Bemade Inc.
 - **Original author:** Marc Durepos (Bemade Inc.).
 - **Original project:** [bemade/bemade-addons](https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view).
 - **Original license:** [GNU Lesser General Public License v3.0 (LGPL-3.0)](https://www.gnu.org/licenses/lgpl-3.0.html).
-- **Local adaptation:** integration into \`education_classification\` for Odoo
+- **Local adaptation:** integration into `education_classification` for Odoo
   18, with dedicated classes/templates and changes to how child categories are
   loaded and displayed.
 
 | Local file | Original Bemade file |
 | --- | --- |
-| \`static/src/js/list_controller.js\` | \`recursive_list_view/static/src/list_controller.js\` |
-| \`static/src/js/list_renderer.js\` | \`recursive_list_view/static/src/list_renderer.js\` |
-| \`static/src/js/relational_model.js\` | \`recursive_list_view/static/src/relational_model.js\` |
-| \`static/src/xml/recursive_tree_templates.xml\` | \`recursive_list_view/static/src/recursive_tree_templates.xml\` |
-| \`static/src/css/tree_recursive_styles.css\` | \`recursive_list_view/static/src/tree_recursive_styles.css\` |
+| `static/src/js/list_controller.js` | `recursive_list_view/static/src/list_controller.js` |
+| `static/src/js/list_renderer.js` | `recursive_list_view/static/src/list_renderer.js` |
+| `static/src/js/relational_model.js` | `recursive_list_view/static/src/relational_model.js` |
+| `static/src/xml/recursive_tree_templates.xml` | `recursive_list_view/static/src/recursive_tree_templates.xml` |
+| `static/src/css/tree_recursive_styles.css` | `recursive_list_view/static/src/tree_recursive_styles.css` |
 
 The original authorship and LGPL-3.0 status of the reused code must be
 preserved. The remaining addon functionality is distributed under the
-\`AGPL-3\` license declared in its manifest. The integrated implementation
-does **not** require installing the upstream \`recursive_list_view\` addon.
+`AGPL-3` license declared in its manifest. The integrated implementation
+does **not** require installing the upstream `recursive_list_view` addon.
 
 ## Repository structure
 
 The top-level directories separate installable addons from supporting assets
 and project notes.
 
-\`\`\`text
+```text
 odoo-normative/
 ├── README.md
 ├── assets/                # Project-level graphics and other resources
@@ -148,31 +148,31 @@ odoo-normative/
 │   ├── driving_licence/
 │   └── education_classification/
 └── project/               # Project notes (currently a short README)
-\`\`\`
+```
 
-The \`modules/\` directory is the one to add to Odoo's addons path.
+The `modules/` directory is the one to add to Odoo's addons path.
 
 ## Installation
 
 Use an Odoo **18.0** installation and clone the repository:
 
-\`\`\`bash
+```bash
 git clone https://github.com/sotogarcia/odoo-normative.git
-\`\`\`
+```
 
-Add the cloned \`odoo-normative/modules\` directory to your Odoo
-\`addons_path\`. Ensure any separately provided dependencies are available,
+Add the cloned `odoo-normative/modules` directory to your Odoo
+`addons_path`. Ensure any separately provided dependencies are available,
 update the Apps list, and install the desired addon by its technical name:
-\`cefrl\`, \`driving_licence\`, or \`education_classification\`.
+`cefrl`, `driving_licence`, or `education_classification`.
 
-For \`education_classification\`, Odoo's \`web_hierarchy\` addon is required.
-For \`cefrl\`, \`base_field_m2m_view\` is an additional external dependency.
-There is no requirement to install Bemade's \`recursive_list_view\` module for
+For `education_classification`, Odoo's `web_hierarchy` addon is required.
+For `cefrl`, `base_field_m2m_view` is an additional external dependency.
+There is no requirement to install Bemade's `recursive_list_view` module for
 the adapted code included in this repository.
 
 ## Development and testing
 
-The repository includes a Python test module for \`driving_licence\`; it does
+The repository includes a Python test module for `driving_licence`; it does
 not currently contain a comparable automated test suite for the recursive
 classification list. Code presence and static review should not be confused
 with successful Odoo runtime or browser testing.
@@ -185,7 +185,7 @@ and backward compatibility with existing XML IDs.
 
 The three addon manifests declare the
 [GNU Affero General Public License v3](https://www.gnu.org/licenses/agpl-3.0.html)
-(\`AGPL-3\`). The adapted Bemade files retain their original attribution and
+(`AGPL-3`). The adapted Bemade files retain their original attribution and
 license notices; see the dedicated acknowledgment above for their source
 and LGPL-3.0 license.
 
