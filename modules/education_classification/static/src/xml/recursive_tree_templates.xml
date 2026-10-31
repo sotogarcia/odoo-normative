@@ -13,6 +13,9 @@
     <t t-name="education_classification.RecursiveListRenderer"
        t-inherit="web.ListRenderer"
        t-inherit-mode="primary">
+        <xpath expr="//div[hasclass('o_list_renderer')]" position="attributes">
+            <attribute name="class" add="o_education_classification_recursive_list" separator=" "/>
+        </xpath>
         <xpath expr="//thead/tr/th[hasclass('o_list_record_selector')]" position="before">
             <th class="o_recursive_expand_column cursor-default o_list_button"/>
         </xpath>
