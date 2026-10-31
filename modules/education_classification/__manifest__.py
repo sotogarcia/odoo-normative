@@ -107,22 +107,19 @@ modify, or delete classification records.
 Integration
 -----------
 
-The module depends on Odoo Base and the standard web_hierarchy addon.
-It is independent of any academic management module.
+The module depends only on Odoo Base and can be reused by educational,
+training, statistical, and other applications requiring structured
+educational classifications.
 
-An adapted recursive list implementation is included in the module's static
-resources, based on Bemade Inc.'s recursive_list_view for Odoo 18 (LGPL-3).
-The resources are bundled but still require a dedicated list view registration,
-OWL template bindings and js_class configuration before the recursive list
-can be used. See the repository README for attribution and current status.
+It does not depend on any specific academic management module.
     """,
     "author": "Jorge Soto Garcia",
-    "website": "https://github.com/sotogarcia/odoo-normative",
+    "website": "https://github.com/sotogarcia/odoo-academy",
     "license": "AGPL-3",
     "category": "Academy",
     "maintainer": "Jorge Soto Garcia",
     "contributors": ["Jorge Soto Garcia <sotogarcia@gmail.com>"],
-    "depends": ["base", "web_hierarchy"],
+    "depends": ["base", "web_hierarchy", "recursive_list_view"],
     "external_dependencies": {
         "python": [],
         "bin": [],
@@ -149,13 +146,7 @@ can be used. See the repository README for attribution and current status.
         # Common assets (shared by backend, website, PoS...)
         "web.assets_common": [],
         # Backend (web client) assets
-        "web.assets_backend": [
-            "education_classification/static/src/js/relational_model.js",
-            "education_classification/static/src/js/list_renderer.js",
-            "education_classification/static/src/js/list_controller.js",
-            "education_classification/static/src/xml/recursive_tree_templates.xml",
-            "education_classification/static/src/css/tree_recursive_styles.css",
-        ],
+        "web.assets_backend": [],
         # Public website / portal assets
         "web.assets_frontend": [],
         # Common report assets (shared by HTML/PDF reports)
