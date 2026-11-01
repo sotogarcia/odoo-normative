@@ -5,7 +5,7 @@
 ###############################################################################
 
 from odoo import models, fields, api
-from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, AND
+from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, AND, OR
 from odoo.tools.translate import _
 from logging import getLogger
 
@@ -119,38 +119,26 @@ class CefrlCertificateGroup(models.Model):
         ),
     ]
 
-    def name_get(self):
-        result = []
-
+    @api.depends("code", "name")
+    @api.depends_context("lang")
+    def _compute_display_name(self):
         for record in self:
             if record._origin:
-                name = "{} ({})".format(record.code, record.name)
-                result.append((record.id, name))
+                record.display_name = "{} ({})".format(record.code, record.name)
             else:
-                result.append((record.id, _("New certificate group")))
-
-        return result
+                record.display_name = _("New certificate group")
 
     def _search_display_name(self, operator, value):
-        """Custom search for display_name (Odoo 18+).
-        Matches on code, name, and language_id; honors negative operators.
-        """
+        """Search by code, name, or language, including negative operators."""
         if not value:
-            # No additional domain when there is no search value
             return []
 
-        # OR over the three fields
-        base = [
-            "|",
-            "|",
-            ("code", operator, value),
-            ("name", operator, value),
-            ("language_id", operator, value),
+        domains = [
+            [("code", operator, value)],
+            [("name", operator, value)],
+            [("language_id", operator, value)],
         ]
 
-        # For negative operators, invert the OR into a negated AND
         if operator in NEGATIVE_TERM_OPERATORS:
-            base = ["&", "!"] + base[1:]
-
-        # Return the domain fragment; the caller will AND with other clauses
-        return AND([base])
+            return AND(domains)
+        return OR(domains)

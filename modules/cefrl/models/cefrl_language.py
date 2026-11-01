@@ -4,7 +4,7 @@
 #    __openerp__.py file at the root folder of this module.                   #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 from odoo.tools.translate import _
 from logging import getLogger
 
@@ -100,15 +100,12 @@ class CefrlLanguage(models.Model):
         ),
     ]
 
-    def name_get(self):
-        result = []
-
+    @api.depends("name", "code", "dialect", "parent_id")
+    @api.depends_context("lang")
+    def _compute_display_name(self):
         for record in self:
             if record._origin:
                 code = record.dialect if record.parent_id else record.code
-                name = "{} ({})".format(record.name, code)
-                result.append((record.id, name))
+                record.display_name = "{} ({})".format(record.name, code)
             else:
-                result.append((record.id, _("New certificate group")))
-
-        return result
+                record.display_name = _("New language")

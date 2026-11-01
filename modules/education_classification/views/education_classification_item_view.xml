@@ -22,7 +22,7 @@
     <field name="priority" eval="16" />
     <field name="active" eval="True" />
     <field name="arch" type="xml">
-      <list string="Classification Items" create="1" delete="1" edit="1" default_order="edition_id,sequence_path,sequence,id" js_class="education_classification_recursive_list">
+      <list string="Classification Items" create="1" delete="1" edit="1" default_order="edition_id,sequence_path,sequence,id">
         <field name="code" class="oe_field_code" />
         <field name="name" class="oe_field_name" />
         <field name="level" class="oe_field_level" readonly="1" optional="hide" />
