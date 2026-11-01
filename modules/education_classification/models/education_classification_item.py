@@ -131,6 +131,7 @@ class EducationClassificationItem(models.Model):
         string="Scheme",
         related="edition_id.scheme_id",
         store=True,
+        precompute=True,
         readonly=True,
         index=True,
     )
@@ -141,6 +142,7 @@ class EducationClassificationItem(models.Model):
         help="Educational aspect classified: programmes, attainment, or fields.",
         related="edition_id.scheme_id.dimension",
         store=True,
+        precompute=True,
         readonly=True,
         index=True,
     )
