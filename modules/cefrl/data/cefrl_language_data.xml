@@ -281,11 +281,5 @@
     <field name="active" eval="True"/>
   </record>
 
-  <record id="cefrl_language_ca" model="cefrl.language">
-    <field name="code">ca</field>
-    <field name="dialect">ca</field>
-    <field name="name">Catalan</field>
-    <field name="active" eval="True"/>
-  </record>
 
 </odoo>

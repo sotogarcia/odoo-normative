@@ -5,7 +5,7 @@
 ###############################################################################
 
 from odoo import models, fields, api
-from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, AND
+from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, AND, OR
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
 from logging import getLogger
@@ -201,24 +201,16 @@ class CefrlCertificate(models.Model):
             record.display_name = " — ".join(items)
 
     def _search_display_name(self, operator, value):
-        """Custom search for display_name (Odoo 18+).
-        Matches on code, name and group_id; honors negative operators.
-        """
+        """Search by code, name, or group, including negative operators."""
         if not value:
             return []
 
-        # Build OR over the three fields
-        base = [
-            "|",
-            "|",
-            ("code", operator, value),
-            ("name", operator, value),
-            ("group_id", operator, value),
+        domains = [
+            [("code", operator, value)],
+            [("name", operator, value)],
+            [("group_id", operator, value)],
         ]
 
-        # Turn the OR into a negated AND when operator is negative
         if operator in NEGATIVE_TERM_OPERATORS:
-            base = ["&", "!"] + base[1:]
-
-        # Return as a domain; Odoo will AND this with the caller's domain
-        return AND([base])
+            return AND(domains)
+        return OR(domains)

@@ -113,14 +113,11 @@ class CefrlLevelGroup(models.Model):
         ),
     ]
 
-    def name_get(self):
-        result = []
-
+    @api.depends("code", "name")
+    @api.depends_context("lang")
+    def _compute_display_name(self):
         for record in self:
             if record._origin:
-                name = "{} ({})".format(record.code, record.name)
-                result.append((record.id, name))
+                record.display_name = "{} ({})".format(record.code, record.name)
             else:
-                result.append((record.id, _("New certificate group")))
-
-        return result
+                record.display_name = _("New level group")
