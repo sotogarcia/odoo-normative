@@ -392,6 +392,24 @@ test("education_classification: pagination counts visual roots rather than match
     expect(rowNames()).toEqual(["Root B"]);
 });
 
+test("education_classification: fetching the exact count uses visual roots", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH
+            .replace('limit="80"', 'limit="1" count_limit="1"'),
+        domain: [],
+    });
+
+    // Five matching database records produce only two visual roots.
+    expect(".o_pager_limit").toHaveText("1+");
+    await contains(".o_pager_limit").click();
+    expect(".o_pager_limit").toHaveText("2");
+
+    await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+});
+
 test("education_classification: late child loading does not expand a replaced page", async () => {
     const pendingChildren = new Deferred();
     onRpc("web_search_read", ({ kwargs }) => {
