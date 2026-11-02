@@ -9,19 +9,12 @@
  */
 
 import { ListRenderer } from "@web/views/list/list_renderer";
-import { useState } from "@odoo/owl";
 
 export class EducationClassificationRecursiveListRenderer extends ListRenderer {
     // Dedicated OWL templates; do not modify Odoo's global ListRenderer.
     static template = "education_classification.RecursiveListRenderer";
     static recordRowTemplate =
         "education_classification.RecursiveListRenderer.RecordRow";
-
-    setup() {
-        super.setup();
-        this.recursive = true;
-        useState(this.props.list.records);
-    }
 
     // Odoo's standard column count does not include the custom tree
     // expander column. Account for it in group headers and pagers too.
@@ -33,8 +26,9 @@ export class EducationClassificationRecursiveListRenderer extends ListRenderer {
         return super.getGroupNameCellColSpan(group) + 1;
     }
 
-    // Keep the group's matched-record count in its header, but paginate
-    // the projected visual roots rather than all matching descendants.
+    // Odoo's group header describes all matching records (group.count),
+    // while the inner list is paginated by visual roots (group.list.count).
+    // Keep those counts independent when rendering the group pager.
     getGroupPagerProps(group) {
         const props = super.getGroupPagerProps(group);
         if (this.env.model.canExpandRecursively() && !group.list.isGrouped) {
@@ -48,9 +42,8 @@ export class EducationClassificationRecursiveListRenderer extends ListRenderer {
     }
 
     _onExpandClick(ev) {
-        ev.preventDefault();
-        ev.stopPropagation();
-
+        // The button template already stops and prevents click propagation,
+        // including inside an opened Odoo group.
         const parentId = Number(ev.currentTarget.dataset.expand);
         if (!Number.isInteger(parentId) || parentId <= 0) {
             return;
