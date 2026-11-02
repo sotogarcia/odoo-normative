@@ -101,6 +101,14 @@ export class EducationClassificationRecursiveListController extends ListControll
         }
     }
 
+    onUnselectAll() {
+        if (!this.model.canExpandRecursively()) {
+            return super.onUnselectAll();
+        }
+        this.discardSelection();
+        return this.model.root.selectDomain(false);
+    }
+
     get modelParams() {
         const params = super.modelParams;
         return {
