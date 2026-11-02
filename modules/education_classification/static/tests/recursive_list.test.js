@@ -344,6 +344,52 @@ test("education_classification: grouped pager advances through roots, not descen
     expect(rowNames()).toEqual(["Root C", "Root B"]);
 });
 
+test("education_classification: child reads keep the edition group context", async () => {
+    onRpc("web_search_read", ({ kwargs }) => {
+        if ((kwargs.domain || []).some(
+            (term) => Array.isArray(term) &&
+                term[0] === "parent_id" && term[1] === "=" && term[2] === 1
+        )) {
+            expect.step("group child read");
+            expect(kwargs.context.default_edition_id).toBe(10);
+        }
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        groupBy: ["edition_id"],
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect.verifySteps(["group child read"]);
+});
+
+test("education_classification: stale child counts do not leave inert expanders", async () => {
+    onRpc("web_search_read", ({ kwargs }) => {
+        if ((kwargs.domain || []).some(
+            (term) => Array.isArray(term) &&
+                term[0] === "parent_id" && term[1] === "=" && term[2] === 1
+        )) {
+            return { records: [], length: 0 };
+        }
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect('.o_expand_button[data-expand="1"]').toHaveCount(0);
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+});
+
 test("education_classification: parent and level groups do not expand across groups", async () => {
     await mountView({
         type: "list",
