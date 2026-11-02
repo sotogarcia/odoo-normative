@@ -78,6 +78,34 @@ export class EducationClassificationRecursiveListController extends ListControll
         }
     }
 
+    /**
+     * Odoo's default openRecord() supplies only root.records as navigation
+     * ids. In the recursive list a displayed descendant is not a root record,
+     * so use the same visible row order as the renderer when opening a form.
+     * Custom open actions and non-recursive groupings keep Odoo's behaviour.
+     */
+    async openRecord(record, force = false) {
+        if (
+            !this.model.canExpandRecursively() ||
+            (this.props.allowOpenAction && this.archInfo.openAction)
+        ) {
+            return super.openRecord(record, force);
+        }
+
+        const visibleRecords = this.model.getVisibleRecords();
+        if (!visibleRecords.includes(record)) {
+            return super.openRecord(record, force);
+        }
+
+        const dirty = await record.isDirty();
+        if (dirty) {
+            await record.save();
+        }
+
+        const activeIds = visibleRecords.map((item) => item.resId);
+        return this.props.selectRecord(record.resId, { activeIds, force });
+    }
+
     get nbTotal() {
         return this.model.getMatchingCount() ?? super.nbTotal;
     }
