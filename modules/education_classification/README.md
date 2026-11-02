@@ -101,7 +101,7 @@ The JavaScript files export dedicated controller, renderer and model
 classes rather than globally patching Odoo's corresponding prototypes.
 The XML contains primary-inheritance OWL templates scoped to the custom
 renderer, and the CSS supplies the expansion-column styling and indentation
-rules (explicitly defined for depths 1–12).
+rules for arbitrary hierarchy depths using a CSS custom property.
 
 **Status: registered and activated in the classification-item list.**
 The dedicated view `education_classification_recursive_list` is enabled
