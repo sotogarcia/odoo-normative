@@ -33,11 +33,18 @@ export class EducationClassificationRecursiveListRenderer extends ListRenderer {
         return super.getGroupNameCellColSpan(group) + 1;
     }
 
+    // Keep the group's matched-record count in its header, but paginate
+    // the projected visual roots rather than all matching descendants.
+    getGroupPagerProps(group) {
+        const props = super.getGroupPagerProps(group);
+        if (this.env.model.canExpandRecursively() && !group.list.isGrouped) {
+            return { ...props, total: group.list.count };
+        }
+        return props;
+    }
+
     hasChildren(record) {
-        return this.env.model.canExpandRecursively() && (
-            (record.children?.length ?? 0) > 0 ||
-            (record.data?.child_count ?? 0) > 0
-        );
+        return this.env.model.hasMatchingChildren(record);
     }
 
     _onExpandClick(ev) {
