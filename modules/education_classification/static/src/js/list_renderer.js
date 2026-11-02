@@ -37,6 +37,39 @@ export class EducationClassificationRecursiveListRenderer extends ListRenderer {
         return props;
     }
 
+    // The standard renderer tests the number of root list records. In this
+    // view the selection checkbox must reflect *all displayed rows*, including
+    // descendants, rather than roots alone.
+    get selectAll() {
+        if (!this.env.model.canExpandRecursively()) {
+            return super.selectAll;
+        }
+        if (this.props.list.isDomainSelected) {
+            return true;
+        }
+        const records = this.env.model.getVisibleRecords(this.props.list);
+        return records.length > 0 && records.every((record) => record.selected);
+    }
+
+    // Shift-selection must follow the rendered row order, not list.records
+    // (which deliberately contains only visual roots).
+    toggleRecordShiftSelection(record) {
+        if (!this.env.model.canExpandRecursively()) {
+            return super.toggleRecordShiftSelection(record);
+        }
+        const records = this.env.model.getVisibleRecords(this.props.list);
+        const from = records.indexOf(this.lastCheckedRecord);
+        const to = records.indexOf(record);
+        if (from === -1 || to === -1) {
+            record.toggleSelection();
+            return;
+        }
+        const selected = record.selected;
+        for (let i = Math.min(from, to); i <= Math.max(from, to); i++) {
+            records[i].toggleSelection(!selected);
+        }
+    }
+
     hasChildren(record) {
         return this.env.model.hasMatchingChildren(record);
     }
