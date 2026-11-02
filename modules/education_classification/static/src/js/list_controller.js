@@ -78,6 +78,10 @@ export class EducationClassificationRecursiveListController extends ListControll
         }
     }
 
+    get nbTotal() {
+        return this.model.getMatchingCount() ?? super.nbTotal;
+    }
+
     get isPageSelected() {
         if (!this.model.canExpandRecursively()) {
             return super.isPageSelected;
