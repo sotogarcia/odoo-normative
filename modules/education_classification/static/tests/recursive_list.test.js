@@ -804,6 +804,27 @@ test("education_classification: opening grouped descendants keeps their group na
     });
 });
 
+test("education_classification: filtered visual roots open their matching descendants", async () => {
+    let selected;
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [["code", "in", ["A1", "A1a"]]],
+        selectRecord: (id, options) => {
+            selected = { id, ...options };
+        },
+    });
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(1)').click();
+    expect(selected).toEqual({
+        id: 5,
+        activeIds: [2, 5],
+        force: false,
+    });
+});
+
 test("education_classification: deleting a selected leaf unlinks its id", async () => {
     onRpc("unlink", ({ args }) => {
         expect.step("unlink");
