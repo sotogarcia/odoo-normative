@@ -28,6 +28,7 @@ export class EducationClassificationRecursiveListController extends ListControll
         }
         if (record.expanded) {
             record.expanded = false;
+            this.model.notify();
             return;
         }
         if (record.loadingChildren) {
@@ -39,6 +40,7 @@ export class EducationClassificationRecursiveListController extends ListControll
             record.expanded = true;
         } finally {
             record.loadingChildren = false;
+            this.model.notify();
         }
     }
 
