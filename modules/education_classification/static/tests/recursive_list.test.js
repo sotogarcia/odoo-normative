@@ -580,6 +580,103 @@ test("education_classification: indentation supports depths beyond twelve", asyn
     expect(depthCell.style.getPropertyValue("--ec-recursive-depth").trim()).toBe("14");
 });
 
+test("education_classification: selecting a descendant updates the selected ids", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(1)").click();
+
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+    expect(selectedIds).toEqual([2]);
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(1);
+});
+
+test("education_classification: shift selection includes intermediate descendants", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    await contains(".o_data_row .o_list_record_selector input:eq(2)").click({
+        shiftKey: true,
+    });
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
+    expect(selectedIds).toEqual([1, 2, 3]);
+});
+
+test("education_classification: select all includes expanded descendants", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains('.o_expand_button[data-expand="2"]').click();
+    await contains("thead .o_list_record_selector input").click();
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(5);
+    expect(selectedIds).toEqual([1, 2, 5, 3, 4]);
+    expect(".o_list_selection_box").toHaveText("5\nselected");
+
+    await contains("thead .o_list_record_selector input").click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(0);
+    expect(selectedIds).toEqual([]);
+});
+
+test("education_classification: selecting a descendant works in an edition group", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        groupBy: ["edition_id"],
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(1)").click();
+
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+    expect(selectedIds).toEqual([2]);
+});
+
+test("education_classification: nonrecursive grouping keeps standard selection", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        groupBy: ["level"],
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    expect(selectedIds).toHaveLength(1);
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+});
+
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
     await mountView({
         type: "list",
