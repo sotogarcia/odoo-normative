@@ -294,6 +294,56 @@ test("education_classification: expansion works in an opened edition group", asy
     expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2"]);
 });
 
+test("education_classification: initially opened edition group counts visual roots", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1" expand="1"'),
+        domain: [],
+        groupBy: ["edition_id"],
+    });
+
+    // Edition A contains four matching records, but only one visual root.
+    expect(".o_group_header").toHaveCount(2);
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    expect(".o_group_header .o_pager").toHaveCount(0);
+});
+
+test("education_classification: grouped pager advances through roots, not descendants", async () => {
+    setClassificationRecords([
+        { ...ROOT_A },
+        { ...CHILD_A1 },
+        { ...CHILD_A2 },
+        { ...GRANDCHILD },
+        { ...ROOT_B },
+        {
+            id: 6,
+            name: "Root C",
+            code: "C",
+            sequence: 2,
+            sequence_path: "0002/",
+            parent_id: false,
+            edition_id: 10,
+            child_count: 0,
+            level: 0,
+        },
+    ]);
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1" expand="1"'),
+        domain: [],
+        groupBy: ["edition_id"],
+    });
+
+    expect(".o_group_header:eq(0) .o_pager_limit").toHaveText("2");
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+
+    await contains(".o_group_header:eq(0) .o_pager_next").click();
+    expect(rowNames()).toEqual(["Root C", "Root B"]);
+});
+
 test("education_classification: parent and level groups do not expand across groups", async () => {
     await mountView({
         type: "list",
