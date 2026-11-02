@@ -168,6 +168,16 @@ class EducationClassificationItem(models.Model):
         help="Display order of categories within the classification.",
     )
 
+    weight = fields.Integer(
+        string="Relative Weight",
+        required=False,
+        readonly=True,
+        index=True,
+        default=0,
+        help="Relative educational level within the classification. "
+        "Zero indicates that no comparable level has been assigned.",
+    )
+
     external_url = fields.Char(
         string="External URL",
         required=False,
