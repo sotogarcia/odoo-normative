@@ -40,9 +40,11 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
         this._recursiveIndices = new Map();
         this._recursiveIndexById = new Map();
         this._recursiveGroupingCompatible = true;
+        this._recursiveGeneration = 0;
 
         const onWillLoadRoot = this.hooks.onWillLoadRoot;
         this.hooks.onWillLoadRoot = (config) => {
+            this._recursiveGeneration++;
             this._recursiveIndices.clear();
             this._recursiveIndexById.clear();
             this._recursiveGroupingCompatible = (config.groupBy || []).every(
@@ -105,12 +107,17 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
         if (!this._recursiveIndices.has(key)) {
             const promise = this._buildRecursiveIndex(config);
             this._recursiveIndices.set(key, promise);
-            promise.catch(() => this._recursiveIndices.delete(key));
+            promise.catch(() => {
+                if (this._recursiveIndices.get(key) === promise) {
+                    this._recursiveIndices.delete(key);
+                }
+            });
         }
         return this._recursiveIndices.get(key);
     }
 
     async _buildRecursiveIndex(config) {
+        const generation = this._recursiveGeneration;
         const order = orderByToString(
             (config.orderBy || []).filter((item) => item.name !== "__count")
         );
@@ -164,8 +171,13 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
             context: config.context,
             order,
         };
-        for (const id of ids) {
-            this._recursiveIndexById.set(id, index);
+        // A newer search may have replaced this forest while its RPCs
+        // were pending. Never let a stale search populate the current
+        // record-to-index lookup.
+        if (generation === this._recursiveGeneration) {
+            for (const id of ids) {
+                this._recursiveIndexById.set(id, index);
+            }
         }
         return index;
     }
