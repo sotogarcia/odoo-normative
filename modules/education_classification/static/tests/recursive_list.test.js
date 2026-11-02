@@ -653,7 +653,8 @@ test("education_classification: select entire filtered domain includes folded de
 
     // The pager counts visual roots; the selection bar counts raw matches.
     await contains("thead .o_list_record_selector input").click();
-    expect(".o_list_selection_box").toHaveText("1 selected Select all 5");
+    expect(".o_list_select_domain").toHaveCount(1);
+    expect(".o_list_select_domain").toHaveText("Select all 5");
 
     await contains(".o_list_select_domain").click();
     expect(".o_list_selection_box").toHaveText("All 5 selected");
