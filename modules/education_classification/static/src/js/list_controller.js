@@ -78,6 +78,25 @@ export class EducationClassificationRecursiveListController extends ListControll
         }
     }
 
+    get isPageSelected() {
+        if (!this.model.canExpandRecursively()) {
+            return super.isPageSelected;
+        }
+        const records = this.model.getVisibleRecords();
+        return records.length > 0 && records.every((record) => record.selected);
+    }
+
+    discardSelection() {
+        if (!this.model.canExpandRecursively()) {
+            return super.discardSelection();
+        }
+        for (const record of this.model.getLoadedRecords()) {
+            if (record.selected) {
+                record.toggleSelection(false);
+            }
+        }
+    }
+
     get modelParams() {
         const params = super.modelParams;
         return {
