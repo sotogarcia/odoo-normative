@@ -434,6 +434,51 @@ test("education_classification: recursive styles are scoped to their renderer", 
     expect('.o_expand_button[data-expand="1"]').toHaveCount(1);
 });
 
+
+test("education_classification: expander column stays aligned without selectors", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        allowSelectors: false,
+    });
+
+    expect(".o_list_renderer thead th.o_list_record_selector").toHaveCount(0);
+    expect(".o_list_renderer thead th.o_recursive_expand_column").toHaveCount(1);
+    expect(".o_list_renderer tbody tr.o_data_row > td.o_recursive_expand_column").toHaveCount(2);
+    expect(".o_list_renderer tfoot td.o_recursive_expand_column").toHaveCount(1);
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2", "Root B"]);
+    expect(".o_list_renderer tbody tr.o_data_row > td.o_recursive_expand_column").toHaveCount(4);
+});
+
+test("education_classification: grouped headers span all columns without selectors", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        groupBy: ["edition_id"],
+        allowSelectors: false,
+    });
+
+    const columns = document.querySelectorAll(
+        ".o_list_renderer thead tr > th"
+    ).length;
+    const header = document.querySelector(".o_list_renderer .o_group_header");
+    const span = Array.from(header.children).reduce(
+        (count, cell) => count + cell.colSpan,
+        0
+    );
+    expect(span).toBe(columns);
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2"]);
+});
+
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
     await mountView({
         type: "list",
