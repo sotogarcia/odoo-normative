@@ -8,7 +8,7 @@
  * They do not require or modify the module's UNESCO/ISCED reference data.
  */
 
-import { beforeEach, expect, test } from "@odoo/hoot";
+import { animationFrame, beforeEach, click, Deferred, expect, test } from "@odoo/hoot";
 import {
     contains,
     defineModels,
@@ -389,6 +389,36 @@ test("education_classification: pagination counts visual roots rather than match
 
     expect(rowNames()).toEqual(["Root A"]);
     await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+});
+
+test("education_classification: late child loading does not expand a replaced page", async () => {
+    const pendingChildren = new Deferred();
+    onRpc("web_search_read", ({ kwargs }) => {
+        const domain = kwargs.domain || [];
+        if (domain.some((term) => Array.isArray(term) &&
+            term[0] === "parent_id" && term[1] === "=" && term[2] === 1)) {
+            return pendingChildren;
+        }
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    expect(rowNames()).toEqual(["Root A"]);
+    await click('.o_expand_button[data-expand="1"]');
+    await animationFrame();
+    expect('.o_expand_button[data-expand="1"]').toHaveAttribute("disabled");
+
+    await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+
+    pendingChildren.resolve();
+    await animationFrame();
     expect(rowNames()).toEqual(["Root B"]);
 });
 
