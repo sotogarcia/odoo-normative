@@ -752,6 +752,105 @@ test("education_classification: nonrecursive grouping keeps standard selection",
     expect(".o_list_selection_box").toHaveText("1\nselected");
 });
 
+test("education_classification: opening a descendant uses visible navigation ids", async () => {
+    let selected;
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        selectRecord: (id, options) => {
+            selected = { id, ...options };
+        },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(1)').click();
+    expect(selected).toEqual({
+        id: 2,
+        activeIds: [1, 2, 3, 4],
+        force: false,
+    });
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(2)').click();
+    expect(selected).toEqual({
+        id: 5,
+        activeIds: [1, 2, 5, 3, 4],
+        force: false,
+    });
+});
+
+test("education_classification: opening grouped descendants keeps their group navigation", async () => {
+    let selected;
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        groupBy: ["edition_id"],
+        selectRecord: (id, options) => {
+            selected = { id, ...options };
+        },
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(2)').click();
+    expect(selected).toEqual({
+        id: 3,
+        activeIds: [1, 2, 3],
+        force: false,
+    });
+});
+
+test("education_classification: deleting a selected leaf unlinks its id", async () => {
+    onRpc("unlink", ({ args }) => {
+        expect.step("unlink");
+        expect(args[0]).toEqual([3]);
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        actionMenus: {},
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(2)").click();
+    await contains(".o_cp_action_menus .dropdown-toggle").click();
+    await toggleMenuItem("Delete");
+    expect(".modal").toHaveCount(1);
+    await contains(".modal footer button.btn-primary").click();
+
+    expect.verifySteps(["unlink"]);
+    expect(rowNames()).not.toContain("Child A2");
+});
+
+test("education_classification: cancelling descendant deletion preserves the record", async () => {
+    onRpc("unlink", () => {
+        expect.step("unexpected unlink");
+    });
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        actionMenus: {},
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(2)").click();
+    await contains(".o_cp_action_menus .dropdown-toggle").click();
+    await toggleMenuItem("Delete");
+    await contains(".modal footer button.btn-secondary").click();
+
+    expect.verifySteps([]);
+    expect(rowNames()).toContain("Child A2");
+});
+
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
     await mountView({
         type: "list",
