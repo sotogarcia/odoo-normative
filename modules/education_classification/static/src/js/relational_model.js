@@ -43,6 +43,17 @@ function toggleVisibleSelection(list) {
 }
 
 class EducationClassificationRecursiveRecordList extends DynamicRecordList {
+    _selectDomain(value) {
+        // Domain-wide selection also covers children that were loaded before
+        // selecting the domain. Odoo's base method marks only list.records.
+        if (value && this.model.canExpandRecursively()) {
+            for (const record of this.model.getLoadedRecords(this)) {
+                record.selected = true;
+            }
+        }
+        super._selectDomain(value);
+    }
+
     get selection() {
         return this.model.canExpandRecursively()
             ? this.model.getVisibleRecords(this).filter((record) => record.selected)
@@ -450,6 +461,7 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
                     { manuallyAdded: false }
                 );
                 child.depth = depth + 1;
+                child.selected = Boolean(this.root?.isDomainSelected);
                 child.expanded = false;
                 child.childrenFetched = false;
                 child.children = [];
