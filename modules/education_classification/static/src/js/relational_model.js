@@ -8,35 +8,230 @@
  * Adaptation for education_classification: Jorge Soto García, 2026.
  */
 
+import { Domain } from "@web/core/domain";
+import { DynamicGroupList } from "@web/model/relational_model/dynamic_group_list";
+import { DynamicRecordList } from "@web/model/relational_model/dynamic_record_list";
+import { Group } from "@web/model/relational_model/group";
 import { RelationalModel } from "@web/model/relational_model/relational_model";
 import {
     getBasicEvalContext,
     getFieldsSpec,
     makeActiveField,
 } from "@web/model/relational_model/utils";
+import { orderByToString } from "@web/search/utils/order_by";
 
 const PARENT_FIELD = "parent_id";
 const CHILD_COUNT_FIELD = "child_count";
-const CHILD_PAGE_SIZE = 200;
-const CHILD_ORDER = "sequence asc, code asc, id asc";
+const PAGE_SIZE = 200;
 
+/**
+ * Odoo's DynamicList.selection and _toggleSelection work with list.records,
+ * which contains only visual roots in our recursive view. Keep selection in
+ * the dedicated list types rather than changing Odoo's global list model.
+ */
+function toggleVisibleSelection(list) {
+    const records = list.model.getVisibleRecords(list);
+    if (!records.length) {
+        return;
+    }
+    const selected = records.some((record) => !record.selected);
+    for (const record of records) {
+        record._toggleSelection(selected);
+    }
+    if (!selected) {
+        list._selectDomain(false);
+    }
+}
+
+class EducationClassificationRecursiveRecordList extends DynamicRecordList {
+    _selectDomain(value) {
+        // Domain-wide selection also covers children that were loaded before
+        // selecting the domain. Odoo's base method marks only list.records.
+        if (value && this.model.canExpandRecursively()) {
+            for (const record of this.model.getLoadedRecords(this)) {
+                record.selected = true;
+            }
+        }
+        super._selectDomain(value);
+    }
+
+    get selection() {
+        return this.model.canExpandRecursively()
+            ? this.model.getVisibleRecords(this).filter((record) => record.selected)
+            : super.selection;
+    }
+
+    async _toggleSelection() {
+        if (!this.model.canExpandRecursively()) {
+            return super._toggleSelection();
+        }
+        toggleVisibleSelection(this);
+    }
+
+    async getResIds(isSelected) {
+        if (!isSelected && this.model.canExpandRecursively()) {
+            return [...new Set(this.model.getVisibleRecords(this).map((record) => record.resId))];
+        }
+        return super.getResIds(isSelected);
+    }
+}
+
+class EducationClassificationRecursiveGroupList extends DynamicGroupList {
+    get selection() {
+        return this.model.canExpandRecursively()
+            ? this.model.getVisibleRecords(this).filter((record) => record.selected)
+            : super.selection;
+    }
+
+    async _toggleSelection() {
+        if (!this.model.canExpandRecursively() || !this.records.length) {
+            return super._toggleSelection();
+        }
+        toggleVisibleSelection(this);
+    }
+
+    async getResIds(isSelected) {
+        if (!isSelected && this.model.canExpandRecursively()) {
+            return [...new Set(this.model.getVisibleRecords(this).map((record) => record.resId))];
+        }
+        return super.getResIds(isSelected);
+    }
+}
+
+/**
+ * Odoo substitutes the group count when a child list reaches countLimit.
+ * Here the child list's exact root count must not be overwritten by the
+ * count of all matching records (including collapsed descendants).
+ */
+class EducationClassificationRecursiveGroup extends Group {
+    _useGroupCountForList() {
+        if (this.model.canExpandRecursively() && !this.list.isGrouped) {
+            return;
+        }
+        return super._useGroupCountForList();
+    }
+}
+
+/**
+ * Present search results as a forest, not as a list of database roots.
+ *
+ * The search domain and context determine the set of eligible records. A
+ * record is a visual root when its parent is not in that set; expanding a
+ * node shows only its eligible immediate children. This also works when a
+ * search matches descendants but excludes their ancestors.
+ *
+ * Root pagination is applied after constructing the forest. Applying the
+ * original list limit before identifying roots would silently lose roots
+ * whose parents or siblings happen to be on other pages.
+ */
 export class EducationClassificationRecursiveListModel extends RelationalModel {
+    static Group = EducationClassificationRecursiveGroup;
+    static DynamicRecordList = EducationClassificationRecursiveRecordList;
+    static DynamicGroupList = EducationClassificationRecursiveGroupList;
+
+    /**
+     * The standard list pager counts visual roots, but "Select all records"
+     * must report the number of domain matches, including descendants.
+     */
+    getMatchingCount() {
+        if (!this.canExpandRecursively() || !this.root || this.root.isGrouped) {
+            return null;
+        }
+        const record = this.root.records?.[0];
+        if (!record) {
+            return 0;
+        }
+        return this._recursiveIndexById.get(record.resId)?.matchedCount ?? null;
+    }
+
+    /**
+     * Return the records actually displayed by OWL in row order. This works
+     * for normal lists, expanded children, and opened (possibly nested) groups.
+     * Folded branches are excluded, just as folded Odoo groups are.
+     */
+    getVisibleRecords(list = this.root) {
+        if (!list) {
+            return [];
+        }
+        if (!this.canExpandRecursively()) {
+            return list.records || [];
+        }
+        if (list.isGrouped) {
+            return (list.groups || [])
+                .filter((group) => !group.isFolded)
+                .flatMap((group) => this.getVisibleRecords(group.list));
+        }
+        const records = [];
+        const visit = (record) => {
+            records.push(record);
+            if (record.expanded) {
+                for (const child of record.children || []) {
+                    visit(child);
+                }
+            }
+        };
+        for (const record of list.records || []) {
+            visit(record);
+        }
+        return records;
+    }
+
+    /**
+     * Clear selections even on loaded branches that have since been folded,
+     * avoiding hidden selections reappearing after "Discard selection".
+     */
+    getLoadedRecords(list = this.root) {
+        if (!list) {
+            return [];
+        }
+        if (!this.canExpandRecursively()) {
+            return list.records || [];
+        }
+        if (list.isGrouped) {
+            return (list.groups || []).flatMap((group) => this.getLoadedRecords(group.list));
+        }
+        const records = [];
+        const visit = (record) => {
+            records.push(record);
+            for (const child of record.children || []) {
+                visit(child);
+            }
+        };
+        for (const record of list.records || []) {
+            visit(record);
+        }
+        return records;
+    }
+
     setup(params, services) {
         super.setup(params, services);
 
-        // The standard model replaces its root records on a search or reload.
-        // Initialise each new root record without preloading descendants.
+        this._recursiveIndices = new Map();
+        this._recursiveIndexById = new Map();
+        this._recursiveGroupingCompatible = true;
+        this._recursiveGeneration = 0;
+
+        const onWillLoadRoot = this.hooks.onWillLoadRoot;
+        this.hooks.onWillLoadRoot = (config) => {
+            this._recursiveGeneration++;
+            this._recursiveIndices.clear();
+            this._recursiveIndexById.clear();
+            this._recursiveGroupingCompatible = (config.groupBy || []).every(
+                (field) => field.split(":")[0] === "edition_id"
+            );
+            return onWillLoadRoot(config);
+        };
+
         const onRootLoaded = this.hooks.onRootLoaded;
         this.hooks.onRootLoaded = async (...args) => {
             await onRootLoaded(...args);
-            if (!this.config.recursive || !this.root?.records) {
+            if (!this.config.recursive) {
                 return;
             }
-            for (const record of this.root.records) {
-                record.depth = 0;
-                record.expanded = false;
-                record.childrenFetched = false;
-                record.children = record.data?.child_count > 0 ? [] : undefined;
+            // Group rows are loaded lazily and do not necessarily exist when
+            // onRootLoaded runs. They are initialised when first expanded.
+            for (const record of this.root?.records || []) {
+                this._ensureHierarchyRecordState(record);
             }
         };
     }
@@ -48,123 +243,287 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
                     "The recursive classification list requires parent_id and child_count."
                 );
             }
-
-            // The renderer needs child_count even when a column is hidden.
-            // The parent relation is also required when instantiating children.
             config.activeFields[PARENT_FIELD] ??= makeActiveField({ invisible: true });
             config.activeFields[CHILD_COUNT_FIELD] ??= makeActiveField({ readonly: true });
-
-            // Respect Odoo's search domain: the action's Root Categories
-            // default filter already restricts the initial list to roots.
-            // Removing that filter must allow searches to include descendants.
         }
         return super._loadData(config);
     }
 
     /**
-     * The native grouped list puts rows inside group.list, possibly through
-     * several nested group levels. Expand only when every grouping dimension
-     * is invariant for a category and its descendants (edition_id).
-     * Grouping by parent_id or level must remain a flat Odoo grouped list:
-     * showing children under a different group's header would be misleading.
+     * Non-invariant groupings (such as parent or hierarchy level) retain
+     * Odoo's normal grouped list. A recursive child cannot be placed under
+     * a group header for a different value of the grouping field.
      */
     canExpandRecursively() {
-        const groupBy = this.config.groupBy || [];
-        return groupBy.every((field) => field.split(":")[0] === "edition_id");
+        return this._recursiveGroupingCompatible;
     }
 
     /**
-     * Groups opened after the root load create records that have not passed
-     * through onRootLoaded. Initialise them when they are first expanded.
-     * Do not reset an already expanded child encountered in a later search.
+     * Load *matching* ids and parent references in the same order as Odoo's
+     * list. This is a separate projection query; never rewrite config.domain
+     * or config.context and never alter the search used by other views.
+     *
+     * All matching ids are required to distinguish a genuine visual root
+     * from a matching child whose parent is on a different page.
      */
+    async _getRecursiveIndex(config) {
+        const key = JSON.stringify([
+            config.resModel,
+            config.domain,
+            config.context,
+            config.orderBy,
+        ]);
+        if (!this._recursiveIndices.has(key)) {
+            const promise = this._buildRecursiveIndex(config);
+            this._recursiveIndices.set(key, promise);
+            promise.catch(() => {
+                if (this._recursiveIndices.get(key) === promise) {
+                    this._recursiveIndices.delete(key);
+                }
+            });
+        }
+        return this._recursiveIndices.get(key);
+    }
+
+    async _buildRecursiveIndex(config) {
+        const generation = this._recursiveGeneration;
+        const orderBy = (config.orderBy || []).filter(
+            (item) => item.name !== "__count"
+        );
+        // Search pagination must be deterministic, even when the user sorts
+        // on a field with duplicate values. Preserve the model's own _order
+        // when no explicit sort is supplied.
+        if (orderBy.length && !orderBy.some((item) => item.name === "id")) {
+            orderBy.push({ name: "id", asc: true });
+        }
+        const order = orderByToString(orderBy);
+        const matches = [];
+        let offset = 0;
+        while (true) {
+            const batch = await this.orm.searchRead(
+                config.resModel,
+                config.domain,
+                ["id", PARENT_FIELD],
+                {
+                    context: config.context,
+                    offset,
+                    limit: PAGE_SIZE,
+                    order,
+                }
+            );
+            matches.push(...batch);
+            offset += batch.length;
+            if (batch.length < PAGE_SIZE) {
+                break;
+            }
+        }
+
+        const ids = new Set(matches.map((record) => record.id));
+        const roots = [];
+        const childrenByParent = new Map();
+
+        for (const record of matches) {
+            const value = record[PARENT_FIELD];
+            const parentId = Array.isArray(value)
+                ? value[0]
+                : typeof value === "object" && value !== null
+                  ? value.id
+                  : value;
+
+            if (ids.has(parentId)) {
+                if (!childrenByParent.has(parentId)) {
+                    childrenByParent.set(parentId, []);
+                }
+                childrenByParent.get(parentId).push(record.id);
+            } else {
+                roots.push(record.id);
+            }
+        }
+
+        const index = {
+            roots,
+            childrenByParent,
+            matchedCount: ids.size,
+            domain: config.domain,
+            context: config.context,
+            order,
+        };
+        // A newer search may have replaced this forest while its RPCs
+        // were pending. Never let a stale search populate the current
+        // record-to-index lookup.
+        if (generation === this._recursiveGeneration) {
+            for (const id of ids) {
+                this._recursiveIndexById.set(id, index);
+            }
+        }
+        return index;
+    }
+
+    /**
+     * Odoo populates each opened group's "length" with its matching record
+     * count, not with the length returned by the child _loadUngroupedList().
+     * Our child list paginates visual roots, so adjust that length while
+     * keeping group.count as the true number of matching records.
+     *
+     * Closed groups are initialised by their own list.load() when opened.
+     */
+    async _loadGroupedList(config) {
+        const result = await super._loadGroupedList(config);
+        if (!this.canExpandRecursively() || config.groupBy.length !== 1) {
+            return result;
+        }
+
+        for (const group of result.groups) {
+            const groupConfig = config.groups[group.value];
+            if (groupConfig && !groupConfig.isFolded && group.count > 0) {
+                const index = await this._getRecursiveIndex(groupConfig.list);
+                group.length = index.roots.length;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Odoo's native list paginates database records. Here the paginated
+     * records are visual roots *of the current search result*, irrespective
+     * of their real parent_id. This also handles opened edition groups,
+     * because Odoo supplies each group's effective domain in config.
+     */
+    async _loadUngroupedList(config) {
+        if (!this._recursiveGroupingCompatible || config.resIds) {
+            return super._loadUngroupedList(config);
+        }
+
+        const index = await this._getRecursiveIndex(config);
+        const roots = index.roots.slice(
+            config.offset || 0,
+            (config.offset || 0) + config.limit
+        );
+        const records = await this._loadRecords({ ...config, resIds: roots });
+        return { records, length: index.roots.length };
+    }
+
+    /**
+     * Odoo's "fetch full count" normally counts all matching database rows.
+     * Our pager counts visible roots of the filtered forest instead, so the
+     * full-count action must use the same projection as the initial load.
+     */
+    async _updateCount(config) {
+        if (!this.canExpandRecursively() || config.isMonoRecord || config.resIds) {
+            return super._updateCount(config);
+        }
+        const index = await this._getRecursiveIndex(config);
+        config.countLimit = Number.MAX_SAFE_INTEGER;
+        return index.roots.length;
+    }
+
+    hasMatchingChildren(record) {
+        if (!this.canExpandRecursively()) {
+            return false;
+        }
+        // After loading, use the actual children returned by the server:
+        // a record might have been removed or made inaccessible since the
+        // initial index query.
+        if (record.childrenFetched) {
+            return (record.children?.length || 0) > 0;
+        }
+        const index = this._recursiveIndexById.get(record.resId);
+        return (index?.childrenByParent.get(record.resId)?.length || 0) > 0;
+    }
+
     _ensureHierarchyRecordState(record) {
         if (record.depth === undefined) {
             record.depth = 0;
             record.expanded = false;
             record.childrenFetched = false;
-            record.children = record.data?.child_count > 0 ? [] : undefined;
+            record.children = [];
         }
     }
 
-    async _loadChildren(records, config = this.config) {
-        const parents = (Array.isArray(records) ? records : [records]).filter(
-            (record) => record?.resId && !record.childrenFetched
-        );
-        if (!parents.length) {
-            return;
-        }
-
-        const { resModel, activeFields, fields, context } = config;
-        if (!resModel) {
-            return;
-        }
-
-        const specification = getFieldsSpec(
-            activeFields,
-            fields,
-            getBasicEvalContext(config)
-        );
-        const parentIds = parents.map((record) => record.resId);
-        const childrenByParent = new Map(parentIds.map((id) => [id, []]));
-
-        // web_search_read returns { records, length }, not a bare array.
-        // Fetch all immediate children; its default limit would truncate
-        // large groups of siblings.
-        let offset = 0;
-        while (true) {
-            const result = await this.orm.webSearchRead(
-                resModel,
-                [[PARENT_FIELD, "in", parentIds]],
-                {
-                    context: { ...context },
-                    specification,
-                    offset,
-                    limit: CHILD_PAGE_SIZE,
-                    order: CHILD_ORDER,
-                }
-            );
-            const children = result.records || [];
-            for (const child of children) {
-                // Odoo's web_read may return an ID or an {id, ...} object
-                // for a many2one, depending on the field specification.
-                const value = child[PARENT_FIELD];
-                const parentId = typeof value === "object" ? value?.id : value;
-                if (childrenByParent.has(parentId)) {
-                    childrenByParent.get(parentId).push(child);
-                }
-            }
-            offset += children.length;
-            if (!children.length || offset >= result.length || children.length < CHILD_PAGE_SIZE) {
-                break;
-            }
-        }
-
+    /**
+     * Children are read from the *same filtered set* as their visual roots.
+     * Repeat the original domain in the fetch to respect concurrent changes
+     * and access rules, as well as search context (including active_test).
+     */
+    async _loadChildren(record, config = this.config) {
+        const parents = Array.isArray(record) ? record : [record];
         for (const parent of parents) {
-            const childData = childrenByParent.get(parent.resId) || [];
+            if (!parent?.resId || parent.childrenFetched) {
+                continue;
+            }
+
+            const index = this._recursiveIndexById.get(parent.resId);
+            const ids = index?.childrenByParent.get(parent.resId) || [];
+            const data = [];
+            // The group supplies its own context (including defaults and
+            // company-related values). Evaluate nested field specifications
+            // with that context, not with the root action context.
+            const recordConfig = {
+                ...config,
+                context: index?.context || parent.context,
+                currentCompanyId: parent.currentCompanyId,
+            };
+            if (ids.length) {
+                const specification = getFieldsSpec(
+                    recordConfig.activeFields,
+                    recordConfig.fields,
+                    getBasicEvalContext(recordConfig)
+                );
+                const domain = Domain.and([
+                    index.domain,
+                    [["id", "in", ids]],
+                    [[PARENT_FIELD, "=", parent.resId]],
+                ]).toList();
+                let offset = 0;
+                while (true) {
+                    const result = await this.orm.webSearchRead(
+                        config.resModel,
+                        domain,
+                        {
+                            context: { bin_size: true, ...recordConfig.context },
+                            specification,
+                            offset,
+                            limit: PAGE_SIZE,
+                            order: index.order,
+                        }
+                    );
+                    const batch = result.records || [];
+                    data.push(...batch);
+                    offset += batch.length;
+                    if (batch.length < PAGE_SIZE || offset >= result.length) {
+                        break;
+                    }
+                }
+            }
+
+            // Preserve the order of the original filtered search even if a
+            // read returns records in a different order.
+            const positions = new Map(ids.map((id, position) => [id, position]));
+            data.sort((a, b) => positions.get(a.id) - positions.get(b.id));
             const depth = parent.depth ?? 0;
-            parent.children = childData.map((data) => {
-                const record = new this.constructor.Record(
+            parent.children = data.map((values) => {
+                const child = new this.constructor.Record(
                     this,
                     {
-                        context,
-                        activeFields,
-                        resModel,
-                        fields,
-                        resId: data.id,
-                        resIds: [data.id],
+                        context: recordConfig.context,
+                        activeFields: recordConfig.activeFields,
+                        resModel: recordConfig.resModel,
+                        fields: recordConfig.fields,
+                        resId: values.id,
+                        resIds: [values.id],
                         isMonoRecord: true,
                         currentCompanyId: parent.currentCompanyId,
                         mode: parent.mode,
                     },
-                    data,
+                    values,
                     { manuallyAdded: false }
                 );
-                record.depth = depth + 1;
-                record.expanded = false;
-                record.childrenFetched = false;
-                record.children = record.data?.child_count > 0 ? [] : undefined;
-                return record;
+                child.depth = depth + 1;
+                child.selected = Boolean(this.root?.isDomainSelected);
+                child.expanded = false;
+                child.childrenFetched = false;
+                child.children = [];
+                return child;
             });
             parent.childrenFetched = true;
         }
@@ -179,19 +538,14 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
                     this._ensureHierarchyRecordState(record);
                     return record;
                 }
-                if (record.children?.length) {
-                    const found = findRecords(record.children);
-                    if (found) {
-                        return found;
-                    }
+                const child = findRecords(record.children || []);
+                if (child) {
+                    return child;
                 }
             }
             return null;
         };
 
-        // In Odoo 18 a grouped list stores records in Group.list, not in
-        // the group headers. Only traverse opened groups with loaded rows;
-        // never load a folded group merely to locate an expansion target.
         const findInList = (list) => {
             if (!list) {
                 return null;
@@ -199,9 +553,9 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
             if (list.isGrouped) {
                 for (const group of list.groups || []) {
                     if (!group.isFolded) {
-                        const found = findInList(group.list);
-                        if (found) {
-                            return found;
+                        const record = findInList(group.list);
+                        if (record) {
+                            return record;
                         }
                     }
                 }

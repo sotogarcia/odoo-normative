@@ -8,7 +8,7 @@
  * They do not require or modify the module's UNESCO/ISCED reference data.
  */
 
-import { beforeEach, expect, test } from "@odoo/hoot";
+import { animationFrame, beforeEach, click, Deferred, expect, test } from "@odoo/hoot";
 import {
     contains,
     defineModels,
@@ -162,7 +162,7 @@ test("education_classification: expand, collapse, and reopen descendants", async
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
 
     expect(rowNames()).toEqual(["Root A", "Root B"]);
@@ -211,16 +211,14 @@ test("education_classification: searching respects root and child filters", asyn
     expect(rowNames()).toEqual(["Root A", "Root B"]);
 
     await removeFacet("Root Categories");
-    expect(rowNames()).toEqual([
-        "Root A",
-        "Child A1",
-        "Grandchild A1a",
-        "Child A2",
-        "Root B",
-    ]);
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2", "Root B"]);
 
     await toggleSearchBarMenu();
     await toggleMenuItem("Child Categories");
+    expect(rowNames()).toEqual(["Child A1", "Child A2"]);
+    await contains('.o_expand_button[data-expand="2"]').click();
     expect(rowNames()).toEqual(["Child A1", "Grandchild A1a", "Child A2"]);
 });
 
@@ -229,7 +227,7 @@ test("education_classification: root pagination changes the visible records", as
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
 
     expect(rowNames()).toEqual(["Root A"]);
@@ -258,7 +256,7 @@ test("education_classification: lazy children are fetched in multiple pages", as
     onRpc("web_search_read", ({ kwargs }) => {
         const domain = kwargs.domain || [];
         if (domain.some((term) => Array.isArray(term) &&
-            term[0] === "parent_id" && term[1] === "in")) {
+            term[0] === "parent_id" && term[1] === "=")) {
             pages.push([kwargs.offset || 0, kwargs.limit]);
         }
     });
@@ -267,7 +265,7 @@ test("education_classification: lazy children are fetched in multiple pages", as
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
     expect(rowNames()).toEqual(["Root A"]);
 
@@ -284,7 +282,7 @@ test("education_classification: expansion works in an opened edition group", asy
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
-        domain: ROOT_DOMAIN,
+        domain: [],
         groupBy: ["edition_id"],
     });
 
@@ -294,6 +292,102 @@ test("education_classification: expansion works in an opened edition group", asy
 
     await contains('.o_expand_button[data-expand="1"]').click();
     expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2"]);
+});
+
+test("education_classification: initially opened edition group counts visual roots", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1" expand="1"'),
+        domain: [],
+        groupBy: ["edition_id"],
+    });
+
+    // Edition A contains four matching records, but only one visual root.
+    expect(".o_group_header").toHaveCount(2);
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    expect(".o_group_header .o_pager").toHaveCount(0);
+});
+
+test("education_classification: grouped pager advances through roots, not descendants", async () => {
+    setClassificationRecords([
+        { ...ROOT_A },
+        { ...CHILD_A1 },
+        { ...CHILD_A2 },
+        { ...GRANDCHILD },
+        { ...ROOT_B },
+        {
+            id: 6,
+            name: "Root C",
+            code: "C",
+            sequence: 2,
+            sequence_path: "0002/",
+            parent_id: false,
+            edition_id: 10,
+            child_count: 0,
+            level: 0,
+        },
+    ]);
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1" expand="1"'),
+        domain: [],
+        groupBy: ["edition_id"],
+    });
+
+    expect(".o_group_header:eq(0) .o_pager_limit").toHaveText("2");
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+
+    await contains(".o_group_header:eq(0) .o_pager_next").click();
+    expect(rowNames()).toEqual(["Root C", "Root B"]);
+});
+
+test("education_classification: child reads keep the edition group context", async () => {
+    onRpc("web_search_read", ({ kwargs }) => {
+        if ((kwargs.domain || []).some(
+            (term) => Array.isArray(term) &&
+                term[0] === "parent_id" && term[1] === "=" && term[2] === 1
+        )) {
+            expect.step("group child read");
+            expect(kwargs.context.default_edition_id).toBe(10);
+        }
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        groupBy: ["edition_id"],
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect.verifySteps(["group child read"]);
+});
+
+test("education_classification: stale child counts do not leave inert expanders", async () => {
+    onRpc("web_search_read", ({ kwargs }) => {
+        if ((kwargs.domain || []).some(
+            (term) => Array.isArray(term) &&
+                term[0] === "parent_id" && term[1] === "=" && term[2] === 1
+        )) {
+            return { records: [], length: 0 };
+        }
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect('.o_expand_button[data-expand="1"]').toHaveCount(0);
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
 });
 
 test("education_classification: parent and level groups do not expand across groups", async () => {
@@ -320,7 +414,56 @@ test("education_classification: grouping by level disables recursive controls", 
     expect(".o_expand_button").toHaveCount(0);
 });
 
-test("education_classification: recursive styles are scoped to their renderer", async () => {
+
+test("education_classification: matching parents and children render exactly once", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    // The raw search matches five records, but the forest has two roots.
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2", "Root B"]);
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(rowNames()).toEqual([
+        "Root A", "Child A1", "Grandchild A1a", "Child A2", "Root B",
+    ]);
+});
+
+test("education_classification: filtered descendants are promoted to visual roots", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [["code", "in", ["A1", "A1a"]]],
+    });
+
+    // The database parent of A1 is excluded; A1 must not disappear.
+    expect(rowNames()).toEqual(["Child A1"]);
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(rowNames()).toEqual(["Child A1", "Grandchild A1a"]);
+});
+
+test("education_classification: expansion never shows excluded children", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [["code", "in", ["A", "A2", "B"]]],
+    });
+
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A2", "Root B"]);
+    expect('.o_expand_button[data-expand="2"]').toHaveCount(0);
+});
+
+test("education_classification: an explicit root-only filter has no matching descendants", async () => {
     await mountView({
         type: "list",
         resModel: "education.classification.item",
@@ -328,8 +471,504 @@ test("education_classification: recursive styles are scoped to their renderer", 
         domain: ROOT_DOMAIN,
     });
 
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    expect(".o_expand_button").toHaveCount(0);
+});
+
+test("education_classification: pagination counts visual roots rather than matched rows", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    expect(rowNames()).toEqual(["Root A"]);
+    await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+});
+
+test("education_classification: fetching the exact count uses visual roots", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH
+            .replace('limit="80"', 'limit="1" count_limit="1"'),
+        domain: [],
+    });
+
+    // Five matching database records produce only two visual roots.
+    expect(".o_pager_limit").toHaveText("1+");
+    await contains(".o_pager_limit").click();
+    expect(".o_pager_limit").toHaveText("2");
+
+    await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+});
+
+test("education_classification: late child loading does not expand a replaced page", async () => {
+    const pendingChildren = new Deferred();
+    onRpc("web_search_read", ({ kwargs }) => {
+        const domain = kwargs.domain || [];
+        if (domain.some((term) => Array.isArray(term) &&
+            term[0] === "parent_id" && term[1] === "=" && term[2] === 1)) {
+            return pendingChildren;
+        }
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    expect(rowNames()).toEqual(["Root A"]);
+    await click('.o_expand_button[data-expand="1"]');
+    await animationFrame();
+    expect('.o_expand_button[data-expand="1"]').toHaveAttribute("disabled");
+    expect('.o_expand_button[data-expand="1"]').toHaveAttribute("aria-busy", "true");
+
+    await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+
+    pendingChildren.resolve();
+    await animationFrame();
+    expect(rowNames()).toEqual(["Root B"]);
+});
+
+test("education_classification: recursive styles are scoped to their renderer", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
     expect(".o_list_renderer.o_education_classification_recursive_list").toHaveCount(1);
     expect('.o_expand_button[data-expand="1"]').toHaveCount(1);
+});
+
+
+test("education_classification: expander column stays aligned without selectors", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        allowSelectors: false,
+    });
+
+    expect(".o_list_renderer thead th.o_list_record_selector").toHaveCount(0);
+    expect(".o_list_renderer thead th.o_recursive_expand_column").toHaveCount(1);
+    expect(".o_list_renderer tbody tr.o_data_row > td.o_recursive_expand_column").toHaveCount(2);
+    expect(".o_list_renderer tfoot td.o_recursive_expand_column").toHaveCount(1);
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2", "Root B"]);
+    expect(".o_list_renderer tbody tr.o_data_row > td.o_recursive_expand_column").toHaveCount(4);
+});
+
+test("education_classification: grouped headers span all columns without selectors", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        groupBy: ["edition_id"],
+        allowSelectors: false,
+    });
+
+    const columns = document.querySelectorAll(
+        ".o_list_renderer thead tr > th"
+    ).length;
+    const header = document.querySelector(".o_list_renderer .o_group_header");
+    const span = Array.from(header.children).reduce(
+        (count, cell) => count + cell.colSpan,
+        0
+    );
+    expect(span).toBe(columns);
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2"]);
+});
+
+test("education_classification: expand controls expose accessible state", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        allowSelectors: false,
+    });
+
+    const button = '.o_expand_button[data-expand="1"]';
+    expect(button).toHaveAttribute("aria-label", "Expand or collapse child categories");
+    expect(button).toHaveAttribute("aria-expanded", "false");
+    expect(button).toHaveAttribute("aria-busy", "false");
+
+    await contains(button).click();
+    expect(button).toHaveAttribute("aria-expanded", "true");
+    expect(".o_recursive_bullet[data-depth='1']").toHaveCount(1);
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(".o_recursive_bullet[data-depth='2']").toHaveCount(1);
+
+    await contains(button).click();
+    expect(button).toHaveAttribute("aria-expanded", "false");
+});
+
+test("education_classification: expand column precedes optional selectors", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        allowSelectors: true,
+    });
+
+    const headerCells = document.querySelectorAll(".o_list_renderer thead tr > th");
+    expect(headerCells[0]).toHaveClass("o_recursive_expand_column");
+    expect(headerCells[1]).toHaveClass("o_list_record_selector");
+
+    const rowCells = document.querySelectorAll(
+        ".o_list_renderer tbody tr.o_data_row:first-child > td"
+    );
+    expect(rowCells[0]).toHaveClass("o_recursive_expand_column");
+    expect(rowCells[1]).toHaveClass("o_list_record_selector");
+});
+
+test("education_classification: indentation supports depths beyond twelve", async () => {
+    const items = [{ ...ROOT_A, child_count: 1 }];
+    for (let depth = 1; depth <= 14; depth++) {
+        items.push({
+            id: 100 + depth,
+            name: "Depth " + depth,
+            code: "D" + depth,
+            sequence: 1,
+            sequence_path: "0001/" + "0001/".repeat(depth),
+            parent_id: depth === 1 ? 1 : 99 + depth,
+            edition_id: 10,
+            child_count: depth < 14 ? 1 : 0,
+            level: depth,
+        });
+    }
+    setClassificationRecords(items);
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    for (let depth = 1; depth <= 14; depth++) {
+        await contains('.o_expand_button[data-expand="' + (
+            depth === 1 ? 1 : 99 + depth
+        ) + '"]').click();
+    }
+
+    // Use the public depth marker, not the internal Odoo record key.
+    const depthCell = document.querySelector(
+        '.o_recursive_bullet[data-depth="14"]'
+    ).closest("td");
+    expect(depthCell.style.getPropertyValue("--ec-recursive-depth").trim()).toBe("14");
+});
+
+test("education_classification: selecting a descendant updates the selected ids", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(1)").click();
+
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+    expect(selectedIds).toEqual([2]);
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(1);
+});
+
+test("education_classification: shift selection includes intermediate descendants", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    await contains(".o_data_row .o_list_record_selector input:eq(2)").click({
+        shiftKey: true,
+    });
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
+    expect(selectedIds).toEqual([1, 2, 3]);
+});
+
+test("education_classification: select all includes expanded descendants", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains('.o_expand_button[data-expand="2"]').click();
+    await contains("thead .o_list_record_selector input").click();
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(5);
+    expect(selectedIds).toEqual([1, 2, 5, 3, 4]);
+    expect(".o_list_selection_box").toHaveText("5\nselected");
+
+    await contains("thead .o_list_record_selector input").click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(0);
+    expect(selectedIds).toEqual([]);
+});
+
+test("education_classification: select entire filtered domain includes folded descendants", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    // The pager counts visual roots; the selection bar counts raw matches.
+    await contains("thead .o_list_record_selector input").click();
+    expect(".o_list_select_domain").toHaveCount(1);
+    expect(".o_list_select_domain").toHaveText("Select all 5");
+
+    await contains(".o_list_select_domain").click();
+    expect(".o_list_selection_box").toHaveText("All 5 selected");
+    expect([...selectedIds].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5]);
+});
+
+test("education_classification: lazy children inherit domain-wide selection", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    await contains("thead .o_list_record_selector input").click();
+    await contains(".o_list_select_domain").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(4);
+    expect(".o_list_selection_box").toHaveText("All 5 selected");
+});
+
+test("education_classification: selecting entire domain includes loaded descendants", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains("thead .o_list_record_selector input").click();
+    await contains(".o_list_select_domain").click();
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
+    expect(".o_list_selection_box").toHaveText("All 5 selected");
+});
+
+test("education_classification: selecting a descendant works in an edition group", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        groupBy: ["edition_id"],
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(1)").click();
+
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+    expect(selectedIds).toEqual([2]);
+});
+
+test("education_classification: unselect all also clears folded descendants", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    await contains(".o_data_row .o_list_record_selector input:eq(1)").click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(2);
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+
+    await contains(".o_list_unselect_all").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(0);
+});
+
+test("education_classification: nonrecursive grouping keeps standard selection", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        groupBy: ["level"],
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    expect(selectedIds).toHaveLength(1);
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+});
+
+test("education_classification: opening a descendant uses visible navigation ids", async () => {
+    let selected;
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        selectRecord: (id, options) => {
+            selected = { id, ...options };
+        },
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(1)').click();
+    expect(selected).toEqual({
+        id: 2,
+        activeIds: [1, 2, 3, 4],
+        force: false,
+    });
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(2)').click();
+    expect(selected).toEqual({
+        id: 5,
+        activeIds: [1, 2, 5, 3, 4],
+        force: false,
+    });
+});
+
+test("education_classification: opening grouped descendants keeps their group navigation", async () => {
+    let selected;
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        groupBy: ["edition_id"],
+        selectRecord: (id, options) => {
+            selected = { id, ...options };
+        },
+    });
+
+    await contains(".o_group_header:eq(0)").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(2)').click();
+    expect(selected).toEqual({
+        id: 3,
+        activeIds: [1, 2, 3],
+        force: false,
+    });
+});
+
+test("education_classification: filtered visual roots open their matching descendants", async () => {
+    let selected;
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [["code", "in", ["A1", "A1a"]]],
+        selectRecord: (id, options) => {
+            selected = { id, ...options };
+        },
+    });
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    await contains('.o_data_row .o_data_cell[name="name"]:eq(1)').click();
+    expect(selected).toEqual({
+        id: 5,
+        activeIds: [2, 5],
+        force: false,
+    });
+});
+
+test("education_classification: deleting a selected leaf unlinks its id", async () => {
+    onRpc("unlink", ({ args }) => {
+        expect.step("unlink");
+        expect(args[0]).toEqual([3]);
+    });
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        actionMenus: {},
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(2)").click();
+    await contains(".o_cp_action_menus .dropdown-toggle").click();
+    await toggleMenuItem("Delete");
+    expect(".modal").toHaveCount(1);
+    await contains(".modal footer button.btn-primary").click();
+
+    expect.verifySteps(["unlink"]);
+    // Deletion reloads the list and folds the tree. Reopen the parent to
+    // ensure the leaf is actually gone, not merely hidden by the reload.
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Root B"]);
+});
+
+test("education_classification: cancelling descendant deletion preserves the record", async () => {
+    onRpc("unlink", () => {
+        expect.step("unexpected unlink");
+    });
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        actionMenus: {},
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(2)").click();
+    await contains(".o_cp_action_menus .dropdown-toggle").click();
+    await toggleMenuItem("Delete");
+    await contains(".modal footer button.btn-secondary").click();
+
+    expect.verifySteps([]);
+    expect(rowNames()).toContain("Child A2");
 });
 
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
@@ -337,7 +976,7 @@ test("education_classification: standard list does not receive recursive CSS sco
         type: "list",
         resModel: "education.classification.item",
         arch: '<list><field name="name"/></list>',
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
 
     expect(".o_list_renderer").toHaveCount(1);

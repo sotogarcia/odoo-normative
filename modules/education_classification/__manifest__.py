@@ -112,12 +112,12 @@ by educational, training, statistical, and other applications requiring
 structured educational classifications, without any specific academic
 management module.
 
-A recursive list implementation is being adapted from the LGPL-3.0
+A recursive list implementation is adapted from the LGPL-3.0
 recursive_list_view project by Marc Durepos / Bemade Inc.
-Its JavaScript, XML, and CSS resources are bundled locally. The custom list
-view is registered with its dedicated OWL templates; activation through
-js_class and runtime verification remain pending. See README.md for
-the original source, attribution, and integration status.
+Its JavaScript, XML, and CSS resources are bundled locally and activated
+for classification items through js_class. Runtime verification on an
+installed Odoo 18 server remains pending. See README.md for details
+and original-source attribution.
     """,
     "author": "Jorge Soto Garcia",
     "website": "https://github.com/sotogarcia/odoo-normative",
