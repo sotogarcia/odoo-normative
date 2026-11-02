@@ -679,6 +679,27 @@ test("education_classification: selecting a descendant works in an edition group
     expect(selectedIds).toEqual([2]);
 });
 
+test("education_classification: unselect all also clears folded descendants", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    await contains(".o_data_row .o_list_record_selector input:eq(1)").click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(2);
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(".o_list_selection_box").toHaveText("1\nselected");
+
+    await contains(".o_list_unselect_all").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(0);
+});
+
 test("education_classification: nonrecursive grouping keeps standard selection", async () => {
     let selectedIds = [];
     await mountView({
