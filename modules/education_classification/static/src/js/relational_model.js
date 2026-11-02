@@ -337,6 +337,30 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
     }
 
     /**
+     * Odoo populates each opened group's "length" with its matching record
+     * count, not with the length returned by the child _loadUngroupedList().
+     * Our child list paginates visual roots, so adjust that length while
+     * keeping group.count as the true number of matching records.
+     *
+     * Closed groups are initialised by their own list.load() when opened.
+     */
+    async _loadGroupedList(config) {
+        const result = await super._loadGroupedList(config);
+        if (!this.canExpandRecursively() || config.groupBy.length !== 1) {
+            return result;
+        }
+
+        for (const group of result.groups) {
+            const groupConfig = config.groups[group.value];
+            if (groupConfig && !groupConfig.isFolded && group.count > 0) {
+                const index = await this._getRecursiveIndex(groupConfig.list);
+                group.length = index.roots.length;
+            }
+        }
+        return result;
+    }
+
+    /**
      * Odoo's native list paginates database records. Here the paginated
      * records are visual roots *of the current search result*, irrespective
      * of their real parent_id. This also handles opened edition groups,
