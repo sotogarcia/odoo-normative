@@ -287,9 +287,16 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
 
     async _buildRecursiveIndex(config) {
         const generation = this._recursiveGeneration;
-        const order = orderByToString(
-            (config.orderBy || []).filter((item) => item.name !== "__count")
+        const orderBy = (config.orderBy || []).filter(
+            (item) => item.name !== "__count"
         );
+        // Search pagination must be deterministic, even when the user sorts
+        // on a field with duplicate values. Preserve the model's own _order
+        // when no explicit sort is supplied.
+        if (orderBy.length && !orderBy.some((item) => item.name === "id")) {
+            orderBy.push({ name: "id", asc: true });
+        }
+        const order = orderByToString(orderBy);
         const matches = [];
         let offset = 0;
         while (true) {
