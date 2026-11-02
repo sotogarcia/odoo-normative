@@ -688,7 +688,7 @@ test("education_classification: selecting entire domain includes loaded descenda
     });
 
     await contains('.o_expand_button[data-expand="1"]').click();
-    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    await contains("thead .o_list_record_selector input").click();
     await contains(".o_list_select_domain").click();
 
     expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
