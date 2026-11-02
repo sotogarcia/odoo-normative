@@ -543,6 +543,43 @@ test("education_classification: expand column precedes optional selectors", asyn
     expect(rowCells[1]).toHaveClass("o_list_record_selector");
 });
 
+test("education_classification: indentation supports depths beyond twelve", async () => {
+    const items = [{ ...ROOT_A, child_count: 1 }];
+    for (let depth = 1; depth <= 14; depth++) {
+        items.push({
+            id: 100 + depth,
+            name: "Depth " + depth,
+            code: "D" + depth,
+            sequence: 1,
+            sequence_path: "0001/" + "0001/".repeat(depth),
+            parent_id: depth === 1 ? 1 : 99 + depth,
+            edition_id: 10,
+            child_count: depth < 14 ? 1 : 0,
+            level: depth,
+        });
+    }
+    setClassificationRecords(items);
+
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    for (let depth = 1; depth <= 14; depth++) {
+        await contains('.o_expand_button[data-expand="' + (
+            depth === 1 ? 1 : 99 + depth
+        ) + '"]').click();
+    }
+
+    // Use the public depth marker, not the internal Odoo record key.
+    const depthCell = document.querySelector(
+        '.o_recursive_bullet[data-depth="14"]'
+    ).closest("td");
+    expect(depthCell.style.getPropertyValue("--ec-recursive-depth").trim()).toBe("14");
+});
+
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
     await mountView({
         type: "list",
