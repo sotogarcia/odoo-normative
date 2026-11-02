@@ -23,6 +23,8 @@ import {
     webModels,
 } from "@web/../tests/web_test_helpers";
 
+import { EducationClassificationRecursiveListController } from "../src/js/list_controller";
+
 class ClassificationEdition extends models.Model {
     _name = "education.classification.edition";
 
@@ -848,6 +850,39 @@ test("education_classification: nonrecursive grouping keeps standard selection",
     expect(".o_list_selection_box").toHaveText("1\nselected");
 });
 
+test("education_classification: detached record instances navigate by visible ids", async () => {
+    // Renderer callbacks may refer to a different Record object for the same
+    // database row. Navigation must use resId, not object identity.
+    let selected;
+    const detachedRecord = {
+        resId: 2,
+        isDirty: async () => false,
+    };
+    const controller = {
+        archInfo: { openAction: null },
+        props: {
+            allowOpenAction: true,
+            selectRecord: (id, options) => {
+                selected = { id, ...options };
+            },
+        },
+        model: {
+            canExpandRecursively: () => true,
+            getVisibleRecords: () => [{ resId: 1 }, { resId: 2 }, { resId: 3 }],
+        },
+    };
+
+    await EducationClassificationRecursiveListController.prototype.openRecord.call(
+        controller,
+        detachedRecord
+    );
+    expect(selected).toEqual({
+        id: 2,
+        activeIds: [1, 2, 3],
+        force: false,
+    });
+});
+
 test("education_classification: opening a descendant uses visible navigation ids", async () => {
     let selected;
     await mountView({
@@ -963,12 +998,15 @@ test("education_classification: cancelling descendant deletion preserves the rec
 
     await contains('.o_expand_button[data-expand="1"]').click();
     await contains(".o_data_row .o_list_record_selector input:eq(2)").click();
+    const rowsBeforeCancel = rowNames();
     await contains(".o_cp_action_menus .dropdown-toggle").click();
     await toggleMenuItem("Delete");
+    expect(".modal").toHaveCount(1);
     await contains(".modal footer button.btn-secondary").click();
 
     expect.verifySteps([]);
-    expect(rowNames()).toContain("Child A2");
+    expect('.o_expand_button[data-expand="1"]').toHaveAttribute("aria-expanded", "true");
+    expect(rowNames()).toEqual(rowsBeforeCancel);
 });
 
 test("education_classification: standard list does not receive recursive CSS scope", async () => {

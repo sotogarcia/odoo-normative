@@ -93,7 +93,9 @@ export class EducationClassificationRecursiveListController extends ListControll
         }
 
         const visibleRecords = this.model.getVisibleRecords();
-        if (!visibleRecords.includes(record)) {
+        // Compare database identifiers: the caller may hold another Record
+        // instance for a row that is still visible in the recursive list.
+        if (!visibleRecords.some((item) => item.resId === record.resId)) {
             return super.openRecord(record, force);
         }
 
