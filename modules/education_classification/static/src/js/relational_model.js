@@ -421,11 +421,14 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
         if (!this.canExpandRecursively()) {
             return false;
         }
-        const index = this._recursiveIndexById.get(record.resId);
-        if (index) {
-            return (index.childrenByParent.get(record.resId)?.length || 0) > 0;
+        // After loading, use the actual children returned by the server:
+        // a record might have been removed or made inaccessible since the
+        // initial index query.
+        if (record.childrenFetched) {
+            return (record.children?.length || 0) > 0;
         }
-        return (record.data?.[CHILD_COUNT_FIELD] || 0) > 0;
+        const index = this._recursiveIndexById.get(record.resId);
+        return (index?.childrenByParent.get(record.resId)?.length || 0) > 0;
     }
 
     _ensureHierarchyRecordState(record) {
