@@ -103,6 +103,21 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
     static DynamicGroupList = EducationClassificationRecursiveGroupList;
 
     /**
+     * The standard list pager counts visual roots, but "Select all records"
+     * must report the number of domain matches, including descendants.
+     */
+    getMatchingCount() {
+        if (!this.canExpandRecursively() || !this.root || this.root.isGrouped) {
+            return null;
+        }
+        const record = this.root.records?.[0];
+        if (!record) {
+            return 0;
+        }
+        return this._recursiveIndexById.get(record.resId)?.matchedCount ?? null;
+    }
+
+    /**
      * Return the records actually displayed by OWL in row order. This works
      * for normal lists, expanded children, and opened (possibly nested) groups.
      * Folded branches are excluded, just as folded Odoo groups are.
@@ -294,6 +309,7 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
         const index = {
             roots,
             childrenByParent,
+            matchedCount: ids.size,
             domain: config.domain,
             context: config.context,
             order,
