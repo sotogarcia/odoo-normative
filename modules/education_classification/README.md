@@ -103,20 +103,25 @@ The XML contains primary-inheritance OWL templates scoped to the custom
 renderer, and the CSS supplies the expansion-column styling and indentation
 rules (explicitly defined for depths 1–12).
 
-**Status: registered, but not activated or runtime-tested.** The frontend
-assets now include a custom list-view registry entry named
-`education_classification_recursive_list`. It connects the dedicated
-controller, renderer and model, and binds both OWL renderer templates.
-The category list view does not yet specify the matching `js_class`, so
-the standard list view remains in use and in-place expand/collapse is not
-yet enabled.
+**Status: registered and activated in the classification-item list.**
+The dedicated view `education_classification_recursive_list` is enabled
+through `js_class`; it is separate from the `hierarchy` view supplied by
+`web_hierarchy`.
 
-This is distinct from the existing `hierarchy` view, which is provided
-by `web_hierarchy` and remains a module dependency.
+The recursive list represents the **current search result** as a forest:
+matching records whose parents do not match become visual roots, and
+expanding a record displays only its matching children. Neither the
+search domain nor the context is rewritten. Root pagination is based on
+visual roots rather than the total number of matching descendants.
+Grouping by edition retains recursion; groupings where parent and child
+necessarily have different grouping values fall back to Odoo's regular
+flat grouped list.
 
-Before considering the custom list complete, select it in the list XML
-and verify expansion, grandchildren, ordering, filtering, refresh and
-permissions on Odoo 18.
+HOOT regression tests cover root pagination, arbitrary matching domains,
+recursive expansion, grouping and scoped styling. These tests have not
+yet been run against an installed Odoo 18 server. The projection reads
+all matching ids and parent references to determine the forest, so large
+classifications should be performance-tested before production use.
 
 ## Origin of the adapted recursive-list code
 
