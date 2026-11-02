@@ -826,7 +826,10 @@ test("education_classification: deleting a selected leaf unlinks its id", async 
     await contains(".modal footer button.btn-primary").click();
 
     expect.verifySteps(["unlink"]);
-    expect(rowNames()).not.toContain("Child A2");
+    // Deletion reloads the list and folds the tree. Reopen the parent to
+    // ensure the leaf is actually gone, not merely hidden by the reload.
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Root B"]);
 });
 
 test("education_classification: cancelling descendant deletion preserves the record", async () => {
