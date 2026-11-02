@@ -168,6 +168,16 @@ class EducationClassificationItem(models.Model):
         help="Display order of categories within the classification.",
     )
 
+    weight = fields.Integer(
+        string="Relative Weight",
+        required=False,
+        readonly=True,
+        index=True,
+        default=None,
+        help="Relative educational level within the classification. "
+        "Unset when no comparable level can be determined.",
+    )
+
     external_url = fields.Char(
         string="External URL",
         required=False,
@@ -218,6 +228,11 @@ class EducationClassificationItem(models.Model):
     _sql_constraints = [  # noqa: RUF012
         (
             "edition_code_unique",
+            "UNIQUE(edition_id, code)",
+            "The category code must be unique within its edition.",
+        ),
+        (
+            "edition_rank_unique",
             "UNIQUE(edition_id, code)",
             "The category code must be unique within its edition.",
         ),
@@ -274,23 +289,23 @@ class EducationClassificationItem(models.Model):
                     )
                 )
 
-    display_name = fields.Char(
-        string="Display Name",
-        automatic=True,
-        compute="_compute_display_name",
-        search="_search_display_name",
-        recursive=True,
-    )
+    # display_name = fields.Char(
+    #     string="Display Name",
+    #     automatic=True,
+    #     compute="_compute_display_name",
+    #     search="_search_display_name",
+    #     recursive=True,
+    # )
 
-    @api.depends("name", "parent_id", "parent_id.display_name")
-    @api.depends_context("lang")
-    def _compute_display_name(self):
-        """Display the full classification hierarchy."""
+    # @api.depends("name", "parent_id", "parent_id.display_name")
+    # @api.depends_context("lang")
+    # def _compute_display_name(self):
+    #     """Display the full classification hierarchy."""
 
-        for record in self:
-            if record.parent_id:
-                record.display_name = (
-                    f"{record.parent_id.display_name} / {record.name}"
-                )
-            else:
-                record.display_name = record.name or ""
+    #     for record in self:
+    #         if record.parent_id:
+    #             record.display_name = (
+    #                 f"{record.parent_id.display_name} / {record.name}"
+    #             )
+    #         else:
+    #             record.display_name = record.name or ""
