@@ -661,6 +661,40 @@ test("education_classification: select entire filtered domain includes folded de
     expect([...selectedIds].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5]);
 });
 
+test("education_classification: lazy children inherit domain-wide selection", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    await contains("thead .o_list_record_selector input").click();
+    await contains(".o_list_select_domain").click();
+    await contains('.o_expand_button[data-expand="1"]').click();
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(4);
+    expect(".o_list_selection_box").toHaveText("All 5 selected");
+});
+
+test("education_classification: selecting entire domain includes loaded descendants", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    await contains(".o_data_row .o_list_record_selector input:eq(0)").click();
+    await contains(".o_list_select_domain").click();
+
+    expect(".o_data_row .o_list_record_selector input:checked").toHaveCount(3);
+    expect(".o_list_selection_box").toHaveText("All 5 selected");
+});
+
 test("education_classification: selecting a descendant works in an edition group", async () => {
     let selectedIds = [];
     await mountView({
