@@ -162,7 +162,7 @@ test("education_classification: expand, collapse, and reopen descendants", async
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
 
     expect(rowNames()).toEqual(["Root A", "Root B"]);
@@ -229,7 +229,7 @@ test("education_classification: root pagination changes the visible records", as
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
 
     expect(rowNames()).toEqual(["Root A"]);
@@ -267,7 +267,7 @@ test("education_classification: lazy children are fetched in multiple pages", as
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
     expect(rowNames()).toEqual(["Root A"]);
 
@@ -284,7 +284,7 @@ test("education_classification: expansion works in an opened edition group", asy
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
-        domain: ROOT_DOMAIN,
+        domain: [],
         groupBy: ["edition_id"],
     });
 
@@ -320,12 +320,86 @@ test("education_classification: grouping by level disables recursive controls", 
     expect(".o_expand_button").toHaveCount(0);
 });
 
-test("education_classification: recursive styles are scoped to their renderer", async () => {
+
+test("education_classification: matching parents and children render exactly once", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+    });
+
+    // The raw search matches five records, but the forest has two roots.
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2", "Root B"]);
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(rowNames()).toEqual([
+        "Root A", "Child A1", "Grandchild A1a", "Child A2", "Root B",
+    ]);
+});
+
+test("education_classification: filtered descendants are promoted to visual roots", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [["code", "in", ["A1", "A1a"]]],
+    });
+
+    // The database parent of A1 is excluded; A1 must not disappear.
+    expect(rowNames()).toEqual(["Child A1"]);
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(rowNames()).toEqual(["Child A1", "Grandchild A1a"]);
+});
+
+test("education_classification: expansion never shows excluded children", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [["code", "in", ["A", "A2", "B"]]],
+    });
+
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A2", "Root B"]);
+    expect('.o_expand_button[data-expand="2"]').toHaveCount(0);
+});
+
+test("education_classification: an explicit root-only filter has no matching descendants", async () => {
     await mountView({
         type: "list",
         resModel: "education.classification.item",
         arch: LIST_ARCH,
         domain: ROOT_DOMAIN,
+    });
+
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    expect(".o_expand_button").toHaveCount(0);
+});
+
+test("education_classification: pagination counts visual roots rather than matched rows", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+    });
+
+    expect(rowNames()).toEqual(["Root A"]);
+    await pagerNext();
+    expect(rowNames()).toEqual(["Root B"]);
+});
+
+test("education_classification: recursive styles are scoped to their renderer", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
     });
 
     expect(".o_list_renderer.o_education_classification_recursive_list").toHaveCount(1);
@@ -337,7 +411,7 @@ test("education_classification: standard list does not receive recursive CSS sco
         type: "list",
         resModel: "education.classification.item",
         arch: '<list><field name="name"/></list>',
-        domain: ROOT_DOMAIN,
+        domain: [],
     });
 
     expect(".o_list_renderer").toHaveCount(1);
