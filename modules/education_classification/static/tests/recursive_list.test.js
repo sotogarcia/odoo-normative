@@ -641,6 +641,25 @@ test("education_classification: select all includes expanded descendants", async
     expect(selectedIds).toEqual([]);
 });
 
+test("education_classification: select entire filtered domain includes folded descendants", async () => {
+    let selectedIds = [];
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH.replace('limit="80"', 'limit="1"'),
+        domain: [],
+        onSelectionChanged: (ids) => { selectedIds = ids; },
+    });
+
+    // The pager counts visual roots; the selection bar counts raw matches.
+    await contains("thead .o_list_record_selector input").click();
+    expect(".o_list_selection_box").toHaveText("1 selected Select all 5");
+
+    await contains(".o_list_select_domain").click();
+    expect(".o_list_selection_box").toHaveText("All 5 selected");
+    expect([...selectedIds].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5]);
+});
+
 test("education_classification: selecting a descendant works in an edition group", async () => {
     let selectedIds = [];
     await mountView({
