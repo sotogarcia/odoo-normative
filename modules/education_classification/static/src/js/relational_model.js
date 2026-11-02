@@ -9,6 +9,8 @@
  */
 
 import { Domain } from "@web/core/domain";
+import { DynamicGroupList } from "@web/model/relational_model/dynamic_group_list";
+import { DynamicRecordList } from "@web/model/relational_model/dynamic_record_list";
 import { RelationalModel } from "@web/model/relational_model/relational_model";
 import {
     getBasicEvalContext,
@@ -20,6 +22,69 @@ import { orderByToString } from "@web/search/utils/order_by";
 const PARENT_FIELD = "parent_id";
 const CHILD_COUNT_FIELD = "child_count";
 const PAGE_SIZE = 200;
+
+/**
+ * Odoo's DynamicList.selection and _toggleSelection work with list.records,
+ * which contains only visual roots in our recursive view. Keep selection in
+ * the dedicated list types rather than changing Odoo's global list model.
+ */
+function toggleVisibleSelection(list) {
+    const records = list.model.getVisibleRecords(list);
+    if (!records.length) {
+        return;
+    }
+    const selected = records.some((record) => !record.selected);
+    for (const record of records) {
+        record._toggleSelection(selected);
+    }
+    if (!selected) {
+        list._selectDomain(false);
+    }
+}
+
+class EducationClassificationRecursiveRecordList extends DynamicRecordList {
+    get selection() {
+        return this.model.canExpandRecursively()
+            ? this.model.getVisibleRecords(this).filter((record) => record.selected)
+            : super.selection;
+    }
+
+    async _toggleSelection() {
+        if (!this.model.canExpandRecursively()) {
+            return super._toggleSelection();
+        }
+        toggleVisibleSelection(this);
+    }
+
+    async getResIds(isSelected) {
+        if (!isSelected && this.model.canExpandRecursively()) {
+            return [...new Set(this.model.getVisibleRecords(this).map((record) => record.resId))];
+        }
+        return super.getResIds(isSelected);
+    }
+}
+
+class EducationClassificationRecursiveGroupList extends DynamicGroupList {
+    get selection() {
+        return this.model.canExpandRecursively()
+            ? this.model.getVisibleRecords(this).filter((record) => record.selected)
+            : super.selection;
+    }
+
+    async _toggleSelection() {
+        if (!this.model.canExpandRecursively() || !this.records.length) {
+            return super._toggleSelection();
+        }
+        toggleVisibleSelection(this);
+    }
+
+    async getResIds(isSelected) {
+        if (!isSelected && this.model.canExpandRecursively()) {
+            return [...new Set(this.model.getVisibleRecords(this).map((record) => record.resId))];
+        }
+        return super.getResIds(isSelected);
+    }
+}
 
 /**
  * Present search results as a forest, not as a list of database roots.
@@ -34,6 +99,68 @@ const PAGE_SIZE = 200;
  * whose parents or siblings happen to be on other pages.
  */
 export class EducationClassificationRecursiveListModel extends RelationalModel {
+    static DynamicRecordList = EducationClassificationRecursiveRecordList;
+    static DynamicGroupList = EducationClassificationRecursiveGroupList;
+
+    /**
+     * Return the records actually displayed by OWL in row order. This works
+     * for normal lists, expanded children, and opened (possibly nested) groups.
+     * Folded branches are excluded, just as folded Odoo groups are.
+     */
+    getVisibleRecords(list = this.root) {
+        if (!list) {
+            return [];
+        }
+        if (!this.canExpandRecursively()) {
+            return list.records || [];
+        }
+        if (list.isGrouped) {
+            return (list.groups || [])
+                .filter((group) => !group.isFolded)
+                .flatMap((group) => this.getVisibleRecords(group.list));
+        }
+        const records = [];
+        const visit = (record) => {
+            records.push(record);
+            if (record.expanded) {
+                for (const child of record.children || []) {
+                    visit(child);
+                }
+            }
+        };
+        for (const record of list.records || []) {
+            visit(record);
+        }
+        return records;
+    }
+
+    /**
+     * Clear selections even on loaded branches that have since been folded,
+     * avoiding hidden selections reappearing after "Discard selection".
+     */
+    getLoadedRecords(list = this.root) {
+        if (!list) {
+            return [];
+        }
+        if (!this.canExpandRecursively()) {
+            return list.records || [];
+        }
+        if (list.isGrouped) {
+            return (list.groups || []).flatMap((group) => this.getLoadedRecords(group.list));
+        }
+        const records = [];
+        const visit = (record) => {
+            records.push(record);
+            for (const child of record.children || []) {
+                visit(child);
+            }
+        };
+        for (const record of list.records || []) {
+            visit(record);
+        }
+        return records;
+    }
+
     setup(params, services) {
         super.setup(params, services);
 
