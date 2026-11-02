@@ -8,39 +8,73 @@
  * Adaptation for education_classification: Jorge Soto García, 2026.
  */
 
+import { _t } from "@web/core/l10n/translation";
+import { useBus, useService } from "@web/core/utils/hooks";
 import { ListController } from "@web/views/list/list_controller";
-import { useBus } from "@web/core/utils/hooks";
 
 export class EducationClassificationRecursiveListController extends ListController {
     setup() {
         super.setup();
+        this.notification = useService("notification");
         useBus(this.model.bus, "expand-collapse-parent", this.onExpandCollapseParent);
+    }
+
+    /**
+     * A search, a group refresh or pagination can replace the record while
+     * its children are loading. Never expand a stale record or report a
+     * stale request as an error in the current view.
+     */
+    _isCurrentHierarchyRecord(record) {
+        return this.model.findRecordInHierarchy(record.resId) === record;
     }
 
     async onExpandCollapseParent(ev) {
         if (!this.model.canExpandRecursively()) {
             return;
         }
+
         const parentId = ev.detail?.id ?? ev.detail;
         const record = this.model.findRecordInHierarchy(parentId);
-        if (!record) {
+        if (!record || !this.model.hasMatchingChildren(record) || record.loadingChildren) {
             return;
         }
+
         if (record.expanded) {
             record.expanded = false;
             this.model.notify();
             return;
         }
-        if (record.loadingChildren) {
+
+        if (record.childrenFetched) {
+            record.expanded = record.children.length > 0;
+            this.model.notify();
             return;
         }
+
         record.loadingChildren = true;
+        this.model.notify();
         try {
             await this.model._loadChildren(record);
-            record.expanded = true;
+            if (this._isCurrentHierarchyRecord(record)) {
+                record.expanded = record.children.length > 0;
+            }
+        } catch (error) {
+            if (this._isCurrentHierarchyRecord(record)) {
+                // Allow retrying after an RPC error, without losing the
+                // current search, selection or grouping.
+                record.childrenFetched = false;
+                record.children = [];
+                this.notification.add(
+                    _t("Unable to load child categories. Please try again."),
+                    { type: "danger" }
+                );
+                console.error("Education classification: child loading failed", error);
+            }
         } finally {
             record.loadingChildren = false;
-            this.model.notify();
+            if (this._isCurrentHierarchyRecord(record)) {
+                this.model.notify();
+            }
         }
     }
 
