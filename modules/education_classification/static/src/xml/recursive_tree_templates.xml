@@ -39,17 +39,22 @@
         </xpath>
         <xpath expr="//tr[hasclass('o_data_row')]/td[1]" position="before">
             <td class="o_recursive_expand_column">
-                <button t-if="this.hasChildren(record)"
+                <t t-set="canExpand" t-value="this.hasChildren(record)"/>
+                <button t-if="canExpand"
                         type="button"
                         class="o_expand_button"
+                        aria-label="Expand or collapse child categories"
+                        title="Expand or collapse child categories"
+                        t-att-aria-expanded="record.expanded ? 'true' : 'false'"
+                        t-att-aria-busy="record.loadingChildren ? 'true' : 'false'"
                         t-att-data-expand="record.resId"
                         t-att-data-depth="record.depth || 0"
                         t-att-disabled="record.loadingChildren || undefined"
                         t-on-click.stop.prevent="_onExpandClick">
-                    <span role="img"
+                    <span aria-hidden="true"
                           t-att-class="'fa ' + (record.expanded ? 'fa-caret-down' : 'fa-caret-right')"/>
                 </button>
-                <span t-if="!this.hasChildren(record) &amp;&amp; record.depth &gt; 0"
+                <span t-if="!canExpand &amp;&amp; record.depth &gt; 0"
                       class="o_recursive_bullet"
                       t-att-data-depth="record.depth"
                       aria-hidden="true"/>
