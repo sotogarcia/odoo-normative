@@ -62,7 +62,9 @@ reporting.
 The module defines list/form/search views for classifications and mappings,
 plus a **hierarchy** view of classification items using the official Odoo
 `web_hierarchy` addon. The category action exposes
-`list,form,hierarchy` and initially applies the root-category filter.
+`list,form,hierarchy`, uses an empty search domain and groups categories by
+edition by default. A root-only search filter remains available, but it is
+not imposed on every query.
 
 Catalogue management is accessible through the **ISCED** section in
 Odoo Settings for system administrators. It provides shortcuts to schemes,
@@ -76,11 +78,15 @@ and delete permissions. The Settings shortcut itself is limited to the
 system-administrator group. Review deployment security and public exposure
 in your own database.
 
-## Recursive list view: implementation status
+## Recursive list view (Odoo 18)
 
-This repository also includes an **adapted recursive list frontend**, with
-lazy loading of children intended to display nested categories in a
-single expandable table.
+This module includes an **adapted recursive list frontend** based on
+[**`recursive_list_view`**](https://github.com/bemade/bemade-addons/tree/18.0/recursive_list_view),
+originally developed by **Marc Durepos (Bemade Inc.)**, © 2023 Bemade Inc.,
+under **LGPL-3.0**. See [Origin and licence](#origin-of-the-adapted-recursive-list-code)
+below for file-by-file attribution. The adaptation displays hierarchical
+categories in a single expandable table without patching Odoo's global
+list-view components.
 
 The following source files are present:
 
@@ -108,20 +114,131 @@ The dedicated view `education_classification_recursive_list` is enabled
 through `js_class`; it is separate from the `hierarchy` view supplied by
 `web_hierarchy`.
 
-The recursive list represents the **current search result** as a forest:
-matching records whose parents do not match become visual roots, and
-expanding a record displays only its matching children. Neither the
-search domain nor the context is rewritten. Root pagination is based on
-visual roots rather than the total number of matching descendants.
-Grouping by edition retains recursion; groupings where parent and child
-necessarily have different grouping values fall back to Odoo's regular
-flat grouped list.
+### Capabilities
 
-HOOT regression tests cover root pagination, arbitrary matching domains,
-recursive expansion, grouping and scoped styling. These tests have not
-yet been run against an installed Odoo 18 server. The projection reads
-all matching ids and parent references to determine the forest, so large
-classifications should be performance-tested before production use.
+- **Expand and collapse any depth:** render matching parent/child records
+  recursively in the same list, with depth-based indentation and accessible
+  expanded/busy indicators. Children are fetched on demand, in batches of
+  200, rather than loading every child row for display at once.
+- **Respect searches and filters:** the active domain and context define the
+  eligible records. The result is rendered as a forest: a matching record
+  whose parent does not match becomes a *visual root*, and expansion shows
+  only matching descendants. Filters are not silently replaced with
+  `parent_id = False`.
+- **Paginate visual roots:** list and compatible group pagers count the
+  visible forest roots, not all matching descendants. Domain-wide selection
+  can still account for the full matching set.
+- **Work with compatible groupings:** grouping by `edition_id` preserves
+  recursive expansion inside edition groups. Grouping by `parent_id` or
+  `level` falls back to Odoo's standard flat grouped list; it does not
+  display children beneath an incompatible group header.
+- **Select and act on descendants:** individual checkboxes, Shift selection,
+  select-all on the visible page, domain-wide selection (including loaded
+  or folded descendants), deselection and mass actions include descendant
+  records as appropriate.
+- **Open, edit and delete:** clicking a displayed descendant opens its
+  record with navigation IDs in displayed order. Standard save and
+  deletion/confirmation flows remain available; canceling deletion must
+  leave records intact. Inline editing is subject to Odoo's normal list
+  configuration and field permissions.
+- **Use standard list controls:** optional columns, filters, grouping and
+  the list action controls remain based on Odoo 18's native list view.
+  The expander column also works in layouts without record selectors.
+
+The recursive `list` view is **not** Odoo's separate `hierarchy` view:
+the former displays expandable table rows; the latter uses `web_hierarchy`.
+
+### Enable it in another view of the same model
+
+The frontend is registered in
+`static/src/js/recursive_list_view.js` under the name
+`education_classification_recursive_list`. Its JavaScript, OWL templates
+and CSS are included in `web.assets_backend` by this module's
+`__manifest__.py`.
+
+To reuse it in a **different list view of `education.classification.item`**:
+
+1. Ensure `education_classification` is installed. If the view belongs to a
+   separate addon, add `education_classification` to that addon's
+   `depends` in `__manifest__.py`.
+2. Add `js_class="education_classification_recursive_list"` to the
+   `<list>` element of the desired view (not to its form or hierarchy
+   view). For example, in that addon's view XML:
+
+   ```xml
+   <record id="view_classification_item_recursive_example" model="ir.ui.view">
+       <field name="name">education.classification.item.recursive.example</field>
+       <field name="model">education.classification.item</field>
+       <field name="arch" type="xml">
+           <list string="Classification Items"
+                 js_class="education_classification_recursive_list"
+                 default_order="edition_id,sequence_path,sequence,id">
+               <field name="code"/>
+               <field name="name"/>
+               <field name="edition_id"/>
+               <field name="parent_id" optional="hide"/>
+               <field name="child_count" readonly="1" optional="hide"/>
+           </list>
+       </field>
+   </record>
+   ```
+
+3. Associate that list view with the required `ir.actions.act_window`
+   (for example, through its `view_id` or `ir.actions.act_window.view`
+   entries). Merely creating an additional `ir.ui.view` does not guarantee
+   that an existing action will select it. Update the addon so Odoo loads
+   the view definition.
+
+The module's working example is the `<list>` of
+`view_edication_classification_item_list` in
+`views/education_classification_item_view.xml`. You can use other
+columns, filters and actions; the important parts are the list's
+`js_class` and the model's hierarchical fields. There is **no need**
+to install the original Bemade addon. Unlike that upstream addon, which
+documents `recursive="1"`, this local Odoo 18 adaptation activates the
+feature with **`js_class`**.
+
+### Reuse with a different model: limitations
+
+**Adding `js_class` alone is not sufficient for arbitrary models.**
+The current implementation is specialised for
+`education.classification.item`:
+
+- `static/src/js/relational_model.js` explicitly expects
+  `parent_id` (a self-referencing `Many2one`) and `child_count`, uses
+  them to project the filtered forest and fetch children, and pages
+  child reads in groups of 200.
+- `static/src/js/relational_model.js`, in
+  `setup()`/`canExpandRecursively()`, treats only `edition_id` grouping
+  as compatible with recursion. This rule is specific to classifications;
+  other models may need different compatible grouping fields.
+- The record hierarchy, field availability, access rights and active
+  domain must remain consistent. Large result sets require particular
+  care: `_buildRecursiveIndex()` reads **all matching record IDs and
+  parent IDs** (in batches), even when only a small page of visual roots
+  is shown. This can be expensive for very large datasets.
+
+Reusing the frontend for another hierarchical model therefore requires
+adapting/parameterising these assumptions, choosing the correct
+grouping rules and adding model-specific HOOT and UI tests. It is **not**
+currently a drop-in general-purpose tree widget.
+
+### Tests and verification
+
+The HOOT test bundle is
+`static/tests/recursive_list.test.js`; run it on Odoo 18 at:
+
+```text
+/web/tests?filter=education_classification
+```
+
+The **40 HOOT tests passed in a local Odoo 18 execution reported on
+2 November 2026**. They exercise expansion, pagination, filters,
+groupings, selection, navigation, deletion/cancellation and styling.
+This is not a claim of exhaustive manual integration testing.
+In particular, validate the intended action and a Many2one
+**Search More** dialog with the actual target database, including
+groupings, saved filters and access permissions.
 
 ## Origin of the adapted recursive-list code
 
@@ -164,5 +281,7 @@ update the Apps list, and install `education_classification`. For
 installation on an existing database, use your normal Odoo module update
 procedure after changing the manifest or assets.
 
-Runtime installation and end-to-end tests of the adapted recursive view
-have **not** been performed as part of this documentation change.
+The local HOOT result above is distinct from end-to-end verification
+of every action, access profile and Many2one dialog. Review the
+[Tests and verification](#tests-and-verification) section when extending
+the frontend or deploying it in another context.
