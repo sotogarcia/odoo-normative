@@ -190,6 +190,20 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
         return { records, length: index.roots.length };
     }
 
+    /**
+     * Odoo's "fetch full count" normally counts all matching database rows.
+     * Our pager counts visible roots of the filtered forest instead, so the
+     * full-count action must use the same projection as the initial load.
+     */
+    async _updateCount(config) {
+        if (!this.canExpandRecursively() || config.isMonoRecord || config.resIds) {
+            return super._updateCount(config);
+        }
+        const index = await this._getRecursiveIndex(config);
+        config.countLimit = Number.MAX_SAFE_INTEGER;
+        return index.roots.length;
+    }
+
     hasMatchingChildren(record) {
         if (!this.canExpandRecursively()) {
             return false;
