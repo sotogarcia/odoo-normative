@@ -234,7 +234,7 @@ The HOOT test bundle is
 
 The **40 HOOT tests passed in a local Odoo 18 execution reported on
 2 November 2026**. They exercise expansion, pagination, filters,
-groupings, selection, navigation, deletion/cancelation and styling.
+groupings, selection, navigation, deletion/cancellation and styling.
 This is not a claim of exhaustive manual integration testing.
 In particular, validate the intended action and a Many2one
 **Search More** dialog with the actual target database, including
