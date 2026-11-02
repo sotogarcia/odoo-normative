@@ -38,7 +38,8 @@
             </t>
         </xpath>
         <xpath expr="//tr[hasclass('o_data_row')]/td[1]" position="before">
-            <td class="o_recursive_expand_column">
+            <td class="o_recursive_expand_column"
+                t-att-style="'--ec-recursive-depth: ' + (record.depth || 0)">
                 <t t-set="canExpand" t-value="this.hasChildren(record)"/>
                 <button t-if="canExpand"
                         type="button"
