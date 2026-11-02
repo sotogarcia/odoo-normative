@@ -429,11 +429,19 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
             const index = this._recursiveIndexById.get(parent.resId);
             const ids = index?.childrenByParent.get(parent.resId) || [];
             const data = [];
+            // The group supplies its own context (including defaults and
+            // company-related values). Evaluate nested field specifications
+            // with that context, not with the root action context.
+            const recordConfig = {
+                ...config,
+                context: index?.context || parent.context,
+                currentCompanyId: parent.currentCompanyId,
+            };
             if (ids.length) {
                 const specification = getFieldsSpec(
-                    config.activeFields,
-                    config.fields,
-                    getBasicEvalContext(config)
+                    recordConfig.activeFields,
+                    recordConfig.fields,
+                    getBasicEvalContext(recordConfig)
                 );
                 const domain = Domain.and([
                     index.domain,
@@ -446,7 +454,7 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
                         config.resModel,
                         domain,
                         {
-                            context: index.context,
+                            context: { bin_size: true, ...recordConfig.context },
                             specification,
                             offset,
                             limit: PAGE_SIZE,
@@ -471,10 +479,10 @@ export class EducationClassificationRecursiveListModel extends RelationalModel {
                 const child = new this.constructor.Record(
                     this,
                     {
-                        context: index.context,
-                        activeFields: config.activeFields,
-                        resModel: config.resModel,
-                        fields: config.fields,
+                        context: recordConfig.context,
+                        activeFields: recordConfig.activeFields,
+                        resModel: recordConfig.resModel,
+                        fields: recordConfig.fields,
                         resId: values.id,
                         resIds: [values.id],
                         isMonoRecord: true,
