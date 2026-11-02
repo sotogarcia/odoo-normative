@@ -505,6 +505,26 @@ test("education_classification: expand controls expose accessible state", async 
     expect(button).toHaveAttribute("aria-expanded", "false");
 });
 
+test("education_classification: expand column precedes optional selectors", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        allowSelectors: true,
+    });
+
+    const headerCells = document.querySelectorAll(".o_list_renderer thead tr > th");
+    expect(headerCells[0]).toHaveClass("o_recursive_expand_column");
+    expect(headerCells[1]).toHaveClass("o_list_record_selector");
+
+    const rowCells = document.querySelectorAll(
+        ".o_list_renderer tbody tr.o_data_row:first-child > td"
+    );
+    expect(rowCells[0]).toHaveClass("o_recursive_expand_column");
+    expect(rowCells[1]).toHaveClass("o_list_record_selector");
+});
+
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
     await mountView({
         type: "list",
