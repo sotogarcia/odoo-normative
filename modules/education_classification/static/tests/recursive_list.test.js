@@ -211,16 +211,14 @@ test("education_classification: searching respects root and child filters", asyn
     expect(rowNames()).toEqual(["Root A", "Root B"]);
 
     await removeFacet("Root Categories");
-    expect(rowNames()).toEqual([
-        "Root A",
-        "Child A1",
-        "Grandchild A1a",
-        "Child A2",
-        "Root B",
-    ]);
+    expect(rowNames()).toEqual(["Root A", "Root B"]);
+    await contains('.o_expand_button[data-expand="1"]').click();
+    expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2", "Root B"]);
 
     await toggleSearchBarMenu();
     await toggleMenuItem("Child Categories");
+    expect(rowNames()).toEqual(["Child A1", "Child A2"]);
+    await contains('.o_expand_button[data-expand="2"]').click();
     expect(rowNames()).toEqual(["Child A1", "Grandchild A1a", "Child A2"]);
 });
 
@@ -258,7 +256,7 @@ test("education_classification: lazy children are fetched in multiple pages", as
     onRpc("web_search_read", ({ kwargs }) => {
         const domain = kwargs.domain || [];
         if (domain.some((term) => Array.isArray(term) &&
-            term[0] === "parent_id" && term[1] === "in")) {
+            term[0] === "parent_id" && term[1] === "=")) {
             pages.push([kwargs.offset || 0, kwargs.limit]);
         }
     });
