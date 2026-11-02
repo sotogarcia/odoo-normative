@@ -413,6 +413,7 @@ test("education_classification: late child loading does not expand a replaced pa
     await click('.o_expand_button[data-expand="1"]');
     await animationFrame();
     expect('.o_expand_button[data-expand="1"]').toHaveAttribute("disabled");
+    expect('.o_expand_button[data-expand="1"]').toHaveAttribute("aria-busy", "true");
 
     await pagerNext();
     expect(rowNames()).toEqual(["Root B"]);
@@ -477,6 +478,31 @@ test("education_classification: grouped headers span all columns without selecto
     await contains(".o_group_header:eq(0)").click();
     await contains('.o_expand_button[data-expand="1"]').click();
     expect(rowNames()).toEqual(["Root A", "Child A1", "Child A2"]);
+});
+
+test("education_classification: expand controls expose accessible state", async () => {
+    await mountView({
+        type: "list",
+        resModel: "education.classification.item",
+        arch: LIST_ARCH,
+        domain: [],
+        allowSelectors: false,
+    });
+
+    const button = '.o_expand_button[data-expand="1"]';
+    expect(button).toHaveAttribute("aria-label", "Expand or collapse child categories");
+    expect(button).toHaveAttribute("aria-expanded", "false");
+    expect(button).toHaveAttribute("aria-busy", "false");
+
+    await contains(button).click();
+    expect(button).toHaveAttribute("aria-expanded", "true");
+    expect(".o_recursive_bullet[data-depth='1']").toHaveCount(1);
+
+    await contains('.o_expand_button[data-expand="2"]').click();
+    expect(".o_recursive_bullet[data-depth='2']").toHaveCount(1);
+
+    await contains(button).click();
+    expect(button).toHaveAttribute("aria-expanded", "false");
 });
 
 test("education_classification: standard list does not receive recursive CSS scope", async () => {
