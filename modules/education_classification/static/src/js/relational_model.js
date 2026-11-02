@@ -11,6 +11,7 @@
 import { Domain } from "@web/core/domain";
 import { DynamicGroupList } from "@web/model/relational_model/dynamic_group_list";
 import { DynamicRecordList } from "@web/model/relational_model/dynamic_record_list";
+import { Group } from "@web/model/relational_model/group";
 import { RelationalModel } from "@web/model/relational_model/relational_model";
 import {
     getBasicEvalContext,
@@ -98,6 +99,20 @@ class EducationClassificationRecursiveGroupList extends DynamicGroupList {
 }
 
 /**
+ * Odoo substitutes the group count when a child list reaches countLimit.
+ * Here the child list's exact root count must not be overwritten by the
+ * count of all matching records (including collapsed descendants).
+ */
+class EducationClassificationRecursiveGroup extends Group {
+    _useGroupCountForList() {
+        if (this.model.canExpandRecursively() && !this.list.isGrouped) {
+            return;
+        }
+        return super._useGroupCountForList();
+    }
+}
+
+/**
  * Present search results as a forest, not as a list of database roots.
  *
  * The search domain and context determine the set of eligible records. A
@@ -110,6 +125,7 @@ class EducationClassificationRecursiveGroupList extends DynamicGroupList {
  * whose parents or siblings happen to be on other pages.
  */
 export class EducationClassificationRecursiveListModel extends RelationalModel {
+    static Group = EducationClassificationRecursiveGroup;
     static DynamicRecordList = EducationClassificationRecursiveRecordList;
     static DynamicGroupList = EducationClassificationRecursiveGroupList;
 
