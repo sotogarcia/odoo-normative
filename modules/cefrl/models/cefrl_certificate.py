@@ -1,15 +1,15 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #    License, author and contributors information in:                         #
-#    __openerp__.py file at the root folder of this module.                   #
+#    __manifest__.py file at the root folder of this module.                  #
 ###############################################################################
 
-from odoo import models, fields, api
-from odoo.osv.expression import NEGATIVE_TERM_OPERATORS, AND, OR
-from odoo.exceptions import ValidationError
-from odoo.tools.translate import _
+
 from logging import getLogger
 
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
+from odoo.osv.expression import AND, NEGATIVE_TERM_OPERATORS, OR
+from odoo.tools.translate import _
 
 _logger = getLogger(__name__)
 
@@ -129,7 +129,7 @@ class CefrlCertificate(models.Model):
         context={},
     )
 
-    _sql_constraints = [
+    _sql_constraints = [  # noqa: RUF012
         (
             "unique_level_id_by_group",
             "UNIQUE(level_id, group_id)",
@@ -146,14 +146,14 @@ class CefrlCertificate(models.Model):
             else:
                 lang = record.language_id.name
                 if record.name:
-                    name = "{} - {}".format(lang, record.name)
+                    name = f"{lang} - {record.name}"
                     result.append((record.id, name))
                 else:
                     lang = record.language_id.name
                     code = record.code or record.group_id.code
                     level = record.level_id.code
 
-                    name = "{} - {}: {}".format(lang, code, level)
+                    name = f"{lang} - {code}: {level}"
 
                     result.append((record.id, name))
 

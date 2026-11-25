@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 #    Odoo, Open Source Management Solution
@@ -20,7 +19,7 @@
 #    along with this program.  If not, see http://www.gnu.org/licenses
 #
 ###############################################################################
-{
+{  # noqa: B018
     "name": "CEFR for Languages",
     "summary": "Common European Framework of Reference for Languages",
     "version": "18.0.1.0.0",

@@ -1,13 +1,13 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #    License, author and contributors information in:                         #
-#    __openerp__.py file at the root folder of this module.                   #
+#    __manifest__.py file at the root folder of this module.                  #
 ###############################################################################
 
-from odoo import models, fields, api
-from odoo.tools.translate import _
+
 from logging import getLogger
 
+from odoo import api, fields, models
+from odoo.tools.translate import _
 
 _logger = getLogger(__name__)
 
@@ -85,7 +85,7 @@ class CefrlLevel(models.Model):
         auto_join=False,
     )
 
-    _sql_constraints = [
+    _sql_constraints = [  # noqa: RUF012
         (
             "unique_code",
             "UNIQUE(code)",
@@ -103,6 +103,6 @@ class CefrlLevel(models.Model):
     def _compute_display_name(self):
         for record in self:
             if record._origin:
-                record.display_name = "{} ({})".format(record.code, record.name)
+                record.display_name = f"{record.code} ({record.name})"
             else:
                 record.display_name = _("New level")

@@ -1,29 +1,27 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #    License, author and contributors information in:                         #
-#    __openerp__.py file at the root folder of this module.                   #
+#    __manifest__.py file at the root folder of this module.                  #
 ###############################################################################
 
-from odoo import models, fields, api
-from odoo.tools.translate import _
-from odoo.tools import drop_view_if_exists
+
 from logging import getLogger
 
+from odoo import fields, models
+from odoo.tools import drop_view_if_exists
 
 _logger = getLogger(__name__)
 
 
 class CefrlCertificateImpliedCertificateRel(models.Model):
-    """ Relationship
-    """
+    """Relationship"""
 
-    _name = 'cefrl.certificate.implied.certificate.rel'
-    _description = u'Cefrl certificate implied certificate rel'
+    _name = "cefrl.certificate.implied.certificate.rel"
+    _description = "Cefrl certificate implied certificate rel"
 
     _auto = False
-    _table = 'cefrl_certificate_implied_certificate_rel'
+    _table = "cefrl_certificate_implied_certificate_rel"
 
-    _view_sql = '''
+    _view_sql = """
         SELECT DISTINCT
             crt1."id" AS certificate_id,
             crt2."id" AS implied_id
@@ -34,38 +32,38 @@ class CefrlCertificateImpliedCertificateRel(models.Model):
         INNER JOIN cefrl_certificate AS crt2
             ON crt2.group_id = grp."id"
             AND crt2."sequence" <= crt1."sequence"
-    '''
+    """
 
     certificate_id = fields.Many2one(
-        string='Certificate',
+        string="Certificate",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Parent certificate',
-        comodel_name='cefrl.certificate',
+        help="Parent certificate",
+        comodel_name="cefrl.certificate",
         domain=[],
         context={},
-        ondelete='cascade',
-        auto_join=False
+        ondelete="cascade",
+        auto_join=False,
     )
 
     implied_id = fields.Many2one(
-        string='Implied',
+        string="Implied",
         required=True,
         readonly=False,
         index=True,
         default=None,
-        help='Child certificate',
-        comodel_name='cefrl.certificate',
+        help="Child certificate",
+        comodel_name="cefrl.certificate",
         domain=[],
         context={},
-        ondelete='cascade',
-        auto_join=False
+        ondelete="cascade",
+        auto_join=False,
     )
 
     def init(self):
-        sentence = 'CREATE or REPLACE VIEW {} as ( {} )'
+        sentence = "CREATE or REPLACE VIEW {} as ( {} )"
 
         drop_view_if_exists(self.env.cr, self._table)
 
@@ -74,12 +72,12 @@ class CefrlCertificateImpliedCertificateRel(models.Model):
         self.prevent_actions()
 
     def prevent_actions(self):
-        actions = ['INSERT', 'UPDATE', 'DELETE']
+        actions = ["INSERT", "UPDATE", "DELETE"]
 
-        BASE_SQL = '''
+        BASE_SQL = """
             CREATE OR REPLACE RULE {table}_{action} AS
                 ON {action} TO {table} DO INSTEAD NOTHING
-        '''
+        """
 
         for action in actions:
             sql = BASE_SQL.format(table=self._table, action=action)
